@@ -1,7 +1,12 @@
 # SF-houses
 
+THINGS TO BE DONE:
+
+1) Controllare se i vari datasets usino gli stessi quartieri, decidere eventualmente quali usare, informarsi su questo aspetto
+2)
 
 WHERE TO DOWNLOAD DATASETS:
+
 1) https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-07-05
 2) https://data.sfgov.org/Housing-and-Buildings/Eviction-Notices/5cei-gny5
 3) https://data.sfgov.org/Housing-and-Buildings/Buyout-Agreements/wmam-7g8d
