@@ -32,3 +32,6 @@ rent$d = as.Date(as.character(rent$date),format = "%Y%m%d")
 unique(rent$nhood)
 ind_alameda = which(rent$nhood == 'alameda')
 plot(rent[ind_alameda,]$date, rent[ind_alameda,]$price)
+
+unique(Buyout_Agreements$Analysis.Neighborhood)
+unique(Eviction_Notices$Neighborhoods...Analysis.Boundaries)
