@@ -34,11 +34,17 @@ rent <- rent[!(is.na(rent[,7])), ] #rimuovo quelli che non hanno i metri quadri,
 rent <- rent[!(is.na(rent[,4])), ] #rimuovo quelli che non hanno il prezzo, secondo me sono inutili
 rent <- rent[!duplicated(rent),] #elimino rent duplici (fatti nello stesso giorno, alla stessa cifra, nello stesso indirizzo)
 
+#Creo i dataset clean:
+#write.csv(Buyout_Agreements, "C://Users/tomas/Desktop/san francisco/repo_github_SF_houses/SF-houses/buyout_clean.csv")
+#write.csv(rent, "C://Users/tomas/Desktop/san francisco/repo_github_SF_houses/SF-houses/rent_clean.csv")
+#write.csv(Eviction_Notices, "C://Users/tomas/Desktop/san francisco/repo_github_SF_houses/SF-houses/evictions_clean.csv")
+
+
 
 October2015Permits <- October2015Permits[,-c(1:3,5:9,14:20,29:40,42)] #Script iniziale eventualmente da estendere su tutti i permits, qui fatto solo su Ottobre
 October2015Permits <- October2015Permits[((October2015Permits[,4]=='APARTMENTS') | (October2015Permits[,4]=='1 FAMILY DWELLING') | 
                                             (October2015Permits[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
-October2015Permits <- October2015Permits[((October2015Permits[,5]-October2015Permits[,3]>0)), ] #Rimuovo i lavori che non aumentano le unità abitative
+October2015Permits <- October2015Permits[((October2015Permits[,5]-October2015Permits[,3]>0)), ] #Rimuovo i lavori che non aumentano le unità abitative, nota: perch�?
 October2015Permits <- October2015Permits[!duplicated(October2015Permits),]
 October2015Permits <- October2015Permits[!(is.na(October2015Permits[,4])), ] #elimino quelli di cui non so la destinazione d'uso
 
