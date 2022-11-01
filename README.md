@@ -22,20 +22,25 @@ RESEARCH QUESTIONS:
 0) Evidenziare il problema: - funzione avg_monthly_price vs time : confrontare tra diverse città (con crescita di avg_income simile)? Servono i dati ... =(
                             - guardare come cambiano avg_monthly_price vs avg_monthly_income per dire che la gente povera se ne va(?). Servono i dati =(
 
-1) Osservare la crescita dei prezzi nei vari quartieri ,
-   fare ipotesi su displacement/gentrificazione e poi verificarle alla fine (come?).
+1) IDEA: RENT CRESCENTI => GENTRIFICAZIONE CRESCENTE
+   Osservare la crescita dei prezzi dei rent nei vari quartieri al passare del tempo, fare così ipotesi su
+   Displacement/gentrificazione da poi verificare (si spera) alla fine dello studio.
    Possiamo: - Per ogni istante di tempo che abbiamo fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq;
-             - magari come funzione avg_monthly_price in nhood vs time -> studiare differenza tra quartieri
+             - Attraverso una funzione avg_monthly_price in nhood vs time, verificare in quali quartieri il prezzo è cresciuto nel tempo
+             - Forse è possibile racchiudere in un colpo solo i due punti sopra in una ANOVA two-way con i quartieri come 1st way e gli anni come 2nd way
                                  
-2) I quartieri dove viene costruito di più sono quelli dove ci si aspetta i prezzi saliranno maggiormente (i.e. dove c'è 
-   displacement/gentrification). Si potrebbe anche in questo modo ottenere una lista di quartieri più soggetti a displacemente e verificare
-   alla fine (come?) ).
+2) IDEA: NUOVE COSTRUZIONI IN UNA CERTA ZONA => GENTRIFICAZIONE IN ATTO/PREVISTA NELLA STESSA ZONA
+   I quartieri dove viene costruito di più sono quelli dove ci si aspetta i prezzi saliranno maggiormente (i.e. dove c'è 
+   displacement/gentrification). Si potrebbe anche in questo modo ottenere una lista di quartieri più soggetti a displacemente e poi verificare (si spera)
+   alla fine dello studio.
    Tom: io controllerei prima se "costruire di più" implica "aumento prezzi". 
         Magari si può: - fare funzioni new_monthly_construction_nhood vs time
                        - fare funzioni avg_monthly_price_nhood vs time
                        - fare funzioni evictions_monthly_nhood vs time 
                        - vedere se valori alti di new_construction_nhood corrispondono ad aumenti di prezzi negli anni successivi
                        - come usare l'informazione sugli sfratti?? Più prezzi alti, più sfratti mi aspetto??  
+3) IDEA: EVICTIONS/BUYOUTS CRESCENTI => GENTRIFICAZIONE CRESCENTE
+   Controllo semplicemente in quali quartieri ho il maggior aumento di evictions/buyouts
 3) Regression model: 
    - Output : rent price al tempo t della parcel p nel neighborhood c.
    - Covariates : - Quantità di case nuove costruite "attorno" (perchè non nel nhood direttamente? Si potrebbe semplificare...)
