@@ -18,10 +18,15 @@ WHERE TO DOWNLOAD DATASETS:
 
 RESEARCH QUESTIONS:
 
+
+0) Evidenziare il problema: - funzione avg_monthly_price vs time : confrontare tra diverse città (con crescita di avg_income simile)? Servono i dati ... =(
+                            - guardare come cambiano avg_monthly_price vs avg_monthly_income per dire che la gente povera se ne va(?). Servono i dati =(
+
 1) Osservare la crescita dei prezzi nei vari quartieri ,
    fare ipotesi su displacement/gentrificazione e poi verificarle alla fine (come?).
    Possiamo: - Per ogni istante di tempo che abbiamo fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq;
-                                                   - magari come funzione avg_monthly_price in nhood vs time -> studiare differenza tra quartieri
+             - magari come funzione avg_monthly_price in nhood vs time -> studiare differenza tra quartieri
+                                 
 2) I quartieri dove viene costruito di più sono quelli dove ci si aspetta i prezzi saliranno maggiormente (i.e. dove c'è 
    displacement/gentrification). Si potrebbe anche in questo modo ottenere una lista di quartieri più soggetti a displacemente e verificare
    alla fine (come?) ).
