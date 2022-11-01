@@ -44,7 +44,7 @@ October2015Permits <- October2015Permits[!(is.na(October2015Permits[,4])), ] #el
 
 unique(rent$nhood)
 ind_alameda = which(rent$nhood == 'alameda')
-plot(rent[ind_alameda,]$date, rent[ind_alameda,]$price)
+plot(rent[ind_alameda,]$d, rent[ind_alameda,]$price)
 
 unique(Buyout_Agreements$Analysis.Neighborhood)
 unique(Eviction_Notices$Neighborhoods...Analysis.Boundaries)
