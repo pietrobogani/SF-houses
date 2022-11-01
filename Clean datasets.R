@@ -48,3 +48,21 @@ plot(rent[ind_alameda,]$d, rent[ind_alameda,]$price)
 
 unique(Buyout_Agreements$Analysis.Neighborhood)
 unique(Eviction_Notices$Neighborhoods...Analysis.Boundaries)
+
+A=tolower(sf_permits$neighborhoods_analysis_boundaries[order(sf_permits$neighborhoods_analysis_boundaries)])
+B=tolower(rent$nhood[order(rent$nhood)])
+C=tolower(Eviction_Notices$Neighborhoods...Analysis.Boundaries)
+D=tolower(Buyout_Agreements$Analysis.Neighborhood)
+
+# length(unique(A)) #42
+# length(unique(B)) #158
+# length(unique(C)) #41
+# length(unique(D)) #39
+
+intersect(intersect(intersect(A,B),C),D)
+intersect(intersect(A,C),D)
+length(intersect(intersect(A,C),D)) #tutti i quartieri di Buyout_Agreements sono contenuti in sf_permits e Eviction_Notices
+# setdiff(A,D) #sf_permits e Eviction_Notices hanno due quartieri in più rispetto a Buyout_Agreements: "golden gate park", "treasure island"
+
+setdiff(intersect(intersect(A,C),D),B)
+unique(B)
