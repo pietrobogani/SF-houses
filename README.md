@@ -3,7 +3,10 @@
 THINGS TO BE DONE:
 
 1) Controllare se i vari datasets usino gli stessi quartieri, decidere eventualmente quali usare, informarsi su questo aspetto
-2)
+2) Creare un file unico contenente le new_constructions, aggregando i dati mensili che si trovano su https://sfdbi.org/building-permits-issued
+   Da decidere ancora la finestra temporale utile al progetto
+3) Preparare datasets e idee per parlarne con un prof.
+
 
 WHERE TO DOWNLOAD DATASETS:
 
@@ -11,6 +14,7 @@ WHERE TO DOWNLOAD DATASETS:
 2) https://data.sfgov.org/Housing-and-Buildings/Eviction-Notices/5cei-gny5
 3) https://data.sfgov.org/Housing-and-Buildings/Buyout-Agreements/wmam-7g8d
 4) https://sfdbi.org/building-permits-issued
+
 
 RESEARCH QUESTIONS:
 
