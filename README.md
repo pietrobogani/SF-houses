@@ -13,6 +13,7 @@ WHERE TO DOWNLOAD DATASETS:
 2) https://data.sfgov.org/Housing-and-Buildings/Eviction-Notices/5cei-gny5
 3) https://data.sfgov.org/Housing-and-Buildings/Buyout-Agreements/wmam-7g8d
 4) https://sfdbi.org/building-permits-issued
+5) https://data.sfgov.org/Housing-and-Buildings/Land-Use/us3s-fp9q (Parcel file, to be exported in non-geographical form)
 
 
 RESEARCH QUESTIONS:
