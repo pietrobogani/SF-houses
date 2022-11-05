@@ -2,9 +2,8 @@
 
 THINGS TO BE DONE:
 
-1) Controllare se i vari datasets usino gli stessi quartieri, decidere eventualmente quali usare, informarsi su questo aspetto
-2) Creare un file unico contenente le new_constructions, aggregando i dati mensili che si trovano su https://sfdbi.org/building-permits-issued
-   Da decidere ancora la finestra temporale utile al progetto
+1) Creare un file unico contenente le new_constructions, aggregando i dati mensili che si trovano su https://sfdbi.org/building-permits-issued
+   Da decidere ancora la finestra temporale utile al progetto. Per ora solo il file di Ottobre del 2015 è stato aggiunto e guardato.
 3) Preparare datasets e idee per parlarne con un prof.
 
 
