@@ -39,6 +39,20 @@ RESEARCH QUESTIONS:
                   - Fixed effect sul neighborhood (https://rstudio-pubs-static.s3.amazonaws.com/372492_3e05f38dd3f248e89cdedd317d603b9a.html)
                   - Fixed effect sull'anno
                   - Distanza dal "centro" (o studiamo luoghi importanti)
+   - Spiegazione: Dal dataset rent abbiamo circa 10k annunci con nhood associato e anno di riferimento. Si procede poi con:
+                   -- calcolare il prezzo medio per ogni anno dei nhood 
+                   -- per ogni parcel, calcolare la distanza da essa a ogni nhood (confronto i centroidi) e
+                      fissare un raggio (a tentativi) per calcolare le intersezioni di ciascuna parcel con i nhood
+                   -- calcolare il prezzo annuale di ciascuna parcel come media pesata (sulla distanza) dei prezzi medi dei nhood nel suo raggio
+                   -- per ogni parcel e ogni anno, calcolare la distanza da essa a ogni new_construction (in che range di tempo? 4 anni?) e
+                      fissare un raggio (a tentativi) per calcolare #near_new_constr vicino alla parcel
+                      Quindi ad esempio si avrà per ogni parcel #near_new_constr2010 = 10 considerando il range 2007-2010 per le costruzioni
+                   -- per ogni parcel, trovare il quartiere di appartenenza ... come?!
+                   -- train del modello di regressione con price_parcel ~ #near_new_constr_year_inrange4 + nhood + year + nhood:year
+
+      E' corretto?? Se così fosse, i prezzi annuali delle parcel sarebbero tutti appiattiti sulle medie dei nhood e sfrumerebbero solamente
+        sui confini con gli altri nhood ... A quel punto direi che è quasi impossibile trovare un effetto delle new_constr nelle vicinanze
+        (dato che tutti i prezzi delle parcel sarebbero molto simili  
                  
 4) Previsione sul numero di sfratti : n_sfratti_monthly ~ avg_monthly_price_nhood + new_constructions_nhood  ... bisogna inventarsi qualcosa di meglio...
      L'idea sarebbe che il numero di sfratti è un altro indicatore di displacement. E' vero che anche usando questo indicatore le new costruction hanno un effetto 
