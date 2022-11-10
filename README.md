@@ -39,12 +39,12 @@ RESEARCH QUESTIONS:
                   - Fixed effect sul neighborhood (https://rstudio-pubs-static.s3.amazonaws.com/372492_3e05f38dd3f248e89cdedd317d603b9a.html)
                   - Fixed effect sull'anno
                   - Distanza dal "centro" (o studiamo luoghi importanti)
- 
-3.1) Previsione sul numero di sfratti : n_sfratti_monthly ~ avg_monthly_price_nhood + new_constructions_nhood  ... bisogna inventarsi qualcosa di meglio...
+                 
+4) Previsione sul numero di sfratti : n_sfratti_monthly ~ avg_monthly_price_nhood + new_constructions_nhood  ... bisogna inventarsi qualcosa di meglio...
      L'idea sarebbe che il numero di sfratti è un altro indicatore di displacement. E' vero che anche usando questo indicatore le new costruction hanno un effetto 
      positivo? ( i.e. più nuove case => meno sfratti (=> meno gentrificazione)
 
-4) Spatial Statistics
-5) Survival Analysis su quanto tempo uno sta nella casa prima dell'eviction
+5) Spatial Statistics
+6) Survival Analysis su quanto tempo uno sta nella casa prima dell'eviction
 
 
