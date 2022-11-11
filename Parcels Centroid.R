@@ -106,6 +106,8 @@ options(digits=9)
 
 Parcels_final = Parcels_prova[,-c(3,17:49)]   #tolgo colonne che non servono
 save(Parcels_final, file = 'Parcels_finall.RData')
-write_xlsx(Parcels_final,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv")
-
+write.csv(Parcels_final,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv")
+Parcels_final <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv", header=TRUE)
+Parcels_final <- Parcels_final[,-c(1:6,11:16)]
+write.csv(Parcels_final,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv")
 

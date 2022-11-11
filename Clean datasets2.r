@@ -9,15 +9,111 @@ October2015Permits <- read_excel("October2015Permits.xlsx") # per provare a puli
 Parcels <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels.csv", header=TRUE)
 
 
+
 Eviction_Notices <- Eviction_Notices[,-c(1,3:5,7:27,30:45)] #selezione covariate di interesse
 Eviction_Notices <- Eviction_Notices[!(Eviction_Notices[,3]==""), ] #elimino gli sfratti senza quartiere
 Eviction_Notices <- Eviction_Notices[!duplicated(Eviction_Notices),] #elimino gli sfratti duplici (fatti lo stesso giorno nello stesso indirizzo)
+for (i in 1:length(Eviction_Notices[,1])) {   #preparo bene le coordinate
+  if(Eviction_Notices[i,4] != ""){
+    temp <- strsplit(Eviction_Notices[i,4], ", ")
+    Eviction_Notices[i,5] <- temp[[1]][1]
+    Eviction_Notices[i,6] <- temp[[1]][2]
+  }
+  else{
+    Eviction_Notices[i,5] <- ""
+    Eviction_Notices[i,6] <- ""
+  }
+}
+
+for (i in 1:length(Eviction_Notices[,1])) {   #preparo bene le coordinate
+  if(Eviction_Notices[i,4] != ""){
+    temp <- strsplit(Eviction_Notices[i,5], "\\(")
+    temp1 <- strsplit(Eviction_Notices[i,6], "\\)")
+    Eviction_Notices[i,5] <- temp[[1]][2]
+    Eviction_Notices[i,6] <- temp1[[1]][1]
+    Eviction_Notices[i,5] <- as.double(Eviction_Notices[i,5])
+    Eviction_Notices[i,6] <- as.double(Eviction_Notices[i,6])
+  }
+}
+Eviction_Notices <-  Eviction_Notices[,-c(4)]
+for (i in 1:length(Eviction_Notices[,1])) {   #preparo la data
+  temp <- strsplit(Eviction_Notices[i,2], "/")
+  Eviction_Notices[i,6] <- temp[[1]][1]
+  Eviction_Notices[i,7] <- temp[[1]][3]
+  Eviction_Notices[i,7] <- as.double(Eviction_Notices[i,7])
+  Eviction_Notices[i,6] <- as.double(Eviction_Notices[i,6])
+}
+Eviction_Notices <-  Eviction_Notices[,-c(2)]
+colnames(Eviction_Notices) <- c('address', 'nhood', 'lat', 'long','month','year')
+
+for (i in 1:length(Eviction_Notices[,1])) {   #preparo l'address
+  temp <- strsplit(Eviction_Notices[i,1], " ")
+  for( j in 1: length(temp[[1]])){
+    Eviction_Notices[i,6+j] <- temp[[1]][j] 
+  }
+}
+Eviction_Notices <- Eviction_Notices[,-c(8,9)]
+for( i in 1:length(Eviction_Notices[,1])){  #preparo l'address
+  j = 9
+  while (Eviction_Notices[i,j] != "" & !(is.na(Eviction_Notices[i,j]))) {
+    Eviction_Notices[i,8] = paste(Eviction_Notices[i,8], Eviction_Notices[i,j], sep=" ")
+    j = j+1
+  }
+}
+for( i in 1:length(Eviction_Notices[,1])){ 
+  j = 9
+  while (Eviction_Notices[i,j] != "" & !(is.na(Eviction_Notices[i,j]))){
+    j=j+1
+  }
+  if (!(is.na(Eviction_Notices[i,j]))){
+    Eviction_Notices[i,9] = Eviction_Notices[i,j+1]
+  }
+}
+Eviction_Notices <- Eviction_Notices[,-c(10:14)]
+colnames(Eviction_Notices) <- c('address', 'nhood', 'lat', 'long','month','year','block','street_name', 'street_type')
+
 write.csv(Eviction_Notices,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Eviction_Notices_Clean.csv")
+
+
+
+
+
+
 
 Buyout_Agreements <- Buyout_Agreements[,-c(1,2,5:7,27,9,10,13:27)] #selezione covariate di interesse
 Buyout_Agreements <- Buyout_Agreements[!(Buyout_Agreements[,4]==""), ] #elimino buyout senza quartiere
 Buyout_Agreements <- Buyout_Agreements[!duplicated(Buyout_Agreements),] #elimino buyout duplici (fatti nello stesso giorno, alla stessa cifra, nello stesso indirizzo)
+Buyout_Agreements <- Buyout_Agreements[(Buyout_Agreements[,1] != ""),] #tolgo quelli senza data
+for (i in 1:length(Buyout_Agreements[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(Buyout_Agreements[i,5], "\\(")
+  Buyout_Agreements[i,5] <- temp[[1]][2]
+}
+
+for (i in 1:length(Buyout_Agreements[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(Buyout_Agreements[i,5], " ")
+  Buyout_Agreements[i,6] <- temp[[1]][1]
+  Buyout_Agreements[i,7] <- temp[[1]][2]
+}
+
+for (i in 1:length(Buyout_Agreements[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(Buyout_Agreements[i,7], "\\)")
+  Buyout_Agreements[i,7] <- temp[[1]][1]
+}
+for (i in 1:length(Buyout_Agreements[,1])) {    #preparo le date
+  temp <- strsplit(Buyout_Agreements[i,1], "/")
+  Buyout_Agreements[i,8] <- temp[[1]][1]
+  Buyout_Agreements[i,9] <- temp[[1]][3]
+  Buyout_Agreements[i,8] <- as.double(Buyout_Agreements[i,8])
+  Buyout_Agreements[i,9] <- as.double(Buyout_Agreements[i,9])
+}
+Buyout_Agreements <- Buyout_Agreements[,-c(1,5)]
+colnames(Buyout_Agreements) <- c('buyout_amount', 'address','nhood', 'long','lat', 'month','year')
 write.csv(Buyout_Agreements,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Buyout_Agreements_Clean.csv")
+
+
+
+
+
 
 
 rent$d = as.Date(as.character(rent$date),format = "%Y%m%d") 
@@ -66,15 +162,37 @@ write.csv(rent,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparamet
 
 
 
+
 October2015Permits <- October2015Permits[,-c(1:3,5:9,14:20,29:40,42)] #Script iniziale eventualmente da estendere su tutti i permits, qui fatto solo su Ottobre
 October2015Permits <- October2015Permits[((October2015Permits[,4]=='APARTMENTS') | (October2015Permits[,4]=='1 FAMILY DWELLING') | 
                                             (October2015Permits[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
 October2015Permits <- October2015Permits[((October2015Permits[,5]-October2015Permits[,3]>0)), ] #Rimuovo i lavori che non aumentano le unità abitative
 October2015Permits <- October2015Permits[!duplicated(October2015Permits),]
 October2015Permits <- October2015Permits[!(is.na(October2015Permits[,4])), ] #elimino quelli di cui non so la destinazione d'uso
+October2015Permits[,15] <- October2015Permits[,5]-October2015Permits[,3]
+October2015Permits <- October2015Permits[,-c(2:5,9,12:14)] #colonne non utili
+
+for (i in 1:length(October2015Permits[,1])) {    #preparo le date
+  October2015Permits[i,9] <- October2015Permits[i,1][[1]]
+}
+
+
+
+for (i in 1:106) {    #preparo le date
+  temp <- strsplit(as.character(October2015Permits[i,1][[1]]), "-")
+  October2015Permits[i,8] <- temp[[1]][1]
+  October2015Permits[i,9] <- temp[[1]][2]
+}
+October2015Permits <- October2015Permits[,-c(1)]
+colnames(October2015Permits) <- c('block', 'lot', 'street_number', 'street_name','street_suffix','new_units_built', 'year', 'month')
 write.csv(October2015Permits,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/October2015Permits_clean.csv")
+
+
+
+
 
 
 Parcels <- Parcels[which(Parcels$RESUNITS > 0), ] #elimino quelle dove non abita nessuno
 Parcels <- Parcels[which(Parcels$LANDUSE == 'RESIDENT'), ] #elemino quelle che non sono a fini abitativi
 Parcels <- Parcels[,-c(14,16:21) ]
+#Continua su "Parcel centroid"
