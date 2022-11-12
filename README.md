@@ -2,9 +2,13 @@
 
 THINGS TO BE DONE:
 
-1) Creare un file unico contenente le new_constructions, aggregando i dati mensili che si trovano su https://sfdbi.org/building-permits-issued
-   Da decidere ancora la finestra temporale utile al progetto. Per ora solo il file di Ottobre del 2015 è stato aggiunto e guardato.
-3) Preparare datasets e idee per parlarne con un prof.
+- New_construction : usare tool per inserire le coordinate a partitre dagli indirizzi (geoapify tipo)
+- Rendere coerenti i nhood tra i dataset : rent_clean, Eviction_notices, Buyout_Agreements
+- Fare analisi esplorativa "funzionale" su rent monthly/year + usare altre tecniche di analisi esplorativa
+- Fare slide (titolo dell'altra volta, domande "differenze tra quartieri, impatto costruzioni sugli affitti e sfratti  
+- Inventarsi un modo per fare il secondo modello (come usare nhood/coorinate per gli sfratti e nuove costruzioni?)
+- Fare il bordello di operazioni per fare il modello di regressione al punto 3  
+
 
 
 WHERE TO DOWNLOAD DATASETS:
