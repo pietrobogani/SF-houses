@@ -5,7 +5,7 @@ library("writexl")
 Buyout_Agreements <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements.csv", header=TRUE)
 rent <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent.csv", header=TRUE)
 Eviction_Notices <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices.csv", header=TRUE)
-October2015Permits <- read_excel("October2015Permits.xlsx") # per provare a pulirne uno
+New_construction <-  read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction.csv", header=TRUE, sep = ";")
 Parcels <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Parcels.csv", header=TRUE)
 
 
@@ -237,34 +237,32 @@ write.csv(rent_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistra
 
 
 
+New_construction <- New_construction[,-c(1:5,7:11,16,23:36)] #Script iniziale eventualmente da estendere su tutti i permits, qui fatto solo su Ottobre
+New_construction <- New_construction[((New_construction[,4]=='APARTMENTS') | (New_construction[,4]=='1 FAMILY DWELLING') | 
+                                            (New_construction[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
+
+New_construction <- New_construction[!(is.na(New_construction[,5])), ] #elimino quelli di cui non le unità abitative finali
+New_construction <- New_construction[!(is.na(New_construction[,3])), ] #elimino quelli di cui non le unità abitative iniziali
+New_construction <- New_construction[((New_construction[,5]-New_construction[,3]>0)), ] #Rimuovo i lavori che non aumentano le unità abitative
 
 
+New_construction[,12] <- New_construction[,5]-New_construction[,3]
+New_construction <- New_construction[,-c(2:5)] #colonne non utili
 
-October2015Permits <- October2015Permits[,-c(1:3,5:9,14:20,29:40,42)] #Script iniziale eventualmente da estendere su tutti i permits, qui fatto solo su Ottobre
-October2015Permits <- October2015Permits[((October2015Permits[,4]=='APARTMENTS') | (October2015Permits[,4]=='1 FAMILY DWELLING') | 
-                                            (October2015Permits[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
-October2015Permits <- October2015Permits[((October2015Permits[,5]-October2015Permits[,3]>0)), ] #Rimuovo i lavori che non aumentano le unità abitative
-October2015Permits <- October2015Permits[!duplicated(October2015Permits),]
-October2015Permits <- October2015Permits[!(is.na(October2015Permits[,4])), ] #elimino quelli di cui non so la destinazione d'uso
-October2015Permits[,15] <- October2015Permits[,5]-October2015Permits[,3]
-October2015Permits <- October2015Permits[,-c(2:5,9,12:14)] #colonne non utili
-
-for (i in 1:length(October2015Permits[,1])) {    #preparo le date
-  October2015Permits[i,9] <- October2015Permits[i,1][[1]]
+for (i in 1:length(New_construction[,1])) {    #preparo le date
+  New_construction[i,9] <- New_construction[i,1][[1]]
 }
 
-
-
-for (i in 1:106) {    #preparo le date
-  temp <- strsplit(as.character(October2015Permits[i,1][[1]]), "-")
-  October2015Permits[i,8] <- temp[[1]][1]
-  October2015Permits[i,9] <- temp[[1]][2]
+for (i in 1:4226) {    #preparo le date
+  temp <- strsplit(as.character(New_construction[i,1][[1]]), "/")
+  New_construction[i,9] <- temp[[1]][2]
+  New_construction[i,10] <- temp[[1]][3]
 }
-October2015Permits <- October2015Permits[,-c(1)]
-colnames(October2015Permits) <- c('block', 'lot', 'street_number', 'street_name','street_suffix','new_units_built', 'year', 'month')
-write.csv(October2015Permits,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/October2015Permits_clean.csv")
+New_construction <- New_construction[,-c(1)]
+colnames(New_construction) <- c('date', 'block', 'lot', 'street_number','street_number_suffix', 'street_name','street_suffix','new_units_built', 'year', 'month')
+write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean.csv")
 
-
+#totale 43025 unità vengono costruite
 
 
 
