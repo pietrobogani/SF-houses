@@ -93,5 +93,28 @@ length(unique(rent_clean$month_year_nhood))
 rent_nhood_monthly = aggregate(rent_clean$`rent/mq`, by = list(rent_clean$month_year_nhood), FUN = mean)
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent/mq'
-#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto!
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
 
+
+
+#Calcolo i df con numero di evictions per nhood per anno e per mese
+vect_year = paste(Eviction_Notices_Clean$year)
+vect_month = paste(Eviction_Notices_Clean$month)
+vect_nhood = paste(Eviction_Notices_Clean$nhood)
+vect_aus = paste(vect_month,vect_year,vect_nhood)
+vect_aus2 = paste(vect_year,vect_nhood)
+Eviction_Notices_Clean$year_nhood = vect_aus2
+Eviction_Notices_Clean$month_year_nhood = vect_aus
+rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
+
+length(unique(Eviction_Notices_Clean$year_nhood)) #Dalle 973 osservazioni non sono state tolte quelle dal 1997 al 2007!
+Eviction_Notices_Clean$dummy = 1
+eviction_nhood_yearly = aggregate(Eviction_Notices_Clean$dummy, by = list(Eviction_Notices_Clean$year_nhood), FUN = sum)
+names(eviction_nhood_yearly)[names(eviction_nhood_yearly) == 'Group.1'] <- 'year_nhood'
+names(eviction_nhood_yearly)[names(eviction_nhood_yearly) == 'x'] <- 'Count'
+
+length(unique(Eviction_Notices_Clean$month_year_nhood)) #Dalle 8943 osservazioni non sono state tolte quelle dal 97 al 07
+eviction_nhood_monthly = aggregate(Eviction_Notices_Clean$dummy, by = list(Eviction_Notices_Clean$month_year_nhood), FUN = sum)
+names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
+names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'x'] <- 'Count'
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!

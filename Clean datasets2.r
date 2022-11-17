@@ -148,7 +148,7 @@ length(rent[rent$V13 == '2016',13]) #2121
 length(rent[rent$V13 == '2017',13]) #262
 length(rent[rent$V13 == '2018',13]) #354
 
-#I remove them if year < 2011    => Mi servono Construction dal 2007 al 2014
+#I remove them if year < 2011    => Mi servono Construction dal 2007 al 2014   <----TOM : Qua è 2018, non 2014!
 rent <- rent[as.double(rent$V13) > 2010 ,]
 
 #Aggiungo rent/mq e rimuovo sq feet e price, beds, rooms, address, data completa, city&county( always == san francisco)
