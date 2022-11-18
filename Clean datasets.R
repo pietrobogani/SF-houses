@@ -118,3 +118,30 @@ eviction_nhood_monthly = aggregate(Eviction_Notices_Clean$dummy, by = list(Evict
 names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'x'] <- 'Count'
 #Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
+
+
+
+
+#Calcolo i df con numero di buyout per nhood per anno e per mese
+vect_year = paste(Buyout_Agreements_Clean$year)
+vect_month = paste(Buyout_Agreements_Clean$month)
+vect_nhood = paste(Buyout_Agreements_Clean$nhood)
+vect_aus = paste(vect_month,vect_year,vect_nhood)
+vect_aus2 = paste(vect_year,vect_nhood)
+Buyout_Agreements_Clean$year_nhood = vect_aus2
+Buyout_Agreements_Clean$month_year_nhood = vect_aus
+rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
+
+length(unique(Buyout_Agreements_Clean$year_nhood)) #260 osservazioni
+Buyout_Agreements_Clean$dummy = 1
+buyout_nhood_yearly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Buyout_Agreements_Clean$year_nhood), FUN = sum)
+names(buyout_nhood_yearly)[names(buyout_nhood_yearly) == 'Group.1'] <- 'year_nhood'
+names(buyout_nhood_yearly)[names(buyout_nhood_yearly) == 'dummy'] <- 'Count'
+buyout_nhood_yearly$avg_buyout = buyout_nhood_yearly$buyout_amount / buyout_nhood_yearly$Count
+
+length(unique(Buyout_Agreements_Clean$month_year_nhood)) #1383 osservazioni 
+buyout_nhood_monthly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Buyout_Agreements_Clean$month_year_nhood), FUN = sum)
+names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
+names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'dummy'] <- 'Count'
+buyout_nhood_monthly$avg_buyout = buyout_nhood_monthly$buyout_amount / buyout_nhood_monthly$Count
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
