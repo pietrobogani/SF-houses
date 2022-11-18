@@ -153,6 +153,10 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
 
 
 
+
+
+
+
 Buyout_Agreements <- Buyout_Agreements[,-c(1,2,5:7,27,9,10,13:27)] #selezione covariate di interesse
 Buyout_Agreements <- Buyout_Agreements[!(Buyout_Agreements[,4]==""), ] #elimino buyout senza quartiere
 Buyout_Agreements <- Buyout_Agreements[!duplicated(Buyout_Agreements),] #elimino buyout duplici (fatti nello stesso giorno, alla stessa cifra, nello stesso indirizzo)
@@ -182,6 +186,97 @@ for (i in 1:length(Buyout_Agreements[,1])) {    #preparo le date
 Buyout_Agreements <- Buyout_Agreements[,-c(1,5)]
 colnames(Buyout_Agreements) <- c('buyout_amount', 'address','nhood', 'long','lat', 'month','year')
 write.csv(Buyout_Agreements,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_Clean.csv")
+Buyout_Agreements_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_clean.csv", header=TRUE)
+
+
+
+
+#Calcolo i df con numero di buyout per nhood per anno e per mese
+vect_year = paste(Buyout_Agreements_Clean$year)
+vect_month = paste(Buyout_Agreements_Clean$month)
+vect_nhood = paste(Buyout_Agreements_Clean$nhood)
+vect_aus = paste(vect_month,vect_year,vect_nhood)
+vect_aus2 = paste(vect_year,vect_nhood)
+Buyout_Agreements_Clean$year_nhood = vect_aus2
+Buyout_Agreements_Clean$month_year_nhood = vect_aus
+rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
+
+length(unique(Buyout_Agreements_Clean$year_nhood)) #260 osservazioni
+Buyout_Agreements_Clean$dummy = 1
+buyout_nhood_yearly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Buyout_Agreements_Clean$year_nhood), FUN = sum)
+names(buyout_nhood_yearly)[names(buyout_nhood_yearly) == 'Group.1'] <- 'year_nhood'
+names(buyout_nhood_yearly)[names(buyout_nhood_yearly) == 'dummy'] <- 'Count'
+buyout_nhood_yearly$avg_buyout = buyout_nhood_yearly$buyout_amount / buyout_nhood_yearly$Count
+
+length(unique(Buyout_Agreements_Clean$month_year_nhood)) #1383 osservazioni 
+buyout_nhood_monthly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Buyout_Agreements_Clean$month_year_nhood), FUN = sum)
+names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
+names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'dummy'] <- 'Count'
+buyout_nhood_monthly$avg_buyout = buyout_nhood_monthly$buyout_amount / buyout_nhood_monthly$Count
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
+
+
+
+
+for (i in 1:length(buyout_nhood_monthly[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(buyout_nhood_monthly[i,2], " ")
+  for (j in 1:length(temp[[1]])){
+    buyout_nhood_monthly[i,5+j] <- temp[[1]][j]
+  }
+}
+
+
+for( i in 1:length(buyout_nhood_monthly[,1])){  #preparo l'address
+  j = 9
+  while (j < 12) {
+    if(!(is.na(buyout_nhood_monthly[i,j]))) {
+      buyout_nhood_monthly[i,8] = paste(buyout_nhood_monthly[i,8], buyout_nhood_monthly[i,j], sep=" ")
+      j = j+1
+    }
+    else
+      j = 14
+    
+  }
+}
+buyout_nhood_monthly <- buyout_nhood_monthly[, -c(1,9:11)]
+colnames(buyout_nhood_monthly) <- c('nhood_month_year','buyout_amount', 'count','avg_buyout', 'month','year', 'nhood')
+write.csv(buyout_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_monthly.csv")
+
+
+
+for (i in 1:length(buyout_nhood_yearly[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(buyout_nhood_yearly[i,2], " ")
+  for (j in 1:length(temp[[1]])){
+    buyout_nhood_yearly[i,5+j] <- temp[[1]][j]
+  }
+}
+
+
+for( i in 1:length(buyout_nhood_yearly[,1])){  #preparo l'address
+  j = 8
+  while (j <11 ) {
+    if(!(is.na(buyout_nhood_yearly[i,j]))) {
+      buyout_nhood_yearly[i,7] = paste(buyout_nhood_yearly[i,7], buyout_nhood_yearly[i,j], sep=" ")
+      j = j+1
+    }
+    else
+      j = 13
+    
+  }
+}
+buyout_nhood_yearly <- buyout_nhood_yearly[, -c(1,8:10)]
+colnames(buyout_nhood_yearly) <- c('year_nhood', 'buyout_amount','count','avg_buyout','year', 'nhood')
+write.csv(buyout_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv")
+
+
+
+
+
+
+
+
+
+
 
 
 
