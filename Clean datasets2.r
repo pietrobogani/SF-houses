@@ -72,7 +72,90 @@ for( i in 1:length(Eviction_Notices[,1])){
 Eviction_Notices <- Eviction_Notices[,-c(10:14)]
 colnames(Eviction_Notices) <- c('address', 'nhood', 'lat', 'long','month','year','block','street_name', 'street_type')
 
-write.csv(Eviction_Notices,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_Clean.csv")
+write.csv(Eviction_Notices,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv")
+
+
+
+#Calcolo i df con numero di evictions per nhood per anno e per mese
+vect_year = paste(Eviction_Notices_clean$year)
+vect_month = paste(Eviction_Notices_clean$month)
+vect_nhood = paste(Eviction_Notices_clean$nhood)
+vect_aus = paste(vect_month,vect_year,vect_nhood)
+vect_aus2 = paste(vect_year,vect_nhood)
+Eviction_Notices_clean$year_nhood = vect_aus2
+Eviction_Notices_clean$month_year_nhood = vect_aus
+rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
+
+length(unique(Eviction_Notices_clean$year_nhood)) #Dalle 973 osservazioni non sono state tolte quelle dal 1997 al 2007!
+Eviction_Notices_clean$dummy = 1
+eviction_nhood_yearly = aggregate(Eviction_Notices_clean$dummy, by = list(Eviction_Notices_clean$year_nhood), FUN = sum)
+names(eviction_nhood_yearly)[names(eviction_nhood_yearly) == 'Group.1'] <- 'year_nhood'
+names(eviction_nhood_yearly)[names(eviction_nhood_yearly) == 'x'] <- 'Count'
+
+length(unique(Eviction_Notices_clean$month_year_nhood)) #Dalle 8943 osservazioni non sono state tolte quelle dal 97 al 07
+eviction_nhood_monthly = aggregate(Eviction_Notices_clean$dummy, by = list(Eviction_Notices_clean$month_year_nhood), FUN = sum)
+names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
+names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'x'] <- 'Count'
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
+
+
+
+for (i in 1:length(eviction_nhood_monthly[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(eviction_nhood_monthly[i,1], " ")
+  for (j in 1:length(temp[[1]])){
+    eviction_nhood_monthly[i,2+j] <- temp[[1]][j]
+  }
+}
+
+
+for( i in 1:length(eviction_nhood_monthly[,1])){  #preparo l'address
+  j = 6
+  while (j < 9) {
+    if(!(is.na(eviction_nhood_monthly[i,j]))) {
+      eviction_nhood_monthly[i,5] = paste(eviction_nhood_monthly[i,5], eviction_nhood_monthly[i,j], sep=" ")
+      j = j+1
+    }
+    else
+      j = 14
+    
+  }
+}
+eviction_nhood_monthly <- eviction_nhood_monthly[, -c(6:8)]
+colnames(eviction_nhood_monthly) <- c('nhood_month_year', 'count', 'month','year', 'nhood')
+write.csv(eviction_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_monthly.csv")
+
+
+
+for (i in 1:length(eviction_nhood_yearly[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(eviction_nhood_yearly[i,1], " ")
+  for (j in 1:length(temp[[1]])){
+    eviction_nhood_yearly[i,2+j] <- temp[[1]][j]
+  }
+}
+
+
+for( i in 1:length(eviction_nhood_yearly[,1])){  #preparo l'address
+  j = 5
+  while (j <8 ) {
+    if(!(is.na(eviction_nhood_yearly[i,j]))) {
+      eviction_nhood_yearly[i,4] = paste(eviction_nhood_yearly[i,4], eviction_nhood_yearly[i,j], sep=" ")
+      j = j+1
+    }
+    else
+      j = 13
+    
+  }
+}
+eviction_nhood_yearly <- eviction_nhood_yearly[, -c(5:7)]
+colnames(eviction_nhood_yearly) <- c('nhood_month_year', 'count','year', 'nhood')
+write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
+
+
+
+
+
+
+
 
 
 
