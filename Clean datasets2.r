@@ -310,7 +310,7 @@ write.csv(rent_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistra
 
 
 
-New_construction <- New_construction[,-c(1:5,7:11,16,23:36)] #Script iniziale eventualmente da estendere su tutti i permits, qui fatto solo su Ottobre
+New_construction <- New_construction[,-c(1:5,7:11,16,23:36)]
 New_construction <- New_construction[((New_construction[,4]=='APARTMENTS') | (New_construction[,4]=='1 FAMILY DWELLING') | 
                                             (New_construction[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
 
@@ -332,7 +332,7 @@ for (i in 1:4226) {    #preparo le date
   New_construction[i,10] <- temp[[1]][3]
 }
 New_construction <- New_construction[,-c(1)]
-colnames(New_construction) <- c('date', 'block', 'lot', 'street_number','street_number_suffix', 'street_name','street_suffix','new_units_built', 'year', 'month')
+colnames(New_construction) <- c('block', 'lot', 'street_number','street_number_suffix', 'street_name','street_suffix','new_units_built','month', 'year')
 write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean.csv")
 
 #totale 43025 unità vengono costruite
