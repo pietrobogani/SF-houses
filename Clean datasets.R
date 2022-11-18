@@ -123,6 +123,8 @@ names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'x'] <- 'Count'
 
 
 #Calcolo i df con numero di buyout per nhood per anno e per mese
+ind = which(Buyout_Agreements_Clean$year >= 2007)
+Buyout_Agreements_Clean = Buyout_Agreements_Clean[ind,]
 vect_year = paste(Buyout_Agreements_Clean$year)
 vect_month = paste(Buyout_Agreements_Clean$month)
 vect_nhood = paste(Buyout_Agreements_Clean$nhood)
@@ -138,10 +140,12 @@ buyout_nhood_yearly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Buy
 names(buyout_nhood_yearly)[names(buyout_nhood_yearly) == 'Group.1'] <- 'year_nhood'
 names(buyout_nhood_yearly)[names(buyout_nhood_yearly) == 'dummy'] <- 'Count'
 buyout_nhood_yearly$avg_buyout = buyout_nhood_yearly$buyout_amount / buyout_nhood_yearly$Count
+write.csv(buyout_nhood_yearly,'buyout_nhood_yearly.csv')
 
 length(unique(Buyout_Agreements_Clean$month_year_nhood)) #1383 osservazioni 
 buyout_nhood_monthly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Buyout_Agreements_Clean$month_year_nhood), FUN = sum)
 names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'dummy'] <- 'Count'
 buyout_nhood_monthly$avg_buyout = buyout_nhood_monthly$buyout_amount / buyout_nhood_monthly$Count
+write.csv(buyout_nhood_monthly,'buyout_nhood_monthly.csv')
 #Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
