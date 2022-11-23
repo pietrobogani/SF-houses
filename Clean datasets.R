@@ -74,6 +74,69 @@ setdiff(intersect(intersect(A,C),D),B)
 unique(B)
 
 
+#Creazione rent_nhood_sem
+{
+library(readr)
+rent_clean <- read_csv("rent_clean.csv")
+#Inserisco colonne con mese,anno e semestre in rent_clean
+rent_clean$price.sqft = rent_clean$price/rent_clean$sqft
+aus_df <- data.frame(year = as.numeric(format(rent_clean$d, format = "%Y")),
+                     month = as.numeric(format(rent_clean$d, format = "%m")),
+                     day = as.numeric(format(rent_clean$d, format = "%d")))
+rent_clean = cbind(rent_clean,aus_df)
+rm(aus_df)
+ind_2011_2018 = which(rent_clean$year >= 2011 & rent_clean$year <= 2018)
+rent_clean = rent_clean[ind_2011_2018,]
+rent_clean$semestr = rep(0,dim(rent_clean)[1])
+rent_clean$semestr = ifelse(rent_clean$month <= 6,1,2)
+#Creo colonna sem-year-nhood e aggrego
+vect_year = paste(rent_clean$year)
+vect_sem = paste(rent_clean$semestr)
+vect_nhood = paste(rent_clean$nhood)
+vect_aus = paste(vect_sem,vect_year,vect_nhood)
+rent_clean$sem_year_nhood = vect_aus
+rm(vect_aus,vect_year,vect_nhood,vect_sem)
+
+rent_nhood_sem = aggregate(rent_clean$price.sqft, by = list(rent_clean$sem_year_nhood), FUN = mean)
+names(rent_nhood_sem)[names(rent_nhood_sem) == 'Group.1'] <- 'sem_month_year'
+names(rent_nhood_sem)[names(rent_nhood_sem) == 'x'] <- 'avg_rent_sqft'
+#Aggiusto le colonne di rent_nhood_sem e salvo
+for (i in 1:length(rent_nhood_sem[,1])) {   #preparo bene le coordinate
+  temp <- strsplit(rent_nhood_sem[i,1], " ")
+  for (j in 1:length(temp[[1]])){
+    rent_nhood_sem[i,2+j] <- temp[[1]][j]
+  }
+}
+for( i in 1:length(rent_nhood_sem[,1])){  #preparo l'address
+  j = 6
+  while (j < 13) {
+    if(!(is.na(rent_nhood_sem[i,j]))) {
+      rent_nhood_sem[i,5] = paste(rent_nhood_sem[i,5], rent_nhood_sem[i,j], sep=" ")
+      j = j+1
+    }
+    else
+      j = 14
+    
+  }
+}
+rent_nhood_sem <- rent_nhood_sem[, -c(6:12)]
+colnames(rent_nhood_sem) <- c('sem_year_nhood', 'avg_rent_sqft', 'sem','year', 'nhood')
+rent_nhood_sem$avg_rent_mq = rent_nhood_sem$avg_rent_sqft/0.092903
+#Aggiungo la data per i plot successivi
+rent_nhood_sem$month = ifelse(rent_nhood_sem$sem == 1,3,9)
+vect_month = rent_nhood_sem$month
+vect_yr = rent_nhood_sem$year
+vect_day = rep(15,length(vect_yr))
+vect_aus = paste(vect_yr,vect_month,vect_day,sep = '-')
+rent_nhood_sem$date = vect_aus
+rm(vect_yr,vect_day, vect_aus,vect_month)
+rent_nhood_sem$date = as.Date(rent_nhood_sem$date, tryFormats = '%Y-%m-%d')
+rent_nhood_sem = rent_nhood_sem[,-7]
+write.csv(rent_nhood_sem,'rent_nhood_sem.csv')
+rm(list = ls())
+}
+
+
 #Calcolo i df con avg rent per nhood per anno e per mese
 vect_year = paste(rent_clean$year)
 vect_month = paste(rent_clean$month)
@@ -149,3 +212,7 @@ names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'dummy'] <- 'Count'
 buyout_nhood_monthly$avg_buyout = buyout_nhood_monthly$buyout_amount / buyout_nhood_monthly$Count
 write.csv(buyout_nhood_monthly,'buyout_nhood_monthly.csv')
 #Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
+
+
+
+
