@@ -1,3 +1,4 @@
+library(stringr)
 New_construction_clean <- read_csv("Documents/Polimi/Non Parametric/New_construction_clean.csv")
 
 New_construction_clean$street_name <- str_replace_all(New_construction_clean$street_name, c("01"="1", "02"="2", "03"="3","04"="4","05"="5","06"="6","07"="7","08"="8","09"="9"))
