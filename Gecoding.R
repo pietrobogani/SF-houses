@@ -1,4 +1,6 @@
 library(stringr)
+library(readxl)
+
 New_construction_clean <- read_csv("Documents/Polimi/Non Parametric/New_construction_clean.csv")
 
 New_construction_clean$street_name <- str_replace_all(New_construction_clean$street_name, c("01"="1", "02"="2", "03"="3","04"="4","05"="5","06"="6","07"="7","08"="8","09"="9"))
@@ -21,6 +23,8 @@ New_construction_clean$address <- str_replace(New_construction_clean$address, " 
 #write.csv(my_df[4001:4226,],"/Users/saratonazzi/Documents/Polimi/Non Parametric/addresses9.csv", row.names = FALSE)
 
 Geocoded <- read_excel("Documents/Polimi/Non Parametric/Geocoded.xlsx")
+#Geocoded <-  read_excel("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Geocoded.xlsx")
+
 Geocoded <- Geocoded[!duplicated(Geocoded),]
 
 New_construction_clean <- merge(New_construction_clean,subset(Geocoded, select=c("original_address", "lat", "lon")), by.x="address", by.y="original_address")
