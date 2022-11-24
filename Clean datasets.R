@@ -148,14 +148,14 @@ rent_clean$month_year_nhood = vect_aus
 rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
 
 length(unique(rent_clean$year_nhood))
-rent_nhood_yearly = aggregate(rent_clean$`rent/mq`, by = list(rent_clean$year_nhood), FUN = mean)
+rent_nhood_yearly = aggregate(rent_clean$`rent/pq`, by = list(rent_clean$year_nhood), FUN = mean)
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'Group.1'] <- 'year_nhood'
-names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent/mq'
+names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent/pq'
 
 length(unique(rent_clean$month_year_nhood))
-rent_nhood_monthly = aggregate(rent_clean$`rent/mq`, by = list(rent_clean$month_year_nhood), FUN = mean)
+rent_nhood_monthly = aggregate(rent_clean$`rent/pq`, by = list(rent_clean$month_year_nhood), FUN = mean)
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
-names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent/mq'
+names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent/pq'
 #Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
 
 
