@@ -294,35 +294,36 @@ write.csv(rent,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparamet
 rent_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv", header=TRUE)
 for (i in 1:length(rent[,1])) {
   temp <- strsplit(rent_clean[i,13], "-")
-  rent[i,13] <- temp[[1]][1]
+  rent[i,13] <- temp[[1]][3]
   rent[i,14] <- temp[[1]][2]
+  rent[i,15] <- temp[[1]][1]
 }
-length(rent[rent$V13 == '2001',13]) #5
-length(rent[rent$V13 == '2002',13]) #6
-length(rent[rent$V13 == '2003',13]) #7   
-length(rent[rent$V13 == '2004',13]) #250
-length(rent[rent$V13 == '2005',13]) #28
-length(rent[rent$V13 == '2006',13]) #67
-length(rent[rent$V13 == '2007',13]) #24
-length(rent[rent$V13 == '2008',13]) #8
-length(rent[rent$V13 == '2009',13]) #5
-length(rent[rent$V13 == '2010',13]) #6
-length(rent[rent$V13 == '2011',13]) #1241    #Basandoci su 'rent.csv', gli unici anni in cui studiare sono dal 2011 al 2018
-length(rent[rent$V13 == '2012',13]) #2707
-length(rent[rent$V13 == '2013',13]) #884
-length(rent[rent$V13 == '2014',13]) #623
-length(rent[rent$V13 == '2015',13]) #1587
-length(rent[rent$V13 == '2016',13]) #2121
-length(rent[rent$V13 == '2017',13]) #262
-length(rent[rent$V13 == '2018',13]) #354
+length(rent[rent$V13 == '2001',15]) #5
+length(rent[rent$V13 == '2002',15]) #6
+length(rent[rent$V13 == '2003',15]) #7   
+length(rent[rent$V13 == '2004',15]) #250
+length(rent[rent$V13 == '2005',15]) #28
+length(rent[rent$V13 == '2006',15]) #67
+length(rent[rent$V13 == '2007',15]) #24
+length(rent[rent$V13 == '2008',15]) #8
+length(rent[rent$V13 == '2009',15]) #5
+length(rent[rent$V13 == '2010',15]) #6
+length(rent[rent$V13 == '2011',15]) #1241    #Basandoci su 'rent.csv', gli unici anni in cui studiare sono dal 2011 al 2018
+length(rent[rent$V13 == '2012',15]) #2707
+length(rent[rent$V13 == '2013',15]) #884
+length(rent[rent$V13 == '2014',15]) #623
+length(rent[rent$V13 == '2015',15]) #1587
+length(rent[rent$V13 == '2016',15]) #2121
+length(rent[rent$V13 == '2017',15]) #262
+length(rent[rent$V13 == '2018',15]) #354
 
 #I remove them if year < 2011    => Mi servono Construction dal 2007 al 2014   <----TOM : Qua è 2018, non 2014!
-rent <- rent[as.double(rent$V13) > 2010 ,]
+rent <- rent[as.double(rent$V15) > 2010 ,]
 
 #Aggiungo rent/mq e rimuovo sq feet e price, beds, rooms, address, data completa, city&county( always == san francisco)
-rent[,15]= rent[,4]/rent[,7]
+rent[,16]= rent[,4]/rent[,7]
 rent <- rent[,-c(2:5,6:9,12)]
-colnames(rent) <- c('nhood', 'lat', 'lon', 'year', 'month', 'rent/mq')
+colnames(rent) <- c('nhood', 'lat', 'lon', 'day','year', 'month', 'rent.sq')
 write.csv(rent,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/rent_clean.csv")
 rent_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/rent_clean.csv", header=TRUE)
 
@@ -338,14 +339,14 @@ rent_clean$month_year_nhood = vect_aus
 rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
 
 length(unique(rent_clean$year_nhood))
-rent_nhood_yearly = aggregate(rent_clean$`rent.mq`, by = list(rent_clean$year_nhood), FUN = mean)
+rent_nhood_yearly = aggregate(rent_clean$`rent.sq`, by = list(rent_clean$year_nhood), FUN = mean)
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'Group.1'] <- 'year_nhood'
-names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent.mq'
+names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent.sq'
 
 length(unique(rent_clean$month_year_nhood))
-rent_nhood_monthly = aggregate(rent_clean$`rent.mq`, by = list(rent_clean$month_year_nhood), FUN = mean)
+rent_nhood_monthly = aggregate(rent_clean$`rent.sq`, by = list(rent_clean$month_year_nhood), FUN = mean)
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
-names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent.mq'
+names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent.sq'
 #Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto!
 
 for (i in 1:length(rent_nhood_monthly[,1])) {   #preparo bene le coordinate
