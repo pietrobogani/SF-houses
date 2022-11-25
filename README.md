@@ -2,13 +2,12 @@
 
 THINGS TO BE DONE:
 
-- New_construction_clean : usare tool per inserire le coordinate a partitre dagli indirizzi (geoapify tipo)
-- Rendere coerenti i nhood tra i dataset : rent_clean, Eviction_notices_clean, Buyout_Agreements_clean
+- Rendere coerenti i nhood tra i dataset: rent_clean, Eviction_notices_clean, Buyout_Agreements_clean
+- Aggiungere i nhood al dataset new_construction
 - Fare analisi esplorativa "funzionale" su rent monthly/year + usare altre tecniche di analisi esplorativa
-- Fare slide (titolo dell'altra volta, domande "differenze tra quartieri, impatto costruzioni sugli affitti e sfratti  
 - Inventarsi un modo per fare il secondo modello (come usare nhood/coorinate per gli sfratti e nuove costruzioni?)
-- Fare il bordello di operazioni per fare il modello di regressione al punto 3  
 - Eviction Notices motivation, guardarle e selezionare le importanti
+- Studiare l'idea di fare una regressione funzionale
 
 
 
