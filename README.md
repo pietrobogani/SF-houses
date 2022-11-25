@@ -30,13 +30,23 @@ RESEARCH QUESTIONS:
 1) IDEA: RENT CRESCENTI => GENTRIFICAZIONE CRESCENTE
    Osservare la crescita dei prezzi dei rent nei vari quartieri al passare del tempo, fare così ipotesi su
    displacement/gentrificazione da poi verificare (si spera) alla fine dello studio.
-   Possiamo: - Per ogni istante di tempo che abbiamo fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq;
-             - Attraverso una funzione avg_monthly_price in nhood vs time, verificare in quali quartieri il prezzo è cresciuto nel tempo
-             - Forse è possibile racchiudere in un colpo solo i due punti sopra in una ANOVA two-way con i quartieri come 1st way e gli anni come 2nd way
-                                 
+   Possiamo: - Per ogni istante di tempo che abbiamo fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq (oppure two-way ANOVA, time and nhood 
+               come gruppi);
+             - Attraverso la funzione avg_rent_price(t,q):= prezzo medio di affitto nell'anno t nel quartiere q, verificare in quali quartieri il prezzo è cresciuto
+               nel tempo
+                                              
 2) IDEA: EVICTIONS/BUYOUTS CRESCENTI => GENTRIFICAZIONE CRESCENTE
-   Controllo semplicemente in quali quartieri ho il maggior aumento di evictions/buyouts. Potrebbe essere utile calcolare una funzione:
-     f(q,t) := numero di evictions nel quartiere q nell'anno t
+   Osservare il numero di eviction nei quartieri al passare del tempo, fare così ipotesi su displacement/gentrificazione da poi verificare (si spera) alla fine dello 
+   studio.
+   Possiamo: - Per ogni istante di tempo che abbiamo fare un ANOVA test, i gruppi sono i quartieri, la variabile il numero di evictions (oppure two-way ANOVA, time and
+               nhood come gruppi);
+             - Attraverso la funzione eviction_number(t,q):= numero di evictions nell'anno t nel quartiere q, verificare in quali quartieri il numero di evictions è
+             cresciuto nel tempo
+             
+4) Si calcola la funzione new_construction(t,q):= numero di costruzioni nell'anno t nel quartiere q, si fa cluster dividendo così in due gruppi i nhood, poi si può
+   fare un functional test sulle funzioni d/dt(avg_rent_price(t,q)) con l'obiettivo di verificarie se il primo cluster (assumiamo sia quello con "tante" costruzioni)
+   è associato a funzioni negative (i.e. derivata negativa, prezzi calanti)
+   
 3) Regression model: 
    - Output : rent price al tempo t della parcel p nel neighborhood c.
    - Covariates : - Quantità di case nuove costruite "attorno" (perchè non nel nhood direttamente? Si potrebbe semplificare...)
