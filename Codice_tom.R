@@ -1,3 +1,8 @@
+rent_nhood_monthly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_monthly.csv", header=TRUE)
+rent_nhood_yearly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_yearly.csv", header=TRUE)
+
+
+
 ind = which(rent_nhood_monthly$avg_rent.mq < 7)
 plot(rent_nhood_monthly$d[ind],rent_nhood_monthly$avg_rent.mq[ind])
 
@@ -21,6 +26,10 @@ for(nh in list_nhood){
   print(nh)
   print(length(ind))
 }
+
+#write.csv(rent_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_monthly.csv")
+
+
 #Costruisco il dataset func_data
 library(lubridate)
 first_d = min(rent_nhood_monthly$d)
@@ -61,7 +70,7 @@ funct_data_t = funct_data_t[,-c(30:38)]
 funct_data_t = funct_data_t[,-c(31:36)] 
 dim(funct_data_t)
 #Plot dei dati funzionali
-matplot(vect_dates,funct_data[,2:dim(funct_data)], type = 'l')
+matplot(vect_dates,funct_data[,1:dim(funct_data)[2]], type = 'l')
 library(roahd)
 f_data <- fData(vect_dates,t(funct_data))
 plot(f_data)
