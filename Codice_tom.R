@@ -219,7 +219,7 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 
 
 
-#Provo a fare smoothing con kernel regr
+#Provo a fare smoothing con kernel regr 
 {
 library(readr)
 rent_clean <- read_csv("rent_clean.csv")
@@ -245,7 +245,7 @@ for(nh in list_nhood){
   data = rent_clean[ind_nh,]
   m_loc = npreg( price_sqft ~ date_num,
                  ckertype = 'gaussian', #uniform, gaussian, epanechnikov
-                 bws = 365*6/12, # bandwidth
+                 bws = 365*6/12, # bandwidth di 6 mesi
                  data = data)
   preds=predict(m_loc,newdata=grid_time_num,se=T)
   se.bands=cbind(preds$fit +2* preds$se.fit ,preds$fit -2* preds$se.fit)
@@ -258,6 +258,12 @@ funct_data = fData(grid_time,t(funct_data))
 plot(funct_data)
 nh = list_nhood[1]
 ind_nh = which(rent_clean$nhood == nh)
+
+
+}
+#Conclusione: sarebbe meglio usare un metodo con le finestre che si muovono tenendo costante 
+#             il numero di punti invece di tenere la bandwidth fissata
+
 
 
 
