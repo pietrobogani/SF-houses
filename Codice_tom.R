@@ -1,8 +1,3 @@
-rent_nhood_monthly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_monthly.csv", header=TRUE)
-rent_nhood_yearly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_yearly.csv", header=TRUE)
-
-
-
 ind = which(rent_nhood_monthly$avg_rent.mq < 7)
 plot(rent_nhood_monthly$d[ind],rent_nhood_monthly$avg_rent.mq[ind])
 
@@ -70,7 +65,7 @@ funct_data_t = funct_data_t[,-c(30:38)]
 funct_data_t = funct_data_t[,-c(31:36)] 
 dim(funct_data_t)
 #Plot dei dati funzionali
-matplot(vect_dates,funct_data[,1:dim(funct_data)[2]], type = 'l')
+matplot(vect_dates,funct_data[,2:dim(funct_data)[2]], type = 'l')
 library(roahd)
 f_data <- fData(vect_dates,t(funct_data))
 plot(f_data)
@@ -221,3 +216,51 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 #             Sarebbe da trovare la giusta unità che sia sufficentemente ampia da non
 #              creare troppi buchi ma abbastanza piccola da creare tanti punti per stimare
 #              le funzioni... Trimestre?Quadrimestre?
+
+
+
+#Provo a fare smoothing con kernel regr
+{
+library(readr)
+rent_clean <- read_csv("rent_clean.csv")
+aus_df <- data.frame(year = as.numeric(format(rent_clean$d, format = "%Y")),
+                     month = as.numeric(format(rent_clean$d, format = "%m")),
+                     day = as.numeric(format(rent_clean$d, format = "%d")))
+rent_clean = cbind(rent_clean,aus_df)
+rm(aus_df)
+rent_clean = rent_clean[which(rent_clean$year >= 2011 & rent_clean$year <= 2018),]
+#vect_date_num = as.numeric(paste(rent_clean$year,rent_clean$month,rent_clean$day, sep = ''))
+#rent_clean = cbind(rent_clean,vect_date_num)
+rent_clean$date_num = as.numeric(rent_clean$d)
+rent_clean$price_sqft = rent_clean$price/rent_clean$sqft
+list_nhood = unique(rent_clean$nhood)
+first_date = min(rent_clean$d)
+final_date = max(rent_clean$d)
+grid_time = seq(first_date,final_date,by = 1)
+grid_time_num = data.frame(date_num = as.numeric(grid_time))
+funct_data = data.frame(row.names = grid_time)
+
+for(nh in list_nhood){
+  ind_nh = which(rent_clean$nhood == nh)
+  data = rent_clean[ind_nh,]
+  m_loc = npreg( price_sqft ~ date_num,
+                 ckertype = 'gaussian', #uniform, gaussian, epanechnikov
+                 bws = 365*6/12, # bandwidth
+                 data = data)
+  preds=predict(m_loc,newdata=grid_time_num,se=T)
+  se.bands=cbind(preds$fit +2* preds$se.fit ,preds$fit -2* preds$se.fit)
+  funct_data = cbind(funct_data,preds$fit)
+}
+colnames(funct_data) = list_nhood
+dim(funct_data)
+length(grid_time)
+funct_data = fData(grid_time,t(funct_data))
+plot(funct_data)
+nh = list_nhood[1]
+ind_nh = which(rent_clean$nhood == nh)
+
+
+
+
+
+
