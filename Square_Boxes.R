@@ -9,7 +9,7 @@ r_earth <- 6378000
 
 #I will compute the number of new_constructions within 100m from each parcel
 
-#I create a square box with l = 50m and s.t. the center is exactly the parcel: this is the "quadrato circoscritto"
+#I create a square box with l = 100m and s.t. the center is exactly the parcel: this is the "quadrato circoscritto"
 
 dy = 100
 dx = 100
@@ -45,9 +45,10 @@ write.csv(inside_square_box_100,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
 
 
 #I will first compute the number of new_contructions within 500m and at least 100m from each parcel
+
 dy = 500
 dx = 500
-#To do so, I create a square box with l = 250m and s.t. the center is exactly the parcel
+#To do so, I create a square box with l = 500m and s.t. the center is exactly the parcel: this is the "quadrato circoscritto"
 
 outside_square_box_500 <- Parcels_final[,c(6,7)]
 outside_square_box_500 <- add_column(outside_square_box_500, upper_limit = NA,lower_limit = NA,right_limit = NA,left_limit = NA)
@@ -81,9 +82,10 @@ write.csv(inside_square_box_500,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
 
 
 #I will first compute the number of new_contructions  within 1000m and at least 500m from each parcel
+
 dy = 1000
 dx = 1000
-#To do so, I create a square box with l = 250m and s.t. the center is exactly the parcel
+#To do so, I create a square box with l = 1000m and s.t. the center is exactly the parcel: this is the "quadrato circoscritto"
 
 outside_square_box_1000 <- Parcels_final[,c(6,7)]
 outside_square_box_1000 <- add_column(outside_square_box_500, upper_limit = NA,lower_limit = NA,right_limit = NA,left_limit = NA)
@@ -124,7 +126,7 @@ write.csv(inside_square_box_1000,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Mag
 #I will first compute the number of new_contructions  within 2000m and at least 1000m from each parcel
 dy = 2000
 dx = 2000
-#To do so, I create a square box with l = 250m and s.t. the center is exactly the parcel
+#To do so, I create a square box with l = 2000m and s.t. the center is exactly the parcel: this is the "quadrato circoscritto"
 
 outside_square_box_2000 <- Parcels_final[,c(6,7)]
 outside_square_box_2000 <- add_column(outside_square_box_500, upper_limit = NA,lower_limit = NA,right_limit = NA,left_limit = NA)
