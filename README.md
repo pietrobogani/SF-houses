@@ -2,12 +2,60 @@
 
 THINGS TO BE DONE:
 
-- Rendere coerenti i nhood tra i dataset: rent_clean, Eviction_notices_clean, Buyout_Agreements_clean
-- Aggiungere i nhood al dataset new_construction
-- Fare analisi esplorativa "funzionale" su rent monthly/year + usare altre tecniche di analisi esplorativa
+PARTE PRELIMINARE
+
+1) Rendere coerenti i nhood tra i dataset: rent_clean, Eviction_notices_clean, Buyout_Agreements_clean   SARA
+
+2) Aggiungere i nhood al dataset new_construction_clean e al dataset parcels_final SARA
+
+3) Aggiungere dimensione (square feet) dei nhood     SOLO SE NON SONO RIUSCITO AD AGGIUNGERE I NHOOD A PARCELS_FINAL SARA
+
+4) Aggiungere il centro dei nhood PIETRO
+
+5) Capire la regressione funzionale SARA PIETRO TOMASO
+
+6) Decidere come interpolare per le parcels, chiedendo al professore. ANDARE DAL PROF
+   Prima possibilità: come da paper, distanza pesata sui nhood entro 2,5 km
+   Seconda possibilità: smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels
+
+----- FINE PARTE PRELIMINARE
+
+PARTE ESPLORATIVA
+
+4) Partizionare i nhood e fare functional tests sui smoothed rent (oppure su d/dt(smoothed rent)) TOM 
+   Criteri di partizione: - Costieri e centrali 
+                         - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     OPPURE al posto di (square feet) metto #numero di parcels nel nhood se
+                           siamo riusciti ad aggiungere i nhood a parcels_final 
+                         - Partizione indotta da 8) (i.e. divido in nhood con tante evictions/(square feet) e poche evictions/(square feet)) 
+                           OPPURE al posto di (square feet) metto #numero di parcels nel nhood se siamo riusciti ad aggiungere i nhood a parcels_final
+                         - Punti importanti/di interesse e resto
+                         
+                         
+ 5) Partizionare i nhood e fare functional tests sulle smoother evictions (oppure su d/dt(smoothed evictions)) TOM 
+    Criteri di partizione: - Costieri e centrali 
+                          - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     OPPURE al posto di (square feet) metto #numero di parcels nel nhood
+                            se siamo riusciti ad aggiungere i nhood a parcels_final 
+                          - Partizione indotta da 7) ( i.e. divido in nhood con rent alti e rent bassi )                                             
+                          - Punti importanti/di interesse e resto
+                          
+ 6) Ragionare su Depth Measures and Outliers   SARA
+ 
+ 7) Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq (oppure two-way ANOVA, time and
+    nhood come gruppi); PIETRO
+    
+ 8) Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il numero di evictions (oppure two-way ANOVA,
+    time and nhood come gruppi); PIETRO
+
+ 9) Mappa (Panoply) SARA
+ 
+ ----- FINE ANALISI ESPLORATIVA
+
+
+
 - Inventarsi un modo per fare il secondo modello (come usare nhood/coorinate per gli sfratti e nuove costruzioni?)
 - Eviction Notices motivation, guardarle e selezionare le importanti
 - Studiare l'idea di fare una regressione funzionale
+- Ripetere sulle Evictions l'interpolation e lo smoothing 
 
 
 
@@ -42,10 +90,7 @@ RESEARCH QUESTIONS:
              - Attraverso la funzione eviction_number(t,q):= numero di evictions nell'anno t nel quartiere q, verificare in quali quartieri il numero di evictions è
              cresciuto nel tempo
              
-4) Si calcola la funzione new_construction(t,q):= numero di costruzioni nell'anno t nel quartiere q, si fa cluster dividendo così in due gruppi i nhood, poi si può
-   fare un functional test sulle funzioni d/dt(avg_rent_price(t,q)) con l'obiettivo di verificarie se il primo cluster (assumiamo sia quello con "tante" costruzioni)
-   è associato a funzioni negative (i.e. derivata negativa, prezzi calanti)
-   
+
 3) Regression model: 
    - Output : rent price al tempo t della parcel p nel neighborhood c.
    - Covariates : - Quantità di case nuove costruite "attorno" (perchè non nel nhood direttamente? Si potrebbe semplificare...)
