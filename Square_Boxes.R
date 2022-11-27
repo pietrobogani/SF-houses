@@ -22,6 +22,8 @@ for(i in 1:length(outside_square_box_100[,1])){ #computazionalmente lungo
   outside_square_box_100[i,5] <- outside_square_box_100[i,2]  + (dx / r_earth) * (180 / pi) / cos(outside_square_box_100[i,1] * pi/180) #right limit of the box
   outside_square_box_100[i,6] <- outside_square_box_100[i,2]  - (dx / r_earth) * (180 / pi) / cos(outside_square_box_100[i,1] * pi/180) #left limit of the box
 }
+write.csv(outside_square_box_100,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/outside_square_box_100.csv")
+
 
 #I create a square box with l = 100/sqrt(2)m and s.t. the center is exactly the parcel: this is the "quadrato inscritto"
 dy = 100/sqrt(2)
@@ -36,11 +38,7 @@ for(i in 1:length(inside_square_box_100[,1])){ #computazionalmente lungo
   inside_square_box_100[i,6] <- inside_square_box_100[i,2]  - (dx / r_earth) * (180 / pi) / cos(inside_square_box_100[i,1] * pi/180) #left limit of the box
 }
 
-
-
-
-
-
+write.csv(inside_square_box_100,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/inside_square_box_100.csv")
 
 
 
@@ -59,6 +57,7 @@ for(i in 1:length(outside_square_box_100[,1])){ #computazionalmente lungo
   outside_square_box_500[i,5] <- outside_square_box_500[i,2]  + (dx / r_earth) * (180 / pi) / cos(outside_square_box_500[i,1] * pi/180) #right limit of the box
   outside_square_box_500[i,6] <- outside_square_box_500[i,2]  - (dx / r_earth) * (180 / pi) / cos(outside_square_box_500[i,1] * pi/180) #left limit of the box
 }
+write.csv(outside_square_box_500,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/outside_square_box_500.csv")
 
 
 
@@ -74,6 +73,8 @@ for(i in 1:length(inside_square_box_500[,1])){ #computazionalmente lungo
   inside_square_box_500[i,5] <- inside_square_box_500[i,2]  + (dx / r_earth) * (180 / pi) / cos(inside_square_box_500[i,1] * pi/180) #right limit of the box
   inside_square_box_500[i,6] <- inside_square_box_500[i,2]  - (dx / r_earth) * (180 / pi) / cos(inside_square_box_500[i,1] * pi/180) #left limit of the box
 }
+
+write.csv(inside_square_box_500,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/inside_square_box_500.csv")
 
 
 
@@ -92,6 +93,10 @@ for(i in 1:length(outside_square_box_100[,1])){ #computazionalmente lungo
   outside_square_box_1000[i,5] <- outside_square_box_1000[i,2]  + (dx / r_earth) * (180 / pi) / cos(outside_square_box_1000[i,1] * pi/180) #right limit of the box
   outside_square_box_1000[i,6] <- outside_square_box_1000[i,2]  - (dx / r_earth) * (180 / pi) / cos(outside_square_box_1000[i,1] * pi/180) #left limit of the box
 }
+write.csv(outside_square_box_1000,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/outside_square_box_1000.csv")
+
+
+
 
 #I create a square box with l = 1000/sqrt(2)m and s.t. the center is exactly the parcel: this is the "quadrato inscritto"
 dy = 1000/sqrt(2)
@@ -106,6 +111,7 @@ for(i in 1:length(inside_square_box_1000[,1])){ #computazionalmente lungo
   inside_square_box_1000[i,6] <- inside_square_box_1000[i,2]  - (dx / r_earth) * (180 / pi) / cos(inside_square_box_1000[i,1] * pi/180) #left limit of the box
 }
 
+write.csv(inside_square_box_1000,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/inside_square_box_1000.csv")
 
 
 
@@ -129,6 +135,10 @@ for(i in 1:length(outside_square_box_100[,1])){ #computazionalmente lungo
   outside_square_box_2000[i,6] <- outside_square_box_2000[i,2]  - (dx / r_earth) * (180 / pi) / cos(outside_square_box_2000[i,1] * pi/180) #left limit of the box
 }
 
+write.csv(outside_square_box_2000,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/outside_square_box_2000.csv")
+
+
+
 
 
 #I create a square box with l = 2000/sqrt(2)m and s.t. the center is exactly the parcel: this is the "quadrato inscritto"
@@ -143,4 +153,6 @@ for(i in 1:length(inside_square_box_2000[,1])){ #computazionalmente lungo
   inside_square_box_2000[i,5] <- inside_square_box_2000[i,2]  + (dx / r_earth) * (180 / pi) / cos(inside_square_box_2000[i,1] * pi/180) #right limit of the box
   inside_square_box_2000[i,6] <- inside_square_box_2000[i,2]  - (dx / r_earth) * (180 / pi) / cos(inside_square_box_2000[i,1] * pi/180) #left limit of the box
 }
+write.csv(inside_square_box_2000,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/inside_square_box_2000.csv")
+
 
