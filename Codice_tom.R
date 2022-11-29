@@ -219,7 +219,7 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 
 
 
-#Provo a fare smoothing con kernel regr 
+#Provo a fare smoothing con kernel regr sui rent 
 {
 library(readr)
 rent_clean <- read_csv("rent_clean.csv")
@@ -233,6 +233,8 @@ rent_clean = rent_clean[which(rent_clean$year >= 2011 & rent_clean$year <= 2018)
 #rent_clean = cbind(rent_clean,vect_date_num)
 rent_clean$date_num = as.numeric(rent_clean$d)
 rent_clean$price_sqft = rent_clean$price/rent_clean$sqft
+x11()
+plot(rent_clean$d,rent_clean$price_sqft, col = as.factor(rent_clean$nhood), ylim = c(0,8))
 list_nhood = unique(rent_clean$nhood)
 first_date = min(rent_clean$d)
 final_date = max(rent_clean$d)
@@ -243,9 +245,10 @@ funct_data = data.frame(row.names = grid_time)
 for(nh in list_nhood){
   ind_nh = which(rent_clean$nhood == nh)
   data = rent_clean[ind_nh,]
+  #bw = npregbw(formula = price_sqft ~ date_num, bws = 365*6/12, data = data)
   m_loc = npreg( price_sqft ~ date_num,
-                 ckertype = 'gaussian', #uniform, gaussian, epanechnikov
-                 bws = 365*6/12, # bandwidth di 6 mesi
+                 ckertype = 'gaussian', 
+                 bws = 365*6/12, # bandwidth di 6 mesi oppure bw$bw
                  data = data)
   preds=predict(m_loc,newdata=grid_time_num,se=T)
   se.bands=cbind(preds$fit +2* preds$se.fit ,preds$fit -2* preds$se.fit)
@@ -254,19 +257,89 @@ for(nh in list_nhood){
 colnames(funct_data) = list_nhood
 dim(funct_data)
 length(grid_time)
+library(roahd)
+funz_rent = funct_data
 funct_data = fData(grid_time,t(funct_data))
+x11()
 plot(funct_data)
 nh = list_nhood[1]
 ind_nh = which(rent_clean$nhood == nh)
 
+diff_rent = funz_rent[2:dim(funz_rent)[1],] - funz_rent[1:dim(funz_rent)[1]-1,]
+dim(funz_rent)
+dim(diff_rent)
+funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_rent))
+x11()
+plot(funct_data_diff)
+
+
 
 }
-#Conclusione: sarebbe meglio usare un metodo con le finestre che si muovono tenendo costante 
-#             il numero di punti invece di tenere la bandwidth fissata
+#Conclusione: usando la bandwidth ottenuta con CV con npregbw si ottengono funzioni molto
+#             disomogenee nelle variazioni... Potrebbe influire (negativamente) sullo di 
+#             functional depth measures/outliers! Non sarebbe meglio tenere una finestra che
+#             fornisce variazioni simili per tutti??
 
 
 
 
+#Provo a fare smoothing con kernel reg sulle evictions mensili
+{
+  
+
+library(readr)
+eviction_nhood_monthly <- read_csv("eviction_nhood_monthly.csv")
+eviction_nhood_monthly = eviction_nhood_monthly[-2251,]
+vect_year = eviction_nhood_monthly$year
+vect_month = eviction_nhood_monthly$month
+vect_day = rep(1,length(vect_year))
+date = paste(vect_year,vect_month,vect_day, sep = '-')
+eviction_nhood_monthly$date = date
+rm(vect_day,vect_month,vect_year,date)
+eviction_nhood_monthly$date = as.Date(eviction_nhood_monthly$date, tryFormats = '%Y-%m-%d')
+#typeof(eviction_nhood_monthly$date)
+eviction_nhood_monthly$date_num = as.numeric(eviction_nhood_monthly$date)
+list_nhood = unique(eviction_nhood_monthly$nhood)
+for(nh in list_nhood){
+  print(nh)
+  print(dim(eviction_nhood_monthly[which(eviction_nhood_monthly$nhood == nh),]))
+}# Rimuovo McLaren Park , Treasure Island e Lincoln Park dato che ho 1 osservazione ...
+nh_multiple_osservations = c('McLaren Park', 'Treasure Island', 'Lincoln Park')
+for(nh in nh_multiple_osservations){
+  ind = which(eviction_nhood_monthly$nhood == nh)
+  eviction_nhood_monthly = eviction_nhood_monthly[-ind,]
+}
+rm(ind_nh,nh,nh_multiple_osservations, ind)
+
+x11()
+plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count, col = as.factor(eviction_nhood_monthly$nhood))
+
+first_date = min(eviction_nhood_monthly$date)
+final_date = max(eviction_nhood_monthly$date)
+grid_time = seq(first_date,final_date,by = 1)
+grid_time_num = data.frame(date_num = as.numeric(grid_time))
+funct_evictions = data.frame(row.names = grid_time)
+list_nhood = unique(eviction_nhood_monthly$nhood)
+for(nh in list_nhood){
+  ind_nh = which(eviction_nhood_monthly$nhood == nh)
+  data = eviction_nhood_monthly[ind_nh,]
+  #bw = npregbw(formula = count ~ date_num, bws = 365*6/12, data = data)
+  m_loc = npreg( count ~ date_num,
+                 ckertype = 'gaussian', 
+                 bws = 356*6/12,  #bw$bw, # bandwidth di 6 mesi oppure bw$bw
+                 data = data)
+  preds=predict(m_loc,newdata=grid_time_num,se=T)
+  se.bands=cbind(preds$fit +2* preds$se.fit ,preds$fit -2* preds$se.fit)
+  funct_evictions = cbind(funct_evictions,preds$fit)
+}
+colnames(funct_evictions) = list_nhood
+library(roahd)
+funct_evictions = fData(grid_time,t(funct_evictions))
+x11()
+plot(funct_evictions)
+
+
+}
 
 
 
