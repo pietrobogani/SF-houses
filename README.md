@@ -14,9 +14,10 @@ PARTE PRELIMINARE
 
 5) Capire la regressione funzionale SARA PIETRO TOMASO
 
-6) Decidere come interpolare per le parcels, chiedendo al professore. ANDARE DAL PROF
+6) Decidere come interpolare per le parcels, chiedendo al professore. 
    Prima possibilità: come da paper, distanza pesata sui nhood entro 2,5 km
-   Seconda possibilità: smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels
+   Seconda possibilità: smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels (usando questo possiamo usare l'idea di Cappozzo, cioè di raccontare
+                        come stiamo "validando" il paper tramite un approccio diverso
 
 ----- FINE PARTE PRELIMINARE
 
