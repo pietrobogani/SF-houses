@@ -322,10 +322,10 @@ rent <- rent[as.double(rent$V15) > 2010 ,]
 
 #Aggiungo rent/mq e rimuovo sq feet e price, beds, rooms, address, data completa, city&county( always == san francisco)
 rent[,16]= rent[,4]/rent[,7]
-rent <- rent[,-c(2:5,6:9,12)]
-colnames(rent) <- c('nhood', 'lat', 'lon', 'day','year', 'month', 'rent.sq')
-write.csv(rent,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/rent_clean.csv")
-rent_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/rent_clean.csv", header=TRUE)
+rent <- rent[,-c(2:9)]
+colnames(rent) <- c('nhood', 'lat', 'lon','date', 'day', 'month','year', 'rent.sq')
+write.csv(rent,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
+rent_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv", header=TRUE)
 
 
 #Calcolo i df con avg rent per nhood per anno e per mese
@@ -399,6 +399,11 @@ rent_nhood_yearly <- rent_nhood_yearly[, -c(5:11)]
 colnames(rent_nhood_yearly) <- c('nhood_month_year', 'avg_rent.mq','year', 'nhood')
 write.csv(rent_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_yearly.csv")
 
+rent_clean <- rent_clean[,-c(10,11)]
+colnames(rent_clean) <- c('X','nhood', 'lat','lon', 'd','day','month','year', 'price_sqft')
+rent_clean$price_mq <- NA
+rent_clean$price_mq <- (rent_clean$price_sqft)/0.0929
+write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
 
 
 
