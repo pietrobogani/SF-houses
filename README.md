@@ -8,7 +8,7 @@ PARTE PRELIMINARE
 
 2) Aggiungere i nhood al dataset new_construction_clean e al dataset parcels_final SARA
 
-3) Aggiungere dimensione (square feet) dei nhood     SOLO SE NON SONO RIUSCITO AD AGGIUNGERE I NHOOD A PARCELS_FINAL SARA
+3) Aggiungere dimensione (square feet)/popolazione dei nhood     SARA
 
 4) Aggiungere il centro dei nhood PIETRO
 
@@ -25,21 +25,18 @@ PARTE ESPLORATIVA
 
 4) Partizionare i nhood e fare functional tests sui smoothed rent (oppure su d/dt(smoothed rent)) TOM 
    Criteri di partizione: - Costieri e centrali 
-                         - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     OPPURE al posto di (square feet) metto #numero di parcels nel nhood se
-                           siamo riusciti ad aggiungere i nhood a parcels_final 
-                         - Partizione indotta da 8) (i.e. divido in nhood con tante evictions/(square feet) e poche evictions/(square feet)) 
-                           OPPURE al posto di (square feet) metto #numero di parcels nel nhood se siamo riusciti ad aggiungere i nhood a parcels_final
-                         - Punti importanti/di interesse e resto
+                          - Tante costruzioni/(square feet) e poche costruzioni/(square feet)    o popolazione PIETRO
+                          - Divido in nhood con tante evictions/(square feet) e poche evictions/(square feet)) o popolazione PIETRO
+                          
                          
                          
  5) Partizionare i nhood e fare functional tests sulle smoother evictions (oppure su d/dt(smoothed evictions)) TOM 
     Criteri di partizione: - Costieri e centrali 
-                          - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     OPPURE al posto di (square feet) metto #numero di parcels nel nhood
-                            se siamo riusciti ad aggiungere i nhood a parcels_final 
-                          - Partizione indotta da 7) ( i.e. divido in nhood con rent alti e rent bassi )                                             
-                          - Punti importanti/di interesse e resto
+                          - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     o popolazione PIETRO
+                          - Divido in nhood con rent alti e rent bassi  PIETRO                                             
                           
- 6) Ragionare su Depth Measures and Outliers   SARA
+                          
+ 6) Ragionare su Depth Measures and Outliers   TOM
  
  7) Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq (oppure two-way ANOVA, time and
     nhood come gruppi); PIETRO
@@ -47,7 +44,10 @@ PARTE ESPLORATIVA
  8) Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il numero di evictions (oppure two-way ANOVA,
     time and nhood come gruppi); PIETRO
 
- 9) Mappa (Panoply) SARA
+ 9) Mappa (Panoply) SARA TOMASO
+ 
+ 10) Basic version of GAM. Cose necessarie: - Distanza luoghi di interesse dai centri di nhood (Caltrain Station - Distance to financial district)
+                                            - Constructions per nhood and per year PIETRO
  
  ----- FINE ANALISI ESPLORATIVA
 
