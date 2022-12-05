@@ -157,6 +157,499 @@ colnames(eviction_nhood_yearly) <- c('nhood_month_year', 'count','year', 'nhood'
 write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
 } # Preparazione di eviction_nhood_yearly & eviction_nhood_monthly
 
+#Aggiungo i centri ai nhoods di Eviction_Notices_Clean
+{
+  Eviction_Notices_clean$centroid_lat <- NA
+  Eviction_Notices_clean$centroid_long <- NA
+  
+  for (i in 1:length(Eviction_Notices_clean[,1])){
+    if (Eviction_Notices_clean$nhood[i] == 'Bayview Hunters Point'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.730696
+      Eviction_Notices_clean$centroid_long[i] <- -122.388515
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Bernal Heights'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.741391
+      Eviction_Notices_clean$centroid_long[i] <- -122.414033
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Castro/Upper Market'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.758812
+      Eviction_Notices_clean$centroid_long[i] <- -122.435644
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Chinatown'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.795073
+      Eviction_Notices_clean$centroid_long[i] <- -122.406350
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Excelsior'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.722300
+      Eviction_Notices_clean$centroid_long[i] <- -122.431224
+    }
+    
+    if (Eviction_Notices_clean$nhood[i] == 'Financial District/South Beach'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.793213
+      Eviction_Notices_clean$centroid_long[i] <- -122.398187
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Glen Park'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.735976
+      Eviction_Notices_clean$centroid_long[i] <- -122.434464
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Golden Gate Park'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.769283
+      Eviction_Notices_clean$centroid_long[i] <- -122.473486
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Haight Ashbury'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.769910
+      Eviction_Notices_clean$centroid_long[i] <- -122.447678
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Hayes Valley'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.776425
+      Eviction_Notices_clean$centroid_long[i] <- -122.426235
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Inner Richmond'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.778849
+      Eviction_Notices_clean$centroid_long[i] <- -122.468955 
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Inner Sunset'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.762068
+      Eviction_Notices_clean$centroid_long[i] <- -122.467189
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Japantown'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.785840
+      Eviction_Notices_clean$centroid_long[i] <- -122.429952
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Lakeshore'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.718720
+      Eviction_Notices_clean$centroid_long[i] <- -122.477916
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Lone Mountain/USF'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.777975
+      Eviction_Notices_clean$centroid_long[i] <- -122.452816
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Marina'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.802877
+      Eviction_Notices_clean$centroid_long[i] <- -122.436969
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
+      Eviction_Notices_clean$centroid_lat[i] <- 37.718407
+      Eviction_Notices_clean$centroid_long[i] <- -122.418904
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Mission'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.758338
+      Eviction_Notices_clean$centroid_long[i] <- -122.414678
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Mission Bay'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.770674
+      Eviction_Notices_clean$centroid_long[i] <- -122.392015
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Nob Hill'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.793044
+      Eviction_Notices_clean$centroid_long[i] <- -122.414461
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Noe Valley'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.747095
+      Eviction_Notices_clean$centroid_long[i] <- -122.431421
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'North Beach'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.799254
+      Eviction_Notices_clean$centroid_long[i] <- -122.407458
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Oceanview/Merced/Ingleside'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.718959
+      Eviction_Notices_clean$centroid_long[i] <- -122.462039
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Outer Mission'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.709585
+      Eviction_Notices_clean$centroid_long[i] <- -122.455082
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Outer Richmond'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.776683
+      Eviction_Notices_clean$centroid_long[i] <- -122.489908
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Pacific Heights'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.792182
+      Eviction_Notices_clean$centroid_long[i] <- -122.432784
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Portola'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.726470
+      Eviction_Notices_clean$centroid_long[i] <- -122.407642
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Potrero Hill'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.759056
+      Eviction_Notices_clean$centroid_long[i] <- -122.398618
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Presidio Heights' | Eviction_Notices_clean$nhood[i] == 'Presidio'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.788849
+      Eviction_Notices_clean$centroid_long[i] <- -122.452228
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Russian Hill'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.800432
+      Eviction_Notices_clean$centroid_long[i] <- -122.417609
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Seacliff'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.785975
+      Eviction_Notices_clean$centroid_long[i] <- -122.489522
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'South of Market'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.779527
+      Eviction_Notices_clean$centroid_long[i] <- -122.405727
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Sunset/Parkside'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.749026
+      Eviction_Notices_clean$centroid_long[i] <- -122.493742
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Tenderloin'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.784141
+      Eviction_Notices_clean$centroid_long[i] <- -122.414748
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Twin Peaks'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.753375
+      Eviction_Notices_clean$centroid_long[i] <- -122.445652
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Visitacion Valley'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.713141
+      Eviction_Notices_clean$centroid_long[i] <- -122.408825
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'West of Twin Peaks'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.737955
+      Eviction_Notices_clean$centroid_long[i] <- -122.460363
+    }
+    if (Eviction_Notices_clean$nhood[i] == 'Western Addition'){
+      Eviction_Notices_clean$centroid_lat[i] <- 37.780587
+      Eviction_Notices_clean$centroid_long[i] <- -122.434510
+    }
+  }
+  
+  write.csv(Eviction_Notices_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv")
+}
+
+#Aggiungo i centri ai nhoods di eviction_nhood_monthly
+{
+  eviction_nhood_monthly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_monthly.csv", header=TRUE)
+  eviction_nhood_monthly$centroid_lat <- NA
+  eviction_nhood_monthly$centroid_long <- NA
+  
+  for (i in 1:length(eviction_nhood_monthly[,1])){
+    if (eviction_nhood_monthly$nhood[i] == 'Bayview Hunters Point'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.730696
+      eviction_nhood_monthly$centroid_long[i] <- -122.388515
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Bernal Heights'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.741391
+      eviction_nhood_monthly$centroid_long[i] <- -122.414033
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Castro/Upper Market'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.758812
+      eviction_nhood_monthly$centroid_long[i] <- -122.435644
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Chinatown'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.795073
+      eviction_nhood_monthly$centroid_long[i] <- -122.406350
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Excelsior'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.722300
+      eviction_nhood_monthly$centroid_long[i] <- -122.431224
+    }
+    
+    if (eviction_nhood_monthly$nhood[i] == 'Financial District/South Beach'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.793213
+      eviction_nhood_monthly$centroid_long[i] <- -122.398187
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Glen Park'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.735976
+      eviction_nhood_monthly$centroid_long[i] <- -122.434464
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Golden Gate Park'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.769283
+      eviction_nhood_monthly$centroid_long[i] <- -122.473486
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Haight Ashbury'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.769910
+      eviction_nhood_monthly$centroid_long[i] <- -122.447678
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Hayes Valley'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.776425
+      eviction_nhood_monthly$centroid_long[i] <- -122.426235
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Inner Richmond'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.778849
+      eviction_nhood_monthly$centroid_long[i] <- -122.468955 
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Inner Sunset'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.762068
+      eviction_nhood_monthly$centroid_long[i] <- -122.467189
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Japantown'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.785840
+      eviction_nhood_monthly$centroid_long[i] <- -122.429952
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Lakeshore'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.718720
+      eviction_nhood_monthly$centroid_long[i] <- -122.477916
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Lone Mountain/USF'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.777975
+      eviction_nhood_monthly$centroid_long[i] <- -122.452816
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Marina'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.802877
+      eviction_nhood_monthly$centroid_long[i] <- -122.436969
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
+      eviction_nhood_monthly$centroid_lat[i] <- 37.718407
+      eviction_nhood_monthly$centroid_long[i] <- -122.418904
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Mission'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.758338
+      eviction_nhood_monthly$centroid_long[i] <- -122.414678
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Mission Bay'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.770674
+      eviction_nhood_monthly$centroid_long[i] <- -122.392015
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Nob Hill'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.793044
+      eviction_nhood_monthly$centroid_long[i] <- -122.414461
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Noe Valley'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.747095
+      eviction_nhood_monthly$centroid_long[i] <- -122.431421
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'North Beach'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.799254
+      eviction_nhood_monthly$centroid_long[i] <- -122.407458
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Oceanview/Merced/Ingleside'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.718959
+      eviction_nhood_monthly$centroid_long[i] <- -122.462039
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Outer Mission'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.709585
+      eviction_nhood_monthly$centroid_long[i] <- -122.455082
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Outer Richmond'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.776683
+      eviction_nhood_monthly$centroid_long[i] <- -122.489908
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Pacific Heights'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.792182
+      eviction_nhood_monthly$centroid_long[i] <- -122.432784
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Portola'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.726470
+      eviction_nhood_monthly$centroid_long[i] <- -122.407642
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Potrero Hill'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.759056
+      eviction_nhood_monthly$centroid_long[i] <- -122.398618
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Presidio Heights' | eviction_nhood_monthly$nhood[i] == 'Presidio'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.788849
+      eviction_nhood_monthly$centroid_long[i] <- -122.452228
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Russian Hill'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.800432
+      eviction_nhood_monthly$centroid_long[i] <- -122.417609
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Seacliff'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.785975
+      eviction_nhood_monthly$centroid_long[i] <- -122.489522
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'South of Market'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.779527
+      eviction_nhood_monthly$centroid_long[i] <- -122.405727
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Sunset/Parkside'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.749026
+      eviction_nhood_monthly$centroid_long[i] <- -122.493742
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Tenderloin'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.784141
+      eviction_nhood_monthly$centroid_long[i] <- -122.414748
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Twin Peaks'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.753375
+      eviction_nhood_monthly$centroid_long[i] <- -122.445652
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Visitacion Valley'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.713141
+      eviction_nhood_monthly$centroid_long[i] <- -122.408825
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'West of Twin Peaks'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.737955
+      eviction_nhood_monthly$centroid_long[i] <- -122.460363
+    }
+    if (eviction_nhood_monthly$nhood[i] == 'Western Addition'){
+      eviction_nhood_monthly$centroid_lat[i] <- 37.780587
+      eviction_nhood_monthly$centroid_long[i] <- -122.434510
+    }
+  }
+  
+  write.csv(eviction_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_monthly.csv")
+}
+
+#Aggiungo i centri ai nhoods di eviction_nhood_yearly
+{
+  eviction_nhood_yearly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv", header=TRUE)
+  eviction_nhood_yearly$centroid_lat <- NA
+  eviction_nhood_yearly$centroid_long <- NA
+  
+  for (i in 1:length(eviction_nhood_yearly[,1])){
+    if (eviction_nhood_yearly$nhood[i] == 'Bayview Hunters Point'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.730696
+      eviction_nhood_yearly$centroid_long[i] <- -122.388515
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Bernal Heights'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.741391
+      eviction_nhood_yearly$centroid_long[i] <- -122.414033
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Castro/Upper Market'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.758812
+      eviction_nhood_yearly$centroid_long[i] <- -122.435644
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Chinatown'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.795073
+      eviction_nhood_yearly$centroid_long[i] <- -122.406350
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Excelsior'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.722300
+      eviction_nhood_yearly$centroid_long[i] <- -122.431224
+    }
+    
+    if (eviction_nhood_yearly$nhood[i] == 'Financial District/South Beach'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.793213
+      eviction_nhood_yearly$centroid_long[i] <- -122.398187
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Glen Park'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.735976
+      eviction_nhood_yearly$centroid_long[i] <- -122.434464
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Golden Gate Park'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.769283
+      eviction_nhood_yearly$centroid_long[i] <- -122.473486
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Haight Ashbury'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.769910
+      eviction_nhood_yearly$centroid_long[i] <- -122.447678
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Hayes Valley'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.776425
+      eviction_nhood_yearly$centroid_long[i] <- -122.426235
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Inner Richmond'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.778849
+      eviction_nhood_yearly$centroid_long[i] <- -122.468955 
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Inner Sunset'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.762068
+      eviction_nhood_yearly$centroid_long[i] <- -122.467189
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Japantown'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.785840
+      eviction_nhood_yearly$centroid_long[i] <- -122.429952
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Lakeshore'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.718720
+      eviction_nhood_yearly$centroid_long[i] <- -122.477916
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Lone Mountain/USF'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.777975
+      eviction_nhood_yearly$centroid_long[i] <- -122.452816
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Marina'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.802877
+      eviction_nhood_yearly$centroid_long[i] <- -122.436969
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
+      eviction_nhood_yearly$centroid_lat[i] <- 37.718407
+      eviction_nhood_yearly$centroid_long[i] <- -122.418904
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Mission'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.758338
+      eviction_nhood_yearly$centroid_long[i] <- -122.414678
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Mission Bay'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.770674
+      eviction_nhood_yearly$centroid_long[i] <- -122.392015
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Nob Hill'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.793044
+      eviction_nhood_yearly$centroid_long[i] <- -122.414461
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Noe Valley'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.747095
+      eviction_nhood_yearly$centroid_long[i] <- -122.431421
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'North Beach'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.799254
+      eviction_nhood_yearly$centroid_long[i] <- -122.407458
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Oceanview/Merced/Ingleside'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.718959
+      eviction_nhood_yearly$centroid_long[i] <- -122.462039
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Outer Mission'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.709585
+      eviction_nhood_yearly$centroid_long[i] <- -122.455082
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Outer Richmond'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.776683
+      eviction_nhood_yearly$centroid_long[i] <- -122.489908
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Pacific Heights'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.792182
+      eviction_nhood_yearly$centroid_long[i] <- -122.432784
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Portola'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.726470
+      eviction_nhood_yearly$centroid_long[i] <- -122.407642
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Potrero Hill'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.759056
+      eviction_nhood_yearly$centroid_long[i] <- -122.398618
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Presidio Heights' | eviction_nhood_yearly$nhood[i] == 'Presidio'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.788849
+      eviction_nhood_yearly$centroid_long[i] <- -122.452228
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Russian Hill'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.800432
+      eviction_nhood_yearly$centroid_long[i] <- -122.417609
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Seacliff'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.785975
+      eviction_nhood_yearly$centroid_long[i] <- -122.489522
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'South of Market'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.779527
+      eviction_nhood_yearly$centroid_long[i] <- -122.405727
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Sunset/Parkside'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.749026
+      eviction_nhood_yearly$centroid_long[i] <- -122.493742
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Tenderloin'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.784141
+      eviction_nhood_yearly$centroid_long[i] <- -122.414748
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Twin Peaks'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.753375
+      eviction_nhood_yearly$centroid_long[i] <- -122.445652
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Visitacion Valley'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.713141
+      eviction_nhood_yearly$centroid_long[i] <- -122.408825
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'West of Twin Peaks'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.737955
+      eviction_nhood_yearly$centroid_long[i] <- -122.460363
+    }
+    if (eviction_nhood_yearly$nhood[i] == 'Western Addition'){
+      eviction_nhood_yearly$centroid_lat[i] <- 37.780587
+      eviction_nhood_yearly$centroid_long[i] <- -122.434510
+    }
+  }
+  
+  write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
+}
 
 
 

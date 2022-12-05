@@ -1,300 +1,300 @@
-"","nhood_month_year","count","year","nhood"
-"1","2011 Bayview Hunters Point",31,"2011","Bayview Hunters Point"
-"2","2011 Bernal Heights",37,"2011","Bernal Heights"
-"3","2011 Castro/Upper Market",35,"2011","Castro/Upper Market"
-"4","2011 Chinatown",17,"2011","Chinatown"
-"5","2011 Excelsior",28,"2011","Excelsior"
-"6","2011 Financial District/South Beach",7,"2011","Financial District/South Beach"
-"7","2011 Glen Park",13,"2011","Glen Park"
-"8","2011 Golden Gate Park",8,"2011","Golden Gate Park"
-"9","2011 Haight Ashbury",31,"2011","Haight Ashbury"
-"10","2011 Hayes Valley",37,"2011","Hayes Valley"
-"11","2011 Inner Richmond",17,"2011","Inner Richmond"
-"12","2011 Inner Sunset",31,"2011","Inner Sunset"
-"13","2011 Japantown",4,"2011","Japantown"
-"14","2011 Lakeshore",157,"2011","Lakeshore"
-"15","2011 Lone Mountain/USF",13,"2011","Lone Mountain/USF"
-"16","2011 Marina",39,"2011","Marina"
-"17","2011 Mission",96,"2011","Mission"
-"18","2011 Mission Bay",5,"2011","Mission Bay"
-"19","2011 Nob Hill",31,"2011","Nob Hill"
-"20","2011 Noe Valley",30,"2011","Noe Valley"
-"21","2011 North Beach",22,"2011","North Beach"
-"22","2011 Oceanview/Merced/Ingleside",20,"2011","Oceanview/Merced/Ingleside"
-"23","2011 Outer Mission",25,"2011","Outer Mission"
-"24","2011 Outer Richmond",44,"2011","Outer Richmond"
-"25","2011 Pacific Heights",29,"2011","Pacific Heights"
-"26","2011 Portola",10,"2011","Portola"
-"27","2011 Potrero Hill",23,"2011","Potrero Hill"
-"28","2011 Presidio Heights",10,"2011","Presidio Heights"
-"29","2011 Russian Hill",22,"2011","Russian Hill"
-"30","2011 Seacliff",4,"2011","Seacliff"
-"31","2011 South of Market",31,"2011","South of Market"
-"32","2011 Sunset/Parkside",56,"2011","Sunset/Parkside"
-"33","2011 Tenderloin",49,"2011","Tenderloin"
-"34","2011 Twin Peaks",14,"2011","Twin Peaks"
-"35","2011 Visitacion Valley",13,"2011","Visitacion Valley"
-"36","2011 West of Twin Peaks",17,"2011","West of Twin Peaks"
-"37","2011 Western Addition",16,"2011","Western Addition"
-"38","2012 Bayview Hunters Point",45,"2012","Bayview Hunters Point"
-"39","2012 Bernal Heights",31,"2012","Bernal Heights"
-"40","2012 Castro/Upper Market",45,"2012","Castro/Upper Market"
-"41","2012 Chinatown",16,"2012","Chinatown"
-"42","2012 Excelsior",36,"2012","Excelsior"
-"43","2012 Financial District/South Beach",16,"2012","Financial District/South Beach"
-"44","2012 Glen Park",7,"2012","Glen Park"
-"45","2012 Golden Gate Park",7,"2012","Golden Gate Park"
-"46","2012 Haight Ashbury",44,"2012","Haight Ashbury"
-"47","2012 Hayes Valley",32,"2012","Hayes Valley"
-"48","2012 Inner Richmond",34,"2012","Inner Richmond"
-"49","2012 Inner Sunset",29,"2012","Inner Sunset"
-"50","2012 Japantown",4,"2012","Japantown"
-"51","2012 Lakeshore",9,"2012","Lakeshore"
-"52","2012 Lincoln Park",1,"2012","Lincoln Park"
-"53","2012 Lone Mountain/USF",32,"2012","Lone Mountain/USF"
-"54","2012 Marina",46,"2012","Marina"
-"55","2012 Mission",123,"2012","Mission"
-"56","2012 Mission Bay",3,"2012","Mission Bay"
-"57","2012 Nob Hill",56,"2012","Nob Hill"
-"58","2012 Noe Valley",31,"2012","Noe Valley"
-"59","2012 North Beach",28,"2012","North Beach"
-"60","2012 Oceanview/Merced/Ingleside",20,"2012","Oceanview/Merced/Ingleside"
-"61","2012 Outer Mission",19,"2012","Outer Mission"
-"62","2012 Outer Richmond",59,"2012","Outer Richmond"
-"63","2012 Pacific Heights",39,"2012","Pacific Heights"
-"64","2012 Portola",21,"2012","Portola"
-"65","2012 Potrero Hill",28,"2012","Potrero Hill"
-"66","2012 Presidio Heights",11,"2012","Presidio Heights"
-"67","2012 Russian Hill",46,"2012","Russian Hill"
-"68","2012 South of Market",35,"2012","South of Market"
-"69","2012 Sunset/Parkside",99,"2012","Sunset/Parkside"
-"70","2012 Tenderloin",66,"2012","Tenderloin"
-"71","2012 Twin Peaks",12,"2012","Twin Peaks"
-"72","2012 Visitacion Valley",15,"2012","Visitacion Valley"
-"73","2012 West of Twin Peaks",25,"2012","West of Twin Peaks"
-"74","2012 Western Addition",26,"2012","Western Addition"
-"75","2013 Bayview Hunters Point",43,"2013","Bayview Hunters Point"
-"76","2013 Bernal Heights",37,"2013","Bernal Heights"
-"77","2013 Castro/Upper Market",64,"2013","Castro/Upper Market"
-"78","2013 Chinatown",13,"2013","Chinatown"
-"79","2013 Excelsior",58,"2013","Excelsior"
-"80","2013 Financial District/South Beach",14,"2013","Financial District/South Beach"
-"81","2013 Glen Park",9,"2013","Glen Park"
-"82","2013 Golden Gate Park",4,"2013","Golden Gate Park"
-"83","2013 Haight Ashbury",36,"2013","Haight Ashbury"
-"84","2013 Hayes Valley",28,"2013","Hayes Valley"
-"85","2013 Inner Richmond",41,"2013","Inner Richmond"
-"86","2013 Inner Sunset",38,"2013","Inner Sunset"
-"87","2013 Japantown",2,"2013","Japantown"
-"88","2013 Lakeshore",86,"2013","Lakeshore"
-"89","2013 Lone Mountain/USF",32,"2013","Lone Mountain/USF"
-"90","2013 Marina",56,"2013","Marina"
-"91","2013 McLaren Park",3,"2013","McLaren Park"
-"92","2013 Mission",164,"2013","Mission"
-"93","2013 Nob Hill",56,"2013","Nob Hill"
-"94","2013 Noe Valley",29,"2013","Noe Valley"
-"95","2013 North Beach",58,"2013","North Beach"
-"96","2013 Oceanview/Merced/Ingleside",36,"2013","Oceanview/Merced/Ingleside"
-"97","2013 Outer Mission",20,"2013","Outer Mission"
-"98","2013 Outer Richmond",73,"2013","Outer Richmond"
-"99","2013 Pacific Heights",48,"2013","Pacific Heights"
-"100","2013 Portola",8,"2013","Portola"
-"101","2013 Potrero Hill",18,"2013","Potrero Hill"
-"102","2013 Presidio",1,"2013","Presidio"
-"103","2013 Presidio Heights",14,"2013","Presidio Heights"
-"104","2013 Russian Hill",29,"2013","Russian Hill"
-"105","2013 South of Market",51,"2013","South of Market"
-"106","2013 Sunset/Parkside",99,"2013","Sunset/Parkside"
-"107","2013 Tenderloin",88,"2013","Tenderloin"
-"108","2013 Twin Peaks",15,"2013","Twin Peaks"
-"109","2013 Visitacion Valley",13,"2013","Visitacion Valley"
-"110","2013 West of Twin Peaks",39,"2013","West of Twin Peaks"
-"111","2013 Western Addition",31,"2013","Western Addition"
-"112","2014 Bayview Hunters Point",55,"2014","Bayview Hunters Point"
-"113","2014 Bernal Heights",43,"2014","Bernal Heights"
-"114","2014 Castro/Upper Market",76,"2014","Castro/Upper Market"
-"115","2014 Chinatown",21,"2014","Chinatown"
-"116","2014 Excelsior",65,"2014","Excelsior"
-"117","2014 Financial District/South Beach",5,"2014","Financial District/South Beach"
-"118","2014 Glen Park",10,"2014","Glen Park"
-"119","2014 Golden Gate Park",12,"2014","Golden Gate Park"
-"120","2014 Haight Ashbury",36,"2014","Haight Ashbury"
-"121","2014 Hayes Valley",55,"2014","Hayes Valley"
-"122","2014 Inner Richmond",42,"2014","Inner Richmond"
-"123","2014 Inner Sunset",31,"2014","Inner Sunset"
-"124","2014 Japantown",8,"2014","Japantown"
-"125","2014 Lakeshore",77,"2014","Lakeshore"
-"126","2014 Lincoln Park",1,"2014","Lincoln Park"
-"127","2014 Lone Mountain/USF",27,"2014","Lone Mountain/USF"
-"128","2014 Marina",59,"2014","Marina"
-"129","2014 Mission",149,"2014","Mission"
-"130","2014 Mission Bay",1,"2014","Mission Bay"
-"131","2014 Nob Hill",79,"2014","Nob Hill"
-"132","2014 Noe Valley",47,"2014","Noe Valley"
-"133","2014 North Beach",45,"2014","North Beach"
-"134","2014 Oceanview/Merced/Ingleside",38,"2014","Oceanview/Merced/Ingleside"
-"135","2014 Outer Mission",34,"2014","Outer Mission"
-"136","2014 Outer Richmond",91,"2014","Outer Richmond"
-"137","2014 Pacific Heights",64,"2014","Pacific Heights"
-"138","2014 Portola",29,"2014","Portola"
-"139","2014 Potrero Hill",32,"2014","Potrero Hill"
-"140","2014 Presidio",2,"2014","Presidio"
-"141","2014 Presidio Heights",15,"2014","Presidio Heights"
-"142","2014 Russian Hill",52,"2014","Russian Hill"
-"143","2014 Seacliff",4,"2014","Seacliff"
-"144","2014 South of Market",58,"2014","South of Market"
-"145","2014 Sunset/Parkside",111,"2014","Sunset/Parkside"
-"146","2014 Tenderloin",99,"2014","Tenderloin"
-"147","2014 Twin Peaks",9,"2014","Twin Peaks"
-"148","2014 Visitacion Valley",22,"2014","Visitacion Valley"
-"149","2014 West of Twin Peaks",27,"2014","West of Twin Peaks"
-"150","2014 Western Addition",40,"2014","Western Addition"
-"151","2015 Bayview Hunters Point",69,"2015","Bayview Hunters Point"
-"152","2015 Bernal Heights",60,"2015","Bernal Heights"
-"153","2015 Castro/Upper Market",64,"2015","Castro/Upper Market"
-"154","2015 Chinatown",25,"2015","Chinatown"
-"155","2015 Excelsior",80,"2015","Excelsior"
-"156","2015 Financial District/South Beach",7,"2015","Financial District/South Beach"
-"157","2015 Glen Park",3,"2015","Glen Park"
-"158","2015 Golden Gate Park",5,"2015","Golden Gate Park"
-"159","2015 Haight Ashbury",47,"2015","Haight Ashbury"
-"160","2015 Hayes Valley",57,"2015","Hayes Valley"
-"161","2015 Inner Richmond",40,"2015","Inner Richmond"
-"162","2015 Inner Sunset",41,"2015","Inner Sunset"
-"163","2015 Japantown",6,"2015","Japantown"
-"164","2015 Lakeshore",70,"2015","Lakeshore"
-"165","2015 Lone Mountain/USF",39,"2015","Lone Mountain/USF"
-"166","2015 Marina",64,"2015","Marina"
-"167","2015 McLaren Park",2,"2015","McLaren Park"
-"168","2015 Mission",151,"2015","Mission"
-"169","2015 Mission Bay",1,"2015","Mission Bay"
-"170","2015 Nob Hill",56,"2015","Nob Hill"
-"171","2015 Noe Valley",42,"2015","Noe Valley"
-"172","2015 North Beach",47,"2015","North Beach"
-"173","2015 Oceanview/Merced/Ingleside",43,"2015","Oceanview/Merced/Ingleside"
-"174","2015 Outer Mission",47,"2015","Outer Mission"
-"175","2015 Outer Richmond",106,"2015","Outer Richmond"
-"176","2015 Pacific Heights",53,"2015","Pacific Heights"
-"177","2015 Portola",31,"2015","Portola"
-"178","2015 Potrero Hill",31,"2015","Potrero Hill"
-"179","2015 Presidio Heights",14,"2015","Presidio Heights"
-"180","2015 Russian Hill",50,"2015","Russian Hill"
-"181","2015 Seacliff",3,"2015","Seacliff"
-"182","2015 South of Market",36,"2015","South of Market"
-"183","2015 Sunset/Parkside",146,"2015","Sunset/Parkside"
-"184","2015 Tenderloin",143,"2015","Tenderloin"
-"185","2015 Twin Peaks",17,"2015","Twin Peaks"
-"186","2015 Visitacion Valley",24,"2015","Visitacion Valley"
-"187","2015 West of Twin Peaks",41,"2015","West of Twin Peaks"
-"188","2015 Western Addition",37,"2015","Western Addition"
-"189","2016 Bayview Hunters Point",70,"2016","Bayview Hunters Point"
-"190","2016 Bernal Heights",40,"2016","Bernal Heights"
-"191","2016 Castro/Upper Market",43,"2016","Castro/Upper Market"
-"192","2016 Chinatown",18,"2016","Chinatown"
-"193","2016 Excelsior",60,"2016","Excelsior"
-"194","2016 Financial District/South Beach",7,"2016","Financial District/South Beach"
-"195","2016 Glen Park",13,"2016","Glen Park"
-"196","2016 Golden Gate Park",1,"2016","Golden Gate Park"
-"197","2016 Haight Ashbury",33,"2016","Haight Ashbury"
-"198","2016 Hayes Valley",55,"2016","Hayes Valley"
-"199","2016 Inner Richmond",45,"2016","Inner Richmond"
-"200","2016 Inner Sunset",36,"2016","Inner Sunset"
-"201","2016 Japantown",9,"2016","Japantown"
-"202","2016 Lakeshore",70,"2016","Lakeshore"
-"203","2016 Lone Mountain/USF",26,"2016","Lone Mountain/USF"
-"204","2016 Marina",57,"2016","Marina"
-"205","2016 McLaren Park",1,"2016","McLaren Park"
-"206","2016 Mission",145,"2016","Mission"
-"207","2016 Nob Hill",52,"2016","Nob Hill"
-"208","2016 Noe Valley",33,"2016","Noe Valley"
-"209","2016 North Beach",54,"2016","North Beach"
-"210","2016 Oceanview/Merced/Ingleside",36,"2016","Oceanview/Merced/Ingleside"
-"211","2016 Outer Mission",40,"2016","Outer Mission"
-"212","2016 Outer Richmond",89,"2016","Outer Richmond"
-"213","2016 Pacific Heights",52,"2016","Pacific Heights"
-"214","2016 Portola",27,"2016","Portola"
-"215","2016 Potrero Hill",28,"2016","Potrero Hill"
-"216","2016 Presidio Heights",10,"2016","Presidio Heights"
-"217","2016 Russian Hill",45,"2016","Russian Hill"
-"218","2016 Seacliff",4,"2016","Seacliff"
-"219","2016 South of Market",41,"2016","South of Market"
-"220","2016 Sunset/Parkside",112,"2016","Sunset/Parkside"
-"221","2016 Tenderloin",98,"2016","Tenderloin"
-"222","2016 Twin Peaks",9,"2016","Twin Peaks"
-"223","2016 Visitacion Valley",24,"2016","Visitacion Valley"
-"224","2016 West of Twin Peaks",29,"2016","West of Twin Peaks"
-"225","2016 Western Addition",26,"2016","Western Addition"
-"226","2017 Bayview Hunters Point",58,"2017","Bayview Hunters Point"
-"227","2017 Bernal Heights",36,"2017","Bernal Heights"
-"228","2017 Castro/Upper Market",45,"2017","Castro/Upper Market"
-"229","2017 Chinatown",20,"2017","Chinatown"
-"230","2017 Excelsior",57,"2017","Excelsior"
-"231","2017 Financial District/South Beach",5,"2017","Financial District/South Beach"
-"232","2017 Glen Park",10,"2017","Glen Park"
-"233","2017 Golden Gate Park",4,"2017","Golden Gate Park"
-"234","2017 Haight Ashbury",26,"2017","Haight Ashbury"
-"235","2017 Hayes Valley",34,"2017","Hayes Valley"
-"236","2017 Inner Richmond",45,"2017","Inner Richmond"
-"237","2017 Inner Sunset",33,"2017","Inner Sunset"
-"238","2017 Japantown",2,"2017","Japantown"
-"239","2017 Lakeshore",85,"2017","Lakeshore"
-"240","2017 Lone Mountain/USF",32,"2017","Lone Mountain/USF"
-"241","2017 Marina",38,"2017","Marina"
-"242","2017 Mission",122,"2017","Mission"
-"243","2017 Mission Bay",2,"2017","Mission Bay"
-"244","2017 Nob Hill",43,"2017","Nob Hill"
-"245","2017 Noe Valley",33,"2017","Noe Valley"
-"246","2017 North Beach",23,"2017","North Beach"
-"247","2017 Oceanview/Merced/Ingleside",34,"2017","Oceanview/Merced/Ingleside"
-"248","2017 Outer Mission",40,"2017","Outer Mission"
-"249","2017 Outer Richmond",73,"2017","Outer Richmond"
-"250","2017 Pacific Heights",33,"2017","Pacific Heights"
-"251","2017 Portola",18,"2017","Portola"
-"252","2017 Potrero Hill",14,"2017","Potrero Hill"
-"253","2017 Presidio Heights",19,"2017","Presidio Heights"
-"254","2017 Russian Hill",41,"2017","Russian Hill"
-"255","2017 Seacliff",1,"2017","Seacliff"
-"256","2017 South of Market",36,"2017","South of Market"
-"257","2017 Sunset/Parkside",103,"2017","Sunset/Parkside"
-"258","2017 Tenderloin",54,"2017","Tenderloin"
-"259","2017 Treasure Island",1,"2017","Treasure Island"
-"260","2017 Twin Peaks",8,"2017","Twin Peaks"
-"261","2017 Visitacion Valley",23,"2017","Visitacion Valley"
-"262","2017 West of Twin Peaks",23,"2017","West of Twin Peaks"
-"263","2017 Western Addition",19,"2017","Western Addition"
-"264","2018 Bayview Hunters Point",53,"2018","Bayview Hunters Point"
-"265","2018 Bernal Heights",34,"2018","Bernal Heights"
-"266","2018 Castro/Upper Market",32,"2018","Castro/Upper Market"
-"267","2018 Chinatown",17,"2018","Chinatown"
-"268","2018 Excelsior",42,"2018","Excelsior"
-"269","2018 Financial District/South Beach",6,"2018","Financial District/South Beach"
-"270","2018 Glen Park",6,"2018","Glen Park"
-"271","2018 Golden Gate Park",5,"2018","Golden Gate Park"
-"272","2018 Haight Ashbury",19,"2018","Haight Ashbury"
-"273","2018 Hayes Valley",38,"2018","Hayes Valley"
-"274","2018 Inner Richmond",39,"2018","Inner Richmond"
-"275","2018 Inner Sunset",24,"2018","Inner Sunset"
-"276","2018 Lakeshore",153,"2018","Lakeshore"
-"277","2018 Lone Mountain/USF",17,"2018","Lone Mountain/USF"
-"278","2018 Marina",42,"2018","Marina"
-"279","2018 Mission",116,"2018","Mission"
-"280","2018 Mission Bay",1,"2018","Mission Bay"
-"281","2018 Nob Hill",56,"2018","Nob Hill"
-"282","2018 Noe Valley",24,"2018","Noe Valley"
-"283","2018 North Beach",26,"2018","North Beach"
-"284","2018 Oceanview/Merced/Ingleside",24,"2018","Oceanview/Merced/Ingleside"
-"285","2018 Outer Mission",36,"2018","Outer Mission"
-"286","2018 Outer Richmond",56,"2018","Outer Richmond"
-"287","2018 Pacific Heights",31,"2018","Pacific Heights"
-"288","2018 Portola",13,"2018","Portola"
-"289","2018 Potrero Hill",12,"2018","Potrero Hill"
-"290","2018 Presidio Heights",11,"2018","Presidio Heights"
-"291","2018 Russian Hill",28,"2018","Russian Hill"
-"292","2018 Seacliff",3,"2018","Seacliff"
-"293","2018 South of Market",38,"2018","South of Market"
-"294","2018 Sunset/Parkside",96,"2018","Sunset/Parkside"
-"295","2018 Tenderloin",112,"2018","Tenderloin"
-"296","2018 Twin Peaks",10,"2018","Twin Peaks"
-"297","2018 Visitacion Valley",20,"2018","Visitacion Valley"
-"298","2018 West of Twin Peaks",20,"2018","West of Twin Peaks"
-"299","2018 Western Addition",24,"2018","Western Addition"
+"","X","nhood_month_year","count","year","nhood","centroid_lat","centroid_long"
+"1",1,"2011 Bayview Hunters Point",31,2011,"Bayview Hunters Point",37.730696,-122.388515
+"2",2,"2011 Bernal Heights",37,2011,"Bernal Heights",37.741391,-122.414033
+"3",3,"2011 Castro/Upper Market",35,2011,"Castro/Upper Market",37.758812,-122.435644
+"4",4,"2011 Chinatown",17,2011,"Chinatown",37.795073,-122.40635
+"5",5,"2011 Excelsior",28,2011,"Excelsior",37.7223,-122.431224
+"6",6,"2011 Financial District/South Beach",7,2011,"Financial District/South Beach",37.793213,-122.398187
+"7",7,"2011 Glen Park",13,2011,"Glen Park",37.735976,-122.434464
+"8",8,"2011 Golden Gate Park",8,2011,"Golden Gate Park",37.769283,-122.473486
+"9",9,"2011 Haight Ashbury",31,2011,"Haight Ashbury",37.76991,-122.447678
+"10",10,"2011 Hayes Valley",37,2011,"Hayes Valley",37.776425,-122.426235
+"11",11,"2011 Inner Richmond",17,2011,"Inner Richmond",37.778849,-122.468955
+"12",12,"2011 Inner Sunset",31,2011,"Inner Sunset",37.762068,-122.467189
+"13",13,"2011 Japantown",4,2011,"Japantown",37.78584,-122.429952
+"14",14,"2011 Lakeshore",157,2011,"Lakeshore",37.71872,-122.477916
+"15",15,"2011 Lone Mountain/USF",13,2011,"Lone Mountain/USF",37.777975,-122.452816
+"16",16,"2011 Marina",39,2011,"Marina",37.802877,-122.436969
+"17",17,"2011 Mission",96,2011,"Mission",37.758338,-122.414678
+"18",18,"2011 Mission Bay",5,2011,"Mission Bay",37.770674,-122.392015
+"19",19,"2011 Nob Hill",31,2011,"Nob Hill",37.793044,-122.414461
+"20",20,"2011 Noe Valley",30,2011,"Noe Valley",37.747095,-122.431421
+"21",21,"2011 North Beach",22,2011,"North Beach",37.799254,-122.407458
+"22",22,"2011 Oceanview/Merced/Ingleside",20,2011,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"23",23,"2011 Outer Mission",25,2011,"Outer Mission",37.709585,-122.455082
+"24",24,"2011 Outer Richmond",44,2011,"Outer Richmond",37.776683,-122.489908
+"25",25,"2011 Pacific Heights",29,2011,"Pacific Heights",37.792182,-122.432784
+"26",26,"2011 Portola",10,2011,"Portola",37.72647,-122.407642
+"27",27,"2011 Potrero Hill",23,2011,"Potrero Hill",37.759056,-122.398618
+"28",28,"2011 Presidio Heights",10,2011,"Presidio Heights",37.788849,-122.452228
+"29",29,"2011 Russian Hill",22,2011,"Russian Hill",37.800432,-122.417609
+"30",30,"2011 Seacliff",4,2011,"Seacliff",37.785975,-122.489522
+"31",31,"2011 South of Market",31,2011,"South of Market",37.779527,-122.405727
+"32",32,"2011 Sunset/Parkside",56,2011,"Sunset/Parkside",37.749026,-122.493742
+"33",33,"2011 Tenderloin",49,2011,"Tenderloin",37.784141,-122.414748
+"34",34,"2011 Twin Peaks",14,2011,"Twin Peaks",37.753375,-122.445652
+"35",35,"2011 Visitacion Valley",13,2011,"Visitacion Valley",37.713141,-122.408825
+"36",36,"2011 West of Twin Peaks",17,2011,"West of Twin Peaks",37.737955,-122.460363
+"37",37,"2011 Western Addition",16,2011,"Western Addition",37.780587,-122.43451
+"38",38,"2012 Bayview Hunters Point",45,2012,"Bayview Hunters Point",37.730696,-122.388515
+"39",39,"2012 Bernal Heights",31,2012,"Bernal Heights",37.741391,-122.414033
+"40",40,"2012 Castro/Upper Market",45,2012,"Castro/Upper Market",37.758812,-122.435644
+"41",41,"2012 Chinatown",16,2012,"Chinatown",37.795073,-122.40635
+"42",42,"2012 Excelsior",36,2012,"Excelsior",37.7223,-122.431224
+"43",43,"2012 Financial District/South Beach",16,2012,"Financial District/South Beach",37.793213,-122.398187
+"44",44,"2012 Glen Park",7,2012,"Glen Park",37.735976,-122.434464
+"45",45,"2012 Golden Gate Park",7,2012,"Golden Gate Park",37.769283,-122.473486
+"46",46,"2012 Haight Ashbury",44,2012,"Haight Ashbury",37.76991,-122.447678
+"47",47,"2012 Hayes Valley",32,2012,"Hayes Valley",37.776425,-122.426235
+"48",48,"2012 Inner Richmond",34,2012,"Inner Richmond",37.778849,-122.468955
+"49",49,"2012 Inner Sunset",29,2012,"Inner Sunset",37.762068,-122.467189
+"50",50,"2012 Japantown",4,2012,"Japantown",37.78584,-122.429952
+"51",51,"2012 Lakeshore",9,2012,"Lakeshore",37.71872,-122.477916
+"52",52,"2012 Lincoln Park",1,2012,"Lincoln Park",NA,NA
+"53",53,"2012 Lone Mountain/USF",32,2012,"Lone Mountain/USF",37.777975,-122.452816
+"54",54,"2012 Marina",46,2012,"Marina",37.802877,-122.436969
+"55",55,"2012 Mission",123,2012,"Mission",37.758338,-122.414678
+"56",56,"2012 Mission Bay",3,2012,"Mission Bay",37.770674,-122.392015
+"57",57,"2012 Nob Hill",56,2012,"Nob Hill",37.793044,-122.414461
+"58",58,"2012 Noe Valley",31,2012,"Noe Valley",37.747095,-122.431421
+"59",59,"2012 North Beach",28,2012,"North Beach",37.799254,-122.407458
+"60",60,"2012 Oceanview/Merced/Ingleside",20,2012,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"61",61,"2012 Outer Mission",19,2012,"Outer Mission",37.709585,-122.455082
+"62",62,"2012 Outer Richmond",59,2012,"Outer Richmond",37.776683,-122.489908
+"63",63,"2012 Pacific Heights",39,2012,"Pacific Heights",37.792182,-122.432784
+"64",64,"2012 Portola",21,2012,"Portola",37.72647,-122.407642
+"65",65,"2012 Potrero Hill",28,2012,"Potrero Hill",37.759056,-122.398618
+"66",66,"2012 Presidio Heights",11,2012,"Presidio Heights",37.788849,-122.452228
+"67",67,"2012 Russian Hill",46,2012,"Russian Hill",37.800432,-122.417609
+"68",68,"2012 South of Market",35,2012,"South of Market",37.779527,-122.405727
+"69",69,"2012 Sunset/Parkside",99,2012,"Sunset/Parkside",37.749026,-122.493742
+"70",70,"2012 Tenderloin",66,2012,"Tenderloin",37.784141,-122.414748
+"71",71,"2012 Twin Peaks",12,2012,"Twin Peaks",37.753375,-122.445652
+"72",72,"2012 Visitacion Valley",15,2012,"Visitacion Valley",37.713141,-122.408825
+"73",73,"2012 West of Twin Peaks",25,2012,"West of Twin Peaks",37.737955,-122.460363
+"74",74,"2012 Western Addition",26,2012,"Western Addition",37.780587,-122.43451
+"75",75,"2013 Bayview Hunters Point",43,2013,"Bayview Hunters Point",37.730696,-122.388515
+"76",76,"2013 Bernal Heights",37,2013,"Bernal Heights",37.741391,-122.414033
+"77",77,"2013 Castro/Upper Market",64,2013,"Castro/Upper Market",37.758812,-122.435644
+"78",78,"2013 Chinatown",13,2013,"Chinatown",37.795073,-122.40635
+"79",79,"2013 Excelsior",58,2013,"Excelsior",37.7223,-122.431224
+"80",80,"2013 Financial District/South Beach",14,2013,"Financial District/South Beach",37.793213,-122.398187
+"81",81,"2013 Glen Park",9,2013,"Glen Park",37.735976,-122.434464
+"82",82,"2013 Golden Gate Park",4,2013,"Golden Gate Park",37.769283,-122.473486
+"83",83,"2013 Haight Ashbury",36,2013,"Haight Ashbury",37.76991,-122.447678
+"84",84,"2013 Hayes Valley",28,2013,"Hayes Valley",37.776425,-122.426235
+"85",85,"2013 Inner Richmond",41,2013,"Inner Richmond",37.778849,-122.468955
+"86",86,"2013 Inner Sunset",38,2013,"Inner Sunset",37.762068,-122.467189
+"87",87,"2013 Japantown",2,2013,"Japantown",37.78584,-122.429952
+"88",88,"2013 Lakeshore",86,2013,"Lakeshore",37.71872,-122.477916
+"89",89,"2013 Lone Mountain/USF",32,2013,"Lone Mountain/USF",37.777975,-122.452816
+"90",90,"2013 Marina",56,2013,"Marina",37.802877,-122.436969
+"91",91,"2013 McLaren Park",3,2013,"McLaren Park",37.718407,-122.418904
+"92",92,"2013 Mission",164,2013,"Mission",37.758338,-122.414678
+"93",93,"2013 Nob Hill",56,2013,"Nob Hill",37.793044,-122.414461
+"94",94,"2013 Noe Valley",29,2013,"Noe Valley",37.747095,-122.431421
+"95",95,"2013 North Beach",58,2013,"North Beach",37.799254,-122.407458
+"96",96,"2013 Oceanview/Merced/Ingleside",36,2013,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"97",97,"2013 Outer Mission",20,2013,"Outer Mission",37.709585,-122.455082
+"98",98,"2013 Outer Richmond",73,2013,"Outer Richmond",37.776683,-122.489908
+"99",99,"2013 Pacific Heights",48,2013,"Pacific Heights",37.792182,-122.432784
+"100",100,"2013 Portola",8,2013,"Portola",37.72647,-122.407642
+"101",101,"2013 Potrero Hill",18,2013,"Potrero Hill",37.759056,-122.398618
+"102",102,"2013 Presidio",1,2013,"Presidio",37.788849,-122.452228
+"103",103,"2013 Presidio Heights",14,2013,"Presidio Heights",37.788849,-122.452228
+"104",104,"2013 Russian Hill",29,2013,"Russian Hill",37.800432,-122.417609
+"105",105,"2013 South of Market",51,2013,"South of Market",37.779527,-122.405727
+"106",106,"2013 Sunset/Parkside",99,2013,"Sunset/Parkside",37.749026,-122.493742
+"107",107,"2013 Tenderloin",88,2013,"Tenderloin",37.784141,-122.414748
+"108",108,"2013 Twin Peaks",15,2013,"Twin Peaks",37.753375,-122.445652
+"109",109,"2013 Visitacion Valley",13,2013,"Visitacion Valley",37.713141,-122.408825
+"110",110,"2013 West of Twin Peaks",39,2013,"West of Twin Peaks",37.737955,-122.460363
+"111",111,"2013 Western Addition",31,2013,"Western Addition",37.780587,-122.43451
+"112",112,"2014 Bayview Hunters Point",55,2014,"Bayview Hunters Point",37.730696,-122.388515
+"113",113,"2014 Bernal Heights",43,2014,"Bernal Heights",37.741391,-122.414033
+"114",114,"2014 Castro/Upper Market",76,2014,"Castro/Upper Market",37.758812,-122.435644
+"115",115,"2014 Chinatown",21,2014,"Chinatown",37.795073,-122.40635
+"116",116,"2014 Excelsior",65,2014,"Excelsior",37.7223,-122.431224
+"117",117,"2014 Financial District/South Beach",5,2014,"Financial District/South Beach",37.793213,-122.398187
+"118",118,"2014 Glen Park",10,2014,"Glen Park",37.735976,-122.434464
+"119",119,"2014 Golden Gate Park",12,2014,"Golden Gate Park",37.769283,-122.473486
+"120",120,"2014 Haight Ashbury",36,2014,"Haight Ashbury",37.76991,-122.447678
+"121",121,"2014 Hayes Valley",55,2014,"Hayes Valley",37.776425,-122.426235
+"122",122,"2014 Inner Richmond",42,2014,"Inner Richmond",37.778849,-122.468955
+"123",123,"2014 Inner Sunset",31,2014,"Inner Sunset",37.762068,-122.467189
+"124",124,"2014 Japantown",8,2014,"Japantown",37.78584,-122.429952
+"125",125,"2014 Lakeshore",77,2014,"Lakeshore",37.71872,-122.477916
+"126",126,"2014 Lincoln Park",1,2014,"Lincoln Park",NA,NA
+"127",127,"2014 Lone Mountain/USF",27,2014,"Lone Mountain/USF",37.777975,-122.452816
+"128",128,"2014 Marina",59,2014,"Marina",37.802877,-122.436969
+"129",129,"2014 Mission",149,2014,"Mission",37.758338,-122.414678
+"130",130,"2014 Mission Bay",1,2014,"Mission Bay",37.770674,-122.392015
+"131",131,"2014 Nob Hill",79,2014,"Nob Hill",37.793044,-122.414461
+"132",132,"2014 Noe Valley",47,2014,"Noe Valley",37.747095,-122.431421
+"133",133,"2014 North Beach",45,2014,"North Beach",37.799254,-122.407458
+"134",134,"2014 Oceanview/Merced/Ingleside",38,2014,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"135",135,"2014 Outer Mission",34,2014,"Outer Mission",37.709585,-122.455082
+"136",136,"2014 Outer Richmond",91,2014,"Outer Richmond",37.776683,-122.489908
+"137",137,"2014 Pacific Heights",64,2014,"Pacific Heights",37.792182,-122.432784
+"138",138,"2014 Portola",29,2014,"Portola",37.72647,-122.407642
+"139",139,"2014 Potrero Hill",32,2014,"Potrero Hill",37.759056,-122.398618
+"140",140,"2014 Presidio",2,2014,"Presidio",37.788849,-122.452228
+"141",141,"2014 Presidio Heights",15,2014,"Presidio Heights",37.788849,-122.452228
+"142",142,"2014 Russian Hill",52,2014,"Russian Hill",37.800432,-122.417609
+"143",143,"2014 Seacliff",4,2014,"Seacliff",37.785975,-122.489522
+"144",144,"2014 South of Market",58,2014,"South of Market",37.779527,-122.405727
+"145",145,"2014 Sunset/Parkside",111,2014,"Sunset/Parkside",37.749026,-122.493742
+"146",146,"2014 Tenderloin",99,2014,"Tenderloin",37.784141,-122.414748
+"147",147,"2014 Twin Peaks",9,2014,"Twin Peaks",37.753375,-122.445652
+"148",148,"2014 Visitacion Valley",22,2014,"Visitacion Valley",37.713141,-122.408825
+"149",149,"2014 West of Twin Peaks",27,2014,"West of Twin Peaks",37.737955,-122.460363
+"150",150,"2014 Western Addition",40,2014,"Western Addition",37.780587,-122.43451
+"151",151,"2015 Bayview Hunters Point",69,2015,"Bayview Hunters Point",37.730696,-122.388515
+"152",152,"2015 Bernal Heights",60,2015,"Bernal Heights",37.741391,-122.414033
+"153",153,"2015 Castro/Upper Market",64,2015,"Castro/Upper Market",37.758812,-122.435644
+"154",154,"2015 Chinatown",25,2015,"Chinatown",37.795073,-122.40635
+"155",155,"2015 Excelsior",80,2015,"Excelsior",37.7223,-122.431224
+"156",156,"2015 Financial District/South Beach",7,2015,"Financial District/South Beach",37.793213,-122.398187
+"157",157,"2015 Glen Park",3,2015,"Glen Park",37.735976,-122.434464
+"158",158,"2015 Golden Gate Park",5,2015,"Golden Gate Park",37.769283,-122.473486
+"159",159,"2015 Haight Ashbury",47,2015,"Haight Ashbury",37.76991,-122.447678
+"160",160,"2015 Hayes Valley",57,2015,"Hayes Valley",37.776425,-122.426235
+"161",161,"2015 Inner Richmond",40,2015,"Inner Richmond",37.778849,-122.468955
+"162",162,"2015 Inner Sunset",41,2015,"Inner Sunset",37.762068,-122.467189
+"163",163,"2015 Japantown",6,2015,"Japantown",37.78584,-122.429952
+"164",164,"2015 Lakeshore",70,2015,"Lakeshore",37.71872,-122.477916
+"165",165,"2015 Lone Mountain/USF",39,2015,"Lone Mountain/USF",37.777975,-122.452816
+"166",166,"2015 Marina",64,2015,"Marina",37.802877,-122.436969
+"167",167,"2015 McLaren Park",2,2015,"McLaren Park",37.718407,-122.418904
+"168",168,"2015 Mission",151,2015,"Mission",37.758338,-122.414678
+"169",169,"2015 Mission Bay",1,2015,"Mission Bay",37.770674,-122.392015
+"170",170,"2015 Nob Hill",56,2015,"Nob Hill",37.793044,-122.414461
+"171",171,"2015 Noe Valley",42,2015,"Noe Valley",37.747095,-122.431421
+"172",172,"2015 North Beach",47,2015,"North Beach",37.799254,-122.407458
+"173",173,"2015 Oceanview/Merced/Ingleside",43,2015,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"174",174,"2015 Outer Mission",47,2015,"Outer Mission",37.709585,-122.455082
+"175",175,"2015 Outer Richmond",106,2015,"Outer Richmond",37.776683,-122.489908
+"176",176,"2015 Pacific Heights",53,2015,"Pacific Heights",37.792182,-122.432784
+"177",177,"2015 Portola",31,2015,"Portola",37.72647,-122.407642
+"178",178,"2015 Potrero Hill",31,2015,"Potrero Hill",37.759056,-122.398618
+"179",179,"2015 Presidio Heights",14,2015,"Presidio Heights",37.788849,-122.452228
+"180",180,"2015 Russian Hill",50,2015,"Russian Hill",37.800432,-122.417609
+"181",181,"2015 Seacliff",3,2015,"Seacliff",37.785975,-122.489522
+"182",182,"2015 South of Market",36,2015,"South of Market",37.779527,-122.405727
+"183",183,"2015 Sunset/Parkside",146,2015,"Sunset/Parkside",37.749026,-122.493742
+"184",184,"2015 Tenderloin",143,2015,"Tenderloin",37.784141,-122.414748
+"185",185,"2015 Twin Peaks",17,2015,"Twin Peaks",37.753375,-122.445652
+"186",186,"2015 Visitacion Valley",24,2015,"Visitacion Valley",37.713141,-122.408825
+"187",187,"2015 West of Twin Peaks",41,2015,"West of Twin Peaks",37.737955,-122.460363
+"188",188,"2015 Western Addition",37,2015,"Western Addition",37.780587,-122.43451
+"189",189,"2016 Bayview Hunters Point",70,2016,"Bayview Hunters Point",37.730696,-122.388515
+"190",190,"2016 Bernal Heights",40,2016,"Bernal Heights",37.741391,-122.414033
+"191",191,"2016 Castro/Upper Market",43,2016,"Castro/Upper Market",37.758812,-122.435644
+"192",192,"2016 Chinatown",18,2016,"Chinatown",37.795073,-122.40635
+"193",193,"2016 Excelsior",60,2016,"Excelsior",37.7223,-122.431224
+"194",194,"2016 Financial District/South Beach",7,2016,"Financial District/South Beach",37.793213,-122.398187
+"195",195,"2016 Glen Park",13,2016,"Glen Park",37.735976,-122.434464
+"196",196,"2016 Golden Gate Park",1,2016,"Golden Gate Park",37.769283,-122.473486
+"197",197,"2016 Haight Ashbury",33,2016,"Haight Ashbury",37.76991,-122.447678
+"198",198,"2016 Hayes Valley",55,2016,"Hayes Valley",37.776425,-122.426235
+"199",199,"2016 Inner Richmond",45,2016,"Inner Richmond",37.778849,-122.468955
+"200",200,"2016 Inner Sunset",36,2016,"Inner Sunset",37.762068,-122.467189
+"201",201,"2016 Japantown",9,2016,"Japantown",37.78584,-122.429952
+"202",202,"2016 Lakeshore",70,2016,"Lakeshore",37.71872,-122.477916
+"203",203,"2016 Lone Mountain/USF",26,2016,"Lone Mountain/USF",37.777975,-122.452816
+"204",204,"2016 Marina",57,2016,"Marina",37.802877,-122.436969
+"205",205,"2016 McLaren Park",1,2016,"McLaren Park",37.718407,-122.418904
+"206",206,"2016 Mission",145,2016,"Mission",37.758338,-122.414678
+"207",207,"2016 Nob Hill",52,2016,"Nob Hill",37.793044,-122.414461
+"208",208,"2016 Noe Valley",33,2016,"Noe Valley",37.747095,-122.431421
+"209",209,"2016 North Beach",54,2016,"North Beach",37.799254,-122.407458
+"210",210,"2016 Oceanview/Merced/Ingleside",36,2016,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"211",211,"2016 Outer Mission",40,2016,"Outer Mission",37.709585,-122.455082
+"212",212,"2016 Outer Richmond",89,2016,"Outer Richmond",37.776683,-122.489908
+"213",213,"2016 Pacific Heights",52,2016,"Pacific Heights",37.792182,-122.432784
+"214",214,"2016 Portola",27,2016,"Portola",37.72647,-122.407642
+"215",215,"2016 Potrero Hill",28,2016,"Potrero Hill",37.759056,-122.398618
+"216",216,"2016 Presidio Heights",10,2016,"Presidio Heights",37.788849,-122.452228
+"217",217,"2016 Russian Hill",45,2016,"Russian Hill",37.800432,-122.417609
+"218",218,"2016 Seacliff",4,2016,"Seacliff",37.785975,-122.489522
+"219",219,"2016 South of Market",41,2016,"South of Market",37.779527,-122.405727
+"220",220,"2016 Sunset/Parkside",112,2016,"Sunset/Parkside",37.749026,-122.493742
+"221",221,"2016 Tenderloin",98,2016,"Tenderloin",37.784141,-122.414748
+"222",222,"2016 Twin Peaks",9,2016,"Twin Peaks",37.753375,-122.445652
+"223",223,"2016 Visitacion Valley",24,2016,"Visitacion Valley",37.713141,-122.408825
+"224",224,"2016 West of Twin Peaks",29,2016,"West of Twin Peaks",37.737955,-122.460363
+"225",225,"2016 Western Addition",26,2016,"Western Addition",37.780587,-122.43451
+"226",226,"2017 Bayview Hunters Point",58,2017,"Bayview Hunters Point",37.730696,-122.388515
+"227",227,"2017 Bernal Heights",36,2017,"Bernal Heights",37.741391,-122.414033
+"228",228,"2017 Castro/Upper Market",45,2017,"Castro/Upper Market",37.758812,-122.435644
+"229",229,"2017 Chinatown",20,2017,"Chinatown",37.795073,-122.40635
+"230",230,"2017 Excelsior",57,2017,"Excelsior",37.7223,-122.431224
+"231",231,"2017 Financial District/South Beach",5,2017,"Financial District/South Beach",37.793213,-122.398187
+"232",232,"2017 Glen Park",10,2017,"Glen Park",37.735976,-122.434464
+"233",233,"2017 Golden Gate Park",4,2017,"Golden Gate Park",37.769283,-122.473486
+"234",234,"2017 Haight Ashbury",26,2017,"Haight Ashbury",37.76991,-122.447678
+"235",235,"2017 Hayes Valley",34,2017,"Hayes Valley",37.776425,-122.426235
+"236",236,"2017 Inner Richmond",45,2017,"Inner Richmond",37.778849,-122.468955
+"237",237,"2017 Inner Sunset",33,2017,"Inner Sunset",37.762068,-122.467189
+"238",238,"2017 Japantown",2,2017,"Japantown",37.78584,-122.429952
+"239",239,"2017 Lakeshore",85,2017,"Lakeshore",37.71872,-122.477916
+"240",240,"2017 Lone Mountain/USF",32,2017,"Lone Mountain/USF",37.777975,-122.452816
+"241",241,"2017 Marina",38,2017,"Marina",37.802877,-122.436969
+"242",242,"2017 Mission",122,2017,"Mission",37.758338,-122.414678
+"243",243,"2017 Mission Bay",2,2017,"Mission Bay",37.770674,-122.392015
+"244",244,"2017 Nob Hill",43,2017,"Nob Hill",37.793044,-122.414461
+"245",245,"2017 Noe Valley",33,2017,"Noe Valley",37.747095,-122.431421
+"246",246,"2017 North Beach",23,2017,"North Beach",37.799254,-122.407458
+"247",247,"2017 Oceanview/Merced/Ingleside",34,2017,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"248",248,"2017 Outer Mission",40,2017,"Outer Mission",37.709585,-122.455082
+"249",249,"2017 Outer Richmond",73,2017,"Outer Richmond",37.776683,-122.489908
+"250",250,"2017 Pacific Heights",33,2017,"Pacific Heights",37.792182,-122.432784
+"251",251,"2017 Portola",18,2017,"Portola",37.72647,-122.407642
+"252",252,"2017 Potrero Hill",14,2017,"Potrero Hill",37.759056,-122.398618
+"253",253,"2017 Presidio Heights",19,2017,"Presidio Heights",37.788849,-122.452228
+"254",254,"2017 Russian Hill",41,2017,"Russian Hill",37.800432,-122.417609
+"255",255,"2017 Seacliff",1,2017,"Seacliff",37.785975,-122.489522
+"256",256,"2017 South of Market",36,2017,"South of Market",37.779527,-122.405727
+"257",257,"2017 Sunset/Parkside",103,2017,"Sunset/Parkside",37.749026,-122.493742
+"258",258,"2017 Tenderloin",54,2017,"Tenderloin",37.784141,-122.414748
+"259",259,"2017 Treasure Island",1,2017,"Treasure Island",NA,NA
+"260",260,"2017 Twin Peaks",8,2017,"Twin Peaks",37.753375,-122.445652
+"261",261,"2017 Visitacion Valley",23,2017,"Visitacion Valley",37.713141,-122.408825
+"262",262,"2017 West of Twin Peaks",23,2017,"West of Twin Peaks",37.737955,-122.460363
+"263",263,"2017 Western Addition",19,2017,"Western Addition",37.780587,-122.43451
+"264",264,"2018 Bayview Hunters Point",53,2018,"Bayview Hunters Point",37.730696,-122.388515
+"265",265,"2018 Bernal Heights",34,2018,"Bernal Heights",37.741391,-122.414033
+"266",266,"2018 Castro/Upper Market",32,2018,"Castro/Upper Market",37.758812,-122.435644
+"267",267,"2018 Chinatown",17,2018,"Chinatown",37.795073,-122.40635
+"268",268,"2018 Excelsior",42,2018,"Excelsior",37.7223,-122.431224
+"269",269,"2018 Financial District/South Beach",6,2018,"Financial District/South Beach",37.793213,-122.398187
+"270",270,"2018 Glen Park",6,2018,"Glen Park",37.735976,-122.434464
+"271",271,"2018 Golden Gate Park",5,2018,"Golden Gate Park",37.769283,-122.473486
+"272",272,"2018 Haight Ashbury",19,2018,"Haight Ashbury",37.76991,-122.447678
+"273",273,"2018 Hayes Valley",38,2018,"Hayes Valley",37.776425,-122.426235
+"274",274,"2018 Inner Richmond",39,2018,"Inner Richmond",37.778849,-122.468955
+"275",275,"2018 Inner Sunset",24,2018,"Inner Sunset",37.762068,-122.467189
+"276",276,"2018 Lakeshore",153,2018,"Lakeshore",37.71872,-122.477916
+"277",277,"2018 Lone Mountain/USF",17,2018,"Lone Mountain/USF",37.777975,-122.452816
+"278",278,"2018 Marina",42,2018,"Marina",37.802877,-122.436969
+"279",279,"2018 Mission",116,2018,"Mission",37.758338,-122.414678
+"280",280,"2018 Mission Bay",1,2018,"Mission Bay",37.770674,-122.392015
+"281",281,"2018 Nob Hill",56,2018,"Nob Hill",37.793044,-122.414461
+"282",282,"2018 Noe Valley",24,2018,"Noe Valley",37.747095,-122.431421
+"283",283,"2018 North Beach",26,2018,"North Beach",37.799254,-122.407458
+"284",284,"2018 Oceanview/Merced/Ingleside",24,2018,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"285",285,"2018 Outer Mission",36,2018,"Outer Mission",37.709585,-122.455082
+"286",286,"2018 Outer Richmond",56,2018,"Outer Richmond",37.776683,-122.489908
+"287",287,"2018 Pacific Heights",31,2018,"Pacific Heights",37.792182,-122.432784
+"288",288,"2018 Portola",13,2018,"Portola",37.72647,-122.407642
+"289",289,"2018 Potrero Hill",12,2018,"Potrero Hill",37.759056,-122.398618
+"290",290,"2018 Presidio Heights",11,2018,"Presidio Heights",37.788849,-122.452228
+"291",291,"2018 Russian Hill",28,2018,"Russian Hill",37.800432,-122.417609
+"292",292,"2018 Seacliff",3,2018,"Seacliff",37.785975,-122.489522
+"293",293,"2018 South of Market",38,2018,"South of Market",37.779527,-122.405727
+"294",294,"2018 Sunset/Parkside",96,2018,"Sunset/Parkside",37.749026,-122.493742
+"295",295,"2018 Tenderloin",112,2018,"Tenderloin",37.784141,-122.414748
+"296",296,"2018 Twin Peaks",10,2018,"Twin Peaks",37.753375,-122.445652
+"297",297,"2018 Visitacion Valley",20,2018,"Visitacion Valley",37.713141,-122.408825
+"298",298,"2018 West of Twin Peaks",20,2018,"West of Twin Peaks",37.737955,-122.460363
+"299",299,"2018 Western Addition",24,2018,"Western Addition",37.780587,-122.43451
