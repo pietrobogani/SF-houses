@@ -1,261 +1,261 @@
-"","year_nhood","buyout_amount","count","avg_buyout","year","nhood"
-"1","2015 Bayview Hunters Point",14906.13,2,7453.065,"2015","Bayview Hunters Point"
-"2","2015 Bernal Heights",272358,7,38908.2857142857,"2015","Bernal Heights"
-"3","2015 Castro/Upper Market",686198.86,17,40364.6388235294,"2015","Castro/Upper Market"
-"4","2015 Chinatown",75000,3,25000,"2015","Chinatown"
-"5","2015 Excelsior",171750,8,21468.75,"2015","Excelsior"
-"6","2015 Glen Park",176118.79,4,44029.6975,"2015","Glen Park"
-"7","2015 Haight Ashbury",341673.85,8,42709.23125,"2015","Haight Ashbury"
-"8","2015 Hayes Valley",82000,5,16400,"2015","Hayes Valley"
-"9","2015 Inner Richmond",143375.5,4,35843.875,"2015","Inner Richmond"
-"10","2015 Inner Sunset",162780,6,27130,"2015","Inner Sunset"
-"11","2015 Japantown",23500,1,23500,"2015","Japantown"
-"12","2015 Lone Mountain/USF",32000,4,8000,"2015","Lone Mountain/USF"
-"13","2015 Marina",646748.59,10,64674.859,"2015","Marina"
-"14","2015 Mission",1484337.11,27,54975.4485185185,"2015","Mission"
-"15","2015 Nob Hill",157300,7,22471.4285714286,"2015","Nob Hill"
-"16","2015 Noe Valley",442900,9,49211.1111111111,"2015","Noe Valley"
-"17","2015 North Beach",102422,3,34140.6666666667,"2015","North Beach"
-"18","2015 Oceanview/Merced/Ingleside",59000,2,29500,"2015","Oceanview/Merced/Ingleside"
-"19","2015 Outer Mission",140000,3,46666.6666666667,"2015","Outer Mission"
-"20","2015 Outer Richmond",299958,10,29995.8,"2015","Outer Richmond"
-"21","2015 Pacific Heights",NA,12,NA,"2015","Pacific Heights"
-"22","2015 Portola",30000,1,30000,"2015","Portola"
-"23","2015 Potrero Hill",28000,1,28000,"2015","Potrero Hill"
-"24","2015 Presidio Heights",25874,1,25874,"2015","Presidio Heights"
-"25","2015 Russian Hill",40354,2,20177,"2015","Russian Hill"
-"26","2015 Seacliff",98068.8,2,49034.4,"2015","Seacliff"
-"27","2015 Sunset/Parkside",574854,17,33814.9411764706,"2015","Sunset/Parkside"
-"28","2015 Tenderloin",25000,1,25000,"2015","Tenderloin"
-"29","2015 Twin Peaks",10000,1,10000,"2015","Twin Peaks"
-"30","2015 Visitacion Valley",87611,4,21902.75,"2015","Visitacion Valley"
-"31","2015 West of Twin Peaks",30102,3,10034,"2015","West of Twin Peaks"
-"32","2015 Western Addition",240336,7,34333.7142857143,"2015","Western Addition"
-"33","2016 Bayview Hunters Point",201455,6,33575.8333333333,"2016","Bayview Hunters Point"
-"34","2016 Bernal Heights",NA,14,NA,"2016","Bernal Heights"
-"35","2016 Castro/Upper Market",516308,9,57367.5555555556,"2016","Castro/Upper Market"
-"36","2016 Chinatown",28000,1,28000,"2016","Chinatown"
-"37","2016 Excelsior",210546.77,10,21054.677,"2016","Excelsior"
-"38","2016 Haight Ashbury",686321.07,16,42895.066875,"2016","Haight Ashbury"
-"39","2016 Hayes Valley",534240.29,17,31425.8994117647,"2016","Hayes Valley"
-"40","2016 Inner Richmond",428989.1,8,53623.6375,"2016","Inner Richmond"
-"41","2016 Inner Sunset",319780,6,53296.6666666667,"2016","Inner Sunset"
-"42","2016 Lone Mountain/USF",528970,10,52897,"2016","Lone Mountain/USF"
-"43","2016 Marina",549100,15,36606.6666666667,"2016","Marina"
-"44","2016 Mission",NA,36,NA,"2016","Mission"
-"45","2016 Nob Hill",NA,11,NA,"2016","Nob Hill"
-"46","2016 Noe Valley",716814.7,15,47787.6466666667,"2016","Noe Valley"
-"47","2016 North Beach",259388.76,8,32423.595,"2016","North Beach"
-"48","2016 Oceanview/Merced/Ingleside",66050,4,16512.5,"2016","Oceanview/Merced/Ingleside"
-"49","2016 Outer Mission",88650,5,17730,"2016","Outer Mission"
-"50","2016 Outer Richmond",605327,15,40355.1333333333,"2016","Outer Richmond"
-"51","2016 Pacific Heights",630327.06,17,37078.0623529412,"2016","Pacific Heights"
-"52","2016 Portola",189640,3,63213.3333333333,"2016","Portola"
-"53","2016 Potrero Hill",311134,10,31113.4,"2016","Potrero Hill"
-"54","2016 Presidio Heights",232165.92,5,46433.184,"2016","Presidio Heights"
-"55","2016 Russian Hill",292500,9,32500,"2016","Russian Hill"
-"56","2016 South of Market",240200,9,26688.8888888889,"2016","South of Market"
-"57","2016 Sunset/Parkside",867783.48,28,30992.2671428571,"2016","Sunset/Parkside"
-"58","2016 Tenderloin",7000,1,7000,"2016","Tenderloin"
-"59","2016 Twin Peaks",153283.42,3,51094.4733333333,"2016","Twin Peaks"
-"60","2016 Visitacion Valley",195997.5,7,27999.6428571429,"2016","Visitacion Valley"
-"61","2016 West of Twin Peaks",124200,6,20700,"2016","West of Twin Peaks"
-"62","2016 Western Addition",297859,10,29785.9,"2016","Western Addition"
-"63","2017 Bayview Hunters Point",NA,10,NA,"2017","Bayview Hunters Point"
-"64","2017 Bernal Heights",NA,12,NA,"2017","Bernal Heights"
-"65","2017 Castro/Upper Market",1079591.08,23,46938.7426086957,"2017","Castro/Upper Market"
-"66","2017 Chinatown",305000,2,152500,"2017","Chinatown"
-"67","2017 Excelsior",564639.41,20,28231.9705,"2017","Excelsior"
-"68","2017 Glen Park",107258.96,4,26814.74,"2017","Glen Park"
-"69","2017 Haight Ashbury",445384.06,14,31813.1471428571,"2017","Haight Ashbury"
-"70","2017 Hayes Valley",864367.6,16,54022.975,"2017","Hayes Valley"
-"71","2017 Inner Richmond",325687.06,12,27140.5883333333,"2017","Inner Richmond"
-"72","2017 Inner Sunset",233096,9,25899.5555555556,"2017","Inner Sunset"
-"73","2017 Japantown",105203.48,3,35067.8266666667,"2017","Japantown"
-"74","2017 Lone Mountain/USF",499692.57,7,71384.6528571429,"2017","Lone Mountain/USF"
-"75","2017 Marina",650898.81,12,54241.5675,"2017","Marina"
-"76","2017 McLaren Park",6800,1,6800,"2017","McLaren Park"
-"77","2017 Mission",1854229.46,28,66222.4807142857,"2017","Mission"
-"78","2017 Nob Hill",173719,5,34743.8,"2017","Nob Hill"
-"79","2017 Noe Valley",1252414.15,20,62620.7075,"2017","Noe Valley"
-"80","2017 North Beach",222901.95,5,44580.39,"2017","North Beach"
-"81","2017 Oceanview/Merced/Ingleside",329176,9,36575.1111111111,"2017","Oceanview/Merced/Ingleside"
-"82","2017 Outer Mission",76200,4,19050,"2017","Outer Mission"
-"83","2017 Outer Richmond",1067862.67,23,46428.8117391304,"2017","Outer Richmond"
-"84","2017 Pacific Heights",481233.37,17,28307.8452941176,"2017","Pacific Heights"
-"85","2017 Potrero Hill",293739,7,41962.7142857143,"2017","Potrero Hill"
-"86","2017 Presidio",34000,1,34000,"2017","Presidio"
-"87","2017 Presidio Heights",95000,3,31666.6666666667,"2017","Presidio Heights"
-"88","2017 Russian Hill",597314.08,9,66368.2311111111,"2017","Russian Hill"
-"89","2017 South of Market",25475,2,12737.5,"2017","South of Market"
-"90","2017 Sunset/Parkside",NA,26,NA,"2017","Sunset/Parkside"
-"91","2017 Tenderloin",91000,3,30333.3333333333,"2017","Tenderloin"
-"92","2017 Twin Peaks",83500,2,41750,"2017","Twin Peaks"
-"93","2017 Visitacion Valley",29050,1,29050,"2017","Visitacion Valley"
-"94","2017 West of Twin Peaks",NA,11,NA,"2017","West of Twin Peaks"
-"95","2017 Western Addition",234846.21,6,39141.035,"2017","Western Addition"
-"96","2018 Bayview Hunters Point",209358,9,23262,"2018","Bayview Hunters Point"
-"97","2018 Bernal Heights",243799,10,24379.9,"2018","Bernal Heights"
-"98","2018 Castro/Upper Market",1168174.5,20,58408.725,"2018","Castro/Upper Market"
-"99","2018 Chinatown",116963.48,5,23392.696,"2018","Chinatown"
-"100","2018 Excelsior",181068.5,9,20118.7222222222,"2018","Excelsior"
-"101","2018 Financial District/South Beach",138000,1,138000,"2018","Financial District/South Beach"
-"102","2018 Glen Park",236500,5,47300,"2018","Glen Park"
-"103","2018 Haight Ashbury",659229.7,16,41201.85625,"2018","Haight Ashbury"
-"104","2018 Hayes Valley",368709.76,8,46088.72,"2018","Hayes Valley"
-"105","2018 Inner Richmond",555824.79,12,46318.7325,"2018","Inner Richmond"
-"106","2018 Inner Sunset",750899.58,19,39521.0305263158,"2018","Inner Sunset"
-"107","2018 Lakeshore",14200,1,14200,"2018","Lakeshore"
-"108","2018 Lincoln Park",29800,1,29800,"2018","Lincoln Park"
-"109","2018 Lone Mountain/USF",524456.59,8,65557.07375,"2018","Lone Mountain/USF"
-"110","2018 Marina",656289.71,14,46877.8364285714,"2018","Marina"
-"111","2018 McLaren Park",35000,1,35000,"2018","McLaren Park"
-"112","2018 Mission",2156778.15,46,46886.4815217391,"2018","Mission"
-"113","2018 Nob Hill",NA,11,NA,"2018","Nob Hill"
-"114","2018 Noe Valley",729449.01,14,52103.5007142857,"2018","Noe Valley"
-"115","2018 North Beach",168000,3,56000,"2018","North Beach"
-"116","2018 Oceanview/Merced/Ingleside",142400,6,23733.3333333333,"2018","Oceanview/Merced/Ingleside"
-"117","2018 Outer Mission",473330.22,13,36410.0169230769,"2018","Outer Mission"
-"118","2018 Outer Richmond",891745.9,20,44587.295,"2018","Outer Richmond"
-"119","2018 Pacific Heights",671070.83,13,51620.8330769231,"2018","Pacific Heights"
-"120","2018 Portola",169455.89,5,33891.178,"2018","Portola"
-"121","2018 Potrero Hill",NA,12,NA,"2018","Potrero Hill"
-"122","2018 Presidio Heights",244300,8,30537.5,"2018","Presidio Heights"
-"123","2018 Russian Hill",591720.38,12,49310.0316666667,"2018","Russian Hill"
-"124","2018 South of Market",115000,2,57500,"2018","South of Market"
-"125","2018 Sunset/Parkside",693342,22,31515.5454545455,"2018","Sunset/Parkside"
-"126","2018 Tenderloin",465750,5,93150,"2018","Tenderloin"
-"127","2018 Twin Peaks",90000,3,30000,"2018","Twin Peaks"
-"128","2018 Visitacion Valley",75000,4,18750,"2018","Visitacion Valley"
-"129","2018 West of Twin Peaks",NA,14,NA,"2018","West of Twin Peaks"
-"130","2018 Western Addition",214672,5,42934.4,"2018","Western Addition"
-"131","2019 Bayview Hunters Point",125000,4,31250,"2019","Bayview Hunters Point"
-"132","2019 Bernal Heights",559188.08,11,50835.28,"2019","Bernal Heights"
-"133","2019 Castro/Upper Market",NA,18,NA,"2019","Castro/Upper Market"
-"134","2019 Chinatown",23268,1,23268,"2019","Chinatown"
-"135","2019 Excelsior",210124,10,21012.4,"2019","Excelsior"
-"136","2019 Glen Park",82200,2,41100,"2019","Glen Park"
-"137","2019 Haight Ashbury",734773.21,12,61231.1008333333,"2019","Haight Ashbury"
-"138","2019 Hayes Valley",904643.58,20,45232.179,"2019","Hayes Valley"
-"139","2019 Inner Richmond",388378.68,12,32364.89,"2019","Inner Richmond"
-"140","2019 Inner Sunset",447962.14,11,40723.8309090909,"2019","Inner Sunset"
-"141","2019 Lakeshore",NA,2,NA,"2019","Lakeshore"
-"142","2019 Lone Mountain/USF",NA,5,NA,"2019","Lone Mountain/USF"
-"143","2019 Marina",444295.99,12,37024.6658333333,"2019","Marina"
-"144","2019 Mission",NA,41,NA,"2019","Mission"
-"145","2019 Nob Hill",403394.86,9,44821.6511111111,"2019","Nob Hill"
-"146","2019 Noe Valley",1080640,14,77188.5714285714,"2019","Noe Valley"
-"147","2019 North Beach",836884.96,10,83688.496,"2019","North Beach"
-"148","2019 Oceanview/Merced/Ingleside",126900,5,25380,"2019","Oceanview/Merced/Ingleside"
-"149","2019 Outer Mission",296438.32,8,37054.79,"2019","Outer Mission"
-"150","2019 Outer Richmond",NA,18,NA,"2019","Outer Richmond"
-"151","2019 Pacific Heights",NA,19,NA,"2019","Pacific Heights"
-"152","2019 Portola",311062,12,25921.8333333333,"2019","Portola"
-"153","2019 Potrero Hill",24627,2,12313.5,"2019","Potrero Hill"
-"154","2019 Presidio Heights",930206.34,15,62013.756,"2019","Presidio Heights"
-"155","2019 Russian Hill",1180453,19,62129.1052631579,"2019","Russian Hill"
-"156","2019 Seacliff",22500,2,11250,"2019","Seacliff"
-"157","2019 South of Market",120353.11,3,40117.7033333333,"2019","South of Market"
-"158","2019 Sunset/Parkside",1530860.2,34,45025.3,"2019","Sunset/Parkside"
-"159","2019 Tenderloin",50534,3,16844.6666666667,"2019","Tenderloin"
-"160","2019 Twin Peaks",150500,3,50166.6666666667,"2019","Twin Peaks"
-"161","2019 Visitacion Valley",14000,1,14000,"2019","Visitacion Valley"
-"162","2019 West of Twin Peaks",423457.5,18,23525.4166666667,"2019","West of Twin Peaks"
-"163","2019 Western Addition",242168.39,8,30271.04875,"2019","Western Addition"
-"164","2020 Bayview Hunters Point",NA,7,NA,"2020","Bayview Hunters Point"
-"165","2020 Bernal Heights",NA,14,NA,"2020","Bernal Heights"
-"166","2020 Castro/Upper Market",NA,21,NA,"2020","Castro/Upper Market"
-"167","2020 Chinatown",121525,4,30381.25,"2020","Chinatown"
-"168","2020 Excelsior",140130,5,28026,"2020","Excelsior"
-"169","2020 Financial District/South Beach",49850,3,16616.6666666667,"2020","Financial District/South Beach"
-"170","2020 Glen Park",146914.6,4,36728.65,"2020","Glen Park"
-"171","2020 Haight Ashbury",595347.09,11,54122.4627272727,"2020","Haight Ashbury"
-"172","2020 Hayes Valley",208498.45,8,26062.30625,"2020","Hayes Valley"
-"173","2020 Inner Richmond",554955,12,46246.25,"2020","Inner Richmond"
-"174","2020 Inner Sunset",157968.89,7,22566.9842857143,"2020","Inner Sunset"
-"175","2020 Japantown",8000,1,8000,"2020","Japantown"
-"176","2020 Lone Mountain/USF",501454.71,10,50145.471,"2020","Lone Mountain/USF"
-"177","2020 Marina",730390.12,17,42964.1247058824,"2020","Marina"
-"178","2020 Mission",NA,51,NA,"2020","Mission"
-"179","2020 Mission Bay",30719.35,2,15359.675,"2020","Mission Bay"
-"180","2020 Nob Hill",203928.07,11,18538.9154545455,"2020","Nob Hill"
-"181","2020 Noe Valley",1330635.9,16,83164.74375,"2020","Noe Valley"
-"182","2020 North Beach",344200,7,49171.4285714286,"2020","North Beach"
-"183","2020 Oceanview/Merced/Ingleside",9280,1,9280,"2020","Oceanview/Merced/Ingleside"
-"184","2020 Outer Mission",481450.15,8,60181.26875,"2020","Outer Mission"
-"185","2020 Outer Richmond",647216.6,11,58837.8727272727,"2020","Outer Richmond"
-"186","2020 Pacific Heights",NA,9,NA,"2020","Pacific Heights"
-"187","2020 Portola",219000,5,43800,"2020","Portola"
-"188","2020 Potrero Hill",548541,9,60949,"2020","Potrero Hill"
-"189","2020 Presidio Heights",304100,8,38012.5,"2020","Presidio Heights"
-"190","2020 Russian Hill",533790.44,11,48526.4036363636,"2020","Russian Hill"
-"191","2020 Seacliff",20000,1,20000,"2020","Seacliff"
-"192","2020 South of Market",NA,6,NA,"2020","South of Market"
-"193","2020 Sunset/Parkside",736394.44,21,35066.4019047619,"2020","Sunset/Parkside"
-"194","2020 Tenderloin",38200,6,6366.66666666667,"2020","Tenderloin"
-"195","2020 Twin Peaks",126034.36,2,63017.18,"2020","Twin Peaks"
-"196","2020 Visitacion Valley",205300,5,41060,"2020","Visitacion Valley"
-"197","2020 West of Twin Peaks",346085.24,9,38453.9155555556,"2020","West of Twin Peaks"
-"198","2020 Western Addition",174446.54,9,19382.9488888889,"2020","Western Addition"
-"199","2021 Bayview Hunters Point",213957.46,8,26744.6825,"2021","Bayview Hunters Point"
-"200","2021 Bernal Heights",713892.32,14,50992.3085714286,"2021","Bernal Heights"
-"201","2021 Castro/Upper Market",NA,21,NA,"2021","Castro/Upper Market"
-"202","2021 Chinatown",10000,1,10000,"2021","Chinatown"
-"203","2021 Excelsior",499033,12,41586.0833333333,"2021","Excelsior"
-"204","2021 Financial District/South Beach",41000,2,20500,"2021","Financial District/South Beach"
-"205","2021 Glen Park",282548,6,47091.3333333333,"2021","Glen Park"
-"206","2021 Haight Ashbury",604931.7,12,50410.975,"2021","Haight Ashbury"
-"207","2021 Hayes Valley",NA,11,NA,"2021","Hayes Valley"
-"208","2021 Inner Richmond",732434.77,18,40690.8205555556,"2021","Inner Richmond"
-"209","2021 Inner Sunset",711450.02,15,47430.0013333333,"2021","Inner Sunset"
-"210","2021 Japantown",11500,1,11500,"2021","Japantown"
-"211","2021 Lone Mountain/USF",719730,14,51409.2857142857,"2021","Lone Mountain/USF"
-"212","2021 Marina",NA,16,NA,"2021","Marina"
-"213","2021 McLaren Park",NA,2,NA,"2021","McLaren Park"
-"214","2021 Mission",NA,33,NA,"2021","Mission"
-"215","2021 Nob Hill",381800,10,38180,"2021","Nob Hill"
-"216","2021 Noe Valley",933545,16,58346.5625,"2021","Noe Valley"
-"217","2021 North Beach",437830.73,11,39802.7936363636,"2021","North Beach"
-"218","2021 Oceanview/Merced/Ingleside",267683.19,11,24334.8354545455,"2021","Oceanview/Merced/Ingleside"
-"219","2021 Outer Mission",710000,6,118333.333333333,"2021","Outer Mission"
-"220","2021 Outer Richmond",NA,23,NA,"2021","Outer Richmond"
-"221","2021 Pacific Heights",NA,8,NA,"2021","Pacific Heights"
-"222","2021 Portola",99613.05,3,33204.35,"2021","Portola"
-"223","2021 Potrero Hill",442680,8,55335,"2021","Potrero Hill"
-"224","2021 Presidio Heights",509562.5,2,254781.25,"2021","Presidio Heights"
-"225","2021 Russian Hill",680591.48,13,52353.1907692308,"2021","Russian Hill"
-"226","2021 Seacliff",97000,2,48500,"2021","Seacliff"
-"227","2021 South of Market",113450,4,28362.5,"2021","South of Market"
-"228","2021 Sunset/Parkside",NA,49,NA,"2021","Sunset/Parkside"
-"229","2021 Tenderloin",15500,3,5166.66666666667,"2021","Tenderloin"
-"230","2021 Twin Peaks",88800,3,29600,"2021","Twin Peaks"
-"231","2021 Visitacion Valley",236569,7,33795.5714285714,"2021","Visitacion Valley"
-"232","2021 West of Twin Peaks",653213.2,20,32660.66,"2021","West of Twin Peaks"
-"233","2021 Western Addition",94449.53,3,31483.1766666667,"2021","Western Addition"
-"234","2022 Bayview Hunters Point",162900,5,32580,"2022","Bayview Hunters Point"
-"235","2022 Bernal Heights",527070.2,12,43922.5166666667,"2022","Bernal Heights"
-"236","2022 Castro/Upper Market",879694.71,12,73307.8925,"2022","Castro/Upper Market"
-"237","2022 Excelsior",607100,8,75887.5,"2022","Excelsior"
-"238","2022 Financial District/South Beach",NA,2,NA,"2022","Financial District/South Beach"
-"239","2022 Glen Park",189500,4,47375,"2022","Glen Park"
-"240","2022 Haight Ashbury",316700,6,52783.3333333333,"2022","Haight Ashbury"
-"241","2022 Hayes Valley",715606.96,8,89450.87,"2022","Hayes Valley"
-"242","2022 Inner Richmond",591125.96,11,53738.7236363636,"2022","Inner Richmond"
-"243","2022 Inner Sunset",388971.72,10,38897.172,"2022","Inner Sunset"
-"244","2022 Lone Mountain/USF",207807.22,5,41561.444,"2022","Lone Mountain/USF"
-"245","2022 Marina",538794,8,67349.25,"2022","Marina"
-"246","2022 Mission",856329.84,17,50372.3435294118,"2022","Mission"
-"247","2022 Nob Hill",58000,2,29000,"2022","Nob Hill"
-"248","2022 Noe Valley",470000,7,67142.8571428571,"2022","Noe Valley"
-"249","2022 Oceanview/Merced/Ingleside",252750,8,31593.75,"2022","Oceanview/Merced/Ingleside"
-"250","2022 Outer Mission",109850,3,36616.6666666667,"2022","Outer Mission"
-"251","2022 Outer Richmond",728656.08,8,91082.01,"2022","Outer Richmond"
-"252","2022 Pacific Heights",380000,4,95000,"2022","Pacific Heights"
-"253","2022 Portola",133402.84,4,33350.71,"2022","Portola"
-"254","2022 Potrero Hill",117821.5,3,39273.8333333333,"2022","Potrero Hill"
-"255","2022 Presidio Heights",96118.12,2,48059.06,"2022","Presidio Heights"
-"256","2022 Russian Hill",342500,7,48928.5714285714,"2022","Russian Hill"
-"257","2022 South of Market",310000,2,155000,"2022","South of Market"
-"258","2022 Sunset/Parkside",1148559.38,28,41019.9778571429,"2022","Sunset/Parkside"
-"259","2022 West of Twin Peaks",277400,7,39628.5714285714,"2022","West of Twin Peaks"
-"260","2022 Western Addition",NA,3,NA,"2022","Western Addition"
+"","X","year_nhood","buyout_amount","count","avg_buyout","year","nhood","centroid_lat","centroid_long"
+"1",1,"2015 Bayview Hunters Point",14906.13,2,7453.065,2015,"Bayview Hunters Point",37.730696,-122.388515
+"2",2,"2015 Bernal Heights",272358,7,38908.2857142857,2015,"Bernal Heights",37.741391,-122.414033
+"3",3,"2015 Castro/Upper Market",686198.86,17,40364.6388235294,2015,"Castro/Upper Market",37.758812,-122.435644
+"4",4,"2015 Chinatown",75000,3,25000,2015,"Chinatown",37.795073,-122.40635
+"5",5,"2015 Excelsior",171750,8,21468.75,2015,"Excelsior",37.7223,-122.431224
+"6",6,"2015 Glen Park",176118.79,4,44029.6975,2015,"Glen Park",37.735976,-122.434464
+"7",7,"2015 Haight Ashbury",341673.85,8,42709.23125,2015,"Haight Ashbury",37.76991,-122.447678
+"8",8,"2015 Hayes Valley",82000,5,16400,2015,"Hayes Valley",37.776425,-122.426235
+"9",9,"2015 Inner Richmond",143375.5,4,35843.875,2015,"Inner Richmond",37.778849,-122.468955
+"10",10,"2015 Inner Sunset",162780,6,27130,2015,"Inner Sunset",37.762068,-122.467189
+"11",11,"2015 Japantown",23500,1,23500,2015,"Japantown",37.78584,-122.429952
+"12",12,"2015 Lone Mountain/USF",32000,4,8000,2015,"Lone Mountain/USF",37.777975,-122.452816
+"13",13,"2015 Marina",646748.59,10,64674.859,2015,"Marina",37.802877,-122.436969
+"14",14,"2015 Mission",1484337.11,27,54975.4485185185,2015,"Mission",37.758338,-122.414678
+"15",15,"2015 Nob Hill",157300,7,22471.4285714286,2015,"Nob Hill",37.793044,-122.414461
+"16",16,"2015 Noe Valley",442900,9,49211.1111111111,2015,"Noe Valley",37.747095,-122.431421
+"17",17,"2015 North Beach",102422,3,34140.6666666667,2015,"North Beach",37.799254,-122.407458
+"18",18,"2015 Oceanview/Merced/Ingleside",59000,2,29500,2015,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"19",19,"2015 Outer Mission",140000,3,46666.6666666667,2015,"Outer Mission",37.709585,-122.455082
+"20",20,"2015 Outer Richmond",299958,10,29995.8,2015,"Outer Richmond",37.776683,-122.489908
+"21",21,"2015 Pacific Heights",NA,12,NA,2015,"Pacific Heights",37.792182,-122.432784
+"22",22,"2015 Portola",30000,1,30000,2015,"Portola",37.72647,-122.407642
+"23",23,"2015 Potrero Hill",28000,1,28000,2015,"Potrero Hill",37.759056,-122.398618
+"24",24,"2015 Presidio Heights",25874,1,25874,2015,"Presidio Heights",37.788849,-122.452228
+"25",25,"2015 Russian Hill",40354,2,20177,2015,"Russian Hill",37.800432,-122.417609
+"26",26,"2015 Seacliff",98068.8,2,49034.4,2015,"Seacliff",37.785975,-122.489522
+"27",27,"2015 Sunset/Parkside",574854,17,33814.9411764706,2015,"Sunset/Parkside",37.749026,-122.493742
+"28",28,"2015 Tenderloin",25000,1,25000,2015,"Tenderloin",37.784141,-122.414748
+"29",29,"2015 Twin Peaks",10000,1,10000,2015,"Twin Peaks",37.753375,-122.445652
+"30",30,"2015 Visitacion Valley",87611,4,21902.75,2015,"Visitacion Valley",37.713141,-122.408825
+"31",31,"2015 West of Twin Peaks",30102,3,10034,2015,"West of Twin Peaks",37.737955,-122.460363
+"32",32,"2015 Western Addition",240336,7,34333.7142857143,2015,"Western Addition",37.780587,-122.43451
+"33",33,"2016 Bayview Hunters Point",201455,6,33575.8333333333,2016,"Bayview Hunters Point",37.730696,-122.388515
+"34",34,"2016 Bernal Heights",NA,14,NA,2016,"Bernal Heights",37.741391,-122.414033
+"35",35,"2016 Castro/Upper Market",516308,9,57367.5555555556,2016,"Castro/Upper Market",37.758812,-122.435644
+"36",36,"2016 Chinatown",28000,1,28000,2016,"Chinatown",37.795073,-122.40635
+"37",37,"2016 Excelsior",210546.77,10,21054.677,2016,"Excelsior",37.7223,-122.431224
+"38",38,"2016 Haight Ashbury",686321.07,16,42895.066875,2016,"Haight Ashbury",37.76991,-122.447678
+"39",39,"2016 Hayes Valley",534240.29,17,31425.8994117647,2016,"Hayes Valley",37.776425,-122.426235
+"40",40,"2016 Inner Richmond",428989.1,8,53623.6375,2016,"Inner Richmond",37.778849,-122.468955
+"41",41,"2016 Inner Sunset",319780,6,53296.6666666667,2016,"Inner Sunset",37.762068,-122.467189
+"42",42,"2016 Lone Mountain/USF",528970,10,52897,2016,"Lone Mountain/USF",37.777975,-122.452816
+"43",43,"2016 Marina",549100,15,36606.6666666667,2016,"Marina",37.802877,-122.436969
+"44",44,"2016 Mission",NA,36,NA,2016,"Mission",37.758338,-122.414678
+"45",45,"2016 Nob Hill",NA,11,NA,2016,"Nob Hill",37.793044,-122.414461
+"46",46,"2016 Noe Valley",716814.7,15,47787.6466666667,2016,"Noe Valley",37.747095,-122.431421
+"47",47,"2016 North Beach",259388.76,8,32423.595,2016,"North Beach",37.799254,-122.407458
+"48",48,"2016 Oceanview/Merced/Ingleside",66050,4,16512.5,2016,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"49",49,"2016 Outer Mission",88650,5,17730,2016,"Outer Mission",37.709585,-122.455082
+"50",50,"2016 Outer Richmond",605327,15,40355.1333333333,2016,"Outer Richmond",37.776683,-122.489908
+"51",51,"2016 Pacific Heights",630327.06,17,37078.0623529412,2016,"Pacific Heights",37.792182,-122.432784
+"52",52,"2016 Portola",189640,3,63213.3333333333,2016,"Portola",37.72647,-122.407642
+"53",53,"2016 Potrero Hill",311134,10,31113.4,2016,"Potrero Hill",37.759056,-122.398618
+"54",54,"2016 Presidio Heights",232165.92,5,46433.184,2016,"Presidio Heights",37.788849,-122.452228
+"55",55,"2016 Russian Hill",292500,9,32500,2016,"Russian Hill",37.800432,-122.417609
+"56",56,"2016 South of Market",240200,9,26688.8888888889,2016,"South of Market",37.779527,-122.405727
+"57",57,"2016 Sunset/Parkside",867783.48,28,30992.2671428571,2016,"Sunset/Parkside",37.749026,-122.493742
+"58",58,"2016 Tenderloin",7000,1,7000,2016,"Tenderloin",37.784141,-122.414748
+"59",59,"2016 Twin Peaks",153283.42,3,51094.4733333333,2016,"Twin Peaks",37.753375,-122.445652
+"60",60,"2016 Visitacion Valley",195997.5,7,27999.6428571429,2016,"Visitacion Valley",37.713141,-122.408825
+"61",61,"2016 West of Twin Peaks",124200,6,20700,2016,"West of Twin Peaks",37.737955,-122.460363
+"62",62,"2016 Western Addition",297859,10,29785.9,2016,"Western Addition",37.780587,-122.43451
+"63",63,"2017 Bayview Hunters Point",NA,10,NA,2017,"Bayview Hunters Point",37.730696,-122.388515
+"64",64,"2017 Bernal Heights",NA,12,NA,2017,"Bernal Heights",37.741391,-122.414033
+"65",65,"2017 Castro/Upper Market",1079591.08,23,46938.7426086957,2017,"Castro/Upper Market",37.758812,-122.435644
+"66",66,"2017 Chinatown",305000,2,152500,2017,"Chinatown",37.795073,-122.40635
+"67",67,"2017 Excelsior",564639.41,20,28231.9705,2017,"Excelsior",37.7223,-122.431224
+"68",68,"2017 Glen Park",107258.96,4,26814.74,2017,"Glen Park",37.735976,-122.434464
+"69",69,"2017 Haight Ashbury",445384.06,14,31813.1471428571,2017,"Haight Ashbury",37.76991,-122.447678
+"70",70,"2017 Hayes Valley",864367.6,16,54022.975,2017,"Hayes Valley",37.776425,-122.426235
+"71",71,"2017 Inner Richmond",325687.06,12,27140.5883333333,2017,"Inner Richmond",37.778849,-122.468955
+"72",72,"2017 Inner Sunset",233096,9,25899.5555555556,2017,"Inner Sunset",37.762068,-122.467189
+"73",73,"2017 Japantown",105203.48,3,35067.8266666667,2017,"Japantown",37.78584,-122.429952
+"74",74,"2017 Lone Mountain/USF",499692.57,7,71384.6528571429,2017,"Lone Mountain/USF",37.777975,-122.452816
+"75",75,"2017 Marina",650898.81,12,54241.5675,2017,"Marina",37.802877,-122.436969
+"76",76,"2017 McLaren Park",6800,1,6800,2017,"McLaren Park",37.718407,-122.418904
+"77",77,"2017 Mission",1854229.46,28,66222.4807142857,2017,"Mission",37.758338,-122.414678
+"78",78,"2017 Nob Hill",173719,5,34743.8,2017,"Nob Hill",37.793044,-122.414461
+"79",79,"2017 Noe Valley",1252414.15,20,62620.7075,2017,"Noe Valley",37.747095,-122.431421
+"80",80,"2017 North Beach",222901.95,5,44580.39,2017,"North Beach",37.799254,-122.407458
+"81",81,"2017 Oceanview/Merced/Ingleside",329176,9,36575.1111111111,2017,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"82",82,"2017 Outer Mission",76200,4,19050,2017,"Outer Mission",37.709585,-122.455082
+"83",83,"2017 Outer Richmond",1067862.67,23,46428.8117391304,2017,"Outer Richmond",37.776683,-122.489908
+"84",84,"2017 Pacific Heights",481233.37,17,28307.8452941176,2017,"Pacific Heights",37.792182,-122.432784
+"85",85,"2017 Potrero Hill",293739,7,41962.7142857143,2017,"Potrero Hill",37.759056,-122.398618
+"86",86,"2017 Presidio",34000,1,34000,2017,"Presidio",37.788849,-122.452228
+"87",87,"2017 Presidio Heights",95000,3,31666.6666666667,2017,"Presidio Heights",37.788849,-122.452228
+"88",88,"2017 Russian Hill",597314.08,9,66368.2311111111,2017,"Russian Hill",37.800432,-122.417609
+"89",89,"2017 South of Market",25475,2,12737.5,2017,"South of Market",37.779527,-122.405727
+"90",90,"2017 Sunset/Parkside",NA,26,NA,2017,"Sunset/Parkside",37.749026,-122.493742
+"91",91,"2017 Tenderloin",91000,3,30333.3333333333,2017,"Tenderloin",37.784141,-122.414748
+"92",92,"2017 Twin Peaks",83500,2,41750,2017,"Twin Peaks",37.753375,-122.445652
+"93",93,"2017 Visitacion Valley",29050,1,29050,2017,"Visitacion Valley",37.713141,-122.408825
+"94",94,"2017 West of Twin Peaks",NA,11,NA,2017,"West of Twin Peaks",37.737955,-122.460363
+"95",95,"2017 Western Addition",234846.21,6,39141.035,2017,"Western Addition",37.780587,-122.43451
+"96",96,"2018 Bayview Hunters Point",209358,9,23262,2018,"Bayview Hunters Point",37.730696,-122.388515
+"97",97,"2018 Bernal Heights",243799,10,24379.9,2018,"Bernal Heights",37.741391,-122.414033
+"98",98,"2018 Castro/Upper Market",1168174.5,20,58408.725,2018,"Castro/Upper Market",37.758812,-122.435644
+"99",99,"2018 Chinatown",116963.48,5,23392.696,2018,"Chinatown",37.795073,-122.40635
+"100",100,"2018 Excelsior",181068.5,9,20118.7222222222,2018,"Excelsior",37.7223,-122.431224
+"101",101,"2018 Financial District/South Beach",138000,1,138000,2018,"Financial District/South Beach",37.793213,-122.398187
+"102",102,"2018 Glen Park",236500,5,47300,2018,"Glen Park",37.735976,-122.434464
+"103",103,"2018 Haight Ashbury",659229.7,16,41201.85625,2018,"Haight Ashbury",37.76991,-122.447678
+"104",104,"2018 Hayes Valley",368709.76,8,46088.72,2018,"Hayes Valley",37.776425,-122.426235
+"105",105,"2018 Inner Richmond",555824.79,12,46318.7325,2018,"Inner Richmond",37.778849,-122.468955
+"106",106,"2018 Inner Sunset",750899.58,19,39521.0305263158,2018,"Inner Sunset",37.762068,-122.467189
+"107",107,"2018 Lakeshore",14200,1,14200,2018,"Lakeshore",37.71872,-122.477916
+"108",108,"2018 Lincoln Park",29800,1,29800,2018,"Lincoln Park",NA,NA
+"109",109,"2018 Lone Mountain/USF",524456.59,8,65557.07375,2018,"Lone Mountain/USF",37.777975,-122.452816
+"110",110,"2018 Marina",656289.71,14,46877.8364285714,2018,"Marina",37.802877,-122.436969
+"111",111,"2018 McLaren Park",35000,1,35000,2018,"McLaren Park",37.718407,-122.418904
+"112",112,"2018 Mission",2156778.15,46,46886.4815217391,2018,"Mission",37.758338,-122.414678
+"113",113,"2018 Nob Hill",NA,11,NA,2018,"Nob Hill",37.793044,-122.414461
+"114",114,"2018 Noe Valley",729449.01,14,52103.5007142857,2018,"Noe Valley",37.747095,-122.431421
+"115",115,"2018 North Beach",168000,3,56000,2018,"North Beach",37.799254,-122.407458
+"116",116,"2018 Oceanview/Merced/Ingleside",142400,6,23733.3333333333,2018,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"117",117,"2018 Outer Mission",473330.22,13,36410.0169230769,2018,"Outer Mission",37.709585,-122.455082
+"118",118,"2018 Outer Richmond",891745.9,20,44587.295,2018,"Outer Richmond",37.776683,-122.489908
+"119",119,"2018 Pacific Heights",671070.83,13,51620.8330769231,2018,"Pacific Heights",37.792182,-122.432784
+"120",120,"2018 Portola",169455.89,5,33891.178,2018,"Portola",37.72647,-122.407642
+"121",121,"2018 Potrero Hill",NA,12,NA,2018,"Potrero Hill",37.759056,-122.398618
+"122",122,"2018 Presidio Heights",244300,8,30537.5,2018,"Presidio Heights",37.788849,-122.452228
+"123",123,"2018 Russian Hill",591720.38,12,49310.0316666667,2018,"Russian Hill",37.800432,-122.417609
+"124",124,"2018 South of Market",115000,2,57500,2018,"South of Market",37.779527,-122.405727
+"125",125,"2018 Sunset/Parkside",693342,22,31515.5454545455,2018,"Sunset/Parkside",37.749026,-122.493742
+"126",126,"2018 Tenderloin",465750,5,93150,2018,"Tenderloin",37.784141,-122.414748
+"127",127,"2018 Twin Peaks",90000,3,30000,2018,"Twin Peaks",37.753375,-122.445652
+"128",128,"2018 Visitacion Valley",75000,4,18750,2018,"Visitacion Valley",37.713141,-122.408825
+"129",129,"2018 West of Twin Peaks",NA,14,NA,2018,"West of Twin Peaks",37.737955,-122.460363
+"130",130,"2018 Western Addition",214672,5,42934.4,2018,"Western Addition",37.780587,-122.43451
+"131",131,"2019 Bayview Hunters Point",125000,4,31250,2019,"Bayview Hunters Point",37.730696,-122.388515
+"132",132,"2019 Bernal Heights",559188.08,11,50835.28,2019,"Bernal Heights",37.741391,-122.414033
+"133",133,"2019 Castro/Upper Market",NA,18,NA,2019,"Castro/Upper Market",37.758812,-122.435644
+"134",134,"2019 Chinatown",23268,1,23268,2019,"Chinatown",37.795073,-122.40635
+"135",135,"2019 Excelsior",210124,10,21012.4,2019,"Excelsior",37.7223,-122.431224
+"136",136,"2019 Glen Park",82200,2,41100,2019,"Glen Park",37.735976,-122.434464
+"137",137,"2019 Haight Ashbury",734773.21,12,61231.1008333333,2019,"Haight Ashbury",37.76991,-122.447678
+"138",138,"2019 Hayes Valley",904643.58,20,45232.179,2019,"Hayes Valley",37.776425,-122.426235
+"139",139,"2019 Inner Richmond",388378.68,12,32364.89,2019,"Inner Richmond",37.778849,-122.468955
+"140",140,"2019 Inner Sunset",447962.14,11,40723.8309090909,2019,"Inner Sunset",37.762068,-122.467189
+"141",141,"2019 Lakeshore",NA,2,NA,2019,"Lakeshore",37.71872,-122.477916
+"142",142,"2019 Lone Mountain/USF",NA,5,NA,2019,"Lone Mountain/USF",37.777975,-122.452816
+"143",143,"2019 Marina",444295.99,12,37024.6658333333,2019,"Marina",37.802877,-122.436969
+"144",144,"2019 Mission",NA,41,NA,2019,"Mission",37.758338,-122.414678
+"145",145,"2019 Nob Hill",403394.86,9,44821.6511111111,2019,"Nob Hill",37.793044,-122.414461
+"146",146,"2019 Noe Valley",1080640,14,77188.5714285714,2019,"Noe Valley",37.747095,-122.431421
+"147",147,"2019 North Beach",836884.96,10,83688.496,2019,"North Beach",37.799254,-122.407458
+"148",148,"2019 Oceanview/Merced/Ingleside",126900,5,25380,2019,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"149",149,"2019 Outer Mission",296438.32,8,37054.79,2019,"Outer Mission",37.709585,-122.455082
+"150",150,"2019 Outer Richmond",NA,18,NA,2019,"Outer Richmond",37.776683,-122.489908
+"151",151,"2019 Pacific Heights",NA,19,NA,2019,"Pacific Heights",37.792182,-122.432784
+"152",152,"2019 Portola",311062,12,25921.8333333333,2019,"Portola",37.72647,-122.407642
+"153",153,"2019 Potrero Hill",24627,2,12313.5,2019,"Potrero Hill",37.759056,-122.398618
+"154",154,"2019 Presidio Heights",930206.34,15,62013.756,2019,"Presidio Heights",37.788849,-122.452228
+"155",155,"2019 Russian Hill",1180453,19,62129.1052631579,2019,"Russian Hill",37.800432,-122.417609
+"156",156,"2019 Seacliff",22500,2,11250,2019,"Seacliff",37.785975,-122.489522
+"157",157,"2019 South of Market",120353.11,3,40117.7033333333,2019,"South of Market",37.779527,-122.405727
+"158",158,"2019 Sunset/Parkside",1530860.2,34,45025.3,2019,"Sunset/Parkside",37.749026,-122.493742
+"159",159,"2019 Tenderloin",50534,3,16844.6666666667,2019,"Tenderloin",37.784141,-122.414748
+"160",160,"2019 Twin Peaks",150500,3,50166.6666666667,2019,"Twin Peaks",37.753375,-122.445652
+"161",161,"2019 Visitacion Valley",14000,1,14000,2019,"Visitacion Valley",37.713141,-122.408825
+"162",162,"2019 West of Twin Peaks",423457.5,18,23525.4166666667,2019,"West of Twin Peaks",37.737955,-122.460363
+"163",163,"2019 Western Addition",242168.39,8,30271.04875,2019,"Western Addition",37.780587,-122.43451
+"164",164,"2020 Bayview Hunters Point",NA,7,NA,2020,"Bayview Hunters Point",37.730696,-122.388515
+"165",165,"2020 Bernal Heights",NA,14,NA,2020,"Bernal Heights",37.741391,-122.414033
+"166",166,"2020 Castro/Upper Market",NA,21,NA,2020,"Castro/Upper Market",37.758812,-122.435644
+"167",167,"2020 Chinatown",121525,4,30381.25,2020,"Chinatown",37.795073,-122.40635
+"168",168,"2020 Excelsior",140130,5,28026,2020,"Excelsior",37.7223,-122.431224
+"169",169,"2020 Financial District/South Beach",49850,3,16616.6666666667,2020,"Financial District/South Beach",37.793213,-122.398187
+"170",170,"2020 Glen Park",146914.6,4,36728.65,2020,"Glen Park",37.735976,-122.434464
+"171",171,"2020 Haight Ashbury",595347.09,11,54122.4627272727,2020,"Haight Ashbury",37.76991,-122.447678
+"172",172,"2020 Hayes Valley",208498.45,8,26062.30625,2020,"Hayes Valley",37.776425,-122.426235
+"173",173,"2020 Inner Richmond",554955,12,46246.25,2020,"Inner Richmond",37.778849,-122.468955
+"174",174,"2020 Inner Sunset",157968.89,7,22566.9842857143,2020,"Inner Sunset",37.762068,-122.467189
+"175",175,"2020 Japantown",8000,1,8000,2020,"Japantown",37.78584,-122.429952
+"176",176,"2020 Lone Mountain/USF",501454.71,10,50145.471,2020,"Lone Mountain/USF",37.777975,-122.452816
+"177",177,"2020 Marina",730390.12,17,42964.1247058824,2020,"Marina",37.802877,-122.436969
+"178",178,"2020 Mission",NA,51,NA,2020,"Mission",37.758338,-122.414678
+"179",179,"2020 Mission Bay",30719.35,2,15359.675,2020,"Mission Bay",37.770674,-122.392015
+"180",180,"2020 Nob Hill",203928.07,11,18538.9154545455,2020,"Nob Hill",37.793044,-122.414461
+"181",181,"2020 Noe Valley",1330635.9,16,83164.74375,2020,"Noe Valley",37.747095,-122.431421
+"182",182,"2020 North Beach",344200,7,49171.4285714286,2020,"North Beach",37.799254,-122.407458
+"183",183,"2020 Oceanview/Merced/Ingleside",9280,1,9280,2020,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"184",184,"2020 Outer Mission",481450.15,8,60181.26875,2020,"Outer Mission",37.709585,-122.455082
+"185",185,"2020 Outer Richmond",647216.6,11,58837.8727272727,2020,"Outer Richmond",37.776683,-122.489908
+"186",186,"2020 Pacific Heights",NA,9,NA,2020,"Pacific Heights",37.792182,-122.432784
+"187",187,"2020 Portola",219000,5,43800,2020,"Portola",37.72647,-122.407642
+"188",188,"2020 Potrero Hill",548541,9,60949,2020,"Potrero Hill",37.759056,-122.398618
+"189",189,"2020 Presidio Heights",304100,8,38012.5,2020,"Presidio Heights",37.788849,-122.452228
+"190",190,"2020 Russian Hill",533790.44,11,48526.4036363636,2020,"Russian Hill",37.800432,-122.417609
+"191",191,"2020 Seacliff",20000,1,20000,2020,"Seacliff",37.785975,-122.489522
+"192",192,"2020 South of Market",NA,6,NA,2020,"South of Market",37.779527,-122.405727
+"193",193,"2020 Sunset/Parkside",736394.44,21,35066.4019047619,2020,"Sunset/Parkside",37.749026,-122.493742
+"194",194,"2020 Tenderloin",38200,6,6366.66666666667,2020,"Tenderloin",37.784141,-122.414748
+"195",195,"2020 Twin Peaks",126034.36,2,63017.18,2020,"Twin Peaks",37.753375,-122.445652
+"196",196,"2020 Visitacion Valley",205300,5,41060,2020,"Visitacion Valley",37.713141,-122.408825
+"197",197,"2020 West of Twin Peaks",346085.24,9,38453.9155555556,2020,"West of Twin Peaks",37.737955,-122.460363
+"198",198,"2020 Western Addition",174446.54,9,19382.9488888889,2020,"Western Addition",37.780587,-122.43451
+"199",199,"2021 Bayview Hunters Point",213957.46,8,26744.6825,2021,"Bayview Hunters Point",37.730696,-122.388515
+"200",200,"2021 Bernal Heights",713892.32,14,50992.3085714286,2021,"Bernal Heights",37.741391,-122.414033
+"201",201,"2021 Castro/Upper Market",NA,21,NA,2021,"Castro/Upper Market",37.758812,-122.435644
+"202",202,"2021 Chinatown",10000,1,10000,2021,"Chinatown",37.795073,-122.40635
+"203",203,"2021 Excelsior",499033,12,41586.0833333333,2021,"Excelsior",37.7223,-122.431224
+"204",204,"2021 Financial District/South Beach",41000,2,20500,2021,"Financial District/South Beach",37.793213,-122.398187
+"205",205,"2021 Glen Park",282548,6,47091.3333333333,2021,"Glen Park",37.735976,-122.434464
+"206",206,"2021 Haight Ashbury",604931.7,12,50410.975,2021,"Haight Ashbury",37.76991,-122.447678
+"207",207,"2021 Hayes Valley",NA,11,NA,2021,"Hayes Valley",37.776425,-122.426235
+"208",208,"2021 Inner Richmond",732434.77,18,40690.8205555556,2021,"Inner Richmond",37.778849,-122.468955
+"209",209,"2021 Inner Sunset",711450.02,15,47430.0013333333,2021,"Inner Sunset",37.762068,-122.467189
+"210",210,"2021 Japantown",11500,1,11500,2021,"Japantown",37.78584,-122.429952
+"211",211,"2021 Lone Mountain/USF",719730,14,51409.2857142857,2021,"Lone Mountain/USF",37.777975,-122.452816
+"212",212,"2021 Marina",NA,16,NA,2021,"Marina",37.802877,-122.436969
+"213",213,"2021 McLaren Park",NA,2,NA,2021,"McLaren Park",37.718407,-122.418904
+"214",214,"2021 Mission",NA,33,NA,2021,"Mission",37.758338,-122.414678
+"215",215,"2021 Nob Hill",381800,10,38180,2021,"Nob Hill",37.793044,-122.414461
+"216",216,"2021 Noe Valley",933545,16,58346.5625,2021,"Noe Valley",37.747095,-122.431421
+"217",217,"2021 North Beach",437830.73,11,39802.7936363636,2021,"North Beach",37.799254,-122.407458
+"218",218,"2021 Oceanview/Merced/Ingleside",267683.19,11,24334.8354545455,2021,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"219",219,"2021 Outer Mission",710000,6,118333.333333333,2021,"Outer Mission",37.709585,-122.455082
+"220",220,"2021 Outer Richmond",NA,23,NA,2021,"Outer Richmond",37.776683,-122.489908
+"221",221,"2021 Pacific Heights",NA,8,NA,2021,"Pacific Heights",37.792182,-122.432784
+"222",222,"2021 Portola",99613.05,3,33204.35,2021,"Portola",37.72647,-122.407642
+"223",223,"2021 Potrero Hill",442680,8,55335,2021,"Potrero Hill",37.759056,-122.398618
+"224",224,"2021 Presidio Heights",509562.5,2,254781.25,2021,"Presidio Heights",37.788849,-122.452228
+"225",225,"2021 Russian Hill",680591.48,13,52353.1907692308,2021,"Russian Hill",37.800432,-122.417609
+"226",226,"2021 Seacliff",97000,2,48500,2021,"Seacliff",37.785975,-122.489522
+"227",227,"2021 South of Market",113450,4,28362.5,2021,"South of Market",37.779527,-122.405727
+"228",228,"2021 Sunset/Parkside",NA,49,NA,2021,"Sunset/Parkside",37.749026,-122.493742
+"229",229,"2021 Tenderloin",15500,3,5166.66666666667,2021,"Tenderloin",37.784141,-122.414748
+"230",230,"2021 Twin Peaks",88800,3,29600,2021,"Twin Peaks",37.753375,-122.445652
+"231",231,"2021 Visitacion Valley",236569,7,33795.5714285714,2021,"Visitacion Valley",37.713141,-122.408825
+"232",232,"2021 West of Twin Peaks",653213.2,20,32660.66,2021,"West of Twin Peaks",37.737955,-122.460363
+"233",233,"2021 Western Addition",94449.53,3,31483.1766666667,2021,"Western Addition",37.780587,-122.43451
+"234",234,"2022 Bayview Hunters Point",162900,5,32580,2022,"Bayview Hunters Point",37.730696,-122.388515
+"235",235,"2022 Bernal Heights",527070.2,12,43922.5166666667,2022,"Bernal Heights",37.741391,-122.414033
+"236",236,"2022 Castro/Upper Market",879694.71,12,73307.8925,2022,"Castro/Upper Market",37.758812,-122.435644
+"237",237,"2022 Excelsior",607100,8,75887.5,2022,"Excelsior",37.7223,-122.431224
+"238",238,"2022 Financial District/South Beach",NA,2,NA,2022,"Financial District/South Beach",37.793213,-122.398187
+"239",239,"2022 Glen Park",189500,4,47375,2022,"Glen Park",37.735976,-122.434464
+"240",240,"2022 Haight Ashbury",316700,6,52783.3333333333,2022,"Haight Ashbury",37.76991,-122.447678
+"241",241,"2022 Hayes Valley",715606.96,8,89450.87,2022,"Hayes Valley",37.776425,-122.426235
+"242",242,"2022 Inner Richmond",591125.96,11,53738.7236363636,2022,"Inner Richmond",37.778849,-122.468955
+"243",243,"2022 Inner Sunset",388971.72,10,38897.172,2022,"Inner Sunset",37.762068,-122.467189
+"244",244,"2022 Lone Mountain/USF",207807.22,5,41561.444,2022,"Lone Mountain/USF",37.777975,-122.452816
+"245",245,"2022 Marina",538794,8,67349.25,2022,"Marina",37.802877,-122.436969
+"246",246,"2022 Mission",856329.84,17,50372.3435294118,2022,"Mission",37.758338,-122.414678
+"247",247,"2022 Nob Hill",58000,2,29000,2022,"Nob Hill",37.793044,-122.414461
+"248",248,"2022 Noe Valley",470000,7,67142.8571428571,2022,"Noe Valley",37.747095,-122.431421
+"249",249,"2022 Oceanview/Merced/Ingleside",252750,8,31593.75,2022,"Oceanview/Merced/Ingleside",37.718959,-122.462039
+"250",250,"2022 Outer Mission",109850,3,36616.6666666667,2022,"Outer Mission",37.709585,-122.455082
+"251",251,"2022 Outer Richmond",728656.08,8,91082.01,2022,"Outer Richmond",37.776683,-122.489908
+"252",252,"2022 Pacific Heights",380000,4,95000,2022,"Pacific Heights",37.792182,-122.432784
+"253",253,"2022 Portola",133402.84,4,33350.71,2022,"Portola",37.72647,-122.407642
+"254",254,"2022 Potrero Hill",117821.5,3,39273.8333333333,2022,"Potrero Hill",37.759056,-122.398618
+"255",255,"2022 Presidio Heights",96118.12,2,48059.06,2022,"Presidio Heights",37.788849,-122.452228
+"256",256,"2022 Russian Hill",342500,7,48928.5714285714,2022,"Russian Hill",37.800432,-122.417609
+"257",257,"2022 South of Market",310000,2,155000,2022,"South of Market",37.779527,-122.405727
+"258",258,"2022 Sunset/Parkside",1148559.38,28,41019.9778571429,2022,"Sunset/Parkside",37.749026,-122.493742
+"259",259,"2022 West of Twin Peaks",277400,7,39628.5714285714,2022,"West of Twin Peaks",37.737955,-122.460363
+"260",260,"2022 Western Addition",NA,3,NA,2022,"Western Addition",37.780587,-122.43451

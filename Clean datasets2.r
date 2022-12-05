@@ -9,7 +9,12 @@ New_construction <-  read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magist
 Parcels <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Parcels.csv", header=TRUE)
 
 
+# ------------------------------------------------- Eviction Notices -----------------------------------------------------------------------
 
+
+
+
+{
 Eviction_Notices <- Eviction_Notices[,-c(1,3:5,7:27,30:45)] #selezione covariate di interesse
 Eviction_Notices <- Eviction_Notices[!(Eviction_Notices[,3]==""), ] #elimino gli sfratti senza quartiere
 Eviction_Notices <- Eviction_Notices[!duplicated(Eviction_Notices),] #elimino gli sfratti duplici (fatti lo stesso giorno nello stesso indirizzo)
@@ -73,9 +78,10 @@ Eviction_Notices <- Eviction_Notices[,-c(10:14)]
 colnames(Eviction_Notices) <- c('address', 'nhood', 'lat', 'long','month','year','block','street_name', 'street_type')
 Eviction_Notices <- Eviction_Notices[Eviction_Notices$year > 2010 & Eviction_Notices$year < 2019,]  #butto via gli anni prima perchè per fare il modello di regr devo usare gli stessi anni di 'rent'
 write.csv(Eviction_Notices,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv")
+Eviction_Notices_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv", header=TRUE)
+} # Prime modifiche
 
-
-
+{
 #Calcolo i df con numero di evictions per nhood per anno e per mese
 vect_year = paste(Eviction_Notices_clean$year)
 vect_month = paste(Eviction_Notices_clean$month)
@@ -149,14 +155,18 @@ for( i in 1:length(eviction_nhood_yearly[,1])){  #preparo l'address
 eviction_nhood_yearly <- eviction_nhood_yearly[, -c(5:7)]
 colnames(eviction_nhood_yearly) <- c('nhood_month_year', 'count','year', 'nhood')
 write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
+} # Preparazione di eviction_nhood_yearly & eviction_nhood_monthly
 
 
 
 
 
+# ------------------------------------------------- Buyout Agreements -----------------------------------------------------------------------
 
 
 
+
+{
 Buyout_Agreements <- Buyout_Agreements[,-c(1,2,5:7,27,9,10,13:27)] #selezione covariate di interesse
 Buyout_Agreements <- Buyout_Agreements[!(Buyout_Agreements[,4]==""), ] #elimino buyout senza quartiere
 Buyout_Agreements <- Buyout_Agreements[!duplicated(Buyout_Agreements),] #elimino buyout duplici (fatti nello stesso giorno, alla stessa cifra, nello stesso indirizzo)
@@ -186,170 +196,10 @@ for (i in 1:length(Buyout_Agreements[,1])) {    #preparo le date
 Buyout_Agreements <- Buyout_Agreements[,-c(1,5)]
 colnames(Buyout_Agreements) <- c('buyout_amount', 'address','nhood', 'long','lat', 'month','year')
 write.csv(Buyout_Agreements,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_Clean.csv")
-Buyout_Agreements_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_clean.csv", header=TRUE)
+Buyout_Agreements_Clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_Clean.csv", header=TRUE)
+} #Prime modifiche di base
 
-#Aggiungo i centri ai nhoods
-
-Buyout_Agreements_clean$centroid_lat <- NA
-Buyout_Agreements_clean$centroid_long <- NA
-
-for (i in 1:length(Buyout_Agreements_clean[,1])){
-  if (Buyout_Agreements_clean$nhood[i] == 'Bayview Hunters Point'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.730696
-    Buyout_Agreements_clean$centroid_long[i] <- -122.388515
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Bernal Heights'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.741391
-    Buyout_Agreements_clean$centroid_long[i] <- -122.414033
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Castro/Upper Market'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.758812
-    Buyout_Agreements_clean$centroid_long[i] <- -122.435644
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Chinatown'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.795073
-    Buyout_Agreements_clean$centroid_long[i] <- -122.406350
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Excelsior'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.722300
-    Buyout_Agreements_clean$centroid_long[i] <- -122.431224
-  }
-  
-  if (Buyout_Agreements_clean$nhood[i] == 'Financial District/South Beach'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.793213
-    Buyout_Agreements_clean$centroid_long[i] <- -122.398187
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Glen Park'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.735976
-    Buyout_Agreements_clean$centroid_long[i] <- -122.434464
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Haight Ashbury'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.769910
-    Buyout_Agreements_clean$centroid_long[i] <- -122.447678
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Hayes Valley'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.776425
-    Buyout_Agreements_clean$centroid_long[i] <- -122.426235
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Inner Richmond'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.778849
-    Buyout_Agreements_clean$centroid_long[i] <- -122.468955 
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Inner Sunset'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.762068
-    Buyout_Agreements_clean$centroid_long[i] <- -122.467189
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Japantown'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.785840
-    Buyout_Agreements_clean$centroid_long[i] <- -122.429952
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Lakeshore'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.718720
-    Buyout_Agreements_clean$centroid_long[i] <- -122.477916
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Lone Mountain/USF'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.777975
-    Buyout_Agreements_clean$centroid_long[i] <- -122.452816
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Marina'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.802877
-    Buyout_Agreements_clean$centroid_long[i] <- -122.436969
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.718407
-    Buyout_Agreements_clean$centroid_long[i] <- -122.418904
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Mission'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.758338
-    Buyout_Agreements_clean$centroid_long[i] <- -122.414678
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Mission Bay'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.770674
-    Buyout_Agreements_clean$centroid_long[i] <- -122.392015
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Nob Hill'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.793044
-      Buyout_Agreements_clean$centroid_long[i] <- -122.414461
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Noe Valley'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.747095
-      Buyout_Agreements_clean$centroid_long[i] <- -122.431421
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'North Beach'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.799254
-      Buyout_Agreements_clean$centroid_long[i] <- -122.407458
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Oceanview/Merced/Ingleside'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.718959
-    Buyout_Agreements_clean$centroid_long[i] <- -122.462039
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Outer Mission'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.709585
-      Buyout_Agreements_clean$centroid_long[i] <- -122.455082
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Outer Richmond'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.776683
-    Buyout_Agreements_clean$centroid_long[i] <- -122.489908
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Pacific Heights'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.792182
-      Buyout_Agreements_clean$centroid_long[i] <- -122.432784
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Portola'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.726470
-    Buyout_Agreements_clean$centroid_long[i] <- -122.407642
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Potrero Hill'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.759056
-      Buyout_Agreements_clean$centroid_long[i] <- -122.398618
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Presidio Heights' | Buyout_Agreements_clean$nhood[i] == 'Presidio'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.788849
-    Buyout_Agreements_clean$centroid_long[i] <- -122.452228
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Russian Hill'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.800432
-      Buyout_Agreements_clean$centroid_long[i] <- -122.417609
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Seacliff'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.785975
-      Buyout_Agreements_clean$centroid_long[i] <- -122.489522
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'South of Market'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.779527
-      Buyout_Agreements_clean$centroid_long[i] <- -122.405727
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Sunset/Parkside'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.749026
-    Buyout_Agreements_clean$centroid_long[i] <- -122.493742
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Tenderloin'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.784141
-    Buyout_Agreements_clean$centroid_long[i] <- -122.414748
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Twin Peaks'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.753375
-      Buyout_Agreements_clean$centroid_long[i] <- -122.445652
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Visitacion Valley'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.713141
-      Buyout_Agreements_clean$centroid_long[i] <- -122.408825
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'West of Twin Peaks'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.737955
-      Buyout_Agreements_clean$centroid_long[i] <- -122.460363
-  }
-  if (Buyout_Agreements_clean$nhood[i] == 'Western Addition'){
-    Buyout_Agreements_clean$centroid_lat[i] <- 37.780587
-    Buyout_Agreements_clean$centroid_long[i] <- -122.434510
-  }
-}
-
-write.csv(Buyout_Agreements_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_Clean.csv")
-
-
-
-
+{
 #Calcolo i df con numero di buyout per nhood per anno e per mese
 vect_year = paste(Buyout_Agreements_Clean$year)
 vect_month = paste(Buyout_Agreements_Clean$month)
@@ -426,23 +276,501 @@ for( i in 1:length(buyout_nhood_yearly[,1])){  #preparo l'address
 buyout_nhood_yearly <- buyout_nhood_yearly[, -c(1,8:10)]
 colnames(buyout_nhood_yearly) <- c('year_nhood', 'buyout_amount','count','avg_buyout','year', 'nhood')
 write.csv(buyout_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv")
+} #non faccio runnare, non mi esce perchè buyout_amount a me si carica come char. Qui si preparano buyout_nhood_monthly & buyout_nhood_yearly
+
+
+#Aggiungo i centri ai nhoods di Buyout_Agreements_Clean
+{
+Buyout_Agreements_Clean$centroid_lat <- NA
+Buyout_Agreements_Clean$centroid_long <- NA
+
+for (i in 1:length(Buyout_Agreements_Clean[,1])){
+  if (Buyout_Agreements_Clean$nhood[i] == 'Bayview Hunters Point'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.730696
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.388515
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Bernal Heights'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.741391
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.414033
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Castro/Upper Market'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.758812
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.435644
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Chinatown'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.795073
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.406350
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Excelsior'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.722300
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.431224
+  }
+  
+  if (Buyout_Agreements_Clean$nhood[i] == 'Financial District/South Beach'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.793213
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.398187
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Glen Park'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.735976
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.434464
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Haight Ashbury'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.769910
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.447678
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Hayes Valley'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.776425
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.426235
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Inner Richmond'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.778849
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.468955 
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Inner Sunset'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.762068
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.467189
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Japantown'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.785840
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.429952
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Lakeshore'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.718720
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.477916
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Lone Mountain/USF'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.777975
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.452816
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Marina'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.802877
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.436969
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.718407
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.418904
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Mission'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.758338
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.414678
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Mission Bay'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.770674
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.392015
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Nob Hill'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.793044
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.414461
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Noe Valley'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.747095
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.431421
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'North Beach'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.799254
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.407458
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Oceanview/Merced/Ingleside'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.718959
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.462039
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Outer Mission'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.709585
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.455082
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Outer Richmond'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.776683
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.489908
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Pacific Heights'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.792182
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.432784
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Portola'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.726470
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.407642
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Potrero Hill'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.759056
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.398618
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Presidio Heights' | Buyout_Agreements_Clean$nhood[i] == 'Presidio'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.788849
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.452228
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Russian Hill'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.800432
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.417609
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Seacliff'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.785975
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.489522
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'South of Market'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.779527
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.405727
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Sunset/Parkside'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.749026
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.493742
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Tenderloin'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.784141
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.414748
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Twin Peaks'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.753375
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.445652
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Visitacion Valley'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.713141
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.408825
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'West of Twin Peaks'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.737955
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.460363
+  }
+  if (Buyout_Agreements_Clean$nhood[i] == 'Western Addition'){
+    Buyout_Agreements_Clean$centroid_lat[i] <- 37.780587
+    Buyout_Agreements_Clean$centroid_long[i] <- -122.434510
+  }
+}
+
+write.csv(Buyout_Agreements_Clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_Clean.csv")
+}
+
+#Aggiungo i centri ai nhoods di buyout_nhood_monthly
+{
+  buyout_nhood_monthly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_monthly.csv", header=TRUE)
+  buyout_nhood_monthly$centroid_lat <- NA
+  buyout_nhood_monthly$centroid_long <- NA
+  
+  for (i in 1:length(buyout_nhood_monthly[,1])){
+    if (buyout_nhood_monthly$nhood[i] == 'Bayview Hunters Point'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.730696
+      buyout_nhood_monthly$centroid_long[i] <- -122.388515
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Bernal Heights'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.741391
+      buyout_nhood_monthly$centroid_long[i] <- -122.414033
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Castro/Upper Market'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.758812
+      buyout_nhood_monthly$centroid_long[i] <- -122.435644
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Chinatown'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.795073
+      buyout_nhood_monthly$centroid_long[i] <- -122.406350
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Excelsior'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.722300
+      buyout_nhood_monthly$centroid_long[i] <- -122.431224
+    }
+    
+    if (buyout_nhood_monthly$nhood[i] == 'Financial District/South Beach'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.793213
+      buyout_nhood_monthly$centroid_long[i] <- -122.398187
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Glen Park'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.735976
+      buyout_nhood_monthly$centroid_long[i] <- -122.434464
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Haight Ashbury'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.769910
+      buyout_nhood_monthly$centroid_long[i] <- -122.447678
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Hayes Valley'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.776425
+      buyout_nhood_monthly$centroid_long[i] <- -122.426235
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Inner Richmond'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.778849
+      buyout_nhood_monthly$centroid_long[i] <- -122.468955 
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Inner Sunset'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.762068
+      buyout_nhood_monthly$centroid_long[i] <- -122.467189
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Japantown'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.785840
+      buyout_nhood_monthly$centroid_long[i] <- -122.429952
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Lakeshore'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.718720
+      buyout_nhood_monthly$centroid_long[i] <- -122.477916
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Lone Mountain/USF'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.777975
+      buyout_nhood_monthly$centroid_long[i] <- -122.452816
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Marina'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.802877
+      buyout_nhood_monthly$centroid_long[i] <- -122.436969
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
+      buyout_nhood_monthly$centroid_lat[i] <- 37.718407
+      buyout_nhood_monthly$centroid_long[i] <- -122.418904
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Mission'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.758338
+      buyout_nhood_monthly$centroid_long[i] <- -122.414678
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Mission Bay'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.770674
+      buyout_nhood_monthly$centroid_long[i] <- -122.392015
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Nob Hill'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.793044
+      buyout_nhood_monthly$centroid_long[i] <- -122.414461
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Noe Valley'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.747095
+      buyout_nhood_monthly$centroid_long[i] <- -122.431421
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'North Beach'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.799254
+      buyout_nhood_monthly$centroid_long[i] <- -122.407458
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Oceanview/Merced/Ingleside'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.718959
+      buyout_nhood_monthly$centroid_long[i] <- -122.462039
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Outer Mission'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.709585
+      buyout_nhood_monthly$centroid_long[i] <- -122.455082
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Outer Richmond'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.776683
+      buyout_nhood_monthly$centroid_long[i] <- -122.489908
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Pacific Heights'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.792182
+      buyout_nhood_monthly$centroid_long[i] <- -122.432784
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Portola'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.726470
+      buyout_nhood_monthly$centroid_long[i] <- -122.407642
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Potrero Hill'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.759056
+      buyout_nhood_monthly$centroid_long[i] <- -122.398618
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Presidio Heights' | buyout_nhood_monthly$nhood[i] == 'Presidio'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.788849
+      buyout_nhood_monthly$centroid_long[i] <- -122.452228
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Russian Hill'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.800432
+      buyout_nhood_monthly$centroid_long[i] <- -122.417609
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Seacliff'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.785975
+      buyout_nhood_monthly$centroid_long[i] <- -122.489522
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'South of Market'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.779527
+      buyout_nhood_monthly$centroid_long[i] <- -122.405727
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Sunset/Parkside'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.749026
+      buyout_nhood_monthly$centroid_long[i] <- -122.493742
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Tenderloin'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.784141
+      buyout_nhood_monthly$centroid_long[i] <- -122.414748
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Twin Peaks'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.753375
+      buyout_nhood_monthly$centroid_long[i] <- -122.445652
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Visitacion Valley'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.713141
+      buyout_nhood_monthly$centroid_long[i] <- -122.408825
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'West of Twin Peaks'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.737955
+      buyout_nhood_monthly$centroid_long[i] <- -122.460363
+    }
+    if (buyout_nhood_monthly$nhood[i] == 'Western Addition'){
+      buyout_nhood_monthly$centroid_lat[i] <- 37.780587
+      buyout_nhood_monthly$centroid_long[i] <- -122.434510
+    }
+  }
+  
+  write.csv(buyout_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_monthly.csv")
+}
+
+#Aggiungo i centri ai nhoods di buyout_nhood_yearly
+{
+  buyout_nhood_yearly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv", header=TRUE)
+  buyout_nhood_yearly$centroid_lat <- NA
+  buyout_nhood_yearly$centroid_long <- NA
+  
+  for (i in 1:length(buyout_nhood_yearly[,1])){
+    if (buyout_nhood_yearly$nhood[i] == 'Bayview Hunters Point'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.730696
+      buyout_nhood_yearly$centroid_long[i] <- -122.388515
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Bernal Heights'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.741391
+      buyout_nhood_yearly$centroid_long[i] <- -122.414033
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Castro/Upper Market'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.758812
+      buyout_nhood_yearly$centroid_long[i] <- -122.435644
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Chinatown'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.795073
+      buyout_nhood_yearly$centroid_long[i] <- -122.406350
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Excelsior'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.722300
+      buyout_nhood_yearly$centroid_long[i] <- -122.431224
+    }
+    
+    if (buyout_nhood_yearly$nhood[i] == 'Financial District/South Beach'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.793213
+      buyout_nhood_yearly$centroid_long[i] <- -122.398187
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Glen Park'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.735976
+      buyout_nhood_yearly$centroid_long[i] <- -122.434464
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Haight Ashbury'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.769910
+      buyout_nhood_yearly$centroid_long[i] <- -122.447678
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Hayes Valley'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.776425
+      buyout_nhood_yearly$centroid_long[i] <- -122.426235
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Inner Richmond'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.778849
+      buyout_nhood_yearly$centroid_long[i] <- -122.468955 
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Inner Sunset'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.762068
+      buyout_nhood_yearly$centroid_long[i] <- -122.467189
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Japantown'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.785840
+      buyout_nhood_yearly$centroid_long[i] <- -122.429952
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Lakeshore'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.718720
+      buyout_nhood_yearly$centroid_long[i] <- -122.477916
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Lone Mountain/USF'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.777975
+      buyout_nhood_yearly$centroid_long[i] <- -122.452816
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Marina'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.802877
+      buyout_nhood_yearly$centroid_long[i] <- -122.436969
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
+      buyout_nhood_yearly$centroid_lat[i] <- 37.718407
+      buyout_nhood_yearly$centroid_long[i] <- -122.418904
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Mission'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.758338
+      buyout_nhood_yearly$centroid_long[i] <- -122.414678
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Mission Bay'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.770674
+      buyout_nhood_yearly$centroid_long[i] <- -122.392015
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Nob Hill'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.793044
+      buyout_nhood_yearly$centroid_long[i] <- -122.414461
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Noe Valley'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.747095
+      buyout_nhood_yearly$centroid_long[i] <- -122.431421
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'North Beach'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.799254
+      buyout_nhood_yearly$centroid_long[i] <- -122.407458
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Oceanview/Merced/Ingleside'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.718959
+      buyout_nhood_yearly$centroid_long[i] <- -122.462039
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Outer Mission'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.709585
+      buyout_nhood_yearly$centroid_long[i] <- -122.455082
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Outer Richmond'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.776683
+      buyout_nhood_yearly$centroid_long[i] <- -122.489908
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Pacific Heights'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.792182
+      buyout_nhood_yearly$centroid_long[i] <- -122.432784
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Portola'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.726470
+      buyout_nhood_yearly$centroid_long[i] <- -122.407642
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Potrero Hill'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.759056
+      buyout_nhood_yearly$centroid_long[i] <- -122.398618
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Presidio Heights' | buyout_nhood_yearly$nhood[i] == 'Presidio'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.788849
+      buyout_nhood_yearly$centroid_long[i] <- -122.452228
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Russian Hill'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.800432
+      buyout_nhood_yearly$centroid_long[i] <- -122.417609
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Seacliff'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.785975
+      buyout_nhood_yearly$centroid_long[i] <- -122.489522
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'South of Market'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.779527
+      buyout_nhood_yearly$centroid_long[i] <- -122.405727
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Sunset/Parkside'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.749026
+      buyout_nhood_yearly$centroid_long[i] <- -122.493742
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Tenderloin'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.784141
+      buyout_nhood_yearly$centroid_long[i] <- -122.414748
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Twin Peaks'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.753375
+      buyout_nhood_yearly$centroid_long[i] <- -122.445652
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Visitacion Valley'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.713141
+      buyout_nhood_yearly$centroid_long[i] <- -122.408825
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'West of Twin Peaks'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.737955
+      buyout_nhood_yearly$centroid_long[i] <- -122.460363
+    }
+    if (buyout_nhood_yearly$nhood[i] == 'Western Addition'){
+      buyout_nhood_yearly$centroid_lat[i] <- 37.780587
+      buyout_nhood_yearly$centroid_long[i] <- -122.434510
+    }
+  }
+  
+  write.csv(buyout_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv")
+}
 
 
 
 
 
+# ------------------------------------------------------- Rent ------------------------------------------------------------------------------------
 
 
 
 
-
-
-
-
-
-
-
-
+{
 rent$d = as.Date(as.character(rent$date),format = "%Y%m%d") 
 rent <- rent[,-c(1:3,15:17)]
 rent <- rent[(rent[,2] == 'san francisco'),] #solo s francisco città
@@ -476,7 +804,7 @@ length(rent[rent$V13 == '2016',15]) #2121
 length(rent[rent$V13 == '2017',15]) #262
 length(rent[rent$V13 == '2018',15]) #354
 
-#I remove them if year < 2011    => Mi servono Construction dal 2007 al 2014   <----TOM : Qua è 2018, non 2014!
+#I remove them if year < 2011    => Mi servono Construction dal 2007 al 2018!
 rent <- rent[as.double(rent$V15) > 2010 ,]
 
 #Aggiungo rent/mq e rimuovo sq feet e price, beds, rooms, address, data completa, city&county( always == san francisco)
@@ -485,8 +813,9 @@ rent <- rent[,-c(2:9)]
 colnames(rent) <- c('nhood', 'lat', 'lon','date', 'day', 'month','year', 'rent.sq')
 write.csv(rent,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
 rent_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv", header=TRUE)
+} #preparazione di base
 
-
+{
 #Calcolo i df con avg rent per nhood per anno e per mese
 vect_year = paste(rent_clean$year)
 vect_month = paste(rent_clean$month)
@@ -564,12 +893,16 @@ rent_clean$price_mq <- NA
 rent_clean$price_mq <- (rent_clean$price_sqft)/0.0929
 write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
 
+} # Preparazione di rent_nhood_yearly & rent_nhood_monthly
+
+
+
+# ------------------------------------------------------- New Construction ------------------------------------------------------------------------------------
 
 
 
 
-
-
+{
 New_construction <- New_construction[,-c(1:5,7:11,16,23:36)]
 New_construction <- New_construction[((New_construction[,4]=='APARTMENTS') | (New_construction[,4]=='1 FAMILY DWELLING') | 
                                             (New_construction[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
@@ -597,10 +930,16 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
 
 #totale 43025 unità vengono costruite
 
+}
 
 
 
+
+# ------------------------------------------------------- Parcels  ------------------------------------------------------------------------------------
+
+
+{
 Parcels <- Parcels[which(Parcels$RESUNITS > 0), ] #elimino quelle dove non abita nessuno
 Parcels <- Parcels[which(Parcels$LANDUSE == 'RESIDENT'), ] #elemino quelle che non sono a fini abitativi
 Parcels <- Parcels[,-c(14,16:21) ]
-#Continua su "Parcel centroid"
+} # Continua su "Parcel centroid"
