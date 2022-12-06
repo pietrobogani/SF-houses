@@ -1423,9 +1423,11 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
 
 #totale 43025 unità vengono costruite
 
+} #Prime operazioni
+
+{ 
+  New_construction_clean_geocoded <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean_geocoded.csv", header=TRUE)
 }
-
-
 
 
 # ------------------------------------------------------- Parcels  ------------------------------------------------------------------------------------
