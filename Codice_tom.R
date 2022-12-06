@@ -1,3 +1,5 @@
+# FALLIMENTI INIZIALI =( #######################################################
+
 ind = which(rent_nhood_monthly$avg_rent.mq < 7)
 plot(rent_nhood_monthly$d[ind],rent_nhood_monthly$avg_rent.mq[ind])
 
@@ -219,8 +221,19 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 
 
 
+# RENT #########################################################################
+
+## Smoothing ###################################################################
+
 #Provo a fare smoothing con kernel regr sui rent 
 {
+library(ISLR2)
+library(car)
+library(np)
+library(splines)
+library(fda)
+library(magrittr)
+library(KernSmooth)
 library(readr)
 rent_clean <- read_csv("rent_clean.csv")
 aus_df <- data.frame(year = as.numeric(format(rent_clean$d, format = "%Y")),
@@ -232,9 +245,8 @@ rent_clean = rent_clean[which(rent_clean$year >= 2011 & rent_clean$year <= 2018)
 #vect_date_num = as.numeric(paste(rent_clean$year,rent_clean$month,rent_clean$day, sep = ''))
 #rent_clean = cbind(rent_clean,vect_date_num)
 rent_clean$date_num = as.numeric(rent_clean$d)
-rent_clean$price_sqft = rent_clean$price/rent_clean$sqft
 x11()
-plot(rent_clean$d,rent_clean$price_sqft, col = as.factor(rent_clean$nhood), ylim = c(0,8))
+plot(rent_clean$d,rent_clean$price_mq, col = as.factor(rent_clean$nhood))
 list_nhood = unique(rent_clean$nhood)
 first_date = min(rent_clean$d)
 final_date = max(rent_clean$d)
@@ -245,8 +257,8 @@ funct_data = data.frame(row.names = grid_time)
 for(nh in list_nhood){
   ind_nh = which(rent_clean$nhood == nh)
   data = rent_clean[ind_nh,]
-  #bw = npregbw(formula = price_sqft ~ date_num, bws = 365*6/12, data = data)
-  m_loc = npreg( price_sqft ~ date_num,
+  #bw = npregbw(formula = price_mq ~ date_num, bws = 365*6/12, data = data)
+  m_loc = npreg( price_mq ~ date_num,
                  ckertype = 'gaussian', 
                  bws = 365*6/12, # bandwidth di 6 mesi oppure bw$bw
                  data = data)
@@ -254,6 +266,7 @@ for(nh in list_nhood){
   se.bands=cbind(preds$fit +2* preds$se.fit ,preds$fit -2* preds$se.fit)
   funct_data = cbind(funct_data,preds$fit)
 }
+rm(nh, data,m_loc,preds,se.bands,ind_nh)
 colnames(funct_data) = list_nhood
 dim(funct_data)
 length(grid_time)
@@ -262,34 +275,130 @@ funz_rent = funct_data
 funct_data = fData(grid_time,t(funct_data))
 x11()
 plot(funct_data)
-nh = list_nhood[1]
-ind_nh = which(rent_clean$nhood == nh)
-
+#Calcolo derivate prime 
 diff_rent = funz_rent[2:dim(funz_rent)[1],] - funz_rent[1:dim(funz_rent)[1]-1,]
 dim(funz_rent)
 dim(diff_rent)
 funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_rent))
 x11()
 plot(funct_data_diff)
-
-
-
 }
 #Conclusione: usando la bandwidth ottenuta con CV con npregbw si ottengono funzioni molto
 #             disomogenee nelle variazioni... Potrebbe influire (negativamente) sullo di 
 #             functional depth measures/outliers! Non sarebbe meglio tenere una finestra che
-#             fornisce variazioni simili per tutti??
+#             fornisce variazioni simili per tutti (così si evidenzia trend)?
+
+# funz_rent       : table con colonne nhood e righe tempo
+# diff_rent       : table con colonne nhood e righe tempo (valori sono le differenze all'indietro!)
+# funct_data      : rent funzionali
+# funct_data_diff : derivate funzionali dei rent
+
+
+## Test ######################################################################## 
+
+#Test su partizioni delle funzioni dei prezzi nei nhood 
+{
+
+library(fdatest)
+#NB: data si assume con tempo sulle righe e nomi sulle colonne
+data = funz_rent
+low_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/low_evictions_nhood2.csv")
+high_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/high_evictions_nhood2.csv")
+list_low_rent = as.vector(low_evictions_nhood2$x)
+list_high_rent = as.vector(high_evictions_nhood2$x)
+data1 = data[,list_low_rent]
+data2 = data[,list_high_rent]
+#data1 = data[,1:23] 
+#data2 = data[,24:46]
+data_bind = rbind(t(data1),t(data2)) #data_bind ha nomi sulle righe!
+n = nrow(data_bind)
+n1 = nrow(t(data1)) #numero nomi in gruppo1
+n2 = nrow(t(data2)) #numero nomi in gruppo2
+data1 = fData(grid_time,t(data[,1:23])) #partizione di quartieri 1
+data2 = fData(grid_time,t(data[,24:46])) #partizione di quartieri 2
+seed=2781991
+B=1000
+mean_diff = median_fData(data1, type = 'MBD') - median_fData(data2, type = 'MBD')
+plot(mean_diff)
+T0 = sum(abs(mean_diff$values))
+T0
+data_fd = append_fData(data1,data2)
+T0_perm = numeric(B)
+library(progress)
+pb <- progress_bar$new(format = "  processing [:bar] :percent eta: :eta",total = B, clear = FALSE)
+for(perm in 1:B){
+  permutazione <- sample(n)
+  data_perm=data_fd[permutazione,]
+  perm1 = data_perm[1:n1,] 
+  perm2 = data_perm[(n2+1):n,] 
+  mean_diff=median_fData(perm1,type='MBD')-median_fData(perm2,type='MBD')
+  T0_perm[perm]=sum(abs(mean_diff$values))
+  pb$tick()
+}
+sum(T0_perm >= T0)/B
+hist(T0_perm)
+abline(v=T0,col='green')
+
+
+#Provo a fare il test "locale"
+data1 = fData(grid_time,t(data[,1:23])) #da definire
+data2 = fData(grid_time,t(data[,24:46])) #da definire
+seed=2781991
+tst = IWT2(t(data1), t(data2))
+plot(tst)
+
+}
+
+
+## Depth measures & outliers ###################################################
+
+#Depth measures & outliers per funzioni rent
+{
+  #Analisi di funct_data e funct_data_diff 
+  x11()
+  par(mfrow=c(1,2))
+  plot(funct_data)
+  plot(funct_data_diff)
+  
+  #MBD,mediana e boxplot per rent funzionali
+  modified_band_depth_rent = MBD(funct_data)
+  print(paste('The nhood with max depth is:', colnames(funz_rent)[which.max(modified_band_depth_rent)] ))
+  median_curve_rent = median_fData(fData = funct_data, type = 'MBD' )
+  x11()
+  plot(funct_data)
+  plot(median_curve_rent, col = 'red', lwd = 3, add = T)
+  # fbplot(funct_data) da errori...perchè?
+  funct_data_num = fData(grid_time_num$date_num,t(funz_rent))
+  fbplot(funct_data_num)
+  out_funct <- outliergram(funct_data) #Non ha alcun senso...
+  
+  #MBD,mediana e boxplot per derivate di rent
+  modified_band_depth_rent_diff = MBD(funct_data_diff)
+  print(paste('The nhood with max depth is:', colnames(funz_rent)[which.max(modified_band_depth_rent_diff)] ))
+  median_curve_rent_diff = median_fData(fData = funct_data_diff, type = 'MBD' )
+  x11()
+  plot(funct_data_diff)
+  plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
+  x11()
+  #fbplot(funct_data_diff) da errori... perchè?
+  funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_rent))
+  fbplot(funct_data_diff_num)
+  out_funct_diff <- outliergram(funct_data_diff) #Non ha alcun senso...
+}
 
 
 
+
+# EVICTIONS ####################################################################
+
+## Smoothing ###################################################################
 
 #Provo a fare smoothing con kernel reg sulle evictions mensili
 {
   
-
 library(readr)
 eviction_nhood_monthly <- read_csv("eviction_nhood_monthly.csv")
-eviction_nhood_monthly = eviction_nhood_monthly[-2251,]
+eviction_nhood_monthly = eviction_nhood_monthly[-2251,] #tolgo la riga con il count totale
 vect_year = eviction_nhood_monthly$year
 vect_month = eviction_nhood_monthly$month
 vect_day = rep(1,length(vect_year))
@@ -309,7 +418,7 @@ for(nh in nh_multiple_osservations){
   ind = which(eviction_nhood_monthly$nhood == nh)
   eviction_nhood_monthly = eviction_nhood_monthly[-ind,]
 }
-rm(ind_nh,nh,nh_multiple_osservations, ind)
+rm(nh,nh_multiple_osservations, ind)
 
 x11()
 plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count, col = as.factor(eviction_nhood_monthly$nhood))
@@ -318,7 +427,7 @@ first_date = min(eviction_nhood_monthly$date)
 final_date = max(eviction_nhood_monthly$date)
 grid_time = seq(first_date,final_date,by = 1)
 grid_time_num = data.frame(date_num = as.numeric(grid_time))
-funct_evictions = data.frame(row.names = grid_time)
+funz_evictions = data.frame(row.names = grid_time)
 list_nhood = unique(eviction_nhood_monthly$nhood)
 for(nh in list_nhood){
   ind_nh = which(eviction_nhood_monthly$nhood == nh)
@@ -330,16 +439,112 @@ for(nh in list_nhood){
                  data = data)
   preds=predict(m_loc,newdata=grid_time_num,se=T)
   se.bands=cbind(preds$fit +2* preds$se.fit ,preds$fit -2* preds$se.fit)
-  funct_evictions = cbind(funct_evictions,preds$fit)
+  funz_evictions = cbind(funz_evictions,preds$fit)
 }
-colnames(funct_evictions) = list_nhood
+rm(data,nh,ind_nh,m_loc,preds,se.bands)
+colnames(funz_evictions) = list_nhood
 library(roahd)
-funct_evictions = fData(grid_time,t(funct_evictions))
+funct_data = funz_evictions
+funct_data = fData(grid_time,t(funct_data))
 x11()
-plot(funct_evictions)
+plot(funct_data)
+#Calcolo derivate prime 
+diff_evictions = funz_evictions[2:dim(funz_evictions)[1],] - funz_evictions[1:dim(funz_evictions)[1]-1,]
+dim(funz_evictions)
+dim(diff_evictions)
+funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_evictions))
+x11()
+plot(funct_data_diff)
+}
+# funz_evictions  : table evictions
+# diff_evictions  : table derivate differenze all'indietro evictions
+# funct_data      : evictions funzioanli
+# funct_data_diff : derivate evictions funzionali
 
 
+## Test ########################################################################
+
+#Test su partizioni delle funzioni delle evictions nei nhood
+{
+  
+library(fdatest)
+#NB: data si assume con tempo sulle righe e nomi sulle colonne
+data = funz_evictions
+dim(data)
+data1 = data[,1:18] 
+data2 = data[,19:37]
+data_bind = rbind(t(data1),t(data2)) #data_bind ha nomi sulle righe!
+n = nrow(data_bind)
+n1 = nrow(t(data1)) #numero nomi in gruppo1
+n2 = nrow(t(data2)) #numero nomi in gruppo2
+data1 = fData(grid_time,t(data1)) #partizione di quartieri 1
+data2 = fData(grid_time,t(data2)) #partizione di quartieri 2
+seed=2781991
+B=1000
+mean_diff = median_fData(data1, type = 'MBD') - median_fData(data2, type = 'MBD')
+plot(mean_diff)
+T0 = sum(abs(mean_diff$values))
+T0
+data_fd = append_fData(data1,data2)
+T0_perm = numeric(B)
+library(progress)
+pb <- progress_bar$new(format = "  processing [:bar] :percent eta: :eta",total = B, clear = FALSE)
+for(perm in 1:B){
+  permutazione <- sample(n)
+  data_perm=data_fd[permutazione,]
+  perm1 = data_perm[1:n1,] 
+  perm2 = data_perm[(n2+1):n,] 
+  mean_diff=median_fData(perm1,type='MBD')-median_fData(perm2,type='MBD')
+  T0_perm[perm]=sum(abs(mean_diff$values))
+  pb$tick()
+}
+sum(T0_perm >= T0)/B
+hist(T0_perm)
+abline(v=T0,col='green')
+
+
+#Provo a fare il test "locale"
+data1 = fData(grid_time,t(data[,1:18])) #da definire
+data2 = fData(grid_time,t(data[,19:37])) #da definire
+seed=2781991
+tst = IWT2(t(data1), t(data2))
+plot(tst)
 }
 
 
+## Depth measures & outliers ###################################################
+
+#Depth measures & outliers per funzioni evictions
+{
+  #Analisi di funct_data e funct_data_diff 
+  x11()
+  par(mfrow=c(1,2))
+  plot(funct_data)
+  plot(funct_data_diff)
+  
+  #MBD,mediana e boxplot per evictions funzionali
+  modified_band_depth_rent = MBD(funct_data)
+  print(paste('The nhood with max depth is:', colnames(funz_evictions)[which.max(modified_band_depth_rent)] ))
+  median_curve_rent = median_fData(fData = funct_data, type = 'MBD' )
+  x11()
+  plot(funct_data)
+  plot(median_curve_rent, col = 'red', lwd = 3, add = T)
+  # fbplot(funct_data) da errori...perchè?
+  funct_data_num = fData(grid_time_num$date_num,t(funz_evictions))
+  fbplot(funct_data_num)
+  out_funct <- outliergram(funct_data) #Non ha alcun senso...
+  
+  #MBD,mediana e boxplot per derivate di evictions
+  modified_band_depth_rent_diff = MBD(funct_data_diff)
+  print(paste('The nhood with max depth is:', colnames(funz_evictions)[which.max(modified_band_depth_rent_diff)] ))
+  median_curve_rent_diff = median_fData(fData = funct_data_diff, type = 'MBD' )
+  x11()
+  plot(funct_data_diff)
+  plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
+  x11()
+  #fbplot(funct_data_diff) da errori... perchè?
+  funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_evictions))
+  fbplot(funct_data_diff_num)
+  out_funct_diff <- outliergram(funct_data_diff) #Non ha alcun senso...
+}
 
