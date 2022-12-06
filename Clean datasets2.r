@@ -651,6 +651,68 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
   write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
 }
 
+#Calcolo eviction_notices/square feet per ogni nhood. Sommo le quantità di evictions dal 2011 al 2017. Poi divido in clusters i nhood sulla
+#base di quante evictions ci sono state
+{
+  #Calcolo i df con numero di evictions per nhood 
+  sum_eviction_by_nhood = aggregate(Eviction_Notices_clean$dummy, by = list(Eviction_Notices_clean$nhood), FUN = sum)
+  names(sum_eviction_by_nhood)[names(sum_eviction_by_nhood) == 'Group.1'] <- 'nhood'
+  names(sum_eviction_by_nhood)[names(sum_eviction_by_nhood) == 'x'] <- 'Evictions_number'
+  
+  #Calcolo due clusters
+  m <- median(sum_eviction_by_nhood[,2])
+  high_evictions_nhood2 <- NA
+  low_evictions_nhood2 <- NA
+  j <- 1
+  k <- 1
+  for(i in 1:length(sum_eviction_by_nhood[,1])){
+    if (sum_eviction_by_nhood[i,2] >= m){
+      high_evictions_nhood2[j] <- sum_eviction_by_nhood[i,1]
+      j =j+1
+    }
+    else{
+      low_evictions_nhood2[k] <- sum_eviction_by_nhood[i,1]
+      k = k+1
+    }
+  
+  }
+  write.csv(high_evictions_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_evictions_nhood2.csv")
+  write.csv(low_evictions_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_evictions_nhood2.csv")
+  
+  
+  
+  
+  #Calcolo tre clusters
+  q1 <- quantile(sum_eviction_by_nhood[,2],probs = 0.33)
+  q2 <- quantile(sum_eviction_by_nhood[,2],probs = 0.66)
+  high_evictions_nhood3 <- NA
+  medium_evictions_nhood3 <- NA
+  low_evictions_nhood3 <- NA
+  j <- 1
+  k <- 1
+  t <- 1
+  for(i in 1:length(sum_eviction_by_nhood[,1])){
+    if (sum_eviction_by_nhood[i,2] >= q2){
+      high_evictions_nhood3[j] <- sum_eviction_by_nhood[i,1]
+      j =j+1
+    }
+    else if (sum_eviction_by_nhood[i,2] <= q1){
+      low_evictions_nhood3[k] <- sum_eviction_by_nhood[i,1]
+      k = k+1
+    }
+    else {
+      medium_evictions_nhood3[t] <- sum_eviction_by_nhood[i,1]
+      t <- t+1
+    }
+    
+  }
+  
+  write.csv(high_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_evictions_nhood3.csv")
+  write.csv(low_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_evictions_nhood3.csv")
+  write.csv(medium_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_evictions_nhood3.csv")
+  
+  
+}
 
 
 
@@ -1388,6 +1450,74 @@ write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonp
 
 } # Preparazione di rent_nhood_yearly & rent_nhood_monthly
 
+#Calcolo avg_rent per ogni nhood. Poi divido in clusters i nhood sulla base di quanto sono alti gli affitti medi
+{
+  avg_rent_by_nhood = aggregate(rent_nhood_yearly$avg_rent.mq, by = list(rent_nhood_yearly$nhood), FUN = mean)
+  
+  
+  #Calcolo due clusters
+  m <- median(avg_rent_by_nhood[,2])
+  high_rent_nhood2 <- NA
+  low_rent_nhood2 <- NA
+  j <- 1
+  k <- 1
+  for(i in 1:length(avg_rent_by_nhood[,1])){
+    if (avg_rent_by_nhood[i,2] >= m){
+      high_rent_nhood2[j] <- avg_rent_by_nhood[i,1]
+      j =j+1
+    }
+    else{
+      low_rent_nhood2[k] <- avg_rent_by_nhood[i,1]
+      k = k+1
+    }
+    
+  }
+  write.csv(high_rent_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_rent_nhood2.csv")
+  write.csv(low_rent_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_rent_nhood2.csv")
+  
+  
+  
+  
+  #Calcolo tre clusters
+  q1 <- quantile(avg_rent_by_nhood[,2],probs = 0.33)
+  q2 <- quantile(avg_rent_by_nhood[,2],probs = 0.66)
+  high_rent_nhood3 <- NA
+  medium_rent_nhood3 <- NA
+  low_rent_nhood3 <- NA
+  j <- 1
+  k <- 1
+  t <- 1
+  for(i in 1:length(avg_rent_by_nhood[,1])){
+    if (avg_rent_by_nhood[i,2] >= q2){
+      high_rent_nhood3[j] <- avg_rent_by_nhood[i,1]
+      j =j+1
+    }
+    else if (avg_rent_by_nhood[i,2] <= q1){
+      low_rent_nhood3[k] <- avg_rent_by_nhood[i,1]
+      k = k+1
+    }
+    else {
+      medium_rent_nhood3[t] <- avg_rent_by_nhood[i,1]
+      t <- t+1
+    }
+    
+  }
+  
+  write.csv(high_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_rent_nhood3.csv")
+  write.csv(low_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_rent_nhood3.csv")
+  write.csv(medium_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_rent_nhood3.csv")
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
 
 
 # ------------------------------------------------------- New Construction ------------------------------------------------------------------------------------
