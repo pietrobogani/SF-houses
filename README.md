@@ -6,11 +6,11 @@ PARTE PRELIMINARE
 
 1) Rendere coerenti i nhood tra i dataset: rent_clean, Eviction_notices_clean, Buyout_Agreements_clean   SARA
 
-2) Aggiungere i nhood al dataset new_construction_clean e al dataset parcels_final SARA
+2)FATTO Aggiungere i nhood al dataset new_construction_clean e al dataset parcels_final SARA
 
 3) Aggiungere dimensione (square feet)/popolazione dei nhood     SARA
 
-4) Aggiungere il centro dei nhood PIETRO
+4) Aggiungere il centro dei nhood, prendo da dataset SFneighboorhods di Sara  PIETRO
 
 5) Capire la regressione funzionale SARA PIETRO TOMASO
 
@@ -24,6 +24,7 @@ PARTE PRELIMINARE
 PARTE ESPLORATIVA
 
 4) Partizionare i nhood e fare functional tests sui smoothed rent (oppure su d/dt(smoothed rent)) TOM 
+   - Contattare Fontana perchè la funzione non va TOM
    Criteri di partizione: - Costieri e centrali 
                           - Tante costruzioni/(square feet) e poche costruzioni/(square feet)    o popolazione PIETRO
                           - Divido in nhood con tante evictions/(square feet) e poche evictions/(square feet)) o popolazione PIETRO
