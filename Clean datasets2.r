@@ -1612,7 +1612,12 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
   write.csv(low_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood3.csv")
   write.csv(medium_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_construction_nhood3.csv")
   
-}
+} #Calcolo le new_construction per ogni nhood e poi faccio clusters con k = 2 e k = 3
+
+constr_coord <- New_construction_clean_geocoded_nh[,c(14,15)]
+write.csv(constr_coord,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/constr_coord.csv", row.names = FALSE)
+constr_coord <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/constr_coord.csv", header=TRUE)
+
 
 
 # ------------------------------------------------------- Parcels  ------------------------------------------------------------------------------------
