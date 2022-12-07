@@ -1557,6 +1557,60 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
 
 { 
   New_construction_clean_geocoded_nh <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean_geocoded_nh.csv", header=TRUE)
+  constructions_by_nhood = aggregate(New_construction_clean_geocoded_nh$new_units_built, by = list(New_construction_clean_geocoded_nh$neighborhoods), FUN = sum)
+  
+  
+  #Calcolo due clusters
+  m <- median(constructions_by_nhood[,2])
+  high_construction_nhood2 <- NA
+  low_construction_nhood2 <- NA
+  j <- 1
+  k <- 1
+  for(i in 1:length(constructions_by_nhood[,1])){
+    if (constructions_by_nhood[i,2] >= m){
+      high_construction_nhood2[j] <- constructions_by_nhood[i,1]
+      j =j+1
+    }
+    else{
+      low_construction_nhood2[k] <- constructions_by_nhood[i,1]
+      k = k+1
+    }
+    
+  }
+  write.csv(high_construction_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_construction_nhood2.csv")
+  write.csv(low_construction_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood2.csv")
+  
+  
+  
+  
+  #Calcolo tre clusters
+  q1 <- quantile(constructions_by_nhood[,2],probs = 0.33)
+  q2 <- quantile(constructions_by_nhood[,2],probs = 0.66)
+  high_construction_nhood3 <- NA
+  medium_construction_nhood3 <- NA
+  low_construction_nhood3 <- NA
+  j <- 1
+  k <- 1
+  t <- 1
+  for(i in 1:length(constructions_by_nhood[,1])){
+    if (constructions_by_nhood[i,2] >= q2){
+      high_construction_nhood3[j] <- constructions_by_nhood[i,1]
+      j =j+1
+    }
+    else if (constructions_by_nhood[i,2] <= q1){
+      low_construction_nhood3[k] <- constructions_by_nhood[i,1]
+      k = k+1
+    }
+    else {
+      medium_construction_nhood3[t] <- constructions_by_nhood[i,1]
+      t <- t+1
+    }
+    
+  }
+  
+  write.csv(high_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_construction_nhood3.csv")
+  write.csv(low_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood3.csv")
+  write.csv(medium_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_construction_nhood3.csv")
   
 }
 
