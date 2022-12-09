@@ -166,158 +166,11 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
   
   
   for (i in 1:length(Eviction_Notices_clean[,1])){
-    if (Eviction_Notices_clean$nhood[i] == 'Bayview Hunters Point'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.730696
-      Eviction_Notices_clean$centroid_long[i] <- -122.388515
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Bernal Heights'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.741391
-      Eviction_Notices_clean$centroid_long[i] <- -122.414033
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Castro/Upper Market'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.758812
-      Eviction_Notices_clean$centroid_long[i] <- -122.435644
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Chinatown'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.795073
-      Eviction_Notices_clean$centroid_long[i] <- -122.406350
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Excelsior'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.722300
-      Eviction_Notices_clean$centroid_long[i] <- -122.431224
-    }
-    
-    if (Eviction_Notices_clean$nhood[i] == 'Financial District/South Beach'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.793213
-      Eviction_Notices_clean$centroid_long[i] <- -122.398187
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Glen Park'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.735976
-      Eviction_Notices_clean$centroid_long[i] <- -122.434464
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Golden Gate Park'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.769283
-      Eviction_Notices_clean$centroid_long[i] <- -122.473486
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Haight Ashbury'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.769910
-      Eviction_Notices_clean$centroid_long[i] <- -122.447678
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Hayes Valley'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.776425
-      Eviction_Notices_clean$centroid_long[i] <- -122.426235
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Inner Richmond'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.778849
-      Eviction_Notices_clean$centroid_long[i] <- -122.468955 
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Inner Sunset'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.762068
-      Eviction_Notices_clean$centroid_long[i] <- -122.467189
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Japantown'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.785840
-      Eviction_Notices_clean$centroid_long[i] <- -122.429952
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Lakeshore'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.718720
-      Eviction_Notices_clean$centroid_long[i] <- -122.477916
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Lone Mountain/USF'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.777975
-      Eviction_Notices_clean$centroid_long[i] <- -122.452816
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Marina'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.802877
-      Eviction_Notices_clean$centroid_long[i] <- -122.436969
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'McLaren Park'){ #non molto convinto, l'ho messo in mezzo al parco, le vie sono tutte attorno al parco gigante e non si capiscono i confini su google maps
-      Eviction_Notices_clean$centroid_lat[i] <- 37.718407
-      Eviction_Notices_clean$centroid_long[i] <- -122.418904
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Mission'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.758338
-      Eviction_Notices_clean$centroid_long[i] <- -122.414678
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Mission Bay'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.770674
-      Eviction_Notices_clean$centroid_long[i] <- -122.392015
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Nob Hill'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.793044
-      Eviction_Notices_clean$centroid_long[i] <- -122.414461
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Noe Valley'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.747095
-      Eviction_Notices_clean$centroid_long[i] <- -122.431421
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'North Beach'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.799254
-      Eviction_Notices_clean$centroid_long[i] <- -122.407458
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Oceanview/Merced/Ingleside'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.718959
-      Eviction_Notices_clean$centroid_long[i] <- -122.462039
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Outer Mission'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.709585
-      Eviction_Notices_clean$centroid_long[i] <- -122.455082
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Outer Richmond'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.776683
-      Eviction_Notices_clean$centroid_long[i] <- -122.489908
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Pacific Heights'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.792182
-      Eviction_Notices_clean$centroid_long[i] <- -122.432784
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Portola'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.726470
-      Eviction_Notices_clean$centroid_long[i] <- -122.407642
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Potrero Hill'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.759056
-      Eviction_Notices_clean$centroid_long[i] <- -122.398618
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Presidio Heights' | Eviction_Notices_clean$nhood[i] == 'Presidio'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.788849
-      Eviction_Notices_clean$centroid_long[i] <- -122.452228
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Russian Hill'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.800432
-      Eviction_Notices_clean$centroid_long[i] <- -122.417609
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Seacliff'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.785975
-      Eviction_Notices_clean$centroid_long[i] <- -122.489522
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'South of Market'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.779527
-      Eviction_Notices_clean$centroid_long[i] <- -122.405727
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Sunset/Parkside'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.749026
-      Eviction_Notices_clean$centroid_long[i] <- -122.493742
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Tenderloin'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.784141
-      Eviction_Notices_clean$centroid_long[i] <- -122.414748
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Twin Peaks'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.753375
-      Eviction_Notices_clean$centroid_long[i] <- -122.445652
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Visitacion Valley'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.713141
-      Eviction_Notices_clean$centroid_long[i] <- -122.408825
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'West of Twin Peaks'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.737955
-      Eviction_Notices_clean$centroid_long[i] <- -122.460363
-    }
-    if (Eviction_Notices_clean$nhood[i] == 'Western Addition'){
-      Eviction_Notices_clean$centroid_lat[i] <- 37.780587
-      Eviction_Notices_clean$centroid_long[i] <- -122.434510
+    for ( j in 1:length(SFNeighborhoods_new$nhood)){
+      if (Eviction_Notices_clean$nhood[i] == SFNeighborhoods_new$nhood[j]){
+        Eviction_Notices_clean$centroid_lat[i] <- SFNeighborhoods_new$centroid_lat[j]
+        Eviction_Notices_clean$centroid_long[i] <- SFNeighborhoods_new$centroid_long[j]
+      }
     }
   }
   
@@ -1744,114 +1597,131 @@ Parcels <- Parcels[,-c(14,16:21) ]
 # ------------------------------------------------------- SFNeighborhoods_new  ------------------------------------------------------------------------------------
 
 {
-  SFNeighborhoods_new <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", header=TRUE)
+#   SFNeighborhoods_new <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", header=TRUE)
+# 
+#   for( i in 1:length(SFNeighborhoods_new[,1])) { 
+#     SFNeighborhoods_new[i,2] <- chartr('(', ' ', SFNeighborhoods_new[i,2])
+#     SFNeighborhoods_new[i,2] <- chartr(')', ' ', SFNeighborhoods_new[i,2])
+#     #SFNeighborhoods_new[i,2] <- chartr(',', ' ', SFNeighborhoods_new[i,2])
+#     SFNeighborhoods_new[i,2] <- gsub("," , "",  SFNeighborhoods_new[i,2])
+#     #SFNeighborhoods_new[i,2] <- gsub("  " , " ",  SFNeighborhoods_new[i,2])
+#   }
+# 
+#  
+#  for( i in 1:length(SFNeighborhoods_new[,1])) {       #tolgo la scritta "MULTIPOLYGON
+#     temp <- strsplit(SFNeighborhoods_new[i,2], "N   ")
+#     SFNeighborhoods_new[i,2] <- temp[[1]][2]
+#  }
+# 
+# 
+# options(digits=20)
+# nhood_poly1 = matrix(as.numeric(strsplit(SFNeighborhoods_new[1,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly2 = matrix(as.numeric(strsplit(SFNeighborhoods_new[2,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly3 = matrix(as.numeric(strsplit(SFNeighborhoods_new[3,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly4 = matrix(as.numeric(strsplit(SFNeighborhoods_new[4,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly5 = matrix(as.numeric(strsplit(SFNeighborhoods_new[5,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly6 = matrix(as.numeric(strsplit(SFNeighborhoods_new[6,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly7 = matrix(as.numeric(strsplit(SFNeighborhoods_new[7,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly8 = matrix(as.numeric(strsplit(SFNeighborhoods_new[8,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly9 = matrix(as.numeric(strsplit(SFNeighborhoods_new[9,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly10 = matrix(as.numeric(strsplit(SFNeighborhoods_new[10,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly11 = matrix(as.numeric(strsplit(SFNeighborhoods_new[11,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly12 = matrix(as.numeric(strsplit(SFNeighborhoods_new[12,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly13 = matrix(as.numeric(strsplit(SFNeighborhoods_new[13,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly14 = matrix(as.numeric(strsplit(SFNeighborhoods_new[14,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly15 = matrix(as.numeric(strsplit(SFNeighborhoods_new[15,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly16 = matrix(as.numeric(strsplit(SFNeighborhoods_new[16,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly16 <- nhood_poly16[!(is.na(nhood_poly16[,1])), ] 
+# nhood_poly16 <- nhood_poly16[-838, ] 
+# nhood_poly17 = matrix(as.numeric(strsplit(SFNeighborhoods_new[17,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly18 = matrix(as.numeric(strsplit(SFNeighborhoods_new[18,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly19 = matrix(as.numeric(strsplit(SFNeighborhoods_new[19,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly20 = matrix(as.numeric(strsplit(SFNeighborhoods_new[20,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly21 = matrix(as.numeric(strsplit(SFNeighborhoods_new[21,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly22 = matrix(as.numeric(strsplit(SFNeighborhoods_new[22,2]," ")[[1]][-c(1,1677)]),ncol=2,byrow=TRUE)
+# nhood_poly22 <-nhood_poly22[-838,] #dava problemi strani, l ho tolta, tanto è un poligono di 838 vertici
+# nhood_poly23 = matrix(as.numeric(strsplit(SFNeighborhoods_new[23,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly24 = matrix(as.numeric(strsplit(SFNeighborhoods_new[24,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly24 <- nhood_poly24[-866, ] 
+# nhood_poly24 <- nhood_poly24[!(is.na(nhood_poly24[,1])), ] 
+# nhood_poly25 = matrix(as.numeric(strsplit(SFNeighborhoods_new[25,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly25 <-nhood_poly25[-839,] #dava problemi strani, l ho tolta, tanto è un poligono di 838 vertici
+# nhood_poly26 = matrix(as.numeric(strsplit(SFNeighborhoods_new[26,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly27 = matrix(as.numeric(strsplit(SFNeighborhoods_new[27,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly28 = matrix(as.numeric(strsplit(SFNeighborhoods_new[28,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly29 = matrix(as.numeric(strsplit(SFNeighborhoods_new[29,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly30 = matrix(as.numeric(strsplit(SFNeighborhoods_new[30,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly31 = matrix(as.numeric(strsplit(SFNeighborhoods_new[31,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly32 = matrix(as.numeric(strsplit(SFNeighborhoods_new[32,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly33 = matrix(as.numeric(strsplit(SFNeighborhoods_new[33,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly34 = matrix(as.numeric(strsplit(SFNeighborhoods_new[34,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly35 = matrix(as.numeric(strsplit(SFNeighborhoods_new[35,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly36 = matrix(as.numeric(strsplit(SFNeighborhoods_new[36,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly36 <- nhood_poly36[-847, ] 
+# nhood_poly36 <- nhood_poly36[!(is.na(nhood_poly36[,1])), ] 
+# nhood_poly37 = matrix(as.numeric(strsplit(SFNeighborhoods_new[37,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly38 = matrix(as.numeric(strsplit(SFNeighborhoods_new[38,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly39 = matrix(as.numeric(strsplit(SFNeighborhoods_new[39,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly40 = matrix(as.numeric(strsplit(SFNeighborhoods_new[40,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# nhood_poly41 = matrix(as.numeric(strsplit(SFNeighborhoods_new[41,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
+# 
+# 
+# write.csv(nhood_poly1,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly1.csv",row.names=FALSE)
+# write.csv(nhood_poly2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly2.csv",row.names=FALSE)
+# write.csv(nhood_poly3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly3.csv",row.names=FALSE)
+# write.csv(nhood_poly4,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly4.csv",row.names=FALSE)
+# write.csv(nhood_poly5,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly5.csv",row.names=FALSE)
+# write.csv(nhood_poly6,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly6.csv",row.names=FALSE)
+# write.csv(nhood_poly7,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly7.csv",row.names=FALSE)
+# write.csv(nhood_poly8,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly8.csv",row.names=FALSE)
+# write.csv(nhood_poly9,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly9.csv",row.names=FALSE)
+# write.csv(nhood_poly10,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly10.csv",row.names=FALSE)
+# write.csv(nhood_poly11,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly11.csv",row.names=FALSE)
+# write.csv(nhood_poly12,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly12.csv",row.names=FALSE)
+# write.csv(nhood_poly13,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly13.csv",row.names=FALSE)
+# write.csv(nhood_poly14,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly14.csv",row.names=FALSE)
+# write.csv(nhood_poly15,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly15.csv",row.names=FALSE)
+# write.csv(nhood_poly16,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly16.csv",row.names=FALSE)
+# write.csv(nhood_poly17,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly17.csv",row.names=FALSE)
+# write.csv(nhood_poly18,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly18.csv",row.names=FALSE)
+# write.csv(nhood_poly19,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly19.csv",row.names=FALSE)
+# write.csv(nhood_poly20,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly20.csv",row.names=FALSE)
+# write.csv(nhood_poly21,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly21.csv",row.names=FALSE)
+# write.csv(nhood_poly22,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly22.csv",row.names=FALSE)
+# write.csv(nhood_poly23,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly23.csv",row.names=FALSE)
+# write.csv(nhood_poly24,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly24.csv",row.names=FALSE)
+# write.csv(nhood_poly25,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly25.csv",row.names=FALSE)
+# write.csv(nhood_poly26,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly26.csv",row.names=FALSE)
+# write.csv(nhood_poly27,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly27.csv",row.names=FALSE)
+# write.csv(nhood_poly28,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly28.csv",row.names=FALSE)
+# write.csv(nhood_poly29,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly29.csv",row.names=FALSE)
+# write.csv(nhood_poly30,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly30.csv",row.names=FALSE)
+# write.csv(nhood_poly31,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly31.csv",row.names=FALSE)
+# write.csv(nhood_poly32,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly32.csv",row.names=FALSE)
+# write.csv(nhood_poly33,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly33.csv",row.names=FALSE)
+# write.csv(nhood_poly34,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly34.csv",row.names=FALSE)
+# write.csv(nhood_poly35,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly35.csv",row.names=FALSE)
+# write.csv(nhood_poly36,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly36.csv",row.names=FALSE)
+# write.csv(nhood_poly37,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly37.csv",row.names=FALSE)
+# write.csv(nhood_poly38,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly38.csv",row.names=FALSE)
+# write.csv(nhood_poly39,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly39.csv",row.names=FALSE)
+# write.csv(nhood_poly40,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly40.csv",row.names=FALSE)
+# write.csv(nhood_poly41,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly41.csv",row.names=FALSE)
+} #Preparo il dataset in modo tale da poter plottare i poligoni (INUTILE)
 
-  for( i in 1:length(SFNeighborhoods_new[,1])) { 
-    SFNeighborhoods_new[i,2] <- chartr('(', ' ', SFNeighborhoods_new[i,2])
-    SFNeighborhoods_new[i,2] <- chartr(')', ' ', SFNeighborhoods_new[i,2])
-    #SFNeighborhoods_new[i,2] <- chartr(',', ' ', SFNeighborhoods_new[i,2])
-    SFNeighborhoods_new[i,2] <- gsub("," , "",  SFNeighborhoods_new[i,2])
-    #SFNeighborhoods_new[i,2] <- gsub("  " , " ",  SFNeighborhoods_new[i,2])
-  }
-
- 
- for( i in 1:length(SFNeighborhoods_new[,1])) {       #tolgo la scritta "MULTIPOLYGON
-    temp <- strsplit(SFNeighborhoods_new[i,2], "N   ")
-    SFNeighborhoods_new[i,2] <- temp[[1]][2]
+{
+  SFNeighborhoods_new <- read_sf("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.geojson")
+  original <- SFNeighborhoods_new
+ SFNeighborhoods_new$centroid_lat <- NA
+ SFNeighborhoods_new$centroid_long <- NA
+  for (i in 1:length(SFNeighborhoods_new$centroid)){
+   SFNeighborhoods_new$centroid[i] <- chartr('c(', '  ', SFNeighborhoods_new$centroid[i])
+   SFNeighborhoods_new$centroid[i] <- chartr(')', '  ', SFNeighborhoods_new$centroid[i])
+   SFNeighborhoods_new$centroid_long[i] <- as.double(strsplit(SFNeighborhoods_new$centroid[i],", ")[[1]][1])
+   SFNeighborhoods_new$centroid_lat[i] <- as.double(strsplit(SFNeighborhoods_new$centroid[i],", ")[[1]][2])
  }
+  
+  
 
-
-options(digits=20)
-nhood_poly1 = matrix(as.numeric(strsplit(SFNeighborhoods_new[1,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly2 = matrix(as.numeric(strsplit(SFNeighborhoods_new[2,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly3 = matrix(as.numeric(strsplit(SFNeighborhoods_new[3,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly4 = matrix(as.numeric(strsplit(SFNeighborhoods_new[4,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly5 = matrix(as.numeric(strsplit(SFNeighborhoods_new[5,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly6 = matrix(as.numeric(strsplit(SFNeighborhoods_new[6,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly7 = matrix(as.numeric(strsplit(SFNeighborhoods_new[7,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly8 = matrix(as.numeric(strsplit(SFNeighborhoods_new[8,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly9 = matrix(as.numeric(strsplit(SFNeighborhoods_new[9,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly10 = matrix(as.numeric(strsplit(SFNeighborhoods_new[10,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly11 = matrix(as.numeric(strsplit(SFNeighborhoods_new[11,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly12 = matrix(as.numeric(strsplit(SFNeighborhoods_new[12,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly13 = matrix(as.numeric(strsplit(SFNeighborhoods_new[13,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly14 = matrix(as.numeric(strsplit(SFNeighborhoods_new[14,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly15 = matrix(as.numeric(strsplit(SFNeighborhoods_new[15,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly16 = matrix(as.numeric(strsplit(SFNeighborhoods_new[16,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly16 <- nhood_poly16[!(is.na(nhood_poly16[,1])), ] 
-nhood_poly16 <- nhood_poly16[-838, ] 
-nhood_poly17 = matrix(as.numeric(strsplit(SFNeighborhoods_new[17,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly18 = matrix(as.numeric(strsplit(SFNeighborhoods_new[18,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly19 = matrix(as.numeric(strsplit(SFNeighborhoods_new[19,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly20 = matrix(as.numeric(strsplit(SFNeighborhoods_new[20,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly21 = matrix(as.numeric(strsplit(SFNeighborhoods_new[21,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly22 = matrix(as.numeric(strsplit(SFNeighborhoods_new[22,2]," ")[[1]][-c(1,1677)]),ncol=2,byrow=TRUE)
-nhood_poly22 <-nhood_poly22[-838,] #dava problemi strani, l ho tolta, tanto è un poligono di 838 vertici
-nhood_poly23 = matrix(as.numeric(strsplit(SFNeighborhoods_new[23,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly24 = matrix(as.numeric(strsplit(SFNeighborhoods_new[24,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly24 <- nhood_poly24[-866, ] 
-nhood_poly24 <- nhood_poly24[!(is.na(nhood_poly24[,1])), ] 
-nhood_poly25 = matrix(as.numeric(strsplit(SFNeighborhoods_new[25,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly25 <-nhood_poly25[-839,] #dava problemi strani, l ho tolta, tanto è un poligono di 838 vertici
-nhood_poly26 = matrix(as.numeric(strsplit(SFNeighborhoods_new[26,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly27 = matrix(as.numeric(strsplit(SFNeighborhoods_new[27,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly28 = matrix(as.numeric(strsplit(SFNeighborhoods_new[28,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly29 = matrix(as.numeric(strsplit(SFNeighborhoods_new[29,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly30 = matrix(as.numeric(strsplit(SFNeighborhoods_new[30,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly31 = matrix(as.numeric(strsplit(SFNeighborhoods_new[31,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly32 = matrix(as.numeric(strsplit(SFNeighborhoods_new[32,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly33 = matrix(as.numeric(strsplit(SFNeighborhoods_new[33,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly34 = matrix(as.numeric(strsplit(SFNeighborhoods_new[34,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly35 = matrix(as.numeric(strsplit(SFNeighborhoods_new[35,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly36 = matrix(as.numeric(strsplit(SFNeighborhoods_new[36,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly36 <- nhood_poly36[-847, ] 
-nhood_poly36 <- nhood_poly36[!(is.na(nhood_poly36[,1])), ] 
-nhood_poly37 = matrix(as.numeric(strsplit(SFNeighborhoods_new[37,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly38 = matrix(as.numeric(strsplit(SFNeighborhoods_new[38,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly39 = matrix(as.numeric(strsplit(SFNeighborhoods_new[39,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly40 = matrix(as.numeric(strsplit(SFNeighborhoods_new[40,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly41 = matrix(as.numeric(strsplit(SFNeighborhoods_new[41,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-
-
-write.csv(nhood_poly1,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly1.csv",row.names=FALSE)
-write.csv(nhood_poly2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly2.csv",row.names=FALSE)
-write.csv(nhood_poly3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly3.csv",row.names=FALSE)
-write.csv(nhood_poly4,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly4.csv",row.names=FALSE)
-write.csv(nhood_poly5,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly5.csv",row.names=FALSE)
-write.csv(nhood_poly6,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly6.csv",row.names=FALSE)
-write.csv(nhood_poly7,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly7.csv",row.names=FALSE)
-write.csv(nhood_poly8,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly8.csv",row.names=FALSE)
-write.csv(nhood_poly9,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly9.csv",row.names=FALSE)
-write.csv(nhood_poly10,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly10.csv",row.names=FALSE)
-write.csv(nhood_poly11,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly11.csv",row.names=FALSE)
-write.csv(nhood_poly12,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly12.csv",row.names=FALSE)
-write.csv(nhood_poly13,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly13.csv",row.names=FALSE)
-write.csv(nhood_poly14,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly14.csv",row.names=FALSE)
-write.csv(nhood_poly15,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly15.csv",row.names=FALSE)
-write.csv(nhood_poly16,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly16.csv",row.names=FALSE)
-write.csv(nhood_poly17,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly17.csv",row.names=FALSE)
-write.csv(nhood_poly18,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly18.csv",row.names=FALSE)
-write.csv(nhood_poly19,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly19.csv",row.names=FALSE)
-write.csv(nhood_poly20,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly20.csv",row.names=FALSE)
-write.csv(nhood_poly21,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly21.csv",row.names=FALSE)
-write.csv(nhood_poly22,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly22.csv",row.names=FALSE)
-write.csv(nhood_poly23,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly23.csv",row.names=FALSE)
-write.csv(nhood_poly24,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly24.csv",row.names=FALSE)
-write.csv(nhood_poly25,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly25.csv",row.names=FALSE)
-write.csv(nhood_poly26,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly26.csv",row.names=FALSE)
-write.csv(nhood_poly27,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly27.csv",row.names=FALSE)
-write.csv(nhood_poly28,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly28.csv",row.names=FALSE)
-write.csv(nhood_poly29,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly29.csv",row.names=FALSE)
-write.csv(nhood_poly30,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly30.csv",row.names=FALSE)
-write.csv(nhood_poly31,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly31.csv",row.names=FALSE)
-write.csv(nhood_poly32,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly32.csv",row.names=FALSE)
-write.csv(nhood_poly33,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly33.csv",row.names=FALSE)
-write.csv(nhood_poly34,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly34.csv",row.names=FALSE)
-write.csv(nhood_poly35,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly35.csv",row.names=FALSE)
-write.csv(nhood_poly36,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly36.csv",row.names=FALSE)
-write.csv(nhood_poly37,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly37.csv",row.names=FALSE)
-write.csv(nhood_poly38,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly38.csv",row.names=FALSE)
-write.csv(nhood_poly39,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly39.csv",row.names=FALSE)
-write.csv(nhood_poly40,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly40.csv",row.names=FALSE)
-write.csv(nhood_poly41,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Nhoods Polygon/nhood_poly41.csv",row.names=FALSE)
-} #Preparo il dataset in modo tale da poter plottare i poligoni
+  
+} # Divido "centroide" in due colonne, pronto all'uso
