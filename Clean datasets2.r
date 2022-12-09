@@ -76,7 +76,7 @@ for( i in 1:length(Eviction_Notices[,1])){
 }
 Eviction_Notices <- Eviction_Notices[,-c(10:14)]
 colnames(Eviction_Notices) <- c('address', 'nhood', 'lat', 'long','month','year','block','street_name', 'street_type')
-Eviction_Notices <- Eviction_Notices[Eviction_Notices$year > 2010 & Eviction_Notices$year < 2019,]  #butto via gli anni prima perchË per fare il modello di regr devo usare gli stessi anni di 'rent'
+Eviction_Notices <- Eviction_Notices[Eviction_Notices$year > 2010 & Eviction_Notices$year < 2019,]  #butto via gli anni prima perch√® per fare il modello di regr devo usare gli stessi anni di 'rent'
 write.csv(Eviction_Notices,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv")
 Eviction_Notices_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv", header=TRUE)
 } # Prime modifiche
@@ -102,7 +102,7 @@ length(unique(Eviction_Notices_clean$month_year_nhood)) #Dalle 8943 osservazioni
 eviction_nhood_monthly = aggregate(Eviction_Notices_clean$dummy, by = list(Eviction_Notices_clean$month_year_nhood), FUN = sum)
 names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'x'] <- 'Count'
-#Adesso son da splittare di nuovo mese-anno e nhood e si puÚ plottare tutto (analisi esplorativa)!
+#Adesso son da splittare di nuovo mese-anno e nhood e si pu√≤ plottare tutto (analisi esplorativa)!
 
 
 
@@ -654,7 +654,7 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
   write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
 }
 
-#Calcolo eviction_notices/square feet per ogni nhood. Sommo le quantit‡ di evictions dal 2011 al 2017. Poi divido in clusters i nhood sulla
+#Calcolo eviction_notices/square feet per ogni nhood. Sommo le quantit√† di evictions dal 2011 al 2017. Poi divido in clusters i nhood sulla
 #base di quante evictions ci sono state
 {
   #Calcolo i df con numero di evictions per nhood 
@@ -780,7 +780,7 @@ buyout_nhood_monthly = aggregate(Buyout_Agreements_Clean[,c(2,11)], by = list(Bu
 names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'dummy'] <- 'Count'
 buyout_nhood_monthly$avg_buyout = buyout_nhood_monthly$buyout_amount / buyout_nhood_monthly$Count
-#Adesso son da splittare di nuovo mese-anno e nhood e si puÚ plottare tutto (analisi esplorativa)!
+#Adesso son da splittare di nuovo mese-anno e nhood e si pu√≤ plottare tutto (analisi esplorativa)!
 
 
 
@@ -834,7 +834,7 @@ for( i in 1:length(buyout_nhood_yearly[,1])){  #preparo l'address
 buyout_nhood_yearly <- buyout_nhood_yearly[, -c(1,8:10)]
 colnames(buyout_nhood_yearly) <- c('year_nhood', 'buyout_amount','count','avg_buyout','year', 'nhood')
 write.csv(buyout_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv")
-} #non faccio runnare, non mi esce perchË buyout_amount a me si carica come char. Qui si preparano buyout_nhood_monthly & buyout_nhood_yearly
+} #non faccio runnare, non mi esce perch√® buyout_amount a me si carica come char. Qui si preparano buyout_nhood_monthly & buyout_nhood_yearly
 
 
 #Aggiungo i centri ai nhoods di Buyout_Agreements_Clean
@@ -1332,7 +1332,7 @@ write.csv(Buyout_Agreements_Clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Ma
 rent <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Original Datasets/rent.csv", header=TRUE)
 rent$d = as.Date(as.character(rent$date),format = "%Y%m%d") 
 rent <- rent[,-c(1:3,15:17)]
-rent <- rent[(rent[,2] == 'san francisco'),] #solo s francisco citt‡
+rent <- rent[(rent[,2] == 'san francisco'),] #solo s francisco citt√†
 #rent <- rent[!(is.na(rent[,7])), ] #rimuovo quelli che non hanno i metri quadri, secondo me sono inutili
 #rent<- rent[!(rent[,5])==0,] #rimuovo quelli senza letti, l'idea sarebbe di usare rent/beds
 #rent<-rent[!(is.na(rent[,5])),] #rimuovo quelli senza letti, l'idea sarebbe di usare rent/beds
@@ -1381,31 +1381,33 @@ rent_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/No
 
 #uniformo i nomi dei nhood a quelli di tutti gli altri datasets
 rent_clean$nhood <- str_replace(rent_clean$nhood, "castro", "Castro/Upper Market")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "alamo square", "Hayes Valley")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "alamo square", "Haight Ashbury/Hayes Valley")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "bayview", "Bayview Hunters Point")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "hunters point", "Bayview Hunters Point")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "Bayview Bayview Hunters Point", "Bayview Hunters Point")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "bernal", "Bernal Heights")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "candlestick point", "Bayview Hunters Point")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "ccsf", "West of Twin Peaks")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "civic / van ness", "Tenderloin")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "cole valley", "Haight Ashbury")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "cole valley", "Haight Ashbury/Hayes Valley")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "diamond heights", "Glen Park/Noe Valley")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "downtown", "Financial District/South Beach/SOMA")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "excelsior / outer mission", "Excelsior/Outer Mission")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "financial fistrict", "Financial District/South Beach/SOMA")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "lower pac hts", "Pacific Heights")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "marina / cow hollow", "Marina")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "mission district", "Mission")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "nopa", "Lone Mountain/USF")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "north beach / telegraph hill", "North Beach")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "parkside", "Sunset/Parkside")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "outer sunset", "Sunset/Parkside")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "presidio hts / laurel hts / lake st", "Presidio Heights")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "sea cliff", "Seacliff")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "soma / south beach", "Financial District/South Beach/SOMA")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "usf / anza vista", "Lone Mountain/USF")
-rent_clean$nhood <- str_replace(rent_clean$nhood, "west portal / forest hills", "West of Twin Peaks")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "lower haight", "Haight Ashbury/Hayes Valley")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "ingleside", "Oceanview/Merced/Ingleside")
+rent_clean$nhood <- mapply(function(x) str_to_title(x), rent_clean$nhood)
+rent_clean$nhood <- str_replace(rent_clean$nhood, "Usf / Anza Vista", "Lone Mountain/USF")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "Nopa", "Lone Mountain/USF")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "Financial District", "Financial District/South Beach/SOMA")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "Downtown", "Financial District/South Beach/SOMA")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "Soma / South Beach", "Financial District/South Beach/SOMA")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "West Portal / Forest Hills", "West of Twin Peaks")
+rent_clean$nhood <- str_replace(rent_clean$nhood, "Ccsf", "West of Twin Peaks")
 
 write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
 
@@ -1434,7 +1436,7 @@ length(unique(rent_clean$month_year_nhood))
 rent_nhood_monthly = aggregate(rent_clean$`rent.sq`, by = list(rent_clean$month_year_nhood), FUN = mean)
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent.sq'
-#Adesso son da splittare di nuovo mese-anno e nhood e si puÚ plottare tutto!
+#Adesso son da splittare di nuovo mese-anno e nhood e si pu√≤ plottare tutto!
 
 for (i in 1:length(rent_nhood_monthly[,1])) {   #preparo bene le coordinate
   temp <- strsplit(rent_nhood_monthly[i,1], " ")
@@ -1574,9 +1576,9 @@ New_construction <- New_construction[,-c(1:5,7:11,16,23:36)]
 New_construction <- New_construction[((New_construction[,4]=='APARTMENTS') | (New_construction[,4]=='1 FAMILY DWELLING') | 
                                             (New_construction[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
 
-New_construction <- New_construction[!(is.na(New_construction[,5])), ] #elimino quelli di cui non le unit‡ abitative finali
-New_construction <- New_construction[!(is.na(New_construction[,3])), ] #elimino quelli di cui non le unit‡ abitative iniziali
-New_construction <- New_construction[((New_construction[,5]-New_construction[,3]>0)), ] #Rimuovo i lavori che non aumentano le unit‡ abitative
+New_construction <- New_construction[!(is.na(New_construction[,5])), ] #elimino quelli di cui non le unit√† abitative finali
+New_construction <- New_construction[!(is.na(New_construction[,3])), ] #elimino quelli di cui non le unit√† abitative iniziali
+New_construction <- New_construction[((New_construction[,5]-New_construction[,3]>0)), ] #Rimuovo i lavori che non aumentano le unit√† abitative
 
 
 New_construction[,12] <- New_construction[,5]-New_construction[,3]
@@ -1595,7 +1597,7 @@ New_construction <- New_construction[,-c(1)]
 colnames(New_construction) <- c('block', 'lot', 'street_number','street_number_suffix', 'street_name','street_suffix','new_units_built','month', 'year')
 write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean.csv")
 
-#totale 43025 unit‡ vengono costruite
+#totale 43025 unit√† vengono costruite
 
 } #Prime operazioni
 
@@ -1760,13 +1762,13 @@ nhood_poly19 = matrix(as.numeric(strsplit(SFNeighborhoods_new[19,2]," ")[[1]][-1
 nhood_poly20 = matrix(as.numeric(strsplit(SFNeighborhoods_new[20,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
 nhood_poly21 = matrix(as.numeric(strsplit(SFNeighborhoods_new[21,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
 nhood_poly22 = matrix(as.numeric(strsplit(SFNeighborhoods_new[22,2]," ")[[1]][-c(1,1677)]),ncol=2,byrow=TRUE)
-nhood_poly22 <-nhood_poly22[-838,] #dava problemi strani, l ho tolta, tanto Ë un poligono di 838 vertici
+nhood_poly22 <-nhood_poly22[-838,] #dava problemi strani, l ho tolta, tanto √® un poligono di 838 vertici
 nhood_poly23 = matrix(as.numeric(strsplit(SFNeighborhoods_new[23,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
 nhood_poly24 = matrix(as.numeric(strsplit(SFNeighborhoods_new[24,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
 nhood_poly24 <- nhood_poly24[-866, ] 
 nhood_poly24 <- nhood_poly24[!(is.na(nhood_poly24[,1])), ] 
 nhood_poly25 = matrix(as.numeric(strsplit(SFNeighborhoods_new[25,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
-nhood_poly25 <-nhood_poly25[-839,] #dava problemi strani, l ho tolta, tanto Ë un poligono di 838 vertici
+nhood_poly25 <-nhood_poly25[-839,] #dava problemi strani, l ho tolta, tanto √® un poligono di 838 vertici
 nhood_poly26 = matrix(as.numeric(strsplit(SFNeighborhoods_new[26,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
 nhood_poly27 = matrix(as.numeric(strsplit(SFNeighborhoods_new[27,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
 nhood_poly28 = matrix(as.numeric(strsplit(SFNeighborhoods_new[28,2]," ")[[1]][-1]),ncol=2,byrow=TRUE)
