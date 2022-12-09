@@ -657,10 +657,27 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
 #Calcolo eviction_notices/square feet per ogni nhood. Sommo le quantit√† di evictions dal 2011 al 2017. Poi divido in clusters i nhood sulla
 #base di quante evictions ci sono state
 {
-  #Calcolo i df con numero di evictions per nhood 
+  
+  Eviction_Notices_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv", header=TRUE)
   sum_eviction_by_nhood = aggregate(Eviction_Notices_clean$dummy, by = list(Eviction_Notices_clean$nhood), FUN = sum)
   names(sum_eviction_by_nhood)[names(sum_eviction_by_nhood) == 'Group.1'] <- 'nhood'
   names(sum_eviction_by_nhood)[names(sum_eviction_by_nhood) == 'x'] <- 'Evictions_number'
+  
+  SFNeighborhoods_new <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", header=TRUE)
+  sum_eviction_by_nhood$area <-NA
+  for(i in 1:length(sum_eviction_by_nhood[,1])){
+    for(j in 1:length(SFNeighborhoods_new[,1])){
+      if(sum_eviction_by_nhood$nhood[i] ==SFNeighborhoods_new$nhood[j])
+        sum_eviction_by_nhood$area[i]=SFNeighborhoods_new$area[j]
+      
+    }
+  }
+  sum_eviction_by_nhood[,2] <- sum_eviction_by_nhood[,2]/sum_eviction_by_nhood[,3]*100000 #sennÚ numeri troppo piccoli
+  
+  
+  
+  
+  
   
   #Calcolo due clusters
   m <- median(sum_eviction_by_nhood[,2])
@@ -1408,7 +1425,6 @@ rent_clean$nhood <- str_replace(rent_clean$nhood, "Downtown", "Financial Distric
 rent_clean$nhood <- str_replace(rent_clean$nhood, "Soma / South Beach", "Financial District/South Beach/SOMA")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "West Portal / Forest Hills", "West of Twin Peaks")
 rent_clean$nhood <- str_replace(rent_clean$nhood, "Ccsf", "West of Twin Peaks")
-
 write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
 
 
@@ -1604,8 +1620,16 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
 { 
   New_construction_clean_geocoded_nh <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean_geocoded_nh.csv", header=TRUE)
   constructions_by_nhood = aggregate(New_construction_clean_geocoded_nh$new_units_built, by = list(New_construction_clean_geocoded_nh$neighborhoods), FUN = sum)
-  
-  
+  SFNeighborhoods_new <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", header=TRUE)
+  constructions_by_nhood$area <-NA
+  for(i in 1:length(constructions_by_nhood[,1])){
+    for(j in 1:length(SFNeighborhoods_new[,1])){
+      if(constructions_by_nhood$Group.1[i] ==SFNeighborhoods_new$nhood[j])
+        constructions_by_nhood$area[i]=SFNeighborhoods_new$area[j]
+      
+    }
+  }
+  constructions_by_nhood[,2] <- constructions_by_nhood[,2]/constructions_by_nhood[,3]*1000 #sennÚ numeri troppo piccoli
   #Calcolo due clusters
   m <- median(constructions_by_nhood[,2])
   high_construction_nhood2 <- NA
@@ -1658,7 +1682,7 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
   write.csv(low_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood3.csv")
   write.csv(medium_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_construction_nhood3.csv")
   
-} #Calcolo le new_construction per ogni nhood e poi faccio clusters con k = 2 e k = 3
+} #Calcolo le new_construction/square feet per ogni nhood e poi faccio clusters con k = 2 e k = 3
 
 constr_coord <- New_construction_clean_geocoded_nh[,c(14,15)]
 write.csv(constr_coord,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/constr_coord.csv", row.names = FALSE)
