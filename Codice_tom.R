@@ -223,6 +223,41 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 
 # RENT #########################################################################
 
+## Fixing nhoods #################################################################
+
+{
+  setwd("C:/Users/tomas/Desktop/san francisco/repo_github_SF_houses/SF-houses")
+  library(readr)
+  library(stringr)
+  rent_clean <- read_csv("rent_clean.csv")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "castro", "Castro/Upper Market")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "alamo square", "Hayes Valley")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "bayview", "Bayview Hunters Point")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "hunters point", "Bayview Hunters Point")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "Bayview Bayview Hunters Point", "Bayview Hunters Point")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "bernal", "Bernal Heights")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "candlestick point", "Bayview Hunters Point")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "ccsf", "West of Twin Peaks")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "civic / van ness", "Tenderloin")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "cole valley", "Haight Ashbury")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "diamond heights", "Glen Park/Noe Valley")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "downtown", "Financial District/South Beach/SOMA")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "excelsior / outer mission", "Excelsior/Outer Mission")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "financial district", "Financial District/South Beach/SOMA")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "lower pac hts", "Pacific Heights")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "marina / cow hollow", "Marina")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "mission district", "Mission")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "nopa", "Lone Mountain/USF")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "north beach / telegraph hill", "North Beach")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "parkside", "Sunset/Parkside")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "outer sunset", "Sunset/Parkside")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "presidio hts / laurel hts / lake st", "Presidio Heights")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "sea cliff", "Seacliff")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "soma / south beach", "Financial District/South Beach/SOMA")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "usf / anza vista", "Lone Mountain/USF")
+  rent_clean$nhood <- str_replace(rent_clean$nhood, "west portal / forest hills", "West of Twin Peaks")
+}
+
 ## Smoothing ###################################################################
 
 #Provo a fare smoothing con kernel regr sui rent 
@@ -235,18 +270,20 @@ library(fda)
 library(magrittr)
 library(KernSmooth)
 library(readr)
-rent_clean <- read_csv("rent_clean.csv")
+
 aus_df <- data.frame(year = as.numeric(format(rent_clean$d, format = "%Y")),
                      month = as.numeric(format(rent_clean$d, format = "%m")),
                      day = as.numeric(format(rent_clean$d, format = "%d")))
 rent_clean = cbind(rent_clean,aus_df)
 rm(aus_df)
 rent_clean = rent_clean[which(rent_clean$year >= 2011 & rent_clean$year <= 2018),]
+ind_typo = which(rent_clean$price_mq > 175) #la media in quel nhood e anno è 10 volte meno...typo?
+rent_clean = rent_clean[-c(ind_typo),]
 #vect_date_num = as.numeric(paste(rent_clean$year,rent_clean$month,rent_clean$day, sep = ''))
 #rent_clean = cbind(rent_clean,vect_date_num)
 rent_clean$date_num = as.numeric(rent_clean$d)
 x11()
-plot(rent_clean$d,rent_clean$price_mq, col = as.factor(rent_clean$nhood))
+plot(rent_clean$d,rent_clean$price_mq, col = as.factor(rent_clean$nhood),xlab = 'Year',ylab = 'Price/mq', main = 'Raw rents',cex = 0.5)
 list_nhood = unique(rent_clean$nhood)
 first_date = min(rent_clean$d)
 final_date = max(rent_clean$d)
@@ -274,14 +311,14 @@ library(roahd)
 funz_rent = funct_data
 funct_data = fData(grid_time,t(funct_data))
 x11()
-plot(funct_data)
+plot(funct_data, xlab = 'Year', ylab = 'Price/mq', main = 'Smoothed rent functions')
 #Calcolo derivate prime 
 diff_rent = funz_rent[2:dim(funz_rent)[1],] - funz_rent[1:dim(funz_rent)[1]-1,]
 dim(funz_rent)
 dim(diff_rent)
 funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_rent))
 x11()
-plot(funct_data_diff)
+plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Price/mq)', main = 'Approximation of first derivative of rent functions')
 }
 #Conclusione: usando la bandwidth ottenuta con CV con npregbw si ottengono funzioni molto
 #             disomogenee nelle variazioni... Potrebbe influire (negativamente) sullo di 
@@ -341,14 +378,16 @@ abline(v=T0,col='green')
 
 
 #Provo a fare il test "locale"
-data1 = fData(grid_time,t(data[,1:23])) #da definire
-data2 = fData(grid_time,t(data[,24:46])) #da definire
+#data1 = fData(grid_time,t(data[,1:23])) #da definire
+#data2 = fData(grid_time,t(data[,24:46])) #da definire
+data1 = data[,1:23] 
+data2 = data[,24:46]
 seed=2781991
-tst = IWT2(t(data1), t(data2))
+set.seed(seed)
+tst = IWT2(t(data1),t(data2))
 plot(tst)
 
 }
-
 
 ## Depth measures & outliers ###################################################
 
@@ -357,19 +396,22 @@ plot(tst)
   #Analisi di funct_data e funct_data_diff 
   x11()
   par(mfrow=c(1,2))
-  plot(funct_data)
-  plot(funct_data_diff)
+  plot(funct_data, main = 'Smoothed Rent functions')
+  plot(funct_data_diff, main = 'Approximated first derivative')
+  
   
   #MBD,mediana e boxplot per rent funzionali
   modified_band_depth_rent = MBD(funct_data)
-  print(paste('The nhood with max depth is:', colnames(funz_rent)[which.max(modified_band_depth_rent)] ))
+  print(paste('The nhood with max depth (ie median) is:', colnames(funz_rent)[which.max(modified_band_depth_rent)] ))
   median_curve_rent = median_fData(fData = funct_data, type = 'MBD' )
   x11()
-  plot(funct_data)
+  plot(funct_data, xlab = 'Year', ylab = 'Price/mq', main = 'Smoothed rent functions with median (wrt MBD)')
   plot(median_curve_rent, col = 'red', lwd = 3, add = T)
   # fbplot(funct_data) da errori...perchè?
   funct_data_num = fData(grid_time_num$date_num,t(funz_rent))
-  fbplot(funct_data_num)
+  x11()
+  fbplot(funct_data_num, main = 'Functional box-plot for rent functions' )
+  x11()
   out_funct <- outliergram(funct_data) #Non ha alcun senso...
   
   #MBD,mediana e boxplot per derivate di rent
@@ -377,12 +419,14 @@ plot(tst)
   print(paste('The nhood with max depth is:', colnames(funz_rent)[which.max(modified_band_depth_rent_diff)] ))
   median_curve_rent_diff = median_fData(fData = funct_data_diff, type = 'MBD' )
   x11()
-  plot(funct_data_diff)
+  plot(funct_data_diff,xlab = 'Year', ylab = 'Price/mq', main = 'First derivative of rent functions with median (wrt MBD)')
   plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
   x11()
   #fbplot(funct_data_diff) da errori... perchè?
   funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_rent))
-  fbplot(funct_data_diff_num)
+  x11()
+  fbplot(funct_data_diff_num, main = 'Functional box-plot for derivatives of rent functions')
+  x11()
   out_funct_diff <- outliergram(funct_data_diff) #Non ha alcun senso...
 }
 
@@ -421,7 +465,8 @@ for(nh in nh_multiple_osservations){
 rm(nh,nh_multiple_osservations, ind)
 
 x11()
-plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count, col = as.factor(eviction_nhood_monthly$nhood))
+plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count, col = as.factor(eviction_nhood_monthly$nhood),
+     xlab = 'Year', ylab = 'Number of evictions', main = 'Raw number of evictions')
 
 first_date = min(eviction_nhood_monthly$date)
 final_date = max(eviction_nhood_monthly$date)
@@ -447,14 +492,14 @@ library(roahd)
 funct_data = funz_evictions
 funct_data = fData(grid_time,t(funct_data))
 x11()
-plot(funct_data)
+plot(funct_data, xlab = 'Year', ylab = 'Number of evictions', main = 'Smoothed functions of evictions')
 #Calcolo derivate prime 
 diff_evictions = funz_evictions[2:dim(funz_evictions)[1],] - funz_evictions[1:dim(funz_evictions)[1]-1,]
 dim(funz_evictions)
 dim(diff_evictions)
 funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_evictions))
 x11()
-plot(funct_data_diff)
+plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Number of evictions)', main = 'Approximation of first derivative')
 }
 # funz_evictions  : table evictions
 # diff_evictions  : table derivate differenze all'indietro evictions
@@ -519,19 +564,19 @@ plot(tst)
   #Analisi di funct_data e funct_data_diff 
   x11()
   par(mfrow=c(1,2))
-  plot(funct_data)
-  plot(funct_data_diff)
+  plot(funct_data, xlab = 'Year',ylab = 'Number of evictions', main = 'Smoothed functions of evictions')
+  plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Number of evictions', main = 'Approximation of first derivatives')
   
   #MBD,mediana e boxplot per evictions funzionali
   modified_band_depth_rent = MBD(funct_data)
   print(paste('The nhood with max depth is:', colnames(funz_evictions)[which.max(modified_band_depth_rent)] ))
   median_curve_rent = median_fData(fData = funct_data, type = 'MBD' )
   x11()
-  plot(funct_data)
+  plot(funct_data, xlab = 'Year', ylab = 'Number of evictions', main = 'Smoothed functions of evictions with median (wrt MBD)')
   plot(median_curve_rent, col = 'red', lwd = 3, add = T)
   # fbplot(funct_data) da errori...perchè?
   funct_data_num = fData(grid_time_num$date_num,t(funz_evictions))
-  fbplot(funct_data_num)
+  fbplot(funct_data_num, main = 'Functional box-plot for functions of evictions')
   out_funct <- outliergram(funct_data) #Non ha alcun senso...
   
   #MBD,mediana e boxplot per derivate di evictions
@@ -539,12 +584,12 @@ plot(tst)
   print(paste('The nhood with max depth is:', colnames(funz_evictions)[which.max(modified_band_depth_rent_diff)] ))
   median_curve_rent_diff = median_fData(fData = funct_data_diff, type = 'MBD' )
   x11()
-  plot(funct_data_diff)
+  plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Number of evictions)', main = 'Approximation of first derivative with median (wrt MBD)')
   plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
   x11()
   #fbplot(funct_data_diff) da errori... perchè?
   funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_evictions))
-  fbplot(funct_data_diff_num)
+  fbplot(funct_data_diff_num, main = 'Functional box-plot for first derivative of evictions')
   out_funct_diff <- outliergram(funct_data_diff) #Non ha alcun senso...
 }
 
