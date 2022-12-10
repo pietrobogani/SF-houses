@@ -82,7 +82,9 @@ Eviction_Notices_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/M
 } # Prime modifiche
 
 {
-#Calcolo i df con numero di evictions per nhood per anno e per mese
+
+{
+    #Calcolo i df con numero di evictions per nhood per anno e per mese
 vect_year = paste(Eviction_Notices_clean$year)
 vect_month = paste(Eviction_Notices_clean$month)
 vect_nhood = paste(Eviction_Notices_clean$nhood)
@@ -128,7 +130,7 @@ for( i in 1:length(eviction_nhood_monthly[,1])){  #preparo l'address
 }
 eviction_nhood_monthly <- eviction_nhood_monthly[, -c(6:8)]
 colnames(eviction_nhood_monthly) <- c('nhood_month_year', 'count', 'month','year', 'nhood')
-write.csv(eviction_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_monthly.csv")
+write.csv(eviction_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_monthly_nh.csv")
 
 
 
@@ -149,12 +151,17 @@ for( i in 1:length(eviction_nhood_yearly[,1])){  #preparo l'address
     }
     else
       j = 13
-    
+  }  
   }
-}
+
 eviction_nhood_yearly <- eviction_nhood_yearly[, -c(5:7)]
 colnames(eviction_nhood_yearly) <- c('nhood_month_year', 'count','year', 'nhood')
-write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly.csv")
+write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_nhood_yearly_nh.csv")
+} #Vecchio codice
+  
+  eviction_nhood_yearly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_yearly_nh.csv", header=TRUE)
+  eviction_nhood_monthly <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/eviction_monthly_nh.csv", header=TRUE)
+  
 } # Preparazione di eviction_nhood_yearly & eviction_nhood_monthly
 
 #Aggiungo i centri ai nhoods di Eviction_Notices_Clean
@@ -511,15 +518,15 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
 #base di quante evictions ci sono state
 {
   
-  Eviction_Notices_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean.csv", header=TRUE)
+  Eviction_Notices_clean <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Eviction_Notices_clean_nh.csv", header=TRUE)
   sum_eviction_by_nhood = aggregate(Eviction_Notices_clean$dummy, by = list(Eviction_Notices_clean$nhood), FUN = sum)
   names(sum_eviction_by_nhood)[names(sum_eviction_by_nhood) == 'Group.1'] <- 'nhood'
   names(sum_eviction_by_nhood)[names(sum_eviction_by_nhood) == 'x'] <- 'Evictions_number'
   
-  SFNeighborhoods_new <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", header=TRUE)
+  SFNeighborhoods_new <- read_sf("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new_nh.geojson")
   sum_eviction_by_nhood$area <-NA
   for(i in 1:length(sum_eviction_by_nhood[,1])){
-    for(j in 1:length(SFNeighborhoods_new[,1])){
+    for(j in 1:length(SFNeighborhoods_new$area)){
       if(sum_eviction_by_nhood$nhood[i] ==SFNeighborhoods_new$nhood[j])
         sum_eviction_by_nhood$area[i]=SFNeighborhoods_new$area[j]
       
@@ -549,8 +556,8 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
     }
   
   }
-  write.csv(high_evictions_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_evictions_nhood2.csv")
-  write.csv(low_evictions_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_evictions_nhood2.csv")
+  write.csv(high_evictions_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_evictions_nhood_nh2.csv")
+  write.csv(low_evictions_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_evictions_nhood_nh2.csv")
   
   
   
@@ -580,9 +587,9 @@ write.csv(eviction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magi
     
   }
   
-  write.csv(high_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_evictions_nhood3.csv")
-  write.csv(low_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_evictions_nhood3.csv")
-  write.csv(medium_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_evictions_nhood3.csv")
+  write.csv(high_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_evictions_nhood_nh3.csv")
+  write.csv(low_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_evictions_nhood_nh3.csv")
+  write.csv(medium_evictions_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_evictions_nhood_nh3.csv")
   
   
 }
@@ -1569,9 +1576,7 @@ constr_coord <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/
   New_construction_nhood_yearly <- New_construction_nhood_yearly[,-c(5:7)]
   colnames(New_construction_nhood_yearly) <- c('group', 'new_units_built', 'year','nhood')
   
-  write.csv(New_construction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_nhood_year_GAM", row.names = FALSE)
-  
-  
+  write.csv(New_construction_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_nhood_year_GAM_nh.csv", row.names = FALSE)
   
   } #Calcolo le new_construction per ogni nhood e anno per il GAM
 
