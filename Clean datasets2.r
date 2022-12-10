@@ -705,7 +705,7 @@ buyout_nhood_yearly <- buyout_nhood_yearly[, -c(1,8:10)]
 colnames(buyout_nhood_yearly) <- c('year_nhood', 'buyout_amount','count','avg_buyout','year', 'nhood')
 write.csv(buyout_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv")
 } #non faccio runnare, non mi esce perchÃ¨ buyout_amount a me si carica come char. Qui si preparano buyout_nhood_monthly & buyout_nhood_yearly
-
+#nhood da aggiornare
 
 #Aggiungo i centri ai nhoods di Buyout_Agreements_Clean
 {
@@ -866,6 +866,7 @@ for (i in 1:length(Buyout_Agreements_Clean[,1])){
 
 write.csv(Buyout_Agreements_Clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Buyout_Agreements_Clean.csv")
 }
+#nhood da aggiornare
 
 #Aggiungo i centri ai nhoods di buyout_nhood_monthly
 {
@@ -1027,6 +1028,7 @@ write.csv(Buyout_Agreements_Clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Ma
   
   write.csv(buyout_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_monthly.csv")
 }
+#nhood da aggiornare
 
 #Aggiungo i centri ai nhoods di buyout_nhood_yearly
 {
@@ -1188,7 +1190,7 @@ write.csv(Buyout_Agreements_Clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Ma
   
   write.csv(buyout_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/buyout_nhood_yearly.csv")
 }
-
+#nhood da aggiornare
 
 
 
@@ -1297,12 +1299,12 @@ rent_clean$month_year_nhood = vect_aus
 rm(vect_aus,vect_aus2,vect_year,vect_nhood,vect_month)
 
 length(unique(rent_clean$year_nhood))
-rent_nhood_yearly = aggregate(rent_clean$`rent.sq`, by = list(rent_clean$year_nhood), FUN = mean)
+rent_nhood_yearly = aggregate(rent_clean$price_mq, by = list(rent_clean$year_nhood), FUN = mean)
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'Group.1'] <- 'year_nhood'
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent.sq'
 
 length(unique(rent_clean$month_year_nhood))
-rent_nhood_monthly = aggregate(rent_clean$`rent.sq`, by = list(rent_clean$month_year_nhood), FUN = mean)
+rent_nhood_monthly = aggregate(rent_clean$price_mq, by = list(rent_clean$month_year_nhood), FUN = mean)
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent.sq'
 #Adesso son da splittare di nuovo mese-anno e nhood e si puÃ² plottare tutto!
@@ -1317,7 +1319,7 @@ for (i in 1:length(rent_nhood_monthly[,1])) {   #preparo bene le coordinate
 
 for( i in 1:length(rent_nhood_monthly[,1])){  #preparo l'address
   j = 6
-  while (j < 13) {
+  while (j < 9) {
     if(!(is.na(rent_nhood_monthly[i,j]))) {
       rent_nhood_monthly[i,5] = paste(rent_nhood_monthly[i,5], rent_nhood_monthly[i,j], sep=" ")
       j = j+1
@@ -1329,7 +1331,7 @@ for( i in 1:length(rent_nhood_monthly[,1])){  #preparo l'address
 }
 rent_nhood_monthly <- rent_nhood_monthly[, -c(6:12)]
 colnames(rent_nhood_monthly) <- c('nhood_month_year', 'avg_rent.mq', 'month','year', 'nhood')
-write.csv(rent_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_monthly.csv")
+write.csv(rent_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_monthly_nh.csv")
 
 
 
@@ -1343,7 +1345,7 @@ for (i in 1:length(rent_nhood_yearly[,1])) {   #preparo bene le coordinate
 
 for( i in 1:length(rent_nhood_yearly[,1])){  #preparo l'address
   j = 5
-  while (j < 12) {
+  while (j < 8) {
     if(!(is.na(rent_nhood_yearly[i,j]))) {
       rent_nhood_yearly[i,4] = paste(rent_nhood_yearly[i,4], rent_nhood_yearly[i,j], sep=" ")
       j = j+1
@@ -1355,13 +1357,13 @@ for( i in 1:length(rent_nhood_yearly[,1])){  #preparo l'address
 }
 rent_nhood_yearly <- rent_nhood_yearly[, -c(5:11)]
 colnames(rent_nhood_yearly) <- c('nhood_month_year', 'avg_rent.mq','year', 'nhood')
-write.csv(rent_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_yearly.csv")
+write.csv(rent_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_yearly_nh.csv")
 
-rent_clean <- rent_clean[,-c(10,11)]
-colnames(rent_clean) <- c('X','nhood', 'lat','lon', 'd','day','month','year', 'price_sqft')
-rent_clean$price_mq <- NA
-rent_clean$price_mq <- (rent_clean$price_sqft)/0.0929
-write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
+# rent_clean <- rent_clean[,-c(10,11)]
+# colnames(rent_clean) <- c('X','nhood', 'lat','lon', 'd','day','month','year', 'price_sqft')
+# rent_clean$price_mq <- NA
+# rent_clean$price_mq <- (rent_clean$price_sqft)/0.0929
+# write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_clean.csv")
 
 } # Preparazione di rent_nhood_yearly & rent_nhood_monthly
 
@@ -1387,8 +1389,8 @@ write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonp
     }
     
   }
-  write.csv(high_rent_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_rent_nhood2.csv")
-  write.csv(low_rent_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_rent_nhood2.csv")
+  write.csv(high_rent_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_rent_nhood2_nh.csv")
+  write.csv(low_rent_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_rent_nhood2_nh.csv")
   
   
   
@@ -1418,18 +1420,9 @@ write.csv(rent_clean,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonp
     
   }
   
-  write.csv(high_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_rent_nhood3.csv")
-  write.csv(low_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_rent_nhood3.csv")
-  write.csv(medium_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_rent_nhood3.csv")
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  write.csv(high_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_rent_nhood3_nh.csv")
+  write.csv(low_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_rent_nhood3_nh.csv")
+  write.csv(medium_rent_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_rent_nhood3_nh.csv")
   
   
 }
@@ -1472,17 +1465,17 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
 
 { 
   New_construction_clean_geocoded_nh <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/New_construction_clean_geocoded_nh.csv", header=TRUE)
+  SFNeighborhoods_new <- read_sf("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.geojson")
   constructions_by_nhood = aggregate(New_construction_clean_geocoded_nh$new_units_built, by = list(New_construction_clean_geocoded_nh$neighborhoods), FUN = sum)
-  SFNeighborhoods_new <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", header=TRUE)
   constructions_by_nhood$area <-NA
   for(i in 1:length(constructions_by_nhood[,1])){
-    for(j in 1:length(SFNeighborhoods_new[,1])){
+    for(j in 1:length(SFNeighborhoods_new$area)){
       if(constructions_by_nhood$Group.1[i] ==SFNeighborhoods_new$nhood[j])
         constructions_by_nhood$area[i]=SFNeighborhoods_new$area[j]
       
     }
   }
-  constructions_by_nhood[,2] <- constructions_by_nhood[,2]/constructions_by_nhood[,3]*1000 #sennò numeri troppo piccoli
+  constructions_by_nhood[,2] <- constructions_by_nhood[,2]/constructions_by_nhood[,3]*10000 #sennò numeri troppo piccoli
   #Calcolo due clusters
   m <- median(constructions_by_nhood[,2])
   high_construction_nhood2 <- NA
@@ -1500,8 +1493,8 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
     }
     
   }
-  write.csv(high_construction_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_construction_nhood2.csv")
-  write.csv(low_construction_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood2.csv")
+  write.csv(high_construction_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_construction_nhood2_nh.csv")
+  write.csv(low_construction_nhood2,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood2_nh.csv")
   
   
   
@@ -1531,9 +1524,9 @@ write.csv(New_construction,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistral
     
   }
   
-  write.csv(high_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_construction_nhood3.csv")
-  write.csv(low_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood3.csv")
-  write.csv(medium_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_construction_nhood3.csv")
+  write.csv(high_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/high_construction_nhood3_nh.csv")
+  write.csv(low_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/low_construction_nhood3_nh.csv")
+  write.csv(medium_construction_nhood3,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/medium_construction_nhood3_nh.csv")
   
 } #Calcolo le new_construction/square feet per ogni nhood e poi faccio clusters con k = 2 e k = 3
 
@@ -1722,6 +1715,8 @@ Parcels <- Parcels[,-c(14,16:21) ]
  }
   
   
-
+  
+  write.csv(SFNeighborhoods_new,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/SFNeighborhoods_new.csv", row.names = FALSE)
+  
   
 } # Divido "centroide" in due colonne, pronto all'uso
