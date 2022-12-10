@@ -47,7 +47,7 @@ PARTE ESPLORATIVA
 
  9) Mappa (Panoply) SARA TOMASO
  
- 10) Basic version of GAM (rent ~ nhood + #costruzioni nel nhood + anno + distanza del nhood da attrazioni) .
+ 10) Basic version of GAM (rent (granularità giornaliera) ~ nhood + #costruzioni nel nhood + anno + distanza del nhood da attrazioni) .
      Cose necessarie: - Distanza luoghi di interesse dai centri di nhood (Caltrain Station - Distance to financial district)
                       - Constructions per nhood and per year PIETRO
  
