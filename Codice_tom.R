@@ -222,41 +222,7 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 
 
 # RENT #########################################################################
-
-## Fixing nhoods #################################################################
-
-{
-  setwd("C:/Users/tomas/Desktop/san francisco/repo_github_SF_houses/SF-houses")
-  library(readr)
-  library(stringr)
-  rent_clean <- read_csv("rent_clean.csv")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "castro", "Castro/Upper Market")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "alamo square", "Hayes Valley")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "bayview", "Bayview Hunters Point")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "hunters point", "Bayview Hunters Point")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "Bayview Bayview Hunters Point", "Bayview Hunters Point")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "bernal", "Bernal Heights")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "candlestick point", "Bayview Hunters Point")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "ccsf", "West of Twin Peaks")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "civic / van ness", "Tenderloin")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "cole valley", "Haight Ashbury")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "diamond heights", "Glen Park/Noe Valley")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "downtown", "Financial District/South Beach/SOMA")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "excelsior / outer mission", "Excelsior/Outer Mission")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "financial district", "Financial District/South Beach/SOMA")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "lower pac hts", "Pacific Heights")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "marina / cow hollow", "Marina")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "mission district", "Mission")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "nopa", "Lone Mountain/USF")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "north beach / telegraph hill", "North Beach")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "parkside", "Sunset/Parkside")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "outer sunset", "Sunset/Parkside")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "presidio hts / laurel hts / lake st", "Presidio Heights")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "sea cliff", "Seacliff")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "soma / south beach", "Financial District/South Beach/SOMA")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "usf / anza vista", "Lone Mountain/USF")
-  rent_clean$nhood <- str_replace(rent_clean$nhood, "west portal / forest hills", "West of Twin Peaks")
-}
+  
 
 ## Smoothing ###################################################################
 
@@ -270,7 +236,10 @@ library(fda)
 library(magrittr)
 library(KernSmooth)
 library(readr)
-
+library(stringr)
+  
+  
+rent_clean <- read_csv("rent_clean_nh.csv")
 aus_df <- data.frame(year = as.numeric(format(rent_clean$d, format = "%Y")),
                      month = as.numeric(format(rent_clean$d, format = "%m")),
                      day = as.numeric(format(rent_clean$d, format = "%d")))
@@ -283,7 +252,7 @@ rent_clean = rent_clean[-c(ind_typo),]
 #rent_clean = cbind(rent_clean,vect_date_num)
 rent_clean$date_num = as.numeric(rent_clean$d)
 x11()
-plot(rent_clean$d,rent_clean$price_mq, col = as.factor(rent_clean$nhood),xlab = 'Year',ylab = 'Price/mq', main = 'Raw rents',cex = 0.5)
+plot(rent_clean$d,rent_clean$price_mq,xlab = 'Year',ylab = 'Price/mq', main = 'Raw rents',cex = 0.5)
 list_nhood = unique(rent_clean$nhood)
 first_date = min(rent_clean$d)
 final_date = max(rent_clean$d)
@@ -338,22 +307,32 @@ plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Price/mq)', main = 'Approximat
 
 library(fdatest)
 #NB: data si assume con tempo sulle righe e nomi sulle colonne
-data = funz_rent
-low_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/low_evictions_nhood2.csv")
-high_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/high_evictions_nhood2.csv")
-list_low_rent = as.vector(low_evictions_nhood2$x)
-list_high_rent = as.vector(high_evictions_nhood2$x)
-data1 = data[,list_low_rent]
-data2 = data[,list_high_rent]
+data = diff_rent #cambiare con funz_rent per fare i test sulle funzioni dei rent e non derivate!
+low_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/low_evictions_nhood_nh2.csv")
+high_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/high_evictions_nhood_nh2.csv")
+low_construction_nhood2_nh <- read_csv("2 Clusters of nhood based on Constructions/low_construction_nhood2_nh.csv")
+high_construction_nhood2_nh <- read_csv("2 Clusters of nhood based on Constructions/high_construction_nhood2_nh.csv")
+list_low_constr = as.vector(low_construction_nhood2_nh$x)
+list_low_constr = list_low_constr[-c(5,7)] #tolgo i nhood non osservati in rent
+list_high_constr = as.vector(high_construction_nhood2_nh$x)
+list_high_constr = list_high_constr[-c(3,10)]
+list_low_evict = as.vector(low_evictions_nhood2$x)
+list_high_evict = as.vector(high_evictions_nhood2$x)
+list_low_evict = list_low_evict[-c(4,6,7,8,12,16)]#non ci sono osservazioni negli annunci di questi quindi rimuovo
+list_high_evict = list_high_evict[-c(3,7)] #non ci sono osservazioni negli annunci quindi tolgo
+
+data1 = data[,list_low_evict]
+data2 = data[,list_high_evict]
 #data1 = data[,1:23] 
 #data2 = data[,24:46]
 data_bind = rbind(t(data1),t(data2)) #data_bind ha nomi sulle righe!
 n = nrow(data_bind)
 n1 = nrow(t(data1)) #numero nomi in gruppo1
 n2 = nrow(t(data2)) #numero nomi in gruppo2
-data1 = fData(grid_time,t(data[,1:23])) #partizione di quartieri 1
-data2 = fData(grid_time,t(data[,24:46])) #partizione di quartieri 2
+data1 = fData(grid_time[2:length(grid_time)],t(data1)) #partizione di quartieri 1, NB: mettere grid_time se si testano funzioni dei rent
+data2 = fData(grid_time[2:length(grid_time)],t(data2)) #partizione di quartieri 2, NB: mettere grid_time se si testano funzioni dei rent
 seed=2781991
+set.seed(seed)
 B=1000
 mean_diff = median_fData(data1, type = 'MBD') - median_fData(data2, type = 'MBD')
 plot(mean_diff)
@@ -361,6 +340,8 @@ T0 = sum(abs(mean_diff$values))
 T0
 data_fd = append_fData(data1,data2)
 T0_perm = numeric(B)
+plot(data1, col = 'red')
+plot(data2, col = 'black', add = T)
 library(progress)
 pb <- progress_bar$new(format = "  processing [:bar] :percent eta: :eta",total = B, clear = FALSE)
 for(perm in 1:B){
@@ -378,12 +359,13 @@ abline(v=T0,col='green')
 
 
 #Provo a fare il test "locale"
-#data1 = fData(grid_time,t(data[,1:23])) #da definire
-#data2 = fData(grid_time,t(data[,24:46])) #da definire
-data1 = data[,1:23] 
-data2 = data[,24:46]
+#data1 = data[,1:23] 
+#data2 = data[,24:46]
+
 seed=2781991
 set.seed(seed)
+data1 = data[,list_low_evict]
+data2 = data[,list_high_evict]
 tst = IWT2(t(data1),t(data2))
 plot(tst)
 
@@ -393,7 +375,27 @@ plot(tst)
 
 #Depth measures & outliers per funzioni rent
 {
-  #Analisi di funct_data e funct_data_diff 
+  #Analisi di funct_data e funct_data_diff
+  
+  
+  #for(i in 1:dim(funz_rent)[2]){
+  #  x11()
+  #  plot(grid_time,funz_rent[,i], main = colnames(funz_rent)[i])
+  #}
+  #which(colnames(funz_rent) == 'Treasure Island') #32 Treasure Island è lo scalino!
+  
+  #Provo a fare un plot "simil matplot" dei raw rent:
+  list_nhood = unique(rent_clean$nhood)
+  x11()
+  plot(0,0,cex = 0 ,xlim = range(rent_clean$d),ylim = range(rent_clean$price_mq) )
+  for(i in list_nhood){
+    ind_nh = which(rent_clean$nhood == i)
+    aus = data.frame(d = rent_clean[ind_nh,]$d, price_mq = rent_clean[ind_nh,]$price_mq)
+    aus = aus[order(aus$d),]
+    lines(aus$d,aus$price_mq,xlim = range(rent_clean$d),ylim = range(rent_clean$price_mq), add = T, type = 'l')
+  }
+  
+  #Plot delle funzioni dei rent e delle derivate
   x11()
   par(mfrow=c(1,2))
   plot(funct_data, main = 'Smoothed Rent functions')
@@ -407,12 +409,13 @@ plot(tst)
   x11()
   plot(funct_data, xlab = 'Year', ylab = 'Price/mq', main = 'Smoothed rent functions with median (wrt MBD)')
   plot(median_curve_rent, col = 'red', lwd = 3, add = T)
-  # fbplot(funct_data) da errori...perchè?
+  #roahd::fbplot(funct_data, main = 'Functional box.plot for rent functions') #da errori...perchè?
   funct_data_num = fData(grid_time_num$date_num,t(funz_rent))
   x11()
-  fbplot(funct_data_num, main = 'Functional box-plot for rent functions' )
+  roahd::fbplot(funct_data_num, main = 'Functional box-plot for rent functions' )
   x11()
-  out_funct <- outliergram(funct_data) #Non ha alcun senso...
+  out_funct <- outliergram(funct_data) #Mi viene spottata Treasure Island-32 !!
+  out_funct$ID_outliers
   
   #MBD,mediana e boxplot per derivate di rent
   modified_band_depth_rent_diff = MBD(funct_data_diff)
@@ -421,13 +424,20 @@ plot(tst)
   x11()
   plot(funct_data_diff,xlab = 'Year', ylab = 'Price/mq', main = 'First derivative of rent functions with median (wrt MBD)')
   plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
-  x11()
   #fbplot(funct_data_diff) da errori... perchè?
   funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_rent))
   x11()
-  fbplot(funct_data_diff_num, main = 'Functional box-plot for derivatives of rent functions')
+  roahd::fbplot(funct_data_diff_num, main = 'Functional box-plot for derivatives of rent functions')
   x11()
-  out_funct_diff <- outliergram(funct_data_diff) #Non ha alcun senso...
+  out_funct_diff <- outliergram(funct_data_diff) 
+  out_funct_diff$ID_outliers
+  
+  
+  #Rimuovo treasure island da funz_rent e diff rent e aggiorno funct_data e funct_data_diff
+  funz_rent = funz_rent[,-32]
+  diff_rent = diff_rent[,-32]
+  funct_data = fData(grid_time,t(funz_rent))
+  funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_rent))
 }
 
 
@@ -441,7 +451,7 @@ plot(tst)
 {
   
 library(readr)
-eviction_nhood_monthly <- read_csv("eviction_nhood_monthly.csv")
+eviction_nhood_monthly <- read_csv("eviction_monthly_nh.csv")
 eviction_nhood_monthly = eviction_nhood_monthly[-2251,] #tolgo la riga con il count totale
 vect_year = eviction_nhood_monthly$year
 vect_month = eviction_nhood_monthly$month
