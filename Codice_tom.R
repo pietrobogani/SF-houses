@@ -252,7 +252,7 @@ rent_clean = rent_clean[-c(ind_typo),]
 #rent_clean = cbind(rent_clean,vect_date_num)
 rent_clean$date_num = as.numeric(rent_clean$d)
 x11()
-plot(rent_clean$d,rent_clean$price_mq,xlab = 'Year',ylab = 'Price/mq', main = 'Raw rents',cex = 0.5)
+plot(rent_clean$d,rent_clean$price_mq,xlab = 'Year',ylab = 'Price/mq',ylim = c(0,150), main = 'Raw rents',cex = 0.5)
 list_nhood = unique(rent_clean$nhood)
 first_date = min(rent_clean$d)
 final_date = max(rent_clean$d)
@@ -300,14 +300,14 @@ plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Price/mq)', main = 'Approximat
 # funct_data_diff : derivate funzionali dei rent
 
 
-## Test ######################################################################## 
+## Test  (DOPO DEPTH&OUTLIERS) ################################################# 
 
 #Test su partizioni delle funzioni dei prezzi nei nhood 
 {
 
 library(fdatest)
 #NB: data si assume con tempo sulle righe e nomi sulle colonne
-data = diff_rent #cambiare con funz_rent per fare i test sulle funzioni dei rent e non derivate!
+data = funz_rent #cambiare con funz_rent per fare i test sulle funzioni dei rent e non derivate!
 low_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/low_evictions_nhood_nh2.csv")
 high_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/high_evictions_nhood_nh2.csv")
 low_construction_nhood2_nh <- read_csv("2 Clusters of nhood based on Constructions/low_construction_nhood2_nh.csv")
@@ -329,8 +329,8 @@ data_bind = rbind(t(data1),t(data2)) #data_bind ha nomi sulle righe!
 n = nrow(data_bind)
 n1 = nrow(t(data1)) #numero nomi in gruppo1
 n2 = nrow(t(data2)) #numero nomi in gruppo2
-data1 = fData(grid_time[2:length(grid_time)],t(data1)) #partizione di quartieri 1, NB: mettere grid_time se si testano funzioni dei rent
-data2 = fData(grid_time[2:length(grid_time)],t(data2)) #partizione di quartieri 2, NB: mettere grid_time se si testano funzioni dei rent
+data1 = fData(grid_time,t(data1)) #partizione di quartieri 1, NB: mettere grid_time se si testano funzioni dei rent
+data2 = fData(grid_time,t(data2)) #partizione di quartieri 2, NB: mettere grid_time se si testano funzioni dei rent
 seed=2781991
 set.seed(seed)
 B=1000
@@ -340,8 +340,12 @@ T0 = sum(abs(mean_diff$values))
 T0
 data_fd = append_fData(data1,data2)
 T0_perm = numeric(B)
-plot(data1, col = 'red')
+x11()
+plot(data1, col = 'red', xlab = 'Year', ylab = 'Price/mq',ylim = c(15,70), main = 'Rent functions')
 plot(data2, col = 'black', add = T)
+legend('topleft', legend=c("Low evictions", "High evictions"),
+       col=c("red", "black"),lty = 1, cex=0.8)
+
 library(progress)
 pb <- progress_bar$new(format = "  processing [:bar] :percent eta: :eta",total = B, clear = FALSE)
 for(perm in 1:B){
@@ -434,8 +438,8 @@ plot(tst)
   
   
   #Rimuovo treasure island da funz_rent e diff rent e aggiorno funct_data e funct_data_diff
-  funz_rent = funz_rent[,-32]
-  diff_rent = diff_rent[,-32]
+  funz_rent = funz_rent[,-28]
+  diff_rent = diff_rent[,-28]
   funct_data = fData(grid_time,t(funz_rent))
   funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_rent))
 }
@@ -475,7 +479,7 @@ for(nh in nh_multiple_osservations){
 rm(nh,nh_multiple_osservations, ind)
 
 x11()
-plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count, col = as.factor(eviction_nhood_monthly$nhood),
+plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count,
      xlab = 'Year', ylab = 'Number of evictions', main = 'Raw number of evictions')
 
 first_date = min(eviction_nhood_monthly$date)
@@ -571,6 +575,7 @@ plot(tst)
 
 #Depth measures & outliers per funzioni evictions
 {
+  
   #Analisi di funct_data e funct_data_diff 
   x11()
   par(mfrow=c(1,2))
