@@ -88,10 +88,13 @@ rm(dist_caltr,dist_fin,caltr,fin_distr,i,ind,list_nhood,dist,geo)
 
 #Metto tutto dentro rent per poi fare il gam 
 rent_clean <- read_csv("rent_clean_nh.csv")
+
 unique(rent_clean$nhood)
 unique(num_constr$nhood)
 
-
+ind_tr_isl = which(rent_clean$nhood == 'Treasure Island')
+ind_sf = which(rent_clean$nhood == 'San Francisco')
+rent_clean = rent_clean[-c(ind_tr_isl,ind_sf),]
 
 rent_clean$dist_caltr = rep(0,dim(rent_clean)[1])
 rent_clean$dist_fin = rep(0,dim(rent_clean)[1])
@@ -105,19 +108,22 @@ rent_clean$num_units_4 = rep(0,dim(rent_clean)[1])
 
 
 
-
-
-rent_clean = merge(rent_clean, subset(num_constr,select = c('nhood','year','new_units_built','dist_caltr','dist_fin')), by = 'nhood')
-
-
-
+list_nhood = unique(num_constr$nhood)
+for(nh in list_nhood){
+  ind_nhood_constr = which(num_constr$nhood == nh)[1]
+  ind_nhood_rent = which(rent_clean$nhood == nh)
+  
+  if(length(ind_nhood_rent) > 0 ){
+    rent_clean[ind_nhood_rent,]$dist_caltr = num_constr[ind_nhood_constr,]$dist_caltr
+    rent_clean[ind_nhood_rent,]$dist_fin = num_constr[ind_nhood_constr,]$dist_fin
+    rent_clean[ind_nhood_rent,]$area = num_constr[ind_nhood_constr,]$area
+  }
+}
 
 
 for(i in 1:dim(num_constr)[1]){
-  nh = num_constr[i,]$nhood
-  yr = num_constr[i,]$year
-  ind_nhood_year = which(rent_clean$nhood == nh & rent_clean$year == yr)
-  
+
+  ind_nhood_year = which(rent_clean$nhood == num_constr[i,]$nhood & rent_clean$year == num_constr[i,]$year)
   ind_nhood_year1 = which(rent_clean$nhood == num_constr[i,]$nhood & (rent_clean$year-1) == num_constr[i,]$year)
   ind_nhood_year2 = which(rent_clean$nhood == num_constr[i,]$nhood & (rent_clean$year-2) == num_constr[i,]$year)
   ind_nhood_year3 = which(rent_clean$nhood == num_constr[i,]$nhood & (rent_clean$year-3) == num_constr[i,]$year)
@@ -125,10 +131,7 @@ for(i in 1:dim(num_constr)[1]){
   
   if(length(ind_nhood_year) > 0 ){
     rent_clean[ind_nhood_year,]$num_constr = num_constr[i,]$count
-  rent_clean[ind_nhood_year,]$dist_caltr = num_constr[i,]$dist_caltr
-  rent_clean[ind_nhood_year,]$dist_fin = num_constr[i,]$dist_fin
-  rent_clean[ind_nhood_year,]$area = num_constr[i,]$area
-  rent_clean[ind_nhood_year,]$num_units_0 = num_constr[i,]$new_units_built
+    rent_clean[ind_nhood_year,]$num_units_0 = num_constr[i,]$new_units_built
   }
   
   if(length(ind_nhood_year1) > 0){
@@ -138,15 +141,15 @@ for(i in 1:dim(num_constr)[1]){
     rent_clean[ind_nhood_year2,]$num_units_2 = num_constr[i,]$new_units_built
   }
   if(length(ind_nhood_year3) > 0){
-    rent_clean[ind_nhood_year3,]$num_units_2 = num_constr[i,]$new_units_built
+    rent_clean[ind_nhood_year3,]$num_units_3 = num_constr[i,]$new_units_built
   }
   if(length(ind_nhood_year4) > 0){
-    rent_clean[ind_nhood_year4,]$num_units_2 = num_constr[i,]$new_units_built
+    rent_clean[ind_nhood_year4,]$num_units_4 = num_constr[i,]$new_units_built
   }
   
 }
 #rent_clean = rent_clean[,-c(1,2,4,5)] #serve a togliere le colonne che non interessano
-rm(num_constr,i,ind_nhood_year,ind_nhood_year1,ind_nhood_year2,ind_nhood_year3,ind_nhood_year4)
+rm(num_constr,i,ind_nhood_year,ind_nhood_year1,ind_nhood_year2,ind_nhood_year3,ind_nhood_year4,point)
 
 
 
@@ -159,18 +162,26 @@ library(splines)
 library(pbapply)
 
 
-lin_mod = lm(price_mq ~ nhood + year + nhood:year + num_units_0 + num_units_1 + num_units_2 +
+lin_mod = lm(price_mq ~     nhood + year + nhood:year + num_units_0 + num_units_1 + num_units_2 +
                num_units_3 + num_units_4 + dist_fin + dist_caltr , data = rent_clean)
 
 lin_mod = lm(price_mq ~  nhood:year + num_units_0 + num_units_1 + num_units_2 +
                num_units_3 + num_units_4, data = rent_clean)
 summary(lin_mod)
 
+
 {#GAM with natural splines
-  model_gam_ns <-lm(price_mq ~ ns(num_units_0/area, df = 3) + ns(num_units_1/area, df = 3) + 
-                    ns(num_units_2/area, df = 3) + ns(num_units_3/area, df = 3) + 
-                    ns(num_units_4/area, df = 3) + ns(year, df = 3) +
-                    ns(dist_fin, df = 3) + ns(dist_caltr, df = 3), data = rent_clean)
+  
+  rent_clean$num_units_0 = rent_clean$num_units_0/rent_clean$area * 1e6
+  rent_clean$num_units_1 = rent_clean$num_units_1/rent_clean$area * 1e6
+  rent_clean$num_units_2 = rent_clean$num_units_2/rent_clean$area * 1e6
+  rent_clean$num_units_3 = rent_clean$num_units_3/rent_clean$area * 1e6
+  rent_clean$num_units_4 = rent_clean$num_units_4/rent_clean$area * 1e6
+  
+  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
+                    ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
+                    ns(num_units_4, df = 3) + ns(year, df = 3) +
+                    ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
   summary(model_gam_ns)
   gam::plot.Gam(model_gam_ns, se=TRUE)
   #plot(model_gam_ns$residuals,model_gam$residuals)
