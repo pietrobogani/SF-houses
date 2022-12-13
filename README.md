@@ -61,6 +61,8 @@ PARTE ESPLORATIVA
 - Ripetere sulle Evictions l'interpolation e lo smoothing 
 
 
+------- PRESENTAZIONE FINALE.
+1) Scrivere nella prima slide di quanti cfu è il corso.
 
 WHERE TO DOWNLOAD DATASETS:
 
