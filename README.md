@@ -4,13 +4,13 @@ THINGS TO BE DONE:
 
 PARTE PRELIMINARE
 
-1) Rendere coerenti i nhood tra i dataset: rent_clean, Eviction_notices_clean, Buyout_Agreements_clean   SARA
+1) FATTO Rendere coerenti i nhood tra i dataset: rent_clean, Eviction_notices_clean, Buyout_Agreements_clean   SARA
 
-2)FATTO Aggiungere i nhood al dataset new_construction_clean e al dataset parcels_final SARA
+2) FATTO Aggiungere i nhood al dataset new_construction_clean e al dataset parcels_final SARA
 
-3) Aggiungere dimensione (square feet)/popolazione dei nhood     SARA
+3) FATTO Aggiungere dimensione (square feet)/popolazione dei nhood     SARA
 
-4) Aggiungere il centro dei nhood, prendo da dataset SFneighboorhods di Sara  PIETRO
+4) FATTO Aggiungere il centro dei nhood, prendo da dataset SFneighboorhods di Sara  PIETRO
 
 5) Capire la regressione funzionale SARA PIETRO TOMASO
 
@@ -24,28 +24,29 @@ PARTE PRELIMINARE
 PARTE ESPLORATIVA
 
 4) Partizionare i nhood e fare functional tests sui smoothed rent (oppure su d/dt(smoothed rent)) TOM 
-   - Contattare Fontana perchè la funzione non va TOM
-   Criteri di partizione: - Costieri e centrali 
-                          - Tante costruzioni/(square feet) e poche costruzioni/(square feet)    o popolazione PIETRO
-                          - Divido in nhood con tante evictions/(square feet) e poche evictions/(square feet)) o popolazione PIETRO
+   Criteri di partizione: - FATTO Tante costruzioni/(square feet) e poche costruzioni/(square feet)                   PIETRO
+                          - FATTO Divido in nhood con tante evictions/(square feet) e poche evictions/(square feet))  PIETRO
+                          - Divido in nhood con tante evictions/(#parcels) e poche evictions/(#parcels))              PIETRO
+                          - Tante costruzioni/(#parcels) e poche costruzioni/(#parcels)                               PIETRO
+                          - Costieri e centrali 
                           
                          
                          
  5) Partizionare i nhood e fare functional tests sulle smoother evictions (oppure su d/dt(smoothed evictions)) TOM 
-    Criteri di partizione: - Costieri e centrali 
-                          - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     o popolazione PIETRO
-                          - Divido in nhood con rent alti e rent bassi  PIETRO                                             
+    Criteri di partizione: - Tante costruzioni/(square feet) e poche costruzioni/(square feet)     o popolazione PIETRO
+                           - Divido in nhood con rent alti e rent bassi  PIETRO
+                           - Tante costruzioni/(#parcels) e poche costruzioni/(#parcels)                               PIETRO
+                           - Costieri e centrali                                              
                           
                           
- 6) Ragionare su Depth Measures and Outliers   TOM
+ 6) FATTO Depth Measures and Outliers   TOM
  
- 7) Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq (oppure two-way ANOVA, time and
-    nhood come gruppi); PIETRO
+ 7) FATTO Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il prezzo al mq (oppure two-way ANOVA, time
+    and nhood come gruppi); PIETRO
     
  8) Per ogni anno t in cui abbiamo numerose osservazioni, fare un ANOVA test, i gruppi sono i quartieri, la variabile il numero di evictions (oppure two-way ANOVA,
     time and nhood come gruppi); PIETRO
 
- 9) Mappa (Panoply) SARA TOMASO
  
  10) Basic version of GAM (rent (granularità giornaliera) ~ nhood + #costruzioni nel nhood + anno + distanza del nhood da attrazioni) .
      Cose necessarie: - Distanza luoghi di interesse dai centri di nhood (Caltrain Station - Distance to financial district)
@@ -54,13 +55,14 @@ PARTE ESPLORATIVA
  ----- FINE ANALISI ESPLORATIVA
 
 
-
 - Inventarsi un modo per fare il secondo modello (come usare nhood/coorinate per gli sfratti e nuove costruzioni?)
 - Eviction Notices motivation, guardarle e selezionare le importanti
 - Studiare l'idea di fare una regressione funzionale
 - Ripetere sulle Evictions l'interpolation e lo smoothing 
 
 
+------- PRESENTAZIONE FINALE.
+1) Scrivere nella prima slide di quanti cfu è il corso.
 
 WHERE TO DOWNLOAD DATASETS:
 
