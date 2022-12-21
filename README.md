@@ -52,13 +52,46 @@ PARTE ESPLORATIVA
      Cose necessarie: - Distanza luoghi di interesse dai centri di nhood (Caltrain Station - Distance to financial district)
                       - Constructions per nhood and per year PIETRO
  
- ----- FINE ANALISI ESPLORATIVA
+ ----- FINE ANALISI ESPLORATIVA (Prima Presentazione)
 
 
-- Inventarsi un modo per fare il secondo modello (come usare nhood/coorinate per gli sfratti e nuove costruzioni?)
-- Eviction Notices motivation, guardarle e selezionare le importanti
-- Studiare l'idea di fare una regressione funzionale
-- Ripetere sulle Evictions l'interpolation e lo smoothing 
+1) Smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels (usando questo possiamo usare l'idea di Cappozzo, cioè di raccontare
+   come stiamo "validando" il paper tramite un approccio diverso). TOM & PIETRO
+   N.B. Utilizziamo i rent geolocalizzati come ulteriori "vincoli" nell'interpolazione
+2) Rifare Smoothing delle Evictions, questa volta normalizzando i valori o dividendo per l'area oppure per il #parcel. L'idea sarebbe ottenere un trend simile a 
+   quello osservato sugli smoothed rent. Poi ripetiamo i Functional tests.
+3) Smoothing su new_constructions per fare punto 4)
+4) Ripetere i Functional Tests con partizioni diverse: - Functional Clustering sulle new_constructions e poi test sui rent
+                                                       - Functional Clustering sulle evictions e poi test sui rent
+                                                       - Functional Clustering sulle new_constructions e poi test sulle evictions
+5) GAM scrauso a granularità nhood: - Aggiungere nhood come parte non parametrica  
+                                    - Cambiare "year" con "giorno"
+                                    - Imparare ad interpretare il summary dei GAM, in particolare i p-value. Cioè come capire se una covariata è significativa o meno
+                              
+6) Calcolo new_constructions vicine ad ogni parcel: 1° idea: calcolo per ogni parcel un cerchio con tutti i vari raggi e cerco una funzione che calcola se un punto 
+                                                             (i.e. una new_construction) sta o meno dentro quel cerchio.   SARA
+                                                    2° idea: calcolo i quadrati inscritti e circoscritti, controllo le new_construction che stanno dentro o fuori...
+                                                             PIETRO
+7) Calcolare distanza da Financial District e Caltrain Station da ogni parcel, da aggiungere al file "parcel" oppure in un file nuovo. La funzione "distanza" si trova
+   nel file "codeforgammodel" SARA
+8) Google Bus Stations (https://www.google.com/maps/d/viewer?msa=0&mid=1LWUFje0UZth-Z9pheZ_9J6RBkQk&ll=37.756617583210826%2C-122.42224206347657&z=13) SARA
+9) Riprodurre a granularità nhood il GAM usando come target variable evictions(nhood,monthly)
+10) Implementare Robust Statistics
+11) Valutare mappe per la presentazione finale
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ------- PRESENTAZIONE FINALE.
