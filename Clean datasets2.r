@@ -1338,6 +1338,7 @@ for( i in 1:length(rent_nhood_monthly[,1])){  #preparo l'address
 }
 rent_nhood_monthly <- rent_nhood_monthly[, -c(6:12)]
 colnames(rent_nhood_monthly) <- c('nhood_month_year', 'avg_rent.mq', 'month','year', 'nhood')
+rent_nhood_monthly <- rent_nhood_monthly[-which(rent_nhood_monthly$nhood == 'San Francisco'),]
 write.csv(rent_nhood_monthly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_monthly_nh.csv")
 
 
@@ -1364,6 +1365,7 @@ for( i in 1:length(rent_nhood_yearly[,1])){  #preparo l'address
 }
 rent_nhood_yearly <- rent_nhood_yearly[, -c(5:11)]
 colnames(rent_nhood_yearly) <- c('nhood_month_year', 'avg_rent.mq','year', 'nhood')
+rent_nhood_yearly <- rent_nhood_yearly[-which(rent_nhood_yearly$nhood == 'San Francisco'),]
 write.csv(rent_nhood_yearly,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/rent_nhood_yearly_nh.csv")
 
 # rent_clean <- rent_clean[,-c(10,11)]
