@@ -33,17 +33,14 @@ for(nh in list_nhood){
     rent_yearly[ind_nh_rent,]$lat = geo[ind_nh_geo,]$lat
   }
 }
-ind_zero = which(rent_yearly$lat == 0)
-rent_yearly = rent_yearly[-ind_zero,]
 ind_treasure_isl = which(rent_yearly$nhood == 'Treasure Island')
 rent_yearly = rent_yearly[-ind_treasure_isl,]
 
 
 #Provo a plottare i dati dei prezzi in 3d
 library(rgl)
-x11()
-plot3d(rent_yearly$lat, rent_yearly$lon, rent_yearly$avg_rent.mq, 
-       xlim = range(rent_yearly$lat) , ylim = range(rent_yearly$lon), col = as.factor(rent_yearly$year))
+plot3d(rent_yearly$lon, rent_yearly$lat,  rent_yearly$avg_rent.mq, 
+       xlim = range(rent_yearly$lon) , ylim = range(rent_yearly$lat), col = as.factor(rent_yearly$year))
 
 
 #Costruisco uno smoothing per ogni anno
@@ -73,20 +70,16 @@ plot3d(parcels$lon, parcels$lat, parcels$price,
 #Valuto sul quadrato corrispondente a sf 
 range_lat = range(parcels$lat)
 range_lon = range(parcels$lon)
-grid_lat = seq(range_lat[1], range_lat[2], 0.0003)
-grid_lon = seq(range_lon[1], range_lon[2], 0.0003)
-
+grid_lat = seq(range_lat[1], range_lat[2], length.out = 100)
+grid_lon = seq(range_lon[1], range_lon[2], length.out = 100)
 
 mesh_coord = expand.grid(lon = grid_lon,lat = grid_lat)
 price = predict(m_loc, newdata = mesh_coord)
-mesh_coord <- mesh_coord[order(mesh_coord$lon, mesh_coord$lat),]
-persp3d(mesh_coord$lon,mesh_coord$lat, price)
+persp3d(grid_lon,grid_lat, price, smooth = F) 
+plot3d(mesh_coord$lon,mesh_coord$lat, price, add = T)
 
 
-
-
-
-
-
+colors = heat.colors(length(price))
+persp3d(grid_lon, grid_lat, price, smooth = F, col = price)
 
 
