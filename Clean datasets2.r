@@ -1587,9 +1587,10 @@ constr_coord <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/
 
 
 {
-Parcels <- Parcels[which(Parcels$RESUNITS > 0), ] #elimino quelle dove non abita nessuno
-Parcels <- Parcels[which(Parcels$LANDUSE == 'RESIDENT'), ] #elemino quelle che non sono a fini abitativi
-Parcels <- Parcels[,-c(14,16:21) ]
+Parcels <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Original Datasets/Parcels.csv", header=TRUE)
+Parcels <- Parcels[,c(3,7:10)]
+write.csv(Parcels,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Parcels_poly.csv",row.names=FALSE)
+
 } # Continua su "Parcel centroid"
 
 

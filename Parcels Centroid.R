@@ -104,10 +104,10 @@ for (i in 1:length(CENTROID_LONG)){
 
 options(digits=9)
 
-Parcels_final = Parcels_prova[,-c(3,17:49)]   #tolgo colonne che non servono
+Parcels_final = Parcels[,-c(17:49)]   #tolgo colonne che non servono
 save(Parcels_final, file = 'Parcels_finall.RData')
 write.csv(Parcels_final,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv")
 Parcels_final <- read.csv("C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv", header=TRUE)
 Parcels_final <- Parcels_final[,-c(1:6,11:16)]
-write.csv(Parcels_final,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/Parcels_final.csv")
+write.csv(Parcels,"C:/Users/Pietro/Desktop/Pietro/Politecnico/Magistrale/Nonparametric_Statistics/Progetto/ricerca di progetti/Progetto Case SF/SF-houses/Parcels_poly.csv",row.names=FALSE)
 
