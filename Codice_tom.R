@@ -55,7 +55,7 @@ for(nh in list_nhood){
   }
 }
 funct_data = funct_data[,2:dim(funct_data)[2]]
-#Provo a togliere le date con più buchi (ma non è fattibile...comunque troppi buchi)
+#Provo a togliere le date con pi? buchi (ma non ? fattibile...comunque troppi buchi)
 funct_data_t = t(funct_data)
 funct_data_t = funct_data_t[,-c(1:10)]
 funct_data_t = funct_data_t[,-c(11:14,16:21)] 
@@ -73,7 +73,7 @@ f_data <- fData(vect_dates,t(funct_data))
 plot(f_data)
 #Troppi buchi ...
 }
-#Conclusione: troppi buchi ... bisogna aggregare su unità temporale più ampia del mese
+#Conclusione: troppi buchi ... bisogna aggregare su unit? temporale pi? ampia del mese
 
 
 #Analisi esplorativa di rent_nhood_year 
@@ -215,7 +215,7 @@ plot(median_curve, col = 'black',lwd = 3 , add = T)
 }
 #Conclusione: un po meglio dell'year ma comunque molto approssimata (12 punti) e 
 #             comunque alcuni nhood sono da rimuovere... 
-#             Sarebbe da trovare la giusta unità che sia sufficentemente ampia da non
+#             Sarebbe da trovare la giusta unit? che sia sufficentemente ampia da non
 #              creare troppi buchi ma abbastanza piccola da creare tanti punti per stimare
 #              le funzioni... Trimestre?Quadrimestre?
 
@@ -246,7 +246,7 @@ aus_df <- data.frame(year = as.numeric(format(rent_clean$d, format = "%Y")),
 rent_clean = cbind(rent_clean,aus_df)
 rm(aus_df)
 rent_clean = rent_clean[which(rent_clean$year >= 2011 & rent_clean$year <= 2018),]
-ind_typo = which(rent_clean$price_mq > 175) #la media in quel nhood e anno è 10 volte meno...typo?
+ind_typo = which(rent_clean$price_mq > 175) #la media in quel nhood e anno ? 10 volte meno...typo?
 rent_clean = rent_clean[-c(ind_typo),]
 #vect_date_num = as.numeric(paste(rent_clean$year,rent_clean$month,rent_clean$day, sep = ''))
 #rent_clean = cbind(rent_clean,vect_date_num)
@@ -292,7 +292,7 @@ plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Price/mq)', main = 'Approximat
 #Conclusione: usando la bandwidth ottenuta con CV con npregbw si ottengono funzioni molto
 #             disomogenee nelle variazioni... Potrebbe influire (negativamente) sullo di 
 #             functional depth measures/outliers! Non sarebbe meglio tenere una finestra che
-#             fornisce variazioni simili per tutti (così si evidenzia trend)?
+#             fornisce variazioni simili per tutti (cos? si evidenzia trend)?
 
 # funz_rent       : table con colonne nhood e righe tempo
 # diff_rent       : table con colonne nhood e righe tempo (valori sono le differenze all'indietro!)
@@ -386,7 +386,7 @@ plot(tst)
   #  x11()
   #  plot(grid_time,funz_rent[,i], main = colnames(funz_rent)[i])
   #}
-  #which(colnames(funz_rent) == 'Treasure Island') #32 Treasure Island è lo scalino!
+  #which(colnames(funz_rent) == 'Treasure Island') #32 Treasure Island ? lo scalino!
   
   #Provo a fare un plot "simil matplot" dei raw rent:
   list_nhood = unique(rent_clean$nhood)
@@ -413,7 +413,7 @@ plot(tst)
   x11()
   plot(funct_data, xlab = 'Year', ylab = 'Price/mq', main = 'Smoothed rent functions with median (wrt MBD)')
   plot(median_curve_rent, col = 'red', lwd = 3, add = T)
-  #roahd::fbplot(funct_data, main = 'Functional box.plot for rent functions') #da errori...perchè?
+  #roahd::fbplot(funct_data, main = 'Functional box.plot for rent functions') #da errori...perch??
   funct_data_num = fData(grid_time_num$date_num,t(funz_rent))
   x11()
   roahd::fbplot(funct_data_num, main = 'Functional box-plot for rent functions' )
@@ -428,7 +428,7 @@ plot(tst)
   x11()
   plot(funct_data_diff,xlab = 'Year', ylab = 'Price/mq', main = 'First derivative of rent functions with median (wrt MBD)')
   plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
-  #fbplot(funct_data_diff) da errori... perchè?
+  #fbplot(funct_data_diff) da errori... perch??
   funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_rent))
   x11()
   roahd::fbplot(funct_data_diff_num, main = 'Functional box-plot for derivatives of rent functions')
@@ -455,6 +455,8 @@ plot(tst)
 {
   
 library(readr)
+library(sf)
+geo = read_sf('SFNeighborhoods_new.geojson')
 eviction_nhood_monthly <- read_csv("eviction_monthly_nh.csv")
 eviction_nhood_monthly = eviction_nhood_monthly[-2251,] #tolgo la riga con il count totale
 vect_year = eviction_nhood_monthly$year
@@ -477,6 +479,22 @@ for(nh in nh_multiple_osservations){
   eviction_nhood_monthly = eviction_nhood_monthly[-ind,]
 }
 rm(nh,nh_multiple_osservations, ind)
+#Aggiungo l'area di ciascun nhood
+eviction_nhood_monthly$area = rep(0,dim(eviction_nhood_monthly)[1])
+list_nhood = unique(geo$nhood)
+for(i in list_nhood){
+  ind_eviction_nhood = which(eviction_nhood_monthly$nhood == i) 
+  if(length(ind_eviction_nhood) > 0){
+    eviction_nhood_monthly[ind_eviction_nhood,]$area = geo[which(geo$nhood == i),]$area
+  }
+}
+#Normalizzo il count per l'area del nhood.
+#NB: da qui in poi (per non dover riscrivere tutto il codice!) count sarÃ 
+#    #evict/area mentre count_not_norm sarÃ  #evict
+
+eviction_nhood_monthly$count_not_norm = eviction_nhood_monthly$count
+eviction_nhood_monthly$count = eviction_nhood_monthly$count / eviction_nhood_monthly$area
+
 
 x11()
 plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count,
@@ -589,10 +607,11 @@ plot(tst)
   x11()
   plot(funct_data, xlab = 'Year', ylab = 'Number of evictions', main = 'Smoothed functions of evictions with median (wrt MBD)')
   plot(median_curve_rent, col = 'red', lwd = 3, add = T)
-  # fbplot(funct_data) da errori...perchè?
+  # fbplot(funct_data) da errori...perch??
   funct_data_num = fData(grid_time_num$date_num,t(funz_evictions))
   fbplot(funct_data_num, main = 'Functional box-plot for functions of evictions')
-  out_funct <- outliergram(funct_data) #Non ha alcun senso...
+  x11()
+  out_funct <- outliergram(funct_data) 
   
   #MBD,mediana e boxplot per derivate di evictions
   modified_band_depth_rent_diff = MBD(funct_data_diff)
@@ -602,7 +621,7 @@ plot(tst)
   plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Number of evictions)', main = 'Approximation of first derivative with median (wrt MBD)')
   plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
   x11()
-  #fbplot(funct_data_diff) da errori... perchè?
+  #fbplot(funct_data_diff) da errori... perch??
   funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_evictions))
   fbplot(funct_data_diff_num, main = 'Functional box-plot for first derivative of evictions')
   out_funct_diff <- outliergram(funct_data_diff) #Non ha alcun senso...

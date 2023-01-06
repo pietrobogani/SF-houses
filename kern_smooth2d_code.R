@@ -170,6 +170,7 @@ rm(ind_year,ind_rent_year,m_loc)
 
 x11()
 for(ind_year in 1:length(years)){
+  x11()
   levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
             colorkey = T,
             xlab = "Longitude", ylab = "Latitude", zlab = "Price",
@@ -183,10 +184,30 @@ for(ind_year in 1:length(years)){
             main = paste(years[ind_year]))
 }
 
+#Vado  a calcolare l'errore % medio usando gli annunci geolocalizzati
+rent = read.csv('rent_clean_nh.csv')
+ind_lat = which(is.na(rent$lat) == F)
+ind_lon = which(is.na(rent$lon) == F)
+ind_loc = intersect(ind_lon,ind_lat)
+rent_loc = rent[ind_loc,]
+rent_loc$estimate = rep(0,dim(rent_loc)[1])
 
+years = unique(rent_yearly$year)
+for(ind_year in 1:length(years)){
+  ind_rent_year = which(rent_yearly$year == years[ind_year])
+  ind_rent_loc_year = which(rent_loc$year == years[ind_year])
+  m_loc = npreg(avg_rent.mq  ~ lat + lon,
+                ckertype = 'gaussian', #or gaussian, epanechnikov
+                bws = c(0.009,0.009), # bandwidth
+                data = rent_yearly[ind_rent_year,]
+  )
+  rent_loc[ind_rent_loc_year,]$estimate = predict(m_loc, newdata = rent_loc[ind_rent_loc_year,c(4,5)])
+}
+rm(ind_year,ind_rent_year,m_loc, ind_rent_loc_year)
 
-
-
-
-
-
+rent_loc$res = rent_loc$price_mq - rent_loc$estimate
+hist(rent_loc$res)
+rent_loc$err_perc = (rent_loc$price_mq - rent_loc$estimate)/rent_loc$price_mq
+hist(rent_loc$err_perc)
+mean(rent_loc$err_perc) # -0.04067062
+var(rent_loc$err_perc)  # +0.1538542
