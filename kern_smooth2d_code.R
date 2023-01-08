@@ -72,8 +72,8 @@ plot3d(parcels$lon, parcels$lat, parcels$price,
 
 
 #Valuto sul quadrato corrispondente a sf 
-grid_lat = seq(range(parcels$lat), length.out = 100)
-grid_lon = seq(range(parcels$lon), length.out = 100)
+grid_lat = seq(range(parcels$lat)[1],range(parcels$lat)[2], length.out = 100)
+grid_lon = seq(range(parcels$lon)[1],range(parcels$lon)[2], length.out = 100)
 mesh_coord = expand.grid(lon = grid_lon,lat = grid_lat)
 mesh_coord$price = predict(m_loc, newdata = mesh_coord)
 price = predict(m_loc, newdata = mesh_coord)
@@ -168,9 +168,9 @@ for(ind_year in 1:length(years)){
 rm(ind_year,ind_rent_year,m_loc)
 
 
-x11()
+
 for(ind_year in 1:length(years)){
-  x11()
+
   levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
             colorkey = T,
             xlab = "Longitude", ylab = "Latitude", zlab = "Price",
@@ -208,6 +208,6 @@ rm(ind_year,ind_rent_year,m_loc, ind_rent_loc_year)
 rent_loc$res = rent_loc$price_mq - rent_loc$estimate
 hist(rent_loc$res)
 rent_loc$err_perc = (rent_loc$price_mq - rent_loc$estimate)/rent_loc$price_mq
-hist(rent_loc$err_perc)
-mean(rent_loc$err_perc) # -0.04067062
-var(rent_loc$err_perc)  # +0.1538542
+hist(abs(rent_loc$err_perc))
+mean(abs(rent_loc$err_perc)) # -0.04067062
+var(abs(rent_loc$err_perc))  # +0.1538542
