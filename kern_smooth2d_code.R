@@ -9,6 +9,8 @@ library(readr)
 library(sf)
 library(rgl)
 library(lattice)
+
+
 geo = read_sf('SFNeighborhoods_new.geojson')
 rent_yearly <- read_csv("rent_nhood_yearly_nh.csv")
 Parcels_final_nh <- read_csv("Parcels_final_nh.csv")
@@ -47,7 +49,7 @@ plot3d(rent_yearly$lon, rent_yearly$lat,  rent_yearly$avg_rent.mq,
        xlim = range(rent_yearly$lon) , ylim = range(rent_yearly$lat), col = as.factor(rent_yearly$year))
 
 
-#Costruisco uno smoothing per ogni anno
+#Costruisco uno smoothing per un anno fissato come prova
 year = 2015
 ind_year = which(rent_yearly$year == 2015)
 # m_loc = kde2d(x = rent_yearly[ind_year,]$lat,
@@ -56,9 +58,10 @@ ind_year = which(rent_yearly$year == 2015)
 #               n = 15)
 m_loc = npreg(avg_rent.mq  ~ lat + lon,
               ckertype = 'gaussian', #or gaussian, epanechnikov
-              bws = c(0.009,0.009), # bandwidth
+              bws = c(0.007,0.007), # bandwidth
               data = rent_yearly[ind_year,]
               )
+
 
 #Valuto sulle parcel
 parcels = data.frame(lat = Parcels_final_nh$Centroid_Lat, lon = Parcels_final_nh$Centroid_Long)
@@ -158,7 +161,7 @@ for(ind_year in 1:length(years)){
   ind_rent_year = which(rent_yearly$year == years[ind_year])
   m_loc = npreg(avg_rent.mq  ~ lat + lon,
                 ckertype = 'gaussian', #or gaussian, epanechnikov
-                bws = c(0.009,0.009), # bandwidth
+                bws = c(0.007,0.007), # bandwidth
                 data = rent_yearly[ind_rent_year,]
   )
   
@@ -198,7 +201,7 @@ for(ind_year in 1:length(years)){
   ind_rent_loc_year = which(rent_loc$year == years[ind_year])
   m_loc = npreg(avg_rent.mq  ~ lat + lon,
                 ckertype = 'gaussian', #or gaussian, epanechnikov
-                bws = c(0.009,0.009), # bandwidth
+                bws = c(0.007,0.007), # bandwidth
                 data = rent_yearly[ind_rent_year,]
   )
   rent_loc[ind_rent_loc_year,]$estimate = predict(m_loc, newdata = rent_loc[ind_rent_loc_year,c(4,5)])
@@ -209,5 +212,53 @@ rent_loc$res = rent_loc$price_mq - rent_loc$estimate
 hist(rent_loc$res)
 rent_loc$err_perc = (rent_loc$price_mq - rent_loc$estimate)/rent_loc$price_mq
 hist(abs(rent_loc$err_perc))
-mean(abs(rent_loc$err_perc)) # -0.04067062
-var(abs(rent_loc$err_perc))  # +0.1538542
+mean(abs(rent_loc$err_perc)) # +0.2265352
+var(abs(rent_loc$err_perc))  # 0.1041139
+
+
+
+
+#Provo a rifarlo ma con un bootstrap approach:
+
+#Voglio andare a calcolare le predizioni.boot dei prezzi sui rent 
+# geolocalizzati 
+
+
+set.seed(2022)
+B = 100
+
+
+years = unique(rent_yearly$year)
+container_pred_boot = vector('list', length(years))
+pb = progress_bar$new(total = length(years))
+for(ind_year in 1:length(years)){
+  ind_rent_year = which(rent_yearly$year == years[ind_year])
+  ind_rent_loc_year = which(rent_loc$year == years[ind_year])
+  m_loc = npreg(avg_rent.mq  ~ lat + lon,
+                ckertype = 'gaussian', #or gaussian, epanechnikov
+                bws = c(0.007,0.007), # bandwidth
+                data = rent_yearly[ind_rent_year,]
+  )
+  rent_loc[ind_rent_loc_year,]$estimate = predict(m_loc, newdata = rent_loc[ind_rent_loc_year,c(4,5)])
+  
+  fitted = fitted(m_loc)
+  res = rent_yearly[ind_rent_year,]$avg_rent.mq - fitted
+  preds.boot = matrix(0,nrow = length(ind_rent_loc_year), ncol = B)
+  for(b in 1:B){
+    
+    risp_boot <- fitted + sample(res, replace = T) #uso i risultati del primo modello per creare i nuovi dati
+    m_loc_boot = npreg(risp_boot  ~ lat + lon,
+                  ckertype = 'gaussian', #or gaussian, epanechnikov
+                  bws = c(0.007,0.007), # bandwidth
+                  data = rent_yearly[ind_rent_year,]
+    )
+    preds.boot[,b] = predict(m_loc_boot, newdata = data.frame( lat = rent_loc$lat[ind_rent_loc_year], lon = rent_loc$lon[ind_rent_loc_year]))
+  }
+  container_pred_boot[[ind_year]] = preds.boot
+  pb$tick()
+}
+rm(ind_year,ind_rent_year,m_loc, ind_rent_loc_year)
+
+
+
+
