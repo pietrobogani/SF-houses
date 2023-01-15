@@ -55,34 +55,34 @@ PARTE ESPLORATIVA
  ----- FINE ANALISI ESPLORATIVA (Prima Presentazione)
 
 
-1) FATTO Smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels (usando questo possiamo usare l'idea di Cappozzo, cioè di raccontare
+1) TOM Smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels (usando questo possiamo usare l'idea di Cappozzo, cioè di raccontare
    come stiamo "validando" il paper tramite un approccio diverso). 
    N.B. Utilizziamo i rent geolocalizzati come ulteriori "vincoli" nell'interpolazione
-   Utilizzo di "npreg". Provare a calcolare l'errore che viene fatto tramite smoothing su solo centroidi e medie calcolato su rent geolocalzzati. TOM
+   Utilizzo di "npreg". Provare a calcolare l'errore che viene fatto tramite smoothing su solo centroidi e medie calcolato su rent geolocalzzati.
+   Cancella osservazioni fuori da SF  
 1.1)Assegno pesi diversi a osservazioni e medie e calcolo con npreg (usare codice codice kern_smooth2d_code.r). PIETRO (se hai tempo)
 1.2)Mappa 2D con colore sfumato: mettere i nhood e non parcels (codice kern_smooth2d_code.r) SARA
-2) Rifare Smoothing delle Evictions, questa volta normalizzando i valori o dividendo per l'area oppure per il #parcel. L'idea sarebbe ottenere un trend simile a 
+2) FATTO Rifare Smoothing delle Evictions, questa volta normalizzando i valori o dividendo per l'area oppure per il #parcel. L'idea sarebbe ottenere un trend simile a 
    quello osservato sugli smoothed rent. Poi ripetiamo i Functional tests.
    Rifare normalizzazione con RESUNITS in nhood e vedere cosa esce TOM
 3) BALZA Smoothing su new_constructions normalizzando per RESUNITS per fare punto 4) 
 4) Ripetere i Functional Tests con partizioni diverse: - Functional Clustering sulle evictions e poi test sui rent PIETRO 
-5) GAM scrauso a granularità nhood: - Aggiungere nhood come parte non parametrica  
+5) TOM GAM scrauso a granularità nhood: - Aggiungere nhood come parte non parametrica  
                                     - Cambiare "year" con "giorno"
-                                    - Imparare ad interpretare il summary dei GAM, in particolare i p-value. Cioè come capire se una covariata è significativa o meno
-   TOM
+                                    - Provare a usare gam() invece di lm()
+                                    - FATTO Imparare ad interpretare il summary dei GAM, in particolare i p-value. Cioè come capire se una covariata è significativa o meno TOM
                               
 6) FATTO(da runnare) Calcolo new_constructions vicine ad ogni parcel: 1° idea: calcolo per ogni parcel un cerchio con tutti i vari raggi e cerco una funzione che calcola se un punto 
-                                                             (i.e. una new_construction) sta o meno dentro quel cerchio.   SARA
-                                                    2° idea: calcolo i quadrati inscritti e circoscritti, controllo le new_construction che stanno dentro o fuori...
+                                                             (i.e. una new_construction) sta o meno dentro quel cerchio.   SARA 
                                                              
-7) FATTO (da runnare) Calcolare distanza da Financial District e Caltrain Station da ogni parcel, da aggiungere al file "parcel" oppure in un file nuovo. La funzione "distanza" si trova
+7) DA RUNNARE Calcolare distanza da Financial District e Caltrain Station da ogni parcel, da aggiungere al file "parcel" oppure in un file nuovo. La funzione "distanza" si trova
    nel file "codeforgammodel" SARA
 8) FATTO Google Bus Stations (https://www.google.com/maps/d/viewer?msa=0&mid=1LWUFje0UZth-Z9pheZ_9J6RBkQk&ll=37.756617583210826%2C-122.42224206347657&z=13) SARA
-8.1) Aggiungere distanza minima da bus stop per ogni parcel SARA
+8.1) DA RUNNARE Aggiungere distanza minima da bus stop per ogni parcel SARA
 9) Riprodurre a granularità nhood il GAM usando come target variable evictions(nhood,monthly) PIETRO  
 10) Implementare Robust Statistics/Conformal Prediction PIETRO
 11) Valutare mappe per la presentazione finale 
-12) Implementare GAM sui prezzi a granularità parcels TOM 
+12) TOM Implementare GAM sui prezzi a granularità parcels  
 
 
 
