@@ -172,34 +172,95 @@ summary(lin_mod)
 
 {#GAM with natural splines
   
-  rent_clean$num_units_0 = rent_clean$num_units_0/rent_clean$area * 1e6
-  rent_clean$num_units_1 = rent_clean$num_units_1/rent_clean$area * 1e6
-  rent_clean$num_units_2 = rent_clean$num_units_2/rent_clean$area * 1e6
-  rent_clean$num_units_3 = rent_clean$num_units_3/rent_clean$area * 1e6
-  rent_clean$num_units_4 = rent_clean$num_units_4/rent_clean$area * 1e6
+  rent_clean$year_fct = as.factor(rent_clean$year)
+  #Gam con numero di costruzioni (e non densità!):
+  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
+                      ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
+                      ns(num_units_4, df = 3) + year_fct +
+                      ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
+  summary(model_gam_ns)
+  gam::plot.Gam(model_gam_ns, se=TRUE)
+  model_chosen = model_gam_ns
+  #Numero di costruzioni non è mai significativo con alpha=0.05!
   
+  
+  #Gam con numero di costruzioni (e non densità!) e nhood:
+  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
+                      ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
+                      ns(num_units_4, df = 3) + year_fct +
+                      ns(dist_fin, df = 3) + ns(dist_caltr, df = 3) + nhood  , data = rent_clean)
+  summary(model_gam_ns)
+  gam::plot.Gam(model_gam_ns, se=TRUE)
+  #Non ha senso mettere sia distanze che nhood!O uno o l'altro!
+  
+  
+  #Gam con numero di costruzioni (e non densità!) e nhood(ma non distanze):
+  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
+                      ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
+                      ns(num_units_4, df = 3) + year_fct + nhood  , data = rent_clean)
+  summary(model_gam_ns)
+  gam::plot.Gam(model_gam_ns, se=TRUE)
+  #Così le costruzioni dell'anno corrente diventano significative...
+  
+  #Tra i modelli con numero di costruzioni userei quello con distanze e non nhood così 
+  # non c'è significatività di nessuna costruzione! In più l'informazione dei nhood
+  # non si perde così tanto tenendo le due distanze
+
+  
+  #Passo a usare le densità e non il numero di costruzioni
+  rent_clean$num_units_0 = rent_clean$num_units_0/rent_clean$area 
+  rent_clean$num_units_1 = rent_clean$num_units_1/rent_clean$area
+  rent_clean$num_units_2 = rent_clean$num_units_2/rent_clean$area 
+  rent_clean$num_units_3 = rent_clean$num_units_3/rent_clean$area 
+  rent_clean$num_units_4 = rent_clean$num_units_4/rent_clean$area 
+  
+  rent_clean$num_units_0_adj = rent_clean$num_units_0 * 1e6
+  rent_clean$num_units_1_adj = rent_clean$num_units_1 * 1e6
+  rent_clean$num_units_2_adj = rent_clean$num_units_2 * 1e6
+  rent_clean$num_units_3_adj = rent_clean$num_units_3 * 1e6
+  rent_clean$num_units_4_adj = rent_clean$num_units_4 * 1e6
+
   model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
                     ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
-                    ns(num_units_4, df = 3) + ns(year, df = 3) +
+                    ns(num_units_4, df = 3) + year_fct +
                     ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
   summary(model_gam_ns)
   gam::plot.Gam(model_gam_ns, se=TRUE)
-  #plot(model_gam_ns$residuals,model_gam$residuals)
-  #cor(model_gam_ns$residuals,model_gam$residuals) #to compare the residuals with "GAM with smoothing cubic splines"
+  model_chosen_dens = model_gam_ns
+  #Le costruzioni in anno4 sono significative, ma solo un elemento su tre della base
+  
+  
+  #Uso un rescaling per vedere se ci sono problemi a livello computazionale con densità molto piccole
+  model_gam_ns <-lm(price_mq ~ ns(num_units_0_adj, df = 3) + ns(num_units_1_adj, df = 3) + 
+                      ns(num_units_2_adj, df = 3) + ns(num_units_3_adj, df = 3) + 
+                      ns(num_units_4_adj, df = 3) + year_fct +
+                      ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
+  summary(model_gam_ns)
+  gam::plot.Gam(model_gam_ns, se=TRUE)
+  #Non cambia nulla rispetto senza riscaling ... è inutile?
+  
+  
+  
+  #Provo ad usare il giorno come unità di misura del tempo e non gli anni:
+  rent_clean$d_num = as.numeric(rent_clean$d)
+  rent_clean$d_num = rent_clean$d_num - min(rent_clean$d_num)
+  
+  #Gam con giorni come unità di tempo con ns a 5 df: 
+  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
+                      ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
+                      ns(num_units_4, df = 3) + ns(d_num, df = 5) +
+                      ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
+  summary(model_gam_ns)
+  gam::plot.Gam(model_gam_ns, se=TRUE)
+  #Modello cambia leggermente e costruzioni a 2 e 4 anni hanno un elemento della base significativo
+
+  
+  #Si potrebbe provare con smoothing splines?
+  #Io terrei o modello con distanze,numero di constr e year_fct oppure distanze,dens_constr e giorni
+  #Magari quello con year_fct dove si hanno meno cose significative (?)
 }
 
 
-
-{#GAM with smoothing cubic splines basis (NOT natural!)
-  model_gam=gam(price_mq ~ s(num_units,bs='cr') + nhood + year,data = rent_clean)
-  summary(model_gam)
-  hist(model_gam$residuals)
-  qqnorm(model_gam$residuals)
-  qqline(model_gam$residuals,col = 'red', lwd = 2)
-  aus = sample(1:length(model_gam$residuals),5000)
-  shapiro.test(model_gam$residuals[aus])
-  plot(model_gam)
-}
 
 
 

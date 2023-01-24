@@ -117,8 +117,9 @@ rm(list = ls())
 #Importo i dataset e creo le varie griglie necessarie
 geo = read_sf('SFNeighborhoods_new.geojson')
 rent_yearly <- read_csv("rent_nhood_yearly_nh.csv")
-Parcels_final_nh <- read_csv("Parcels_final_nh.csv")
-parcels = data.frame(lat = Parcels_final_nh$Centroid_Lat, lon = Parcels_final_nh$Centroid_Long)
+Parcels_augmented <- read_csv("Parcels_augmented.csv")
+parcels = data.frame(OBJECTID = Parcels_augmented$OBJECTID,lat = Parcels_augmented$Centroid_Lat, lon = Parcels_augmented$Centroid_Long)
+rm(Parcels_augmented)
 #Aggiungo a rent_yearly le coordinate dei nhood
 rent_yearly$lat = rep(0,dim(rent_yearly)[1])
 rent_yearly$lon = rep(0,dim(rent_yearly)[1])
@@ -166,10 +167,13 @@ for(ind_year in 1:length(years)){
   )
   
   mesh_coord[,ind_year+2] = predict(m_loc, newdata = mesh_coord[,c(1,2)])
-  parcels[,ind_year+2] = predict(m_loc, newdata = parcels[,c(1,2)])
+  parcels[,ind_year+3] = predict(m_loc, newdata = parcels[,c(2,3)])
 }
+
 rm(ind_year,ind_rent_year,m_loc)
 
+
+#write.csv(parcels,'parcels_smooth_price.csv')
 
 
 for(ind_year in 1:length(years)){
@@ -187,15 +191,29 @@ for(ind_year in 1:length(years)){
             main = paste(years[ind_year]))
 }
 
+
 #Vado  a calcolare l'errore % medio usando gli annunci geolocalizzati
+
+#Importo i dati dei rent e tengo solo quelli con la corretta localizzazione
 rent = read.csv('rent_clean_nh.csv')
 ind_lat = which(is.na(rent$lat) == F)
 ind_lon = which(is.na(rent$lon) == F)
-ind_loc = intersect(ind_lon,ind_lat)
-rent_loc = rent[ind_loc,]
+ind_loc = intersect(ind_lon,ind_lat) #653 osservazioni
+range_lon = range(parcels$lon)
+range_lat = range(parcels$lat)
+ind_lon_ok = which(rent$lon > range_lon[1] & rent$lon < range_lon[2])
+ind_lat_ok = which(rent$lat > range_lat[1] & rent$lat < range_lat[2])
+ind_loc_ok = intersect(ind_loc,intersect(ind_lon_ok,ind_lat_ok)) #614 osservazioni
+rent_loc = rent[ind_loc_ok,]
+#Plotto i rent localizzati sulle parcel e controllo che sia tutto ok
+x11()
+plot(parcels$lon,parcels$lat, pch = 20, cex = 0.1, asp = 1)
+points(rent_loc$lon,rent_loc$lat, col = 'red', pch = 20, cex = 0.8, asp = 1)
+
+#Procedo con il calcolo dell'errore % medio
 rent_loc$estimate = rep(0,dim(rent_loc)[1])
 
-years = unique(rent_yearly$year)
+years = unique(rent_loc$year)
 for(ind_year in 1:length(years)){
   ind_rent_year = which(rent_yearly$year == years[ind_year])
   ind_rent_loc_year = which(rent_loc$year == years[ind_year])
@@ -212,9 +230,9 @@ rent_loc$res = rent_loc$price_mq - rent_loc$estimate
 hist(rent_loc$res)
 rent_loc$err_perc = (rent_loc$price_mq - rent_loc$estimate)/rent_loc$price_mq
 hist(abs(rent_loc$err_perc))
-mean(abs(rent_loc$err_perc)) # +0.2265352
-var(abs(rent_loc$err_perc))  # 0.1041139
-
+mean(abs(rent_loc$err_perc)) # +0.2265352 ma considerando solo quelle loc_ok +0.2051277
+var(abs(rent_loc$err_perc))  # 0.1041139 ma considerando solo quelle loc_ok +0.07696415
+sd(abs(rent_loc$err_perc))
 
 
 
@@ -228,8 +246,10 @@ set.seed(2022)
 B = 100
 
 
-years = unique(rent_yearly$year)
+years = unique(rent_loc$year)
 container_pred_boot = vector('list', length(years))
+rent_loc$mean_boot = rep(0,dim(rent_loc)[1])
+library(progress)
 pb = progress_bar$new(total = length(years))
 for(ind_year in 1:length(years)){
   ind_rent_year = which(rent_yearly$year == years[ind_year])
@@ -259,6 +279,8 @@ for(ind_year in 1:length(years)){
 }
 rm(ind_year,ind_rent_year,m_loc, ind_rent_loc_year)
 
+#Per ogni prezzo ho la stima calcolata 100 volte ... riempiendo il container perdo 
+# però la corrispondenza dell'osservazione....
 
 
-
+dim(colMeans(t((container_pred_boot[[1]]))))

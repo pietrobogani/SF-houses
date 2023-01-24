@@ -67,14 +67,13 @@ PARTE ESPLORATIVA
    Rifare normalizzazione con RESUNITS in nhood e vedere cosa esce TOM
 3) BALZA Smoothing su new_constructions normalizzando per RESUNITS per fare punto 4) 
 4) Ripetere i Functional Tests con partizioni diverse: - Functional Clustering sulle evictions e poi test sui rent PIETRO 
-5) TOM GAM scrauso a granularità nhood: - Aggiungere nhood come parte non parametrica  
-                                    - Cambiare "year" con "giorno"
-                                    - Provare a usare gam() invece di lm()
-                                    - FATTO Imparare ad interpretare il summary dei GAM, in particolare i p-value. Cioè come capire se una covariata è significativa o meno TOM
+5) TOM GAM scrauso a granularità nhood: - Aggiungere nhood come parte non parametrica  -> NO SENSE! O distanze da punti di interesse O nhood!
+                                        - Cambiare "year" con "giorno"
+                                        - Provare a usare gam() invece di lm()
+                                        - FATTO Imparare ad interpretare il summary dei GAM, in particolare i p-value. Cioè come capire se una covariata è significativa o meno TOM
                               
 6) FATTO(da runnare) Calcolo new_constructions vicine ad ogni parcel: 1° idea: calcolo per ogni parcel un cerchio con tutti i vari raggi e cerco una funzione che calcola se un punto 
-                                                             (i.e. una new_construction) sta o meno dentro quel cerchio.   SARA 
-                                                             
+                                                             (i.e. una new_construction) sta o meno dentro quel cerchio.   SARA                                                       
 7) DA RUNNARE Calcolare distanza da Financial District e Caltrain Station da ogni parcel, da aggiungere al file "parcel" oppure in un file nuovo. La funzione "distanza" si trova
    nel file "codeforgammodel" SARA
 8) FATTO Google Bus Stations (https://www.google.com/maps/d/viewer?msa=0&mid=1LWUFje0UZth-Z9pheZ_9J6RBkQk&ll=37.756617583210826%2C-122.42224206347657&z=13) SARA
