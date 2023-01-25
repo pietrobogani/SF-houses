@@ -263,7 +263,7 @@ model_gam=gam(price ~ s(lon,lat,bs='tp') + nhood + year +
                 s(newc_100m_2,bs='cr') + s(newc_500m_2,bs='cr') + s(newc_1000m_2,bs='cr') + s(newc_2000m_2,bs='cr')+
                 s(newc_100m_1,bs='cr') + s(newc_500m_1,bs='cr') + s(newc_1000m_1,bs='cr') + s(newc_2000m_1,bs='cr')+
                 s(newc_100m_0,bs='cr') + s(newc_500m_0,bs='cr') + s(newc_1000m_0,bs='cr') + s(newc_2000m_0,bs='cr')+
-                s(FinDistr_distance,bs ='cr') + s(CaltStat_distance,bs='cr')+s(minDistGB,bs='cr'),
+                s(minDistGB,bs='cr'), #+ s(FinDistr_distance,bs ='cr') + s(CaltStat_distance,bs='cr'),
               data = data_gam)
 summary(model_gam) #Effective degrees of freedom (edf) is a summary statistic of GAM and it reflects the degree of non-linearity of a curve
 hist(model_gam$residuals)
@@ -271,16 +271,6 @@ qqnorm(model_gam$residuals)
 shapiro.test(model_gam$residuals)
 #par(mfrow = c(2,2))
 plot(model_gam)
-
-
-
-
-
-
-
-
-
-
 
 
 

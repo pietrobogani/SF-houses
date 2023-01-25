@@ -55,7 +55,7 @@ PARTE ESPLORATIVA
  ----- FINE ANALISI ESPLORATIVA (Prima Presentazione)
 
 
-1) TOM Smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels (usando questo possiamo usare l'idea di Cappozzo, cioè di raccontare
+1) FATTO TOM Smoothing con kernel2D (Gaussiano?) e poi valuto sulle parcels (usando questo possiamo usare l'idea di Cappozzo, cioè di raccontare
    come stiamo "validando" il paper tramite un approccio diverso). 
    N.B. Utilizziamo i rent geolocalizzati come ulteriori "vincoli" nell'interpolazione
    Utilizzo di "npreg". Provare a calcolare l'errore che viene fatto tramite smoothing su solo centroidi e medie calcolato su rent geolocalzzati.
@@ -71,17 +71,20 @@ PARTE ESPLORATIVA
                                         - Cambiare "year" con "giorno"
                                         - Provare a usare gam() invece di lm()
                                         - FATTO Imparare ad interpretare il summary dei GAM, in particolare i p-value. Cioè come capire se una covariata è significativa o meno TOM
-                              
-6) FATTO(da runnare) Calcolo new_constructions vicine ad ogni parcel: 1° idea: calcolo per ogni parcel un cerchio con tutti i vari raggi e cerco una funzione che calcola se un punto 
+                                        - Usare cubic e non natural splines
+6) FATTO Calcolo new_constructions vicine ad ogni parcel: 1° idea: calcolo per ogni parcel un cerchio con tutti i vari raggi e cerco una funzione che calcola se un punto 
                                                              (i.e. una new_construction) sta o meno dentro quel cerchio.   SARA                                                       
-7) DA RUNNARE Calcolare distanza da Financial District e Caltrain Station da ogni parcel, da aggiungere al file "parcel" oppure in un file nuovo. La funzione "distanza" si trova
+7) Fatto Calcolare distanza da Financial District e Caltrain Station da ogni parcel, da aggiungere al file "parcel" oppure in un file nuovo. La funzione "distanza" si trova
    nel file "codeforgammodel" SARA
 8) FATTO Google Bus Stations (https://www.google.com/maps/d/viewer?msa=0&mid=1LWUFje0UZth-Z9pheZ_9J6RBkQk&ll=37.756617583210826%2C-122.42224206347657&z=13) SARA
-8.1) DA RUNNARE Aggiungere distanza minima da bus stop per ogni parcel SARA
-9) Riprodurre a granularità nhood il GAM usando come target variable evictions(nhood,monthly) PIETRO  
+8.1) FATTO Aggiungere distanza minima da bus stop per ogni parcel SARA
+9) PIETRO Riprodurre a granularità nhood il GAM usando come target variable evictions(nhood,monthly) 
+   Modificare la normalizzazione
+   Provare a troncare le osservazioni? Provare a non considerare in stile robust?  
 10) Implementare Robust Statistics/Conformal Prediction PIETRO
 11) Valutare mappe per la presentazione finale 
 12) TOM Implementare GAM sui prezzi a granularità parcels  
+13) Scrivere due righe di commento per i modelli per presentare veloce a cappozzo e raccogliere domande da fare al Cappozz
 
 
 
