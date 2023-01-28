@@ -208,21 +208,21 @@ summary(lin_mod)
 
   
   #Passo a usare le densità e non il numero di costruzioni
-  rent_clean$num_units_0 = rent_clean$num_units_0/rent_clean$area 
-  rent_clean$num_units_1 = rent_clean$num_units_1/rent_clean$area
-  rent_clean$num_units_2 = rent_clean$num_units_2/rent_clean$area 
-  rent_clean$num_units_3 = rent_clean$num_units_3/rent_clean$area 
-  rent_clean$num_units_4 = rent_clean$num_units_4/rent_clean$area 
+  rent_clean$dens_units_0 = rent_clean$num_units_0/rent_clean$area 
+  rent_clean$dens_units_1 = rent_clean$num_units_1/rent_clean$area
+  rent_clean$dens_units_2 = rent_clean$num_units_2/rent_clean$area 
+  rent_clean$dens_units_3 = rent_clean$num_units_3/rent_clean$area 
+  rent_clean$dens_units_4 = rent_clean$num_units_4/rent_clean$area 
   
-  rent_clean$num_units_0_adj = rent_clean$num_units_0 * 1e6
-  rent_clean$num_units_1_adj = rent_clean$num_units_1 * 1e6
-  rent_clean$num_units_2_adj = rent_clean$num_units_2 * 1e6
-  rent_clean$num_units_3_adj = rent_clean$num_units_3 * 1e6
-  rent_clean$num_units_4_adj = rent_clean$num_units_4 * 1e6
+  rent_clean$dens_units_0_adj = rent_clean$dens_units_0 * 1e5
+  rent_clean$dens_units_1_adj = rent_clean$dens_units_1 * 1e5
+  rent_clean$dens_units_2_adj = rent_clean$dens_units_2 * 1e5
+  rent_clean$dens_units_3_adj = rent_clean$dens_units_3 * 1e5
+  rent_clean$dens_units_4_adj = rent_clean$dens_units_4 * 1e5
 
-  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
-                    ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
-                    ns(num_units_4, df = 3) + year_fct +
+  model_gam_ns <-lm(price_mq ~ ns(dens_units_0, df = 3) + ns(dens_units_1, df = 3) + 
+                    ns(dens_units_2, df = 3) + ns(dens_units_3, df = 3) + 
+                    ns(dens_units_4, df = 3) + year_fct +
                     ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
   summary(model_gam_ns)
   gam::plot.Gam(model_gam_ns, se=TRUE)
@@ -231,9 +231,9 @@ summary(lin_mod)
   
   
   #Uso un rescaling per vedere se ci sono problemi a livello computazionale con densità molto piccole
-  model_gam_ns <-lm(price_mq ~ ns(num_units_0_adj, df = 3) + ns(num_units_1_adj, df = 3) + 
-                      ns(num_units_2_adj, df = 3) + ns(num_units_3_adj, df = 3) + 
-                      ns(num_units_4_adj, df = 3) + year_fct +
+  model_gam_ns <-lm(price_mq ~ ns(dens_units_0_adj, df = 3) + ns(dens_units_1_adj, df = 3) + 
+                      ns(dens_units_2_adj, df = 3) + ns(dens_units_3_adj, df = 3) + 
+                      ns(dens_units_4_adj, df = 3) + year_fct +
                       ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
   summary(model_gam_ns)
   gam::plot.Gam(model_gam_ns, se=TRUE)
@@ -246,9 +246,9 @@ summary(lin_mod)
   rent_clean$d_num = rent_clean$d_num - min(rent_clean$d_num)
   
   #Gam con giorni come unità di tempo con ns a 5 df: 
-  model_gam_ns <-lm(price_mq ~ ns(num_units_0, df = 3) + ns(num_units_1, df = 3) + 
-                      ns(num_units_2, df = 3) + ns(num_units_3, df = 3) + 
-                      ns(num_units_4, df = 3) + ns(d_num, df = 5) +
+  model_gam_ns <-lm(price_mq ~ ns(dens_units_0, df = 3) + ns(dens_units_1, df = 3) + 
+                      ns(dens_units_2, df = 3) + ns(dens_units_3, df = 3) + 
+                      ns(dens_units_4, df = 3) + ns(d_num, df = 5) +
                       ns(dist_fin, df = 3) + ns(dist_caltr, df = 3)  , data = rent_clean)
   summary(model_gam_ns)
   gam::plot.Gam(model_gam_ns, se=TRUE)
@@ -263,6 +263,99 @@ summary(lin_mod)
 
 
 
+# GAM with cubic splines #######################################################
 
 
 
+rent_clean$year_fct = as.factor(rent_clean$year)
+boxplot(rent_clean[,c(4,5,11,12,13,16:20)])
+#Gam con numero di costruzioni (e non densità!):
+model_gam_num_constr <-gam(price_mq ~ s(num_units_0, bs = 'cr') + s(num_units_1,bs='cr') + 
+                    s(num_units_2,bs = 'cr') + s(num_units_3,bs = 'cr') + 
+                    s(num_units_4, bs = 'cr') + year_fct +
+                    s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+summary(model_gam_num_constr)
+plot(model_gam_num_constr)
+#R2 a 0.372
+#Num_units_0 viene non significativo, tutto il resto si!
+# Ci sono grossi outliers sulle costruzioni ... magari sono quelli a influire?
+
+
+#Gam con numero di costruzioni (e non densità!) e nhood:
+model_gam_nhood <-gam(price_mq ~ s(num_units_0, bs = 'cr') + s(num_units_1,bs='cr') + 
+                             s(num_units_2,bs = 'cr') + s(num_units_3,bs = 'cr') + 
+                             s(num_units_4, bs = 'cr') + year_fct +
+                             s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr') +nhood , data = rent_clean)
+summary(model_gam_nhood)
+plot(model_gam_num_nhood)
+#Tutto non significativo tranne costruzioni a 0,1,3,4 anni ...
+# Secondo me rimane senza senso mettere sia nhood che distanze
+#R2 a 0.374
+
+
+
+#Gam con numero di costruzioni (e non densità!) e nhood(ma non distanze):
+model_gam_dist <-gam(price_mq ~ s(num_units_0, bs = 'cr') + s(num_units_1,bs='cr') + 
+                        s(num_units_2,bs = 'cr') + s(num_units_3,bs = 'cr') + 
+                        s(num_units_4, bs = 'cr') + year_fct +nhood , data = rent_clean)
+summary(model_gam_dist)
+plot(model_gam_dist)
+# Costruzioni a 1,2,3,4 anni significative a 0.1 e anche vari nhood e gli anni
+# I plot non sono molto interpretabili...
+# R2 a 0.374
+
+
+
+#Passo a usare le densità e non il numero di costruzioni
+rent_clean$dens_units_0 = rent_clean$num_units_0/rent_clean$area 
+rent_clean$dens_units_1 = rent_clean$num_units_1/rent_clean$area
+rent_clean$dens_units_2 = rent_clean$num_units_2/rent_clean$area 
+rent_clean$dens_units_3 = rent_clean$num_units_3/rent_clean$area 
+rent_clean$dens_units_4 = rent_clean$num_units_4/rent_clean$area 
+
+boxplot(rent_clean[,c(4,5,11,12,13,22:26)])
+
+rent_clean$dens_units_0_adj = rent_clean$dens_units_0 * 1e5
+rent_clean$dens_units_1_adj = rent_clean$dens_units_1 * 1e5
+rent_clean$dens_units_2_adj = rent_clean$dens_units_2 * 1e5
+rent_clean$dens_units_3_adj = rent_clean$dens_units_3 * 1e5
+rent_clean$dens_units_4_adj = rent_clean$dens_units_4 * 1e5
+
+boxplot(rent_clean[,c(4,5,11,12,13,27:31)])
+
+#Modello con densità di costruzioni (non riscalata)
+model_gam_densita_constr <-gam(price_mq ~ s(dens_units_0, bs = 'cr') + s(dens_units_1,bs='cr') + 
+                             s(dens_units_2,bs = 'cr') + s(dens_units_3,bs = 'cr') + 
+                             s(dens_units_4, bs = 'cr') + year_fct +
+                             s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+summary(model_gam_densita_constr)
+plot(model_gam_densita_constr)
+#R2 a 0.373 , tutto significativo tranne constr a 0
+# Plot difficilmente interpretabili, sembrano piatti ... forse per gli outlier?
+# Fin distr e Caltr st sembrano avere gli effetti fuori scala...perchè?
+
+
+#Uso un rescaling per vedere se ci sono problemi a livello computazionale con densità molto piccole
+model_gam_densita_constr_adj <-gam(price_mq ~ s(dens_units_0_adj, bs = 'cr') + s(dens_units_1_adj,bs='cr') + 
+                                 s(dens_units_2_adj,bs = 'cr') + s(dens_units_3_adj,bs = 'cr') + 
+                                 s(dens_units_4_adj, bs = 'cr') + year_fct +
+                                 s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+summary(model_gam_densita_constr_adj)
+plot(model_gam_densita_constr_adj)
+#Non cambia nulla rispetto senza riscaling ... è inutile?
+
+
+
+#Provo ad usare il giorno come unità di misura del tempo e non gli anni:
+rent_clean$d_num = as.numeric(rent_clean$d)
+rent_clean$d_num = rent_clean$d_num - min(rent_clean$d_num)
+
+#Gam con giorni come unità di tempo : 
+model_gam_densita_constr_day <-gam(price_mq ~ s(dens_units_0, bs = 'cr') + s(dens_units_1,bs='cr') + 
+                                 s(dens_units_2,bs = 'cr') + s(dens_units_3,bs = 'cr') + 
+                                 s(dens_units_4, bs = 'cr') + s(d_num, bs = 'cr') +
+                                 s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+summary(model_gam_densita_constr_day)
+plot(model_gam_densita_constr_day)
+#Come prima, tutte le costruzioni sono significative tranne in 0. d_num è significativo.
+# R2 a 0.376, plot come prima 
