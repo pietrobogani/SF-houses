@@ -1,5 +1,14 @@
+{
+
 library(readr)
 library(sf)
+  library(ISLR2)
+  library(car)
+  library(np)
+  library(splines)
+  library(fda)
+  library(magrittr)
+  library(KernSmooth)
 geo = read_sf('SFNeighborhoods_new.geojson')
 eviction_nhood_monthly <- read_csv("eviction_monthly_nh.csv")
 eviction_nhood_monthly = eviction_nhood_monthly[-2251,] #tolgo la riga con il count totale
@@ -113,3 +122,43 @@ plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Number of evictions)', main = 
 # diff_evictions  : table derivate differenze all'indietro evictions
 # funct_data      : evictions funzioanli (f_data type)
 # funct_data_diff : derivate evictions funzionali (f_data type)
+
+
+
+#----------------- KMA
+
+library(fdakma)
+library(fdacluster)
+grid_time = seq(first_date,final_date,by = 1) #spero sta roba siano le ascisse
+
+x <- as.numeric(grid_time)   # abscissas
+y0 <- funct_data$values # evaluations of original functions
+y1 <- funct_data_diff$values # evaluations of original functions' first derivatives
+
+# Plot of original functions
+matplot(t(x),t(y0), type='l', xlab='x', ylab='orig.func')    #cerco di capire quanti cluster ci sono
+title ('Original functions')
+
+# There seems to be three clusters of functions obtained by warping the 
+# abscissas.
+
+# Plot of original function first derivatives
+matplot(t(x),t(y1), type='l', xlab='x', ylab='orig.deriv')
+title ('Original function first derivatives')
+
+
+# Without alignment, let's try with 3 clusters
+help(kma) #to see how to set other warping or similarity method
+set.seed(4)
+fdakma_example_noalign_0der <- kma(
+  x=x, y0=y0, n.clust = 3, 
+  warping.method = 'NOalignment', 
+  similarity.method = 'd0.pearson',   # similarity computed as the cosine
+  # between the original curves 
+  # (correlation)
+  center.method = 'k-means'
+  #,seeds = c(1,11,21) # you can give a little help to the algorithm...
+)
+
+kma.show.results(fdakma_example_noalign_0der) #tanti plot utili
+fdakma_example_noalign_0der$labels
