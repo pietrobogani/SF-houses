@@ -60,8 +60,8 @@ PARTE ESPLORATIVA
    N.B. Utilizziamo i rent geolocalizzati come ulteriori "vincoli" nell'interpolazione
    Utilizzo di "npreg". Provare a calcolare l'errore che viene fatto tramite smoothing su solo centroidi e medie calcolato su rent geolocalzzati.
    Cancella osservazioni fuori da SF  
-1.1)Assegno pesi diversi a osservazioni e medie e calcolo con npreg (usare codice codice kern_smooth2d_code.r). PIETRO (se hai tempo)
-1.2)Mappa 2D con colore sfumato: mettere i nhood e non parcels (codice kern_smooth2d_code.r) SARA
+1.1) FATTO Assegno pesi diversi a osservazioni e medie e calcolo con npreg (usare codice codice kern_smooth2d_code.r). PIETRO (se hai tempo)
+1.2)FATTO Mappa 2D con colore sfumato: mettere i nhood e non parcels (codice kern_smooth2d_code.r) SARA
 2) FATTO Rifare Smoothing delle Evictions, questa volta normalizzando i valori o dividendo per l'area oppure per il #parcel. L'idea sarebbe ottenere un trend simile a 
    quello osservato sugli smoothed rent. Poi ripetiamo i Functional tests.
    Rifare normalizzazione con RESUNITS in nhood e vedere cosa esce TOM
@@ -85,14 +85,16 @@ PARTE ESPLORATIVA
 11) Valutare mappe per la presentazione finale 
 12) TOM Implementare GAM sui prezzi a granularità parcels  
 13) Scrivere due righe di commento per i modelli per presentare veloce a cappozzo e raccogliere domande da fare al Cappozz
+14) TUTTI Raccogliere in una cartella i vari plot/summary di modelli 
 
 
-
-
-
-
-
-
+DA CHIEDERE:
+- "riscalare/normalizzare" i dati prima dei modelli ha senso?
+- dipendenza/indipendeza osservazioni nei gam ?
+- report?
+- quantità di modelli?
+- smoothing kernel con aggiunta di osservazioni localizzate ha senso?
+- far vedere qualche plot per interpretazione 
 
 
 

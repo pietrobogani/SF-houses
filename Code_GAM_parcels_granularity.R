@@ -273,7 +273,7 @@ model_gam=gam(price ~ s(lon,lat,bs='tp') + nhood + year_fct +
 summary(model_gam) #Effective degrees of freedom (edf) is a summary statistic of GAM and it reflects the degree of non-linearity of a curve
 hist(model_gam$residuals)
 qqnorm(model_gam$residuals)
-shapiro.test(model_gam$residuals)
+#shapiro.test(model_gam$residuals)
 #par(mfrow = c(2,2))
 plot(model_gam)
 #R2 0.865, tutto significativo a parte qualche nhood.
@@ -377,6 +377,5 @@ plot(model_gam_aggr)
 #R2 a 0.7
 # Effetto delle costruzioni vicine positivo, quello delle altre è strano (molto 
 # negativo per poche costruzioni e poi sale...)
-
 
 

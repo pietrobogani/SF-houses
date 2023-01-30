@@ -265,7 +265,8 @@ summary(lin_mod)
 
 # GAM with cubic splines #######################################################
 
-
+ind_cut = which(rent_clean$num_units_0 < 500)
+hist(rent_clean$num_units_0[ind_cut])
 
 rent_clean$year_fct = as.factor(rent_clean$year)
 boxplot(rent_clean[,c(4,5,11,12,13,16:20)])
