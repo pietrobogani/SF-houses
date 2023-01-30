@@ -212,6 +212,8 @@ for(i in 1:dim(eviction_nhood_yearly)[1]){
   }
 }
 
+
+
 #Provo a normalizzare alcune covariate:
 {
   #Normalizzo il numero di construzioni sull' area
@@ -231,7 +233,7 @@ eviction_nhood_yearly <- eviction_nhood_yearly[,-c(1,2,8)]
 
 #PROCEDO A FARE IL GAM
 
-model_gam=gam(count ~  +nhood   + s(year,bs='cr',k = 8) + s(rent,bs='cr')  #s(dist_caltr,bs='cr') +s(dist_fin,bs='cr')  # manca s(I(nhood * year)
+model_gam=gam(count ~  nhood   + s(year,bs='cr',k = 8) + s(rent,bs='cr')  #s(dist_caltr,bs='cr') +s(dist_fin,bs='cr')  # manca s(I(nhood * year)
                + s(num_units_0,bs='cr') + s(num_units_1,bs='cr') 
               + s(num_units_2,bs='cr') + s(num_units_3,bs='cr')+ s(num_units_4,bs='cr') 
               ,data = eviction_nhood_yearly) 
@@ -267,7 +269,10 @@ plot(model_gam)
 #  comportamenti diversi e non possono essere usati in modo intercambiabile come proxy per la gentrification
 
 
-#Cose che si possono cambiare:  - Normalizzare su #parcel?
+
+
+#Cose che si possono cambiare:  - Normalizzare su res_units (si trovano dentro il dataset delle parcel)
+#                               - Tronco il numero di new_contr ad una certa soglia (e.g. 600) e vedere cosa cambia
 #                               - provare ad aggiungere anche construzioni ad anni più vecchi?
 #Futuri sviluppi del progetto potrebbero essere di trovare dati evictions geoloc così da poter studiare a granularità
 #parcel oppure ottenere dati sulla popolazione per ogni nhood così da poter normalizzare rispetto alla popolazione
