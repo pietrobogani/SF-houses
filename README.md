@@ -86,16 +86,16 @@ PARTE ESPLORATIVA
 12) TOM Implementare GAM sui prezzi a granularità parcels  
 13) Scrivere due righe di commento per i modelli per presentare veloce a cappozzo e raccogliere domande da fare al Cappozz
 14) TUTTI Raccogliere in una cartella i vari plot/summary di modelli 
-
+15) Fare modello granularità parcel sulla derivata discreta.
 
 DA CHIEDERE:
 - "riscalare/normalizzare" i dati prima dei modelli ha senso?
 - dipendenza/indipendeza osservazioni nei gam ?
 - report?
 - quantità di modelli?
-- smoothing kernel con aggiunta di osservazioni localizzate ha senso?
+- smoothing kernel con aggiunta di osservazioni localizzate ha senso (con che peso?)?
 - far vedere qualche plot per interpretazione 
-
+- troncare il numero di new_units sopra a una certa soglia (vedere plot dei gam sia per evictions sia per rent)
 
 
 
