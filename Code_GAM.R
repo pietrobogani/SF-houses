@@ -360,3 +360,13 @@ summary(model_gam_densita_constr_day)
 plot(model_gam_densita_constr_day)
 #Come prima, tutte le costruzioni sono significative tranne in 0. d_num è significativo.
 # R2 a 0.376, plot come prima 
+
+
+#Gam con giorni come unità di tempo e costruzioni unificate : 
+model_gam_densita_constr_sum_day <-gam(price_mq ~ 
+                                         s(I(dens_units_0+dens_units_1+dens_units_2+dens_units_3+dens_units_4), bs = 'cr') + 
+                                         s(d_num, bs = 'cr') +
+                                         s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+summary(model_gam_densita_constr_sum_day)
+plot(model_gam_densita_constr_sum_day)
+

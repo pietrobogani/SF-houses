@@ -192,6 +192,32 @@ for(ind_year in 1:length(years)){
 }
 
 
+
+
+ind_year = 8 # ...8
+levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+          colorkey = T,
+          xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+          aspect = 1,
+          col.regions = heat.colors(rev = T, n = 60),
+          at = seq(10,70,1.5),
+          panel = function(...) {
+            panel.levelplot(...)
+            panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+          }, 
+          main = paste(years[ind_year]))
+
+
+
+
+
+
+
+
+
+
+
+
 #Vado  a calcolare l'errore % medio usando gli annunci geolocalizzati
 
 #Importo i dati dei rent e tengo solo quelli con la corretta localizzazione
