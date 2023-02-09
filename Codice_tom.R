@@ -416,7 +416,8 @@ plot(tst)
   #roahd::fbplot(funct_data, main = 'Functional box.plot for rent functions') #da errori...perch??
   funct_data_num = fData(grid_time_num$date_num,t(funz_rent))
   x11()
-  roahd::fbplot(funct_data_num, main = 'Functional box-plot for rent functions' )
+  fbpl = roahd::fbplot(funct_data_num, main = 'Functional box-plot for rent functions' )
+  fbpl$ID_outliers
   x11()
   out_funct <- outliergram(funct_data) #Mi viene spottata Treasure Island-32 !!
   out_funct$ID_outliers
@@ -431,7 +432,8 @@ plot(tst)
   #fbplot(funct_data_diff) da errori... perch??
   funct_data_diff_num = fData(grid_time_num$date_num[2:dim(grid_time_num)[1]],t(diff_rent))
   x11()
-  roahd::fbplot(funct_data_diff_num, main = 'Functional box-plot for derivatives of rent functions')
+  fbplt_der = roahd::fbplot(funct_data_diff_num, main = 'Functional box-plot for derivatives of rent functions')
+  fbplt_der$ID_outliers
   x11()
   out_funct_diff <- outliergram(funct_data_diff) 
   out_funct_diff$ID_outliers

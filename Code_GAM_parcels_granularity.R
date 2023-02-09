@@ -252,10 +252,11 @@ parcels_2018 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
 
 data_gam = rbind(parcels_2011, parcels_2012, parcels_2013, parcels_2014,
                  parcels_2015, parcels_2016 ,parcels_2017, parcels_2018)
-rm(parcels_2011, parcels_2012, parcels_2013, parcels_2014,
-   parcels_2015, parcels_2016 ,parcels_2017, parcels_2018, parcels)
+#rm(parcels_2011, parcels_2012, parcels_2013, parcels_2014,
+#   parcels_2015, parcels_2016 ,parcels_2017, parcels_2018, parcels)
 
-#Riscalo le distanze in km (così sono circa dello stesso ordine di grandezza delle altre variabili):
+#Riscalo le distanze in km (così sono circa dello stesso ordine di grandezza delle altre variabili) 
+# per vedere se poi cambia qualcosa (e comunque ha più senso in km...) :
 data_gam$year_fct = as.factor(data_gam$year)
 data_gam$minDistGB_km = data_gam$minDistGB / 1e3
 data_gam$FinDistr_distance_km = data_gam$FinDistr_distance / 1e3
