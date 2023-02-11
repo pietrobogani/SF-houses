@@ -8,6 +8,16 @@ parcels_augmented_complete <- read_csv("Parcels_augmented_complete.csv")
 parcels = merge(parcels_smooth_price, parcels_augmented_complete, by = 'OBJECTID')
 rm(parcels_smooth_price,parcels_augmented_complete)
 
+#Aggiungo delle colonne per le variazioni dei prezzi
+parcels$incr_2012 = parcels$price_2012 - parcels$price_2011
+parcels$incr_2013 = parcels$price_2013 - parcels$price_2012
+parcels$incr_2014 = parcels$price_2014 - parcels$price_2013
+parcels$incr_2015 = parcels$price_2015 - parcels$price_2014
+parcels$incr_2016 = parcels$price_2016 - parcels$price_2015
+parcels$incr_2017 = parcels$price_2017 - parcels$price_2016
+parcels$incr_2018 = parcels$price_2018 - parcels$price_2017
+
+
 #Devo costruire un dataset per girare: 
 # price ~ anno + num_constr anno-dist + num_shuttlestop + nhood + dist caltr + dist fin
 #Devo riuscire a mettere tutto nella stessa riga! 
@@ -20,6 +30,7 @@ parcels_2011 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2011,
                           price = parcels$price_2011,
+                          delta_price = NA,
                           newc_100m_4  = parcels$newc_100m_2007,
                           newc_500m_4  = parcels$newc_500m_2007,
                           newc_1000m_4 = parcels$newc_1000m_2007,
@@ -48,6 +59,7 @@ parcels_2012 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2012,
                           price = parcels$price_2012,
+                          delta_price = parcels$incr_2012,
                           newc_100m_4  = parcels$newc_100m_2008,
                           newc_500m_4  = parcels$newc_500m_2008,
                           newc_1000m_4 = parcels$newc_1000m_2008,
@@ -78,6 +90,7 @@ parcels_2013 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2013,
                           price = parcels$price_2013,
+                          delta_price = parcels$incr_2013,
                           newc_100m_4  = parcels$newc_100m_2009,
                           newc_500m_4  = parcels$newc_500m_2009,
                           newc_1000m_4 = parcels$newc_1000m_2009,
@@ -108,6 +121,7 @@ parcels_2014 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2014,
                           price = parcels$price_2014,
+                          delta_price = parcels$incr_2014,
                           newc_100m_4  = parcels$newc_100m_2010,
                           newc_500m_4  = parcels$newc_500m_2010,
                           newc_1000m_4 = parcels$newc_1000m_2010,
@@ -137,6 +151,7 @@ parcels_2015 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2015,
                           price = parcels$price_2015,
+                          delta_price = parcels$incr_2015,
                           newc_100m_4  = parcels$newc_100m_2011,
                           newc_500m_4  = parcels$newc_500m_2011,
                           newc_1000m_4 = parcels$newc_1000m_2011,
@@ -167,6 +182,7 @@ parcels_2016 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2016,
                           price = parcels$price_2016,
+                          delta_price = parcels$incr_2016,
                           newc_100m_4  = parcels$newc_100m_2012,
                           newc_500m_4  = parcels$newc_500m_2012,
                           newc_1000m_4 = parcels$newc_1000m_2012,
@@ -197,6 +213,7 @@ parcels_2017 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2017,
                           price = parcels$price_2017,
+                          delta_price = parcels$incr_2017,
                           newc_100m_4  = parcels$newc_100m_2013,
                           newc_500m_4  = parcels$newc_500m_2013,
                           newc_1000m_4 = parcels$newc_1000m_2013,
@@ -227,6 +244,7 @@ parcels_2018 = data.frame(OBJECTID = parcels$OBJECTID,lon = parcels$lon , lat = 
                           minDistGB = parcels$MinDistGB,
                           year = 2018,
                           price = parcels$price_2018,
+                          delta_price = parcels$incr_2018,
                           newc_100m_4  = parcels$newc_100m_2014,
                           newc_500m_4  = parcels$newc_500m_2014,
                           newc_1000m_4 = parcels$newc_1000m_2014,
@@ -261,8 +279,16 @@ data_gam$year_fct = as.factor(data_gam$year)
 data_gam$minDistGB_km = data_gam$minDistGB / 1e3
 data_gam$FinDistr_distance_km = data_gam$FinDistr_distance / 1e3
 data_gam$CaltStat_distance_km = data_gam$CaltStat_distance / 1e3
-boxplot(data_gam[,c(2,3,10:30,32:34)])
+#Aggrego le costruzioni
+data_gam$newc_100m = data_gam$newc_100m_4 + data_gam$newc_100m_3 + data_gam$newc_100m_2 +data_gam$newc_100m_1 + data_gam$newc_100m_0
+data_gam$newc_500m = data_gam$newc_500m_4 + data_gam$newc_500m_3 + data_gam$newc_500m_2 +data_gam$newc_500m_1 + data_gam$newc_500m_0
+data_gam$newc_1000m = data_gam$newc_1000m_4 + data_gam$newc_1000m_3 + data_gam$newc_1000m_2 +data_gam$newc_1000m_1 + data_gam$newc_1000m_0
+data_gam$newc_2000m = data_gam$newc_2000m_4 + data_gam$newc_2000m_3 + data_gam$newc_2000m_2 +data_gam$newc_2000m_1 + data_gam$newc_2000m_0
 
+#boxplot(data_gam[,c(2,3,10:30,32:34)])
+
+
+#Gam base con factor dell'anno e costruzioni separate
 model_gam=gam(price ~ s(lon,lat,bs='tp') + nhood + year_fct +
                 s(newc_100m_4,bs='cr') + s(newc_500m_4,bs='cr') + s(newc_1000m_4,bs='cr') + s(newc_2000m_4,bs='cr')+
                 s(newc_100m_3,bs='cr') + s(newc_500m_3,bs='cr') + s(newc_1000m_3,bs='cr') + s(newc_2000m_3,bs='cr')+
@@ -349,13 +375,21 @@ plot(model_gam2018_aggr)
 
 #Provo a rifare il modello con anni aggregati ma su tutti gli anni...
 # Ha senso? Le osservazioni sono fortemente dipendenti!!!
-model_gam_aggr=gam(price ~ s(lon,lat,bs='tp') + nhood + year_fct +
-                         s(I(newc_100m_4+newc_100m_3+newc_100m_2+newc_100m_1+newc_100m_0),bs='cr') +
-                         s(I(newc_500m_4+newc_500m_3+newc_500m_2+newc_500m_1+newc_500m_0),bs='cr') + 
-                         s(I(newc_1000m_4+newc_1000m_3+newc_1000m_2+newc_1000m_1+newc_1000m_0),bs='cr') +
-                         s(I(newc_2000m_4+newc_2000m_3+newc_2000m_2+newc_2000m_1+newc_2000m_0),bs='cr')+
-                         s(minDistGB_km,bs='cr'), #+ s(FinDistr_distance,bs ='cr') + s(CaltStat_distance,bs='cr'),
-                       data = data_gam)
+
+# model_gam_aggr=gam(price ~ s(lon,lat,bs='tp') + nhood + year_fct +
+#                          s(I(newc_100m_4+newc_100m_3+newc_100m_2+newc_100m_1+newc_100m_0),bs='cr') +
+#                          s(I(newc_500m_4+newc_500m_3+newc_500m_2+newc_500m_1+newc_500m_0),bs='cr') + 
+#                          s(I(newc_1000m_4+newc_1000m_3+newc_1000m_2+newc_1000m_1+newc_1000m_0),bs='cr') +
+#                          s(I(newc_2000m_4+newc_2000m_3+newc_2000m_2+newc_2000m_1+newc_2000m_0),bs='cr')+
+#                          s(minDistGB_km,bs='cr'), #+ s(FinDistr_distance,bs ='cr') + s(CaltStat_distance,bs='cr'),
+#                        data = data_gam)
+model_gam_aggr=gam(price ~ nhood + year_fct + s(lon,lat,bs='tp') + 
+                     s(newc_100m,bs='cr') +
+                     s(newc_500m,bs='cr') + 
+                     s(newc_1000m,bs='cr') +
+                     s(newc_2000m,bs='cr')+
+                     s(minDistGB_km,bs='cr'),
+                   data = data_gam)
 summary(model_gam_aggr)
 plot(model_gam_aggr)
 #R2 a 0.857
@@ -380,3 +414,24 @@ plot(model_gam_aggr)
 # negativo per poche costruzioni e poi sale...)
 
 
+
+
+
+
+
+
+#Provo a considerare le variazioni di prezzo per gli anni superiori al 2011
+
+ind_with_delta = which(is.na(data_gam$delta_price) == FALSE)
+data_gam_from2012 = data_gam[ind_with_delta,]
+
+model_gam_aggr_delta_price=gam(delta_price ~ nhood + year_fct + s(lon,lat,bs='tp') + 
+                     s(newc_100m,bs='cr') +
+                     s(newc_500m,bs='cr') + 
+                     s(newc_1000m,bs='cr') +
+                     s(newc_2000m,bs='cr')+
+                     s(minDistGB_km,bs='cr'),
+                   data = data_gam_from2012)
+summary(model_gam_aggr_delta_price)
+plot(model_gam_aggr_delta_price)
+#R2 a 0.18 ... non ha molto senso come modello...?

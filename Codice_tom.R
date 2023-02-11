@@ -307,7 +307,7 @@ plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Price/mq)', main = 'Approximat
 
 library(fdatest)
 #NB: data si assume con tempo sulle righe e nomi sulle colonne
-data = funz_rent #cambiare con funz_rent per fare i test sulle funzioni dei rent e non derivate!
+data = diff_rent #cambiare con funz_rent per fare i test sulle funzioni dei rent e non derivate!
 low_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/low_evictions_nhood_nh2.csv")
 high_evictions_nhood2 <- read_csv("2 Clusters of nhood based on Evictions/high_evictions_nhood_nh2.csv")
 low_construction_nhood2_nh <- read_csv("2 Clusters of nhood based on Constructions/low_construction_nhood2_nh.csv")
@@ -321,16 +321,16 @@ list_high_evict = as.vector(high_evictions_nhood2$x)
 list_low_evict = list_low_evict[-c(4,6,7,8,12,16)]#non ci sono osservazioni negli annunci di questi quindi rimuovo
 list_high_evict = list_high_evict[-c(3,7)] #non ci sono osservazioni negli annunci quindi tolgo
 
-data1 = data[,list_low_evict]
-data2 = data[,list_high_evict]
+data1 = data[,list_low_constr]
+data2 = data[,list_high_constr]
 #data1 = data[,1:23] 
 #data2 = data[,24:46]
 data_bind = rbind(t(data1),t(data2)) #data_bind ha nomi sulle righe!
 n = nrow(data_bind)
 n1 = nrow(t(data1)) #numero nomi in gruppo1
 n2 = nrow(t(data2)) #numero nomi in gruppo2
-data1 = fData(grid_time,t(data1)) #partizione di quartieri 1, NB: mettere grid_time se si testano funzioni dei rent
-data2 = fData(grid_time,t(data2)) #partizione di quartieri 2, NB: mettere grid_time se si testano funzioni dei rent
+data1 = fData(grid_time[2:length(grid_time)],t(data1)) # NB: mettere grid_time se si testano funzioni dei rent.Mettere grid_time[2:length(grid_time)] per derivate
+data2 = fData(grid_time[2:length(grid_time)],t(data2)) # NB: mettere grid_time se si testano funzioni dei rent,
 seed=2781991
 set.seed(seed)
 B=1000
@@ -341,9 +341,9 @@ T0
 data_fd = append_fData(data1,data2)
 T0_perm = numeric(B)
 x11()
-plot(data1, col = 'red', xlab = 'Year', ylab = 'Price/mq',ylim = c(15,70), main = 'Rent functions')
+plot(data1, col = 'red', xlab = 'Year', ylab = 'd/dt(Price/mq)', main = 'Derivative of Rent functions', ylim = c(-0.1,0.13)  ) #ylim = c(15,70) per funz e c(-0.1,0.13) per deriv
 plot(data2, col = 'black', add = T)
-legend('topleft', legend=c("Low evictions", "High evictions"),
+legend('topleft', legend=c("Low construction density", "High construction density"),
        col=c("red", "black"),lty = 1, cex=0.8)
 
 library(progress)
@@ -444,6 +444,14 @@ plot(tst)
   diff_rent = diff_rent[,-28]
   funct_data = fData(grid_time,t(funz_rent))
   funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_rent))
+
+  #Plot delle funzioni cleaned 
+  #Plot delle funzioni dei rent e delle derivate
+  x11()
+  par(mfrow=c(1,2))
+  plot(funct_data, main = 'Smoothed Rent functions', xlab = 'Year', ylab = 'Price/mq')
+  plot(funct_data_diff, main = 'Approximated first derivative', xlab = 'Year', ylab = 'd/dt(Price/mq)')
+  
 }
 
 
@@ -530,7 +538,7 @@ eviction_nhood_monthly$count_resunits = eviction_nhood_monthly$count / eviction_
 #Plot delle raw evictions (ie non smoothed)
 x11()
 plot(eviction_nhood_monthly$date,eviction_nhood_monthly$count,
-     xlab = 'Year', ylab = 'Number of evictions', main = 'Raw number of evictions')
+     xlab = 'Year', ylab = 'Density of evictions', main = 'Density of evictions')
 
 #Creo modello di kern smoothing e preparo i dataset funzionali
 first_date = min(eviction_nhood_monthly$date)
@@ -563,9 +571,9 @@ dim(diff_evictions)
 funct_data_diff = fData(grid_time[2:length(grid_time)], t(diff_evictions))
 #Plot di funzioni e derivate delle evictions
 x11()
-plot(funct_data, xlab = 'Year', ylab = 'Number of evictions', main = 'Smoothed functions of evictions')
+plot(funct_data, xlab = 'Year', ylab = 'Density of evictions', main = 'Smoothed functions of evictions')
 x11()
-plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Number of evictions)', main = 'Approximation of first derivative')
+plot(funct_data_diff, xlab = 'Year', ylab = 'd/dt(Density of evictions)', main = 'Approximation of first derivative')
 }
 # funz_evictions  : table evictions
 # diff_evictions  : table derivate differenze all'indietro evictions
@@ -631,15 +639,15 @@ plot(tst)
   #Analisi di funct_data e funct_data_diff 
   x11()
   par(mfrow=c(1,2))
-  plot(funct_data, xlab = 'Year',ylab = 'Number of evictions', main = 'Smoothed functions of evictions')
-  plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Number of evictions', main = 'Approximation of first derivatives')
+  plot(funct_data, xlab = 'Year',ylab = 'Density of evictions', main = 'Smoothed functions of evictions')
+  plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Density of evictions)', main = 'Approximation of first derivatives')
   
   #MBD,mediana e boxplot per evictions funzionali
   modified_band_depth_rent = MBD(funct_data)
   print(paste('The nhood with max depth is:', colnames(funz_evictions)[which.max(modified_band_depth_rent)] ))
   median_curve_rent = median_fData(fData = funct_data, type = 'MBD' )
   x11()
-  plot(funct_data, xlab = 'Year', ylab = 'Number of evictions', main = 'Smoothed functions of evictions with median (wrt MBD)')
+  plot(funct_data, xlab = 'Year', ylab = 'Density of evictions', main = 'Smoothed functions of evictions with median (wrt MBD)')
   plot(median_curve_rent, col = 'red', lwd = 3, add = T)
   # fbplot(funct_data) da errori...bisogna usare la griglia di numeri e non di date!
   funct_data_num = fData(grid_time_num$date_num,t(funz_evictions))
@@ -647,13 +655,14 @@ plot(tst)
   fbplot$ID_outliers
   x11()
   out_funct <- outliergram(funct_data) 
+  out_funct$ID_outliers
   
   #MBD,mediana e boxplot per derivate di evictions
   modified_band_depth_rent_diff = MBD(funct_data_diff)
   print(paste('The nhood with max depth is:', colnames(funz_evictions)[which.max(modified_band_depth_rent_diff)] ))
   median_curve_rent_diff = median_fData(fData = funct_data_diff, type = 'MBD' )
   x11()
-  plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Number of evictions)', main = 'Approximation of first derivative with median (wrt MBD)')
+  plot(funct_data_diff,xlab = 'Year', ylab = 'd/dt(Density of evictions)', main = 'Approximation of first derivative with median (wrt MBD)')
   plot(median_curve_rent_diff, col = 'red', lwd = 3, add = T)
   x11()
   #fbplot(funct_data_diff) da errori... perch??

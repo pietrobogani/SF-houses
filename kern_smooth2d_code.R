@@ -114,6 +114,18 @@ levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat,
 #Procedo ora a farlo per ogni anno ############################################# 
 rm(list = ls())
 
+library(ISLR2)
+library(car)
+library(np)
+library(splines)
+library(fda)
+library(magrittr)
+library(KernSmooth)
+library(readr)
+library(sf)
+library(rgl)
+library(lattice)
+
 #Importo i dataset e creo le varie griglie necessarie
 geo = read_sf('SFNeighborhoods_new.geojson')
 rent_yearly <- read_csv("rent_nhood_yearly_nh.csv")
@@ -176,8 +188,115 @@ rm(ind_year,ind_rent_year,m_loc)
 #write.csv(parcels,'parcels_smooth_price.csv')
 
 
-for(ind_year in 1:length(years)){
 
+#Year 2011
+{
+  ind_year = 1 
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2012
+{
+  ind_year = 2 
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2013
+{
+  ind_year = 3
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2014
+{
+  ind_year = 4
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2015
+{
+  ind_year = 5
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2016
+{
+  ind_year = 6 
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2017
+{
+  ind_year = 7 
+  levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(years[ind_year]))
+}
+#Year 2018
+{
+  ind_year = 8
   levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
             colorkey = T,
             xlab = "Longitude", ylab = "Latitude", zlab = "Price",
@@ -192,9 +311,7 @@ for(ind_year in 1:length(years)){
 }
 
 
-
-
-ind_year = 8 # ...8
+ind_year = 8 # 1...8
 levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat, 
           colorkey = T,
           xlab = "Longitude", ylab = "Latitude", zlab = "Price",
@@ -206,6 +323,116 @@ levelplot(mesh_coord[,ind_year+2] ~ mesh_coord$lon * mesh_coord$lat,
             panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
           }, 
           main = paste(years[ind_year]))
+
+
+#Provo a guardare le variazioni
+mesh_coord$delta_2012 = mesh_coord$price_2012 - mesh_coord$price_2011
+mesh_coord$delta_2013 = mesh_coord$price_2013 - mesh_coord$price_2012
+mesh_coord$delta_2014 = mesh_coord$price_2014 - mesh_coord$price_2013
+mesh_coord$delta_2015 = mesh_coord$price_2015 - mesh_coord$price_2014
+mesh_coord$delta_2016 = mesh_coord$price_2016 - mesh_coord$price_2015
+mesh_coord$delta_2017 = mesh_coord$price_2017 - mesh_coord$price_2016
+mesh_coord$delta_2018 = mesh_coord$price_2018 - mesh_coord$price_2017
+
+
+#Year 2012
+{
+  levelplot(mesh_coord$delta_2012 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2012))
+}
+#Year 2013
+{
+  levelplot(mesh_coord$delta_2013 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2013))
+}
+#Year 2014
+{
+  levelplot(mesh_coord$delta_2014 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2014))
+}
+#Year 2015
+{
+  levelplot(mesh_coord$delta_2015 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2015))
+}
+#Year 2016
+{
+  levelplot(mesh_coord$delta_2016 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2016))
+}
+#Year 2017
+{
+  levelplot(mesh_coord$delta_2017 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2017))
+}
+#Year 2018
+{
+  levelplot(mesh_coord$delta_2018 ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(-25,30,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
+            }, 
+            main = paste(2018))
+}
 
 
 

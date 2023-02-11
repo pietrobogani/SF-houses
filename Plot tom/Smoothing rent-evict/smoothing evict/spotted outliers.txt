@@ -1,0 +1,7 @@
+boxplot for density of evictions :  Japantown Tenderloin   Nob Hill 
+        11         23         29
+
+outliergram for density of evictions :  Lakeshore Twin Peaks 
+        27         31  (NOT RELEVANT)
+
+outliergram e boxplot of evictions: NOT RELEVANT 

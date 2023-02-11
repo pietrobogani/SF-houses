@@ -1,0 +1,4 @@
+Test rent fun wrt constr : 0.031
+Test rent der wrt constr : 0.561
+Test rent der wrt evict  : 0.748
+Test rent fun wrt evict  : 0.378
