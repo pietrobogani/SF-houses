@@ -383,7 +383,7 @@ plot(model_gam2018_aggr)
 #                          s(I(newc_2000m_4+newc_2000m_3+newc_2000m_2+newc_2000m_1+newc_2000m_0),bs='cr')+
 #                          s(minDistGB_km,bs='cr'), #+ s(FinDistr_distance,bs ='cr') + s(CaltStat_distance,bs='cr'),
 #                        data = data_gam)
-model_gam_aggr=gam(price ~ nhood + year_fct + s(lon,lat,bs='tp') + 
+model_gam_aggr = gam(price ~ nhood + s(year,bs = 'cr',k = 8) + #s(lon,lat,bs='tp') + 
                      s(newc_100m,bs='cr') +
                      s(newc_500m,bs='cr') + 
                      s(newc_1000m,bs='cr') +
@@ -412,6 +412,23 @@ plot(model_gam_aggr)
 #R2 a 0.7
 # Effetto delle costruzioni vicine positivo, quello delle altre è strano (molto 
 # negativo per poche costruzioni e poi sale...)
+
+
+
+
+
+#Tolgo i nhood
+model_gam_aggr=gam(price ~ s(lon,lat,bs='tp') + s(year,bs = 'cr', k = 8) +
+                     s(I(newc_100m_4+newc_100m_3+newc_100m_2+newc_100m_1+newc_100m_0),bs='cr') +
+                     s(I(newc_500m_4+newc_500m_3+newc_500m_2+newc_500m_1+newc_500m_0),bs='cr') + 
+                     s(I(newc_1000m_4+newc_1000m_3+newc_1000m_2+newc_1000m_1+newc_1000m_0),bs='cr') +
+                     s(I(newc_2000m_4+newc_2000m_3+newc_2000m_2+newc_2000m_1+newc_2000m_0),bs='cr')+
+                     s(minDistGB_km,bs='cr'), #+ s(FinDistr_distance,bs ='cr') + s(CaltStat_distance,bs='cr'),
+                   data = data_gam)
+summary(model_gam_aggr)
+plot(model_gam_aggr)
+
+
 
 
 

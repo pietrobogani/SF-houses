@@ -316,11 +316,12 @@ rent_clean$dens_units_4 = rent_clean$num_units_4/rent_clean$area
 
 boxplot(rent_clean[,c(4,5,11,12,13,22:26)])
 
-rent_clean$dens_units_0_adj = rent_clean$dens_units_0 * 1e5
-rent_clean$dens_units_1_adj = rent_clean$dens_units_1 * 1e5
-rent_clean$dens_units_2_adj = rent_clean$dens_units_2 * 1e5
-rent_clean$dens_units_3_adj = rent_clean$dens_units_3 * 1e5
-rent_clean$dens_units_4_adj = rent_clean$dens_units_4 * 1e5
+#Aggiuto le densità, che equivale a considerare le aree in km^2
+rent_clean$dens_units_0_adj = rent_clean$dens_units_0 * 1e6
+rent_clean$dens_units_1_adj = rent_clean$dens_units_1 * 1e6
+rent_clean$dens_units_2_adj = rent_clean$dens_units_2 * 1e6
+rent_clean$dens_units_3_adj = rent_clean$dens_units_3 * 1e6
+rent_clean$dens_units_4_adj = rent_clean$dens_units_4 * 1e6
 
 boxplot(rent_clean[,c(4,5,11,12,13,27:31)])
 
@@ -363,10 +364,16 @@ plot(model_gam_densita_constr_day)
 
 
 #Gam con giorni come unità di tempo e costruzioni unificate : 
-model_gam_densita_constr_sum_day <-gam(price_mq ~ 
-                                         s(I(dens_units_0+dens_units_1+dens_units_2+dens_units_3+dens_units_4), bs = 'cr') + 
+rent_clean$dens_units_sum_adj = rent_clean$dens_units_0_adj + rent_clean$dens_units_1_adj + rent_clean$dens_units_2_adj + rent_clean$dens_units_3_adj + rent_clean$dens_units_4_adj
+# model_gam_densita_constr_sum_day <-gam(price_mq ~
+#                                          s(dens_units_sum_adj, bs = 'cr') +
+#                                          s(d_num, bs = 'cr') +
+#                                          s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+model_gam_densita_constr_sum_day <-gam(price_mq ~
+                                         s(dens_units_sum_adj, bs = 'cr') +
                                          s(d_num, bs = 'cr') +
-                                         s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
+                                         nhood  , data = rent_clean)
+
 summary(model_gam_densita_constr_sum_day)
 plot(model_gam_densita_constr_sum_day)
 

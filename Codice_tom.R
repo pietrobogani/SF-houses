@@ -447,10 +447,14 @@ plot(tst)
 
   #Plot delle funzioni cleaned 
   #Plot delle funzioni dei rent e delle derivate
+  median_rent = median_fData(funct_data, type = 'MBD')
+  median_diff = median_fData(funct_data_diff, type = 'MBD')
   x11()
-  par(mfrow=c(1,2))
   plot(funct_data, main = 'Smoothed Rent functions', xlab = 'Year', ylab = 'Price/mq')
+  plot(median_rent, col = 'red', add = T, lwd = 2)
+  x11()
   plot(funct_data_diff, main = 'Approximated first derivative', xlab = 'Year', ylab = 'd/dt(Price/mq)')
+  plot(median_diff, col = 'red', add = T, lwd = 2)
   
 }
 
