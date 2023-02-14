@@ -417,13 +417,13 @@ plot(model_gam_aggr)
 
 
 
-#Tolgo i nhood
+#Modello finale
 model_gam_aggr=gam(price ~ s(lon,lat,bs='tp') + s(year,bs = 'cr', k = 8) + nhood + 
                      s(newc_100m,bs='cr') +
                      s(newc_500m,bs='cr') + 
                      s(newc_1000m,bs='cr')+
                      s(newc_2000m,bs='cr')+
-                     s(minDistGB_km,bs='cr'),
+                     minDistGB_km,
                    data = data_gam)
 summary(model_gam_aggr)
 plot(model_gam_aggr)
