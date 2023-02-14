@@ -314,7 +314,7 @@ rent_clean$dens_units_2 = rent_clean$num_units_2/rent_clean$area
 rent_clean$dens_units_3 = rent_clean$num_units_3/rent_clean$area 
 rent_clean$dens_units_4 = rent_clean$num_units_4/rent_clean$area 
 
-boxplot(rent_clean[,c(4,5,11,12,13,22:26)])
+#boxplot(rent_clean[,c(4,5,11,12,13,22:26)])
 
 #Aggiuto le densità, che equivale a considerare le aree in km^2
 rent_clean$dens_units_0_adj = rent_clean$dens_units_0 * 1e6
@@ -323,7 +323,7 @@ rent_clean$dens_units_2_adj = rent_clean$dens_units_2 * 1e6
 rent_clean$dens_units_3_adj = rent_clean$dens_units_3 * 1e6
 rent_clean$dens_units_4_adj = rent_clean$dens_units_4 * 1e6
 
-boxplot(rent_clean[,c(4,5,11,12,13,27:31)])
+#boxplot(rent_clean[,c(4,5,11,12,13,27:31)])
 
 #Modello con densità di costruzioni (non riscalata)
 model_gam_densita_constr <-gam(price_mq ~ s(dens_units_0, bs = 'cr') + s(dens_units_1,bs='cr') + 
@@ -371,7 +371,7 @@ rent_clean$dens_units_sum_adj = rent_clean$dens_units_0_adj + rent_clean$dens_un
 #                                          s(dist_fin,bs = 'cr') + s(dist_caltr, bs = 'cr')  , data = rent_clean)
 model_gam_densita_constr_sum_day <-gam(price_mq ~
                                          s(dens_units_sum_adj, bs = 'cr') +
-                                         s(d_num, bs = 'cr') +
+                                         s(year, bs = 'cr', k = 8) +
                                          nhood  , data = rent_clean)
 
 summary(model_gam_densita_constr_sum_day)
