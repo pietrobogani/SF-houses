@@ -317,7 +317,7 @@ rent_yearly$avg_rent.mq = as.numeric(rent_yearly$avg_rent.mq)
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2011')
 } #2011
 {
   year = 2012
@@ -364,7 +364,7 @@ rent_yearly$avg_rent.mq = as.numeric(rent_yearly$avg_rent.mq)
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2012')
 } #2012
 {
   year = 2013
@@ -410,7 +410,7 @@ rent_yearly$avg_rent.mq = as.numeric(rent_yearly$avg_rent.mq)
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2013')
 } #2013
 {
   year = 2014
@@ -456,7 +456,7 @@ rent_yearly$avg_rent.mq = as.numeric(rent_yearly$avg_rent.mq)
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2014')
 } #2014
 {
 year = 2015
@@ -501,7 +501,7 @@ levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat,
             panel.levelplot(...)
             panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
           }, 
-          main = 'Prices smoothed over SF')
+          main = '2015')
 } #2015
 {
   year = 2016
@@ -546,7 +546,7 @@ levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat,
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2016')
 } #2016
 {
   year = 2017
@@ -591,7 +591,7 @@ levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat,
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2017')
 } #2017
 {
   year = 2018
@@ -636,7 +636,7 @@ levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat,
               panel.levelplot(...)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
-            main = 'Prices smoothed over SF')
+            main = '2018')
 } #2018
 
 

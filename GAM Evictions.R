@@ -15,6 +15,10 @@ new_constr <- read_csv("New_construction_clean_geocoded_nh.csv")
 geo = read_sf('SFNeighborhoods_new.geojson')
 
 
+#Normalizzo le evictions:
+
+
+
 
 #Calcolo num. costr. in ogni nhood e in ogni anno
 
@@ -48,7 +52,10 @@ for(i in 1:dim(num_constr)[1]){
 }
 rm(splitted,i)
 
+#Tronco le costruzione se >500 e le fisso tutte a 500
 
+#num_constr$new_units_built[which(num_constr$new_units_built >500)] <-500 
+# => Non serve a niente
 
 #Calcolo la distanza da Caltrain Station e Financial District
 
@@ -107,6 +114,7 @@ ind5 = which(eviction_nhood_yearly$nhood == 'Lincoln Park')
 ind6 = which(eviction_nhood_yearly$nhood == 'Chinatown')
 ind7 = which(eviction_nhood_yearly$nhood == 'Japantown')
 ind8 = which(eviction_nhood_yearly$nhood == 'Mission Bay')
+#ind9 = which(eviction_nhood_yearly$nhood == 'Tenderloin')
 eviction_nhood_yearly = eviction_nhood_yearly[-c(ind1,ind2,ind3,ind4,ind5,ind6,ind7,ind8),]
 
 ind1.1 = which(num_constr$nhood == 'Lincoln Park')
@@ -217,11 +225,11 @@ for(i in 1:dim(eviction_nhood_yearly)[1]){
 #Provo a normalizzare alcune covariate:
 {
   #Normalizzo il numero di construzioni sull' area
-eviction_nhood_yearly$num_units_0 = eviction_nhood_yearly$num_units_0/eviction_nhood_yearly$area * 1e6
-eviction_nhood_yearly$num_units_1 = eviction_nhood_yearly$num_units_1/eviction_nhood_yearly$area * 1e6
-eviction_nhood_yearly$num_units_2 = eviction_nhood_yearly$num_units_2/eviction_nhood_yearly$area * 1e6
-eviction_nhood_yearly$num_units_3 = eviction_nhood_yearly$num_units_3/eviction_nhood_yearly$area * 1e6
-eviction_nhood_yearly$num_units_4 = eviction_nhood_yearly$num_units_4/eviction_nhood_yearly$area * 1e6
+ eviction_nhood_yearly$num_units_0 = eviction_nhood_yearly$num_units_0/eviction_nhood_yearly$area * 1e6
+ eviction_nhood_yearly$num_units_1 = eviction_nhood_yearly$num_units_1/eviction_nhood_yearly$area * 1e6
+ eviction_nhood_yearly$num_units_2 = eviction_nhood_yearly$num_units_2/eviction_nhood_yearly$area * 1e6
+ eviction_nhood_yearly$num_units_3 = eviction_nhood_yearly$num_units_3/eviction_nhood_yearly$area * 1e6
+ eviction_nhood_yearly$num_units_4 = eviction_nhood_yearly$num_units_4/eviction_nhood_yearly$area * 1e6
 
   #Normalizzo il numero di evictions sull'area
 eviction_nhood_yearly$count = eviction_nhood_yearly$count/eviction_nhood_yearly$area * 1e6
@@ -231,11 +239,15 @@ eviction_nhood_yearly$count = eviction_nhood_yearly$count/eviction_nhood_yearly$
 eviction_nhood_yearly <- eviction_nhood_yearly[,-c(1,2,8)]
 
 
-#PROCEDO A FARE IL GAM
+#Aggrego le costruzioni di 4 anni tutte assieme in un'unica covariata
+eviction_nhood_yearly$dens_units_sum_adj = eviction_nhood_yearly$num_units_0 + eviction_nhood_yearly$num_units_1 + eviction_nhood_yearly$num_units_2 + eviction_nhood_yearly$num_units_3 + eviction_nhood_yearly$num_units_4
 
-model_gam=gam(count ~  nhood   + s(year,bs='cr',k = 8) + s(rent,bs='cr')  #s(dist_caltr,bs='cr') +s(dist_fin,bs='cr')  # manca s(I(nhood * year)
-               + s(num_units_0,bs='cr') + s(num_units_1,bs='cr') 
-              + s(num_units_2,bs='cr') + s(num_units_3,bs='cr')+ s(num_units_4,bs='cr') 
+#PROCEDO A FARE IL GAM
+#eviction_nhood_yearly$yearfactor <- as.factor(eviction_nhood_yearly$year)
+
+model_gam=gam(count ~  nhood + s(rent,bs='cr') +  s(year,bs='cr',k=8)  #s(dist_caltr,bs='cr') +s(dist_fin,bs='cr')  # manca s(I(nhood * year)
+               +  s(dens_units_sum_adj,bs='cr')#+ s(num_units_0,bs='cr') + s(num_units_1,bs='cr') 
+              #+ s(num_units_2,bs='cr') + s(num_units_3,bs='cr')+ s(num_units_4,bs='cr') 
               ,data = eviction_nhood_yearly) 
 # "s" basically creates smoothing splines out of x1 or x2#'cr' -> cubic splines , 'tp' -> thin plate splines
 #model_gam <- lm(y ~ ns(x1, df = 3) + ns(x2, df = 3), data = dataset) # same but now we're using natural cubic splines
