@@ -81,7 +81,7 @@ ui <- fluidPage(
 
 #color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
 #col=sample(color, 37)
-#pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non è un granchè per la mia mappa perchè ha anche colori chiari
+#pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non Ã¨ un granchÃ¨ per la mia mappa perchÃ¨ ha anche colori chiari
 
 unique(dataset$nhood) #41 nhoods
 # palette = c(#96CDCD","#8B8378", "aquamarine3","azure4","#0000CD","#53868B","#D2691E","#7FFF00","#CDC8B1","#00FFFF","#FFB90F",
@@ -246,7 +246,7 @@ head(dataset)
   
   #color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)][2:433] #rimuovo bianco
   #col=sample(color, 37)
-  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non è un granchè per la mia mappa perchè ha anche colori chiari
+  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non Ã¨ un granchÃ¨ per la mia mappa perchÃ¨ ha anche colori chiari
   
   pal2 <- colorFactor(palette = c("#8B8378", "aquamarine3","azure4","#0000CD","#53868B","#D2691E","#7FFF00","#CDC8B1","#00FFFF","#FFB90F",
                                   "#556B2F","darkorchid1","#C1FFC1","#FF1493","#FFD700","#C1CDC1","#CD6090","khaki3","#EEA2AD","#B3EE3A",
@@ -339,7 +339,7 @@ dataset <- Parcels_final_nh[,6:8]
   
   #color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
   #col=sample(color, 37)
-  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non è un granchè per la mia mappa perchè ha anche colori chiari
+  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non Ã¨ un granchÃ¨ per la mia mappa perchÃ¨ ha anche colori chiari
   
   unique(dataset$neighborhoods) #39 nhoods
   
@@ -384,7 +384,7 @@ dataset <- Parcels_final_nh[,6:8]
   
   #color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
   #col=sample(color, 37)
-  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non è un granchè per la mia mappa perchè ha anche colori chiari
+  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non Ã¨ un granchÃ¨ per la mia mappa perchÃ¨ ha anche colori chiari
   
   unique(dataset$neighborhoods) #39 nhoods
   
@@ -438,7 +438,7 @@ sum_eviction_by_nhood$centroid_long <- temp$centroid_long
   
   #color = grDevices::colors()[grep('gr(a|e)y', grDevices::colors(), invert = T)]
   #col=sample(color, 37)
-  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non è un granchè per la mia mappa perchè ha anche colori chiari
+  #pal <- colorFactor(palette = color, unique(dataset$neighborhoods)) #questa palette non Ã¨ un granchÃ¨ per la mia mappa perchÃ¨ ha anche colori chiari
   
   unique(sum_eviction_by_nhood$nhood) #41 nhoods
   
