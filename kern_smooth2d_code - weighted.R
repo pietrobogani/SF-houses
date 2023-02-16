@@ -44,7 +44,7 @@ length(unique(rent_clean$year_nhood))
 rent_nhood_yearly = aggregate(rent_clean$price_mq, by = list(rent_clean$year_nhood), FUN = mean)
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'Group.1'] <- 'year_nhood'
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent.sq'
-rent_yearly <- rent_nhood_yearly #Cos� uso lo stesso nome che usa il codice di tom da qui in avanti
+rent_yearly <- rent_nhood_yearly #Così uso lo stesso nome che usa il codice di tom da qui in avanti
 rm(rent_nhood_yearly)
 
 #Sistemo gli address di rent_yearly
@@ -139,8 +139,8 @@ mesh_coord$price = predict(m_loc, newdata = mesh_coord)
 price = predict(m_loc, newdata = mesh_coord)
 mesh_coord = mesh_coord[order(mesh_coord$price),]
 #Plot della superficie ma senza gradiente dei colori
-#Non riesco a mettere i colori perchè riordinando i prezzi, si scombinano le corrispondenze
-# con grid_lon e grid_lat! L'unica soluzione che ho trovato è quella di riunire coordinate
+#Non riesco a mettere i colori perchÃ¨ riordinando i prezzi, si scombinano le corrispondenze
+# con grid_lon e grid_lat! L'unica soluzione che ho trovato Ã¨ quella di riunire coordinate
 # e prezzi in un unico dataset (ie mesh_coord) e plottare tutti i punti
 persp3d(grid_lon,grid_lat, price, smooth = F, col = 'red', alpha = 0.5)
 plot3d(parcels$lon,parcels$lat,min(parcels$price), add = T, size = 0.1)
@@ -201,7 +201,7 @@ vect_year = paste(rent_clean$year)
 vect_nhood = paste(rent_clean$nhood)
 vect_aus2 = paste(vect_year,vect_nhood)
 rent_clean$year_nhood = vect_aus2
-rent_clean$dummy = 1 #Cos� poi posso contare su quanti sto facendo la media
+rent_clean$dummy = 1 #Così poi posso contare su quanti sto facendo la media
 rm(vect_aus2,vect_year,vect_nhood)
 
 
@@ -209,7 +209,7 @@ length(unique(rent_clean$year_nhood))
 rent_nhood_yearly = aggregate(rent_clean$price_mq, by = list(rent_clean$year_nhood), FUN = mean)
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'Group.1'] <- 'year_nhood'
 names(rent_nhood_yearly)[names(rent_nhood_yearly) == 'x'] <- 'avg_rent.sq'
-rent_yearly <- rent_nhood_yearly #Cos� uso lo stesso nome che usa il codice di tom da qui in avanti
+rent_yearly <- rent_nhood_yearly #Così uso lo stesso nome che usa il codice di tom da qui in avanti
 
 
 #Sistemo gli address di rent_yearly
@@ -257,7 +257,7 @@ rent_yearly$count = (aggregate(rent_clean$dummy, by = list(rent_clean$year_nhood
 
 library(splitstackshape)
 library(data.table)
-rent_yearly <- setDT(expandRows(rent_yearly, "count"))[,][] #Cos� replico ogni colonna tanto volte quanto il valore di count
+rent_yearly <- setDT(expandRows(rent_yearly, "count"))[,][] #Così replico ogni colonna tanto volte quanto il valore di count
 
 #Unisco i rent singoli e le medie nei nhood
 rent_geoloc <- as.data.frame(cbind(rent_geoloc$price_mq,rent_geoloc$year,rent_geoloc$nhood,rent_geoloc$lat,rent_geoloc$lon))
@@ -298,8 +298,8 @@ rent_yearly$avg_rent.mq = as.numeric(rent_yearly$avg_rent.mq)
          xlim = range(parcels$lon) , ylim = range(parcels$lat), col = colormap(dim(parcels)[1]))
   
   #Plot in 2d con gradiente colori
-  grid_lat = seq(range(parcels$lat)[1],range(parcels$lat)[2], length.out = 100)
-  grid_lon = seq(range(parcels$lon)[1],range(parcels$lon)[2], length.out = 100)
+  grid_lat = seq(37.708,37.8125, length.out = 100)
+  grid_lon = seq(-122.516,-122.357, length.out = 100)
   mesh_coord = expand.grid(lon = grid_lon,lat = grid_lat)
   mesh_coord$price = predict(m_loc, newdata = mesh_coord)
   price = predict(m_loc, newdata = mesh_coord)
@@ -318,6 +318,63 @@ rent_yearly$avg_rent.mq = as.numeric(rent_yearly$avg_rent.mq)
               panel.points(parcels$lon, parcels$lat, col = 'black', cex = 0.2, alpha = 0.1, pch = 19)
             }, 
             main = '2011')
+  
+  tables_XY <- geo %>% 
+    st_coordinates() %>% # retrieves coordinates in a matrix
+    as.data.frame %>%    # converts into dataframe
+    split(.,.$L3) %>%    # creates a list with one coordinates table for each feature
+    lapply(., `select`, c("X", "Y"))
+  
+  #Plot in 2d con gradiente colori (con nh e non parcels)
+  x11()
+  levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat, 
+            colorkey = T,
+            xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+            aspect = 1,
+            col.regions = heat.colors(rev = T, n = 60),
+            at = seq(10,70,1.5),
+            panel = function(...) {
+              panel.levelplot(...)
+              panel.polygon(tables_XY[["1"]][["X"]], tables_XY[["1"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["2"]][["X"]], tables_XY[["2"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["3"]][["X"]], tables_XY[["3"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["4"]][["X"]], tables_XY[["4"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["5"]][["X"]], tables_XY[["5"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["6"]][["X"]], tables_XY[["6"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["7"]][["X"]], tables_XY[["7"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["8"]][["X"]], tables_XY[["8"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["9"]][["X"]], tables_XY[["9"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["10"]][["X"]], tables_XY[["10"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["11"]][["X"]], tables_XY[["11"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["12"]][["X"]], tables_XY[["12"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["13"]][["X"]], tables_XY[["13"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["14"]][["X"]], tables_XY[["14"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["15"]][["X"]], tables_XY[["15"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["16"]][["X"]], tables_XY[["16"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["17"]][["X"]], tables_XY[["17"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["18"]][["X"]], tables_XY[["18"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["19"]][["X"]], tables_XY[["19"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["20"]][["X"]], tables_XY[["20"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["21"]][["X"]], tables_XY[["21"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["22"]][["X"]], tables_XY[["22"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["23"]][["X"]], tables_XY[["23"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["24"]][["X"]], tables_XY[["24"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["25"]][["X"]], tables_XY[["25"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["26"]][["X"]], tables_XY[["26"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["27"]][["X"]], tables_XY[["27"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["28"]][["X"]], tables_XY[["28"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["29"]][["X"]], tables_XY[["29"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["30"]][["X"]], tables_XY[["30"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["31"]][["X"]], tables_XY[["31"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["32"]][["X"]], tables_XY[["32"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["33"]][["X"]], tables_XY[["33"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["34"]][["X"]], tables_XY[["34"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["35"]][["X"]], tables_XY[["35"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["36"]][["X"]], tables_XY[["36"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+              panel.polygon(tables_XY[["37"]][["X"]], tables_XY[["37"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            }, 
+            main = '2011')
+  
 } #2011
 {
   year = 2012
