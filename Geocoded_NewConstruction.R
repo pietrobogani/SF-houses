@@ -68,3 +68,29 @@ Geocoded$suburb <- str_replace(Geocoded$suburb, "Mount Davidson Manor", "West of
 Geocoded <- Geocoded[!duplicated(Geocoded),]
 New_construction_clean <- merge(New_construction_clean,subset(Geocoded, select=c("original_address", "lat", "lon")), by.x="address", by.y="original_address")
 write.csv(New_construction_clean,"/Users/saratonazzi/Documents/Polimi/Non Parametric/New_construction_clean_geocoded.csv", row.names = FALSE)
+
+###ADD NEIGHBORHOODS TO NEW_CONSTRUCTION
+
+SFNeighborhoods <- read_sf("Documents/Polimi/Non Parametric/SFNeighborhoods_new.geojson")
+New_construction_clean_geocoded <- read_csv("Documents/Polimi/Non Parametric/New_construction_clean_geocoded.csv")
+
+points <- New_construction_clean_geocoded[,14:15] %>% 
+  as.data.frame %>% 
+  st_as_sf(coords = c(x = "lon", y = "lat")) %>%
+  st_set_crs(4326)
+
+New_construction_clean_geocoded$point <- points
+
+#test <- st_join(SFNeighborhoods,New_construction_clean_geocoded)
+
+poly <- st_transform(SFNeighborhoods$geometry, 4326)
+
+ggplot() +
+  geom_sf(data = poly) + coord_sf(crs = st_crs(4326))
+
+test <- st_within(points, poly)
+New_construction_clean_geocoded$number <- st_within(points, poly)
+New_construction_clean_geocoded$neighborhoods <- mapply(function(x) SFNeighborhoods[[1]][[x]], New_construction_clean_geocoded$number)
+New_construction_clean_geocoded <- subset(New_construction_clean_geocoded, select=-c(16))
+
+write.csv(New_construction_clean_geocoded,"/Users/saratonazzi/Documents/Polimi/Non Parametric/New_construction_clean_geocoded_nh.csv", row.names = FALSE)
