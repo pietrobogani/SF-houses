@@ -44,7 +44,7 @@ rent <- rent[!duplicated(rent),] #elimino rent duplici (fatti nello stesso giorn
 October2015Permits <- October2015Permits[,-c(1:3,5:9,14:20,29:40,42)] #Script iniziale eventualmente da estendere su tutti i permits, qui fatto solo su Ottobre
 October2015Permits <- October2015Permits[((October2015Permits[,4]=='APARTMENTS') | (October2015Permits[,4]=='1 FAMILY DWELLING') | 
                                             (October2015Permits[,4]=='2 FAMILY DWELLING')), ] #Rimuovo i lavori fatti su costruzioni che non mi interessano
-October2015Permits <- October2015Permits[((October2015Permits[,5]-October2015Permits[,3]>0)), ] #Rimuovo i lavori che non aumentano le unità abitative, nota: perch�?
+October2015Permits <- October2015Permits[((October2015Permits[,5]-October2015Permits[,3]>0)), ] #Rimuovo i lavori che non aumentano le unitÃ  abitative, nota: perchè?
 October2015Permits <- October2015Permits[!duplicated(October2015Permits),]
 October2015Permits <- October2015Permits[!(is.na(October2015Permits[,4])), ] #elimino quelli di cui non so la destinazione d'uso
 
@@ -68,7 +68,7 @@ D=tolower(Buyout_Agreements$Analysis.Neighborhood)
 intersect(intersect(intersect(A,B),C),D)
 intersect(intersect(A,C),D)
 length(intersect(intersect(A,C),D)) #tutti i quartieri di Buyout_Agreements sono contenuti in sf_permits e Eviction_Notices
-# setdiff(A,D) #sf_permits e Eviction_Notices hanno due quartieri in più rispetto a Buyout_Agreements: "golden gate park", "treasure island"
+# setdiff(A,D) #sf_permits e Eviction_Notices hanno due quartieri in piÃ¹ rispetto a Buyout_Agreements: "golden gate park", "treasure island"
 
 setdiff(intersect(intersect(A,C),D),B)
 unique(B)
@@ -156,7 +156,7 @@ length(unique(rent_clean$month_year_nhood))
 rent_nhood_monthly = aggregate(rent_clean$`rent/pq`, by = list(rent_clean$month_year_nhood), FUN = mean)
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(rent_nhood_monthly)[names(rent_nhood_monthly) == 'x'] <- 'avg_rent/pq'
-#Adesso son da splittare di nuovo mese-anno e nhood e si pu� plottare tutto (analisi esplorativa)!
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
 
 
 
@@ -180,7 +180,7 @@ length(unique(Eviction_Notices_Clean$month_year_nhood)) #Dalle 8943 osservazioni
 eviction_nhood_monthly = aggregate(Eviction_Notices_Clean$dummy, by = list(Eviction_Notices_Clean$month_year_nhood), FUN = sum)
 names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'Group.1'] <- 'nhood_month_year'
 names(eviction_nhood_monthly)[names(eviction_nhood_monthly) == 'x'] <- 'Count'
-#Adesso son da splittare di nuovo mese-anno e nhood e si pu� plottare tutto (analisi esplorativa)!
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
 
 
 
@@ -211,7 +211,7 @@ names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'Group.1'] <- 'nhood_
 names(buyout_nhood_monthly)[names(buyout_nhood_monthly) == 'dummy'] <- 'Count'
 buyout_nhood_monthly$avg_buyout = buyout_nhood_monthly$buyout_amount / buyout_nhood_monthly$Count
 write.csv(buyout_nhood_monthly,'buyout_nhood_monthly.csv')
-#Adesso son da splittare di nuovo mese-anno e nhood e si pu� plottare tutto (analisi esplorativa)!
+#Adesso son da splittare di nuovo mese-anno e nhood e si può plottare tutto (analisi esplorativa)!
 
 
 
