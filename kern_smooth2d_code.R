@@ -75,8 +75,8 @@ plot3d(parcels$lon, parcels$lat, parcels$price,
 
 
 #Valuto sul quadrato corrispondente a sf 
-grid_lat = seq(range(parcels$lat)[1],range(parcels$lat)[2], length.out = 100)
-grid_lon = seq(range(parcels$lon)[1],range(parcels$lon)[2], length.out = 100)
+grid_lat = seq(37.708,37.8125, length.out = 100)
+grid_lon = seq(-122.516,-122.357, length.out = 100)
 mesh_coord = expand.grid(lon = grid_lon,lat = grid_lat)
 mesh_coord$price = predict(m_loc, newdata = mesh_coord)
 price = predict(m_loc, newdata = mesh_coord)
@@ -109,7 +109,62 @@ levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat,
           }, 
           main = 'Prices smoothed over SF')
 
+#Plot in 2d con gradiente colori (con nh e non parcels)
 
+tables_XY <- geo %>% 
+  st_coordinates() %>% # retrieves coordinates in a matrix
+  as.data.frame %>%    # converts into dataframe
+  split(.,.$L3) %>%    # creates a list with one coordinates table for each feature
+  lapply(., `select`, c("X", "Y"))
+
+x11()
+levelplot(mesh_coord$price ~ mesh_coord$lon * mesh_coord$lat, 
+          colorkey = T,
+          xlab = "Longitude", ylab = "Latitude", zlab = "Price",
+          aspect = 1,
+          col.regions = heat.colors(rev = T, n = 60),
+          at = seq(10,70,1.5),
+          panel = function(...) {
+            panel.levelplot(...)
+            panel.polygon(tables_XY[["1"]][["X"]], tables_XY[["1"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["2"]][["X"]], tables_XY[["2"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["3"]][["X"]], tables_XY[["3"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["4"]][["X"]], tables_XY[["4"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["5"]][["X"]], tables_XY[["5"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["6"]][["X"]], tables_XY[["6"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["7"]][["X"]], tables_XY[["7"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["8"]][["X"]], tables_XY[["8"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["9"]][["X"]], tables_XY[["9"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["10"]][["X"]], tables_XY[["10"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["11"]][["X"]], tables_XY[["11"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["12"]][["X"]], tables_XY[["12"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["13"]][["X"]], tables_XY[["13"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["14"]][["X"]], tables_XY[["14"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["15"]][["X"]], tables_XY[["15"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["16"]][["X"]], tables_XY[["16"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["17"]][["X"]], tables_XY[["17"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["18"]][["X"]], tables_XY[["18"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["19"]][["X"]], tables_XY[["19"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["20"]][["X"]], tables_XY[["20"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["21"]][["X"]], tables_XY[["21"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["22"]][["X"]], tables_XY[["22"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["23"]][["X"]], tables_XY[["23"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["24"]][["X"]], tables_XY[["24"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["25"]][["X"]], tables_XY[["25"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["26"]][["X"]], tables_XY[["26"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["27"]][["X"]], tables_XY[["27"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["28"]][["X"]], tables_XY[["28"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["29"]][["X"]], tables_XY[["29"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["30"]][["X"]], tables_XY[["30"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["31"]][["X"]], tables_XY[["31"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["32"]][["X"]], tables_XY[["32"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["33"]][["X"]], tables_XY[["33"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["34"]][["X"]], tables_XY[["34"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["35"]][["X"]], tables_XY[["35"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["36"]][["X"]], tables_XY[["36"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+            panel.polygon(tables_XY[["37"]][["X"]], tables_XY[["37"]][["Y"]], col = NA,border="black", cex = 0.2, pch = 19)
+          }, 
+          main = 'Prices smoothed over SF')
 
 #Procedo ora a farlo per ogni anno ############################################# 
 rm(list = ls())
