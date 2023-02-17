@@ -3,6 +3,8 @@
 
 The San Francisco housing market has undergone significant changes in recent years, leading to increased gentrification and displacement of low-income and working-class families. To understand and address this pressing issue, we conducted a study aimed at finding practical solutions. Our goal was to gain insights into the phenomena of gentrification and displacement and to identify strategies for addressing them.
 
+![alt text]([http://url/to/img.png](https://github.com/lopok908/SF-houses/blob/main/Visualization/Plot%20-%20Final/Neighborhoods.png)
+
 ### Introduction
 
 Gentrification is a process that transforms the socio-economic character of a neighborhood, often driven by the influx of wealthier individuals who push out and displace the current residents. In San Francisco, the booming tech industry and demand for housing by tech workers has fueled a significant rise in housing prices, making it increasingly difficult for low-income and working-class families to afford to live in the city.
