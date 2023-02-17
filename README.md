@@ -3,7 +3,7 @@
 
 The San Francisco housing market has undergone significant changes in recent years, leading to increased gentrification and displacement of low-income and working-class families. To understand and address this pressing issue, we conducted a study aimed at finding practical solutions. Our goal was to gain insights into the phenomena of gentrification and displacement and to identify strategies for addressing them.
 
-![alt text]([http://url/to/img.png](https://github.com/lopok908/SF-houses/blob/main/Visualization/Plot%20-%20Final/Neighborhoods.png)
+![alt text](https://github.com/lopok908/SF-houses/blob/main/Visualization/Plot%20-%20Final/Neighborhoods.png)
 
 ### Introduction
 
